@@ -68,10 +68,11 @@ export const Admin = () => {
     client: '',
     overview: '',
     results: '',
-    tags: 'Meta Ads, Scaling, ROAS',
+    tags: 'Meta Ads, Campaign Strategy, Creative Angles',
     image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=80',
     hasVideoDemo: false,
     hasAudioDemo: false,
+    verified: false,
   });
 
   // Site Settings Local State
@@ -712,12 +713,12 @@ export const Admin = () => {
                       </div>
 
                       <div className="form-group">
-                        <label className="form-label">Results & Key Impact</label>
+                        <label className="form-label">Results & Key Impact / Learnings</label>
                         <input
                           type="text"
                           value={projectForm.results}
                           onChange={(e) => setProjectForm({ ...projectForm, results: e.target.value })}
-                          placeholder="e.g. Achieved 4.2x ROAS and 250K organic views in 14 days"
+                          placeholder="e.g. Approach: Scaled Advantage+ testing with 3-second reel hooks"
                           className="form-control"
                         />
                       </div>
@@ -742,7 +743,15 @@ export const Admin = () => {
                         />
                       </div>
 
-                      <div style={{ display: 'flex', gap: '20px', marginBottom: '24px' }}>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', marginBottom: '24px' }}>
+                        <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem' }}>
+                          <input
+                            type="checkbox"
+                            checked={projectForm.verified || false}
+                            onChange={(e) => setProjectForm({ ...projectForm, verified: e.target.checked })}
+                          />
+                          <span style={{ fontWeight: 600, color: 'var(--brand)' }}>Verified Client Case Study (Shows metric boxes)</span>
+                        </label>
                         <label style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.88rem' }}>
                           <input
                             type="checkbox"

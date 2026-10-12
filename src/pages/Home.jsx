@@ -18,6 +18,7 @@ import { MediaModal } from '../components/MediaModal';
 import { AdsSection } from '../components/AdsSection';
 import { CtaBanner } from '../components/CtaBanner';
 import { EXPERIENCE_ITEMS, EDUCATION_ITEMS, PROCESS_STEPS, WHY_CHOOSE_ME } from '../data/initialData';
+import { HERO_STATS, PORTFOLIO_NOTE } from '../config/site';
 
 export const Home = () => {
   const { site, services, portfolio } = useSite();
@@ -36,7 +37,7 @@ export const Home = () => {
     'AI Video Production',
     'ElevenLabs Voiceovers',
     'High-Retention Reels',
-    'ROAS Optimization',
+    'Creative Testing',
     'Midjourney Visuals',
     'Content Calendars',
     'Runway Gen-3 Alpha',
@@ -88,41 +89,44 @@ export const Home = () => {
               </a>
             </div>
 
-            {/* Quick Metrics Strip */}
+            {/* Honest, Verifiable Hero Stats */}
             <div
               style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '24px',
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))',
+                gap: '20px',
                 marginTop: '44px',
                 paddingTop: '28px',
                 borderTop: '1px solid var(--border-color)',
               }}
             >
-              <div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--brand)' }}>
-                  {site.avgRoas}
+              {HERO_STATS.map((stat, i) => (
+                <div key={i}>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.4rem',
+                      fontWeight: 700,
+                      color: i === 0 ? 'var(--brand)' : i === 1 ? 'var(--charcoal)' : i === 2 ? 'var(--gold)' : 'var(--brand)',
+                      lineHeight: 1.1,
+                    }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div
+                    style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 700,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em',
+                      color: 'var(--mutedtext)',
+                      marginTop: '4px',
+                    }}
+                  >
+                    {stat.label}
+                  </div>
                 </div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--mutedtext)' }}>
-                  Performance Benchmark
-                </div>
-              </div>
-              <div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--charcoal)' }}>
-                  {site.videoViews}
-                </div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--mutedtext)' }}>
-                  Organic Views Reached
-                </div>
-              </div>
-              <div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--gold)' }}>
-                  {site.experienceYears}
-                </div>
-                <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', color: 'var(--mutedtext)' }}>
-                  Proven Startup & Agency
-                </div>
-              </div>
+              ))}
             </div>
           </div>
 
@@ -177,10 +181,10 @@ export const Home = () => {
                 </div>
               </div>
 
-              {/* Floating Stat Pill */}
+              {/* Floating Brand Pill */}
               <div className="hero-metrics-pill">
-                <div className="pill-val">{site.adSpendManaged}</div>
-                <div className="pill-lbl">Managed Ad Spend</div>
+                <div className="pill-val">Klikwise</div>
+                <div className="pill-lbl">Digital & AI Studio</div>
               </div>
             </div>
           </div>
@@ -228,7 +232,7 @@ export const Home = () => {
                 </div>
                 <h3 className="service-name">Performance Marketing</h3>
                 <p className="service-intro">
-                  High-converting Meta Ads strategy, Advantage+ campaign structures, and daily ROAS optimization designed to turn ad spend into profitable revenue.
+                  High-converting Meta Ads strategy, Advantage+ campaign structures, and daily optimization designed to turn ad spend into profitable revenue.
                 </p>
                 <ul className="service-includes-list">
                   <li className="service-include-item"><span className="service-include-bullet" />Pixel & CAPI Attribution Tracking</li>
@@ -281,7 +285,7 @@ export const Home = () => {
                 <ul className="service-includes-list">
                   <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--gold)' }} />Runway Gen-3 & Kling AI Video</li>
                   <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--gold)' }} />ElevenLabs Emotive Voiceovers</li>
-                  <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--gold)' }} />80% Faster Production Cycles</li>
+                  <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--gold)' }} />Fast Production Cycles</li>
                 </ul>
               </div>
               <Link to="/services/ai-video-creation" className="service-action-link" style={{ color: 'var(--gold)' }}>
@@ -304,7 +308,10 @@ export const Home = () => {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '44px' }}>
             <div>
               <span className="editorial-eyebrow">Case Studies & Showcase</span>
-              <h2 className="display-title section-title">WORK WORTH NOTICING.</h2>
+              <h2 className="display-title section-title">REAL WORK. HONEST PROCESS.</h2>
+              <p style={{ color: 'var(--mutedtext)', fontSize: '0.92rem', marginTop: '6px' }}>
+                {PORTFOLIO_NOTE}
+              </p>
             </div>
             <Link to="/portfolio" className="btn-dark">
               View Complete Portfolio <ArrowUpRight size={16} />
@@ -329,6 +336,27 @@ export const Home = () => {
                     }}
                   />
                   <span className="project-category-badge">{project.category}</span>
+                  {(project.isSample || !project.verified) && (
+                    <span
+                      style={{
+                        position: 'absolute',
+                        top: '12px',
+                        right: '12px',
+                        backgroundColor: 'rgba(25, 25, 25, 0.85)',
+                        backdropFilter: 'blur(8px)',
+                        color: 'var(--amber)',
+                        padding: '4px 10px',
+                        borderRadius: 'var(--radius-full)',
+                        fontSize: '0.7rem',
+                        fontWeight: 700,
+                        letterSpacing: '0.04em',
+                        textTransform: 'uppercase',
+                        border: '1px solid rgba(255, 185, 46, 0.3)',
+                      }}
+                    >
+                      Sample / Concept Project
+                    </span>
+                  )}
                   {(project.hasVideoDemo || project.hasAudioDemo) && (
                     <div
                       style={{
@@ -360,8 +388,20 @@ export const Home = () => {
 
                     {project.results && (
                       <div className="project-results-box">
-                        <strong>Results: </strong>
+                        <strong>{project.verified ? 'Results: ' : 'Approach & Method: '}</strong>
                         {project.results}
+                      </div>
+                    )}
+
+                    {/* Metric boxes only when verified is true */}
+                    {project.verified && project.metrics && project.metrics.length > 0 && (
+                      <div className="project-metrics-row">
+                        {project.metrics.map((m, idx) => (
+                          <div key={idx} className="project-metric-item">
+                            <div className="val">{m.val}</div>
+                            <div className="lbl">{m.label}</div>
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>

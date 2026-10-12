@@ -91,7 +91,7 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
             </h2>
             <p style={{ color: 'var(--mutedtext)', fontSize: '1.05rem', lineHeight: '1.6', marginTop: '12px' }}>
               {subtitle ||
-                'Strategic photo carousels and cinematic video ads designed for Meta, Instagram, and YouTube. Built with psychological hooks, high production quality, and relentless ROAS optimization.'}
+                'Strategic photo carousels and cinematic video ads designed for Meta, Instagram, and YouTube. Built with psychological hooks, high creative standards, and disciplined audience testing.'}
             </p>
           </div>
 
@@ -408,6 +408,26 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                           ★ Featured
                         </span>
                       )}
+
+                      {(!ad.verified || ad.isSample) && (
+                        <span
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '4px',
+                            padding: '4px 9px',
+                            borderRadius: '999px',
+                            fontSize: '0.68rem',
+                            fontWeight: 700,
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            color: 'var(--brand)',
+                            border: '1px solid var(--brand)',
+                            backdropFilter: 'blur(8px)',
+                          }}
+                        >
+                          Sample / Concept
+                        </span>
+                      )}
                     </div>
 
                     {/* Top Right Platform Badge */}
@@ -555,7 +575,7 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                         flexWrap: 'wrap',
                       }}
                     >
-                      {ad.results ? (
+                      {ad.verified && ad.results ? (
                         <div
                           style={{
                             display: 'inline-flex',
@@ -572,9 +592,26 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                           <TrendingUp size={13} />
                           <span>{ad.results}</span>
                         </div>
+                      ) : ad.results ? (
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '5px',
+                            fontSize: '0.78rem',
+                            fontWeight: 600,
+                            color: 'var(--charcoal)',
+                            backgroundColor: 'var(--peach)',
+                            border: '1px solid var(--border-color)',
+                            padding: '3px 8px',
+                            borderRadius: '6px',
+                          }}
+                        >
+                          <span>{ad.results}</span>
+                        </div>
                       ) : (
                         <span style={{ fontSize: '0.78rem', color: 'var(--mutedtext)' }}>
-                          High Performance Creative
+                          Creative Concept & Strategy
                         </span>
                       )}
 

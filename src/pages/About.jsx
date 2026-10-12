@@ -53,7 +53,7 @@ export const About = () => {
                   Too often, brands are caught between traditional agencies that move too slowly or creative freelancers who don't understand customer acquisition costs (CAC) and ROAS. I solve that disconnect by pairing data-driven Meta ad campaign architecture with viral short-form reel hooks and studio-quality AI video/audio.
                 </p>
                 <p>
-                  Having driven real-world marketing and social strategies at <strong>ENXT AI</strong> and executed organic SEO and content campaigns at <strong>DIDM.IN</strong>, I treat every project as an investment that must produce measurable brand equity and bottom-line revenue.
+                  With 1 year of hands-on experience managing freelance campaigns at <strong>Klikwise</strong>, driving marketing workflows at <strong>ENKT AI</strong>, and executing organic SEO campaigns at <strong>DIDMIN</strong>, I treat every engagement with complete transparency and focused execution.
                 </p>
               </div>
 

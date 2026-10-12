@@ -31,13 +31,13 @@ export const Footer = () => {
               >
                 <MessageCircle size={15} /> WhatsApp Direct
               </a>
-              <a
-                href={`mailto:${site.email}?subject=Project%20Inquiry%20%E2%80%94%20Mayank%20Aggarwal`}
+              <Link
+                to="/contact"
                 className="btn-secondary"
                 style={{ padding: '9px 18px', fontSize: '0.82rem', borderColor: 'rgba(255,255,255,0.2)', color: 'var(--softwhite)' }}
               >
-                <Mail size={15} /> Email Me
-              </a>
+                Start a Project <ArrowUpRight size={14} />
+              </Link>
             </div>
           </div>
 
@@ -118,11 +118,6 @@ export const Footer = () => {
                   <Mail size={16} /> {site.email}
                 </a>
               </li>
-              <li style={{ marginTop: '8px' }}>
-                <Link to="/admin" className="footer-nav-link" style={{ display: 'flex', alignItems: 'center', gap: '8px', opacity: 0.6 }}>
-                  <Shield size={14} /> Admin CMS Portal
-                </Link>
-              </li>
             </ul>
           </div>
         </div>
@@ -133,7 +128,6 @@ export const Footer = () => {
           <div style={{ display: 'flex', gap: '20px' }}>
             <Link to="/privacy-policy" style={{ color: 'inherit' }}>Privacy Policy</Link>
             <Link to="/terms" style={{ color: 'inherit' }}>Terms of Service</Link>
-            <Link to="/admin" style={{ color: 'inherit' }}>Admin Login</Link>
           </div>
         </div>
       </div>

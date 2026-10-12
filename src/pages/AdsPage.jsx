@@ -45,8 +45,8 @@ export const AdsPage = () => {
                   color: 'var(--charcoal)',
                 }}
               >
-                <TrendingUp size={15} style={{ color: '#16A34A' }} />
-                <span>Up to 4.8x Meta ROAS</span>
+                <TrendingUp size={15} style={{ color: 'var(--brand)' }} />
+                <span>Meta Strategy & Testing</span>
               </div>
 
               <div

@@ -25,11 +25,27 @@ export const MediaModal = ({ isOpen, onClose, mediaData }) => {
     <div className="modal-backdrop" onClick={onClose}>
       <div className="modal-dialog" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
             <span className="editorial-eyebrow">Interactive Showcase</span>
             <span style={{ fontSize: '0.8rem', color: 'var(--mutedtext)', fontWeight: 600 }}>
               {mediaData.category || 'AI Production'}
             </span>
+            {(!mediaData.verified || mediaData.isSample) && (
+              <span
+                style={{
+                  fontSize: '0.7rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  padding: '3px 8px',
+                  borderRadius: '999px',
+                  backgroundColor: 'rgba(255, 185, 46, 0.15)',
+                  color: 'var(--charcoal)',
+                  border: '1px solid rgba(255, 185, 46, 0.35)',
+                }}
+              >
+                Sample / Concept
+              </span>
+            )}
           </div>
           <button
             onClick={onClose}
@@ -208,7 +224,7 @@ export const MediaModal = ({ isOpen, onClose, mediaData }) => {
           {/* Results / Highlights */}
           {mediaData.results && (
             <div className="project-results-box" style={{ marginBottom: '20px' }}>
-              <strong>Impact & Results: </strong>
+              <strong>{mediaData.verified ? 'Impact & Results: ' : 'Approach & Method: '}</strong>
               {mediaData.results}
             </div>
           )}

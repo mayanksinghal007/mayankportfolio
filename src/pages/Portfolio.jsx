@@ -4,6 +4,7 @@ import { ArrowUpRight, Play, Sparkles, Filter, CheckCircle2 } from 'lucide-react
 import { useSite } from '../context/SiteContext';
 import { MediaModal } from '../components/MediaModal';
 import { CtaBanner } from '../components/CtaBanner';
+import { PORTFOLIO_NOTE } from '../config/site';
 
 const CATEGORIES = [
   'All',
@@ -42,12 +43,30 @@ export const Portfolio = () => {
           <div style={{ maxWidth: '820px' }}>
             <span className="editorial-eyebrow">Case Studies & Creative Showcase</span>
             <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>
-              PROVEN RESULTS.{' '}
-              <span className="brand-span">MEASURABLE IMPACT.</span>
+              REAL WORK.{' '}
+              <span className="brand-span">HONEST PROCESS.</span>
             </h1>
             <p className="hero-lead">
-              Explore real-world client campaigns, generative AI video showreels, high-retention reel scripts, and conversion-optimized ad funnels. Click any case study to view interactive previews and breakdowns.
+              Explore concept campaigns, generative AI video showreels, high-retention reel scripts, and conversion-optimized ad funnels. Each card details the creative strategy, tools, and execution methodology.
             </p>
+            <div
+              style={{
+                marginTop: '16px',
+                padding: '12px 18px',
+                backgroundColor: 'var(--cream)',
+                border: '1px solid var(--border-color)',
+                borderRadius: 'var(--radius-md)',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                fontSize: '0.88rem',
+                color: 'var(--charcoal)',
+                fontWeight: 500,
+              }}
+            >
+              <Sparkles size={16} color="#FF3D0A" />
+              <span>{PORTFOLIO_NOTE}</span>
+            </div>
           </div>
 
           {/* Filter Tabs */}
@@ -111,6 +130,28 @@ export const Portfolio = () => {
                     />
                     <span className="project-category-badge">{project.category}</span>
 
+                    {(project.isSample || !project.verified) && (
+                      <span
+                        style={{
+                          position: 'absolute',
+                          top: '12px',
+                          right: '12px',
+                          backgroundColor: 'rgba(25, 25, 25, 0.85)',
+                          backdropFilter: 'blur(8px)',
+                          color: 'var(--amber)',
+                          padding: '4px 10px',
+                          borderRadius: 'var(--radius-full)',
+                          fontSize: '0.7rem',
+                          fontWeight: 700,
+                          letterSpacing: '0.04em',
+                          textTransform: 'uppercase',
+                          border: '1px solid rgba(255, 185, 46, 0.3)',
+                        }}
+                      >
+                        Sample / Concept Project
+                      </span>
+                    )}
+
                     {(project.hasVideoDemo || project.hasAudioDemo) && (
                       <div
                         style={{
@@ -145,13 +186,13 @@ export const Portfolio = () => {
 
                       {project.results && (
                         <div className="project-results-box">
-                          <strong>Results: </strong>
+                          <strong>{project.verified ? 'Results: ' : 'Approach & Method: '}</strong>
                           {project.results}
                         </div>
                       )}
 
-                      {/* Metrics Row */}
-                      {project.metrics && (
+                      {/* Metrics Row - only when verified is true */}
+                      {project.verified && project.metrics && project.metrics.length > 0 && (
                         <div className="project-metrics-row">
                           {project.metrics.map((m, idx) => (
                             <div key={idx} className="project-metric-item">

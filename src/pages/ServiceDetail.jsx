@@ -379,13 +379,13 @@ export const ServiceDetail = () => {
                   }}
                 >
                   <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: 'var(--brand)' }}>
-                    3.8x
+                    24-48h
                   </div>
                   <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--charcoal)', marginTop: '4px' }}>
-                    Average ROAS Target
+                    Turnaround Standard
                   </div>
                   <p style={{ color: 'var(--mutedtext)', fontSize: '0.85rem', marginTop: '8px' }}>
-                    Maintained across e-commerce client ad spend portfolios.
+                    Initial campaign architecture and creative assets delivered within 24–48 hours.
                   </p>
                 </div>
                 <div
@@ -398,13 +398,13 @@ export const ServiceDetail = () => {
                   }}
                 >
                   <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: 'var(--charcoal)' }}>
-                    -38%
+                    Weekly
                   </div>
                   <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--charcoal)', marginTop: '4px' }}>
-                    CPA Cost Reduction
+                    A/B Testing & Refresh
                   </div>
                   <p style={{ color: 'var(--mutedtext)', fontSize: '0.85rem', marginTop: '8px' }}>
-                    Through creative hook testing and clean campaign hierarchy.
+                    Continuous creative iteration to combat audience fatigue and refine messaging.
                   </p>
                 </div>
                 <div
@@ -417,13 +417,13 @@ export const ServiceDetail = () => {
                   }}
                 >
                   <div style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: 'var(--gold)' }}>
-                    48h
+                    Direct
                   </div>
                   <div style={{ fontWeight: 700, fontSize: '0.9rem', color: 'var(--charcoal)', marginTop: '4px' }}>
-                    Creative Refresh Cycle
+                    1-on-1 Communication
                   </div>
                   <p style={{ color: 'var(--mutedtext)', fontSize: '0.85rem', marginTop: '8px' }}>
-                    Rapid AI iterations preventing creative audience fatigue.
+                    Dedicated personal attention with rapid response times and transparent reporting.
                   </p>
                 </div>
               </div>

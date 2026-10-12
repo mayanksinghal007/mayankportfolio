@@ -60,16 +60,6 @@ export const Navbar = () => {
 
         {/* Header Right Action */}
         <div className="nav-actions">
-          {isAdminLoggedIn ? (
-            <Link to="/admin" className="btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem' }}>
-              <Shield size={14} color="#FF3D0A" /> Admin Mode
-            </Link>
-          ) : (
-            <Link to="/admin" title="Admin Portal" style={{ color: 'var(--mutedtext)', padding: '6px' }}>
-              <Shield size={18} />
-            </Link>
-          )}
-
           <Link to="/contact" className="btn-primary">
             Start a Project <ArrowUpRight size={16} />
           </Link>
@@ -99,11 +89,6 @@ export const Navbar = () => {
                 </NavLink>
               </li>
             ))}
-            <li>
-              <Link to="/admin" className="mobile-nav-link" style={{ fontSize: '1.2rem', color: 'var(--mutedtext)' }}>
-                Admin Portal
-              </Link>
-            </li>
           </ul>
 
           <div style={{ marginTop: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>

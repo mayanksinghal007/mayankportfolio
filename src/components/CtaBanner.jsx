@@ -6,7 +6,7 @@ import { useSite } from '../context/SiteContext';
 export const CtaBanner = ({
   eyebrow = "Let's Collaborate",
   title = "HAVE A VISION FOR YOUR BRAND?",
-  subtitle = "Whether it's scaling your Meta Ads ROAS, producing cinematic AI video, or taking over your social channels—let's build something exceptional together.",
+  subtitle = "Whether it's structuring your Meta Ads campaigns, producing cinematic AI video, or building your social presence—let's work together.",
   primaryLabel = "Discuss Your Project",
   primaryTo = "/contact",
 }) => {

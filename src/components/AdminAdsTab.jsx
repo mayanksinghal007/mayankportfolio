@@ -1450,7 +1450,7 @@ export const AdminAdsTab = () => {
                     type="text"
                     value={formData.results}
                     onChange={(e) => setFormData({ ...formData, results: e.target.value })}
-                    placeholder="e.g. 4.8x ROAS · ₹12L Revenue"
+                    placeholder="e.g. Concept Carousel · Festive Angle"
                     className="form-control"
                   />
                 </div>
