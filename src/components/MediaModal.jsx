@@ -76,6 +76,10 @@ export const MediaModal = ({ isOpen, onClose, mediaData }) => {
                   filter: isPlaying ? 'brightness(1.05)' : 'none',
                   transition: 'all 0.5s ease',
                 }}
+                onError={(e) => {
+                  e.currentTarget.onerror = null;
+                  e.currentTarget.src = 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80';
+                }}
               />
               <div
                 style={{

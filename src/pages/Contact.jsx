@@ -28,7 +28,7 @@ export const Contact = () => {
     description: '',
     budget: '₹25,000 – ₹50,000',
     contact_method: 'WhatsApp',
-    consent: true,
+    consent: false,
   };
 
   const [form, setForm] = useState(initialForm);

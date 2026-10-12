@@ -100,11 +100,15 @@ export const About = () => {
                     backgroundColor: '#222',
                   }}
                 >
-                  <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"
-                    alt="Mayank Aggarwal"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.88 }}
-                  />
+                    <img
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"
+                      alt="Mayank Aggarwal"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.88 }}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80';
+                      }}
+                    />
                   <div
                     style={{
                       position: 'absolute',

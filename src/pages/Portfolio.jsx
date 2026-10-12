@@ -100,7 +100,15 @@ export const Portfolio = () => {
                     style={{ cursor: 'pointer' }}
                     onClick={() => handleOpenMedia(project)}
                   >
-                    <img src={project.image} alt={project.title} className="project-thumb" />
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="project-thumb"
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80';
+                      }}
+                    />
                     <span className="project-category-badge">{project.category}</span>
 
                     {(project.hasVideoDemo || project.hasAudioDemo) && (

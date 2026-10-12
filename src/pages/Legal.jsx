@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Shield, FileText, ChevronRight } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
@@ -8,6 +8,10 @@ export const Legal = () => {
   const location = useLocation();
   const isTerms = location.pathname.includes('terms');
   const [activeTab, setActiveTab] = useState(isTerms ? 'terms' : 'privacy');
+
+  useEffect(() => {
+    setActiveTab(location.pathname.includes('terms') ? 'terms' : 'privacy');
+  }, [location.pathname]);
 
   return (
     <section className="section-pad" style={{ paddingTop: '150px' }}>
@@ -142,6 +146,15 @@ export const Legal = () => {
                 </h3>
                 <p>
                   Each creative piece includes up to two rounds of iterative revisions within the original scope. Additional scope modifications are quoted transparently before execution.
+                </p>
+              </div>
+
+              <div>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--charcoal)', marginBottom: '8px' }}>
+                  5. Governing Law & Jurisdiction
+                </h3>
+                <p>
+                  These terms and all commercial agreements shall be governed by and construed in accordance with the laws of India, with exclusive jurisdiction in the courts of New Delhi.
                 </p>
               </div>
             </div>

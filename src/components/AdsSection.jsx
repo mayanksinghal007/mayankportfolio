@@ -342,6 +342,10 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                       }}
                       onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
                       onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80';
+                      }}
                     />
 
                     {/* Gradient Overlay */}
