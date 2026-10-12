@@ -1,18 +1,20 @@
 /* ==========================================================================
    MAYANK AGGARWAL — DESIGN SYSTEM & EDITORIAL STYLING
-   Signature Palette: Orange-Red (#FF3D0A) | Cream (#FFE8D2) | Gold (#FFB92E) | Charcoal (#191919)
-   Typography: Anton (Display) | Fraunces (Serif) | Hanken Grotesk (Body)
+   Signature Palette: Orange (#FF3D0A) | Peach (#FDF1E7) | Cream (#FFFDF9) | Ink (#1A1A1A) | Gold (#FFB92E)
+   Typography: Bricolage Grotesque (Display) | Instrument Serif (Accent) | DM Sans (Body) | JetBrains Mono (Eyebrows & Numbers)
    ========================================================================== */
 
 :root {
+  /* Brand Core Colors */
   --brand: #FF3D0A;
   --brand-hover: #E63507;
   --brand-glow: rgba(255, 61, 10, 0.25);
   --brand-subtle: rgba(255, 61, 10, 0.08);
 
-  --cream: #FFE8D2;
-  --cream-card: #FFF5EB;
-  --cream-subtle: rgba(255, 232, 210, 0.45);
+  --cream: #FFFDF9;
+  --peach: #FDF1E7;
+  --cream-card: #FDF6EE;
+  --cream-subtle: rgba(253, 241, 231, 0.5);
 
   --gold: #FFB92E;
   --gold-glow: rgba(255, 185, 46, 0.3);
@@ -25,9 +27,12 @@
   --softwhite: #FFFDF9;
   --purewhite: #FFFFFF;
 
-  --mutedtext: #5E554D;
-  --mutedtext-light: #8C8279;
-  --mutedtext-dark: #38322D;
+  /* WCAG AA Compliant Typography Tokens */
+  --ink: #1A1A1A;
+  --text-main: #3F3F3F;
+  --mutedtext: #5A544F;
+  --mutedtext-light: #7A726A;
+  --mutedtext-dark: #2B2622;
 
   --border-color: rgba(25, 25, 25, 0.12);
   --border-focus: #FF3D0A;
@@ -43,9 +48,22 @@
   --radius-xl: 28px;
   --radius-full: 9999px;
 
-  --font-display: 'Anton', 'Hanken Grotesk', sans-serif;
-  --font-serif: 'Fraunces', Georgia, serif;
-  --font-sans: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography Families */
+  --font-display: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Fluid Type Scale with clamp() */
+  --text-hero: clamp(2.8rem, 6.2vw + 1rem, 5.4rem);
+  --text-display: clamp(2.2rem, 4.4vw + 0.5rem, 3.8rem);
+  --text-h2: clamp(1.75rem, 2.6vw + 0.4rem, 2.5rem);
+  --text-h3: clamp(1.25rem, 1.5vw + 0.4rem, 1.75rem);
+  --text-h4: clamp(1.1rem, 0.8vw + 0.4rem, 1.35rem);
+  --text-lead: clamp(1.05rem, 0.4vw + 0.95rem, 1.25rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-tiny: 0.75rem;
 
   --transition-fast: 0.18s ease;
   --transition-normal: 0.28s cubic-bezier(0.25, 1, 0.5, 1);
@@ -62,7 +80,7 @@
 html {
   font-family: var(--font-sans);
   background-color: var(--softwhite);
-  color: var(--charcoal);
+  color: var(--ink);
   scroll-behavior: smooth;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -73,8 +91,28 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background-color: var(--softwhite);
-  color: var(--charcoal);
-  line-height: 1.6;
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+/* Card titles and smaller headings: sentence case */
+h3, h4, h5, h6,
+.card-title,
+.service-name,
+.project-card-title,
+.ad-card-title,
+.post-card-title {
+  text-transform: none;
+  letter-spacing: -0.01em;
 }
 
 ::selection {
@@ -95,7 +133,7 @@ body {
 /* Typography Utility Classes */
 .font-display {
   font-family: var(--font-display);
-  letter-spacing: 0.02em;
+  letter-spacing: -0.015em;
 }
 
 .font-serif {
@@ -106,37 +144,68 @@ body {
   font-family: var(--font-sans);
 }
 
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Page Hero Headings: UPPERCASE only for the biggest hero lines */
+.hero-h1,
 .display-hero {
   font-family: var(--font-display);
-  line-height: 0.95;
-  letter-spacing: 0.01em;
+  font-size: var(--text-hero);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
 .display-title {
   font-family: var(--font-display);
-  line-height: 1.05;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 
+/* Accent Italic Words: Instrument Serif with descender clearance */
+.brand-span,
+.accent-serif,
+.hero-h1 em,
+.display-hero em,
+.display-title em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--brand);
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  line-height: 1.08;
+  margin-bottom: 0.06em;
+  padding-right: 0.08em;
+}
+
+/* Eyebrows: JetBrains Mono 500, small, uppercase, letter-spaced with short orange line */
 .editorial-eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.16em;
   color: var(--brand);
+  line-height: 1;
 }
 
 .editorial-eyebrow::before {
   content: '';
   display: inline-block;
-  width: 24px;
+  width: 20px;
   height: 2px;
   background-color: var(--brand);
+  flex-shrink: 0;
 }
 
 .editorial-eyebrow.gold {
@@ -144,6 +213,19 @@ body {
 }
 .editorial-eyebrow.gold::before {
   background-color: var(--gold);
+}
+
+/* Numbers and metrics in JetBrains Mono 500 */
+.stat-number,
+.stat-val,
+.metric-value,
+.pill-val,
+.service-num,
+.step-num,
+.mono-num {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 /* Links & Buttons */
