@@ -5,6 +5,8 @@ import { SiteProvider } from './context/SiteContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
+import { ScrollProgressBar } from './components/ScrollProgressBar';
+import { useScrollReveal } from './hooks/useScrollReveal';
 
 // Pages
 import { Home } from './pages/Home';
@@ -49,10 +51,16 @@ export const AppLayout = () => {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
 
+  // Activate 60fps lightweight intersection observer reveals on route changes
+  useScrollReveal();
+
   return (
     <>
       <ScrollToTop />
       <TrailingSlashHandler />
+
+      {/* Top Reading Progress Bar */}
+      {!isAdmin && <ScrollProgressBar />}
 
       {/* Editorial Grain Overlay */}
       <div className="grain-overlay" />

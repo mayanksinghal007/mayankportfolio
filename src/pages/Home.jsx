@@ -20,6 +20,7 @@ import { CtaBanner } from '../components/CtaBanner';
 import { EXPERIENCE_ITEMS, EDUCATION_ITEMS, PROCESS_STEPS, WHY_CHOOSE_ME } from '../data/initialData';
 import { HERO_STATS, PORTFOLIO_NOTE } from '../config/site';
 import { SeoHead } from '../components/SeoHead';
+import { ToolsMarquee } from '../components/ToolsMarquee';
 
 import { getPersonSchema, getProfessionalServiceSchema, getWebSiteSchema } from '../utils/seoSchemas';
 
@@ -223,10 +224,13 @@ export const Home = () => {
         </div>
       </div>
 
+      {/* CORE PRODUCTION TOOLS & AI STACK MARQUEE */}
+      <ToolsMarquee />
+
       {/* CORE PILLARS / CAPABILITIES */}
       <section className="section-pad">
         <div className="container">
-          <div className="section-head">
+          <div className="section-head reveal-on-scroll">
             <span className="editorial-eyebrow">Selected Capabilities</span>
             <h2 className="display-title section-title">THREE WAYS I ACCELERATE BRANDS.</h2>
             <p className="section-desc">
@@ -325,7 +329,7 @@ export const Home = () => {
       {/* SELECTED PORTFOLIO SHOWCASE */}
       <section className="section-pad" style={{ backgroundColor: 'var(--cream-subtle)' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '44px' }}>
+          <div className="reveal-on-scroll" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '44px' }}>
             <div>
               <span className="editorial-eyebrow">Case Studies & Showcase</span>
               <h2 className="display-title section-title">REAL WORK. HONEST PROCESS.</h2>
@@ -651,7 +655,7 @@ export const Home = () => {
       {/* LATEST FROM THE BLOG SECTION */}
       <section className="section-padding" style={{ backgroundColor: 'var(--peach)' }}>
         <div className="container">
-          <div className="section-head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
+          <div className="section-head reveal-on-scroll" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
             <div>
               <span className="editorial-eyebrow">Tactical Playbooks & Guides</span>
               <h2 className="display-title section-title">LATEST FROM THE BLOG.</h2>
