@@ -44,6 +44,7 @@ const routes = [
   '/blog/digital-marketing-career-india-1-year-experience',
   '/privacy-policy',
   '/terms',
+  '/admin',
   '/404',
 ];
 
