@@ -20,6 +20,8 @@ import { CtaBanner } from '../components/CtaBanner';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
+import { getServiceSchema, getBreadcrumbSchema, getFaqSchema } from '../utils/seoSchemas';
+
 export const ServiceDetail = () => {
   const { slug } = useParams();
   const { services, site } = useSite();
@@ -47,22 +49,14 @@ export const ServiceDetail = () => {
     setIsModalOpen(true);
   };
 
-  const serviceJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: service.name,
-    serviceType: service.name,
-    description: service.intro || service.overview,
-    provider: {
-      '@type': 'Person',
-      name: site.name || 'Mayank Aggarwal',
-      jobTitle: site.title || 'Digital Marketing & AI Specialist',
-    },
-    areaServed: {
-      '@type': 'Country',
-      name: 'India',
-    },
-  };
+  const serviceSchemas = [
+    getServiceSchema(service),
+    getBreadcrumbSchema([
+      { name: 'Services', path: '/services' },
+      { name: service.name, path: `/services/${service.slug}` },
+    ]),
+    getFaqSchema(service.faqs),
+  ].filter(Boolean);
 
   return (
     <>
@@ -70,11 +64,11 @@ export const ServiceDetail = () => {
         title={`${service.name} Services | Mayank Aggarwal`}
         description={service.intro || service.overview}
         canonicalPath={`/services/${service.slug}`}
-        jsonLd={serviceJsonLd}
+        jsonLd={serviceSchemas}
       />
 
       {/* SERVICE HEADER */}
-      <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '70px' }}>
+      <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '50px' }}>
         <div className="container">
           <Breadcrumbs
             items={[
@@ -123,6 +117,40 @@ export const ServiceDetail = () => {
               >
                 Discuss on WhatsApp
               </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AEO DIRECT ANSWER & E-E-A-T ENTITY DEFINITION */}
+      <section className="section-pad" style={{ paddingTop: '0px', paddingBottom: '30px' }}>
+        <div className="container">
+          <div
+            style={{
+              backgroundColor: 'var(--peach)',
+              border: '1px solid var(--border-color)',
+              borderLeft: '4px solid var(--brand)',
+              borderRadius: 'var(--radius-md)',
+              padding: '24px 28px',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', marginBottom: '10px' }}>
+              <span style={{ fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.08em', fontWeight: 700, color: 'var(--brand)', fontFamily: 'var(--font-mono)' }}>
+                Direct Summary / Answer
+              </span>
+              <span style={{ fontSize: '0.8rem', color: 'var(--mutedtext)', fontFamily: 'var(--font-mono)' }}>
+                Last updated: {service.lastUpdated || 'October 2026'}
+              </span>
+            </div>
+            <h2 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-display)', color: 'var(--charcoal)', marginBottom: '10px', textTransform: 'none' }}>
+              {service.aeoQuestion || `What does a ${service.name} specialist do?`}
+            </h2>
+            <p style={{ fontSize: '1.02rem', lineHeight: 1.7, color: 'var(--charcoal)', marginBottom: '14px' }}>
+              {service.aeoAnswer || service.intro}
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px', fontSize: '0.82rem', color: 'var(--mutedtext)', borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: '10px' }}>
+              <span style={{ fontWeight: 600, color: 'var(--charcoal)' }}>Strategy & Execution:</span>
+              <span>Mayank Aggarwal · Digital Marketing & AI Specialist (Delhi, India) · 1 Year Hands-on Experience</span>
             </div>
           </div>
         </div>
@@ -483,6 +511,44 @@ export const ServiceDetail = () => {
           </div>
         </div>
       </section>
+
+      {/* COMPARISON TABLE SECTION */}
+      {service.comparisonTable && service.comparisonTable.length > 0 && (
+        <section className="section-pad" style={{ backgroundColor: 'var(--purewhite)' }}>
+          <div className="container container-narrow">
+            <div className="section-head center">
+              <span className="editorial-eyebrow">Agile Specialist vs Alternatives</span>
+              <h2 className="display-title section-title">WHY CHOOSE AN AGILE SPECIALIST?</h2>
+              <p className="section-desc">
+                How working directly with Mayank compares to hiring a traditional agency or onboarding a full-time in-house employee.
+              </p>
+            </div>
+
+            <div className="table-responsive" style={{ overflowX: 'auto', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-color)', boxShadow: 'var(--shadow-sm)' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.92rem' }}>
+                <thead>
+                  <tr style={{ backgroundColor: 'var(--charcoal)', color: 'var(--softwhite)' }}>
+                    <th style={{ padding: '16px 20px', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', textTransform: 'uppercase' }}>Comparison Factor</th>
+                    <th style={{ padding: '16px 20px', backgroundColor: 'var(--brand)', color: '#fff', fontFamily: 'var(--font-display)', fontSize: '0.95rem' }}>Mayank (Agile Specialist)</th>
+                    <th style={{ padding: '16px 20px', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', textTransform: 'uppercase' }}>Traditional Agency</th>
+                    <th style={{ padding: '16px 20px', fontFamily: 'var(--font-mono)', fontSize: '0.8rem', textTransform: 'uppercase' }}>In-House Hire</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {service.comparisonTable.map((row, idx) => (
+                    <tr key={idx} style={{ borderBottom: '1px solid var(--border-color)', backgroundColor: idx % 2 === 0 ? 'var(--purewhite)' : 'var(--cream-subtle)' }}>
+                      <td style={{ padding: '14px 20px', fontWeight: 600, color: 'var(--charcoal)' }}>{row.factor}</td>
+                      <td style={{ padding: '14px 20px', fontWeight: 700, color: 'var(--brand)', backgroundColor: 'rgba(255, 74, 28, 0.04)' }}>{row.mayank}</td>
+                      <td style={{ padding: '14px 20px', color: 'var(--mutedtext)' }}>{row.agency}</td>
+                      <td style={{ padding: '14px 20px', color: 'var(--mutedtext)' }}>{row.inHouse}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* SERVICE SPECIFIC FAQS */}
       <section className="section-pad">

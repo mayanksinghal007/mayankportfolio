@@ -100,7 +100,13 @@ export const SeoHead = ({
       {/* Structured Data (JSON-LD) */}
       {jsonLd && (
         <script type="application/ld+json">
-          {JSON.stringify(jsonLd)}
+          {JSON.stringify(
+            Array.isArray(jsonLd)
+              ? { '@context': 'https://schema.org', '@graph': jsonLd.filter(Boolean) }
+              : jsonLd['@context']
+              ? jsonLd
+              : { '@context': 'https://schema.org', ...jsonLd }
+          )}
         </script>
       )}
     </Helmet>

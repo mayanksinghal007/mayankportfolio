@@ -28,6 +28,8 @@ const serviceIcons = {
   'seo-content': Search,
 };
 
+import { getProfessionalServiceSchema, getBreadcrumbSchema, getFaqSchema } from '../utils/seoSchemas';
+
 export const Services = () => {
   const { services } = useSite();
   const [openFaq, setOpenFaq] = useState(null);
@@ -55,12 +57,19 @@ export const Services = () => {
     },
   ];
 
+  const servicesSchemas = [
+    getProfessionalServiceSchema(),
+    getBreadcrumbSchema([{ name: 'Services', path: '/services' }]),
+    getFaqSchema(generalFaqs),
+  ].filter(Boolean);
+
   return (
     <>
       <SeoHead
         title="Digital Marketing & AI Creative Services | Mayank Aggarwal"
         description="Explore performance marketing, Meta Ads, social media strategy, AI video production, and SEO services tailored for ambitious Indian and global brands."
         canonicalPath="/services"
+        jsonLd={servicesSchemas}
       />
 
       {/* SERVICES HEADER */}

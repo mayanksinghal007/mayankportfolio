@@ -21,6 +21,8 @@ import { EXPERIENCE_ITEMS, EDUCATION_ITEMS, PROCESS_STEPS, WHY_CHOOSE_ME } from 
 import { HERO_STATS, PORTFOLIO_NOTE } from '../config/site';
 import { SeoHead } from '../components/SeoHead';
 
+import { getPersonSchema, getProfessionalServiceSchema, getWebSiteSchema } from '../utils/seoSchemas';
+
 export const Home = () => {
   const { site, services, portfolio, blogPosts = [] } = useSite();
   const [activeMedia, setActiveMedia] = useState(null);
@@ -32,6 +34,12 @@ export const Home = () => {
   };
 
   const featuredProjects = portfolio.filter((p) => p.published).slice(0, 3);
+
+  const homeSchemas = [
+    getPersonSchema(),
+    getProfessionalServiceSchema(),
+    getWebSiteSchema(),
+  ];
 
   const tickerKeywords = [
     'Meta Ads Strategy',
@@ -52,6 +60,7 @@ export const Home = () => {
         title="Mayank Aggarwal | Digital Marketing & AI Specialist Delhi"
         description="Performance Meta Ads, generative AI video creation, and high-retention content strategy for modern brands by Mayank Aggarwal based in Delhi, India."
         canonicalPath="/"
+        jsonLd={homeSchemas}
       />
 
       {/* HERO SECTION */}

@@ -19,6 +19,8 @@ const CATEGORIES = [
   'SEO & Content',
 ];
 
+import { getBreadcrumbSchema } from '../utils/seoSchemas';
+
 export const Portfolio = () => {
   const { portfolio } = useSite();
   const [activeFilter, setActiveFilter] = useState('All');
@@ -37,12 +39,17 @@ export const Portfolio = () => {
     setIsModalOpen(true);
   };
 
+  const portfolioSchemas = [
+    getBreadcrumbSchema([{ name: 'Portfolio', path: '/portfolio' }]),
+  ];
+
   return (
     <>
       <SeoHead
         title="Portfolio & Case Studies | Mayank Aggarwal"
         description="Explore concept campaigns, AI video showreels, Meta ad funnels, and creative strategy projects by Mayank Aggarwal."
         canonicalPath="/portfolio"
+        jsonLd={portfolioSchemas}
       />
 
       {/* PORTFOLIO HEADER */}

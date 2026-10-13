@@ -29,6 +29,9 @@ export const DEFAULT_SERVICES = [
     tone: "brand",
     headline: "TURN YOUR AD SPEND INTO A MEASURABLE GROWTH ENGINE.",
     intro: "Structured Meta Ads (Facebook & Instagram) campaigns built around clear ROAS objectives, hyper-relevant audience segments, and daily ad-set optimization.",
+    aeoQuestion: "What does a Meta Ads specialist in India do?",
+    aeoAnswer: "A Meta Ads specialist plans, launches, and optimizes paid advertising campaigns across Facebook and Instagram. They configure Meta Pixel and Conversions API tracking, build prospecting and retargeting audiences, write high-converting copy, test creative hooks, and actively manage budgets to lower cost-per-acquisition while maximizing qualified leads and sales for your business.",
+    lastUpdated: "October 2026",
     overview: "I plan, launch and manage Meta Ads campaigns with a clean account structure, rigorous A/B creative testing, and active budget allocation. Every ad rupee is tracked toward cost-per-acquisition (CPA) targets and revenue milestones.",
     includes: [
       "Meta Ads account structure & Pixel / CAPI setup",
@@ -41,9 +44,15 @@ export const DEFAULT_SERVICES = [
     ],
     suitable: [
       "Direct-to-Consumer (D2C) & Fashion e-commerce brands",
-      "Real estate & premium local service businesses",
+      "Real estate & premium local service businesses in Delhi NCR",
       "Founders tired of burning money on unoptimized boosted posts",
-      "Businesses ready to scale from ₹20k to ₹2L+ monthly ad spend",
+      "Businesses ready to scale from ₹25k to ₹2L+ monthly ad spend",
+    ],
+    comparisonTable: [
+      { factor: "Turnaround Time", mayank: "24-48 hours", agency: "2-3 weeks", inHouse: "1-2 weeks" },
+      { factor: "Communication", mayank: "Direct 1-on-1 on WhatsApp", agency: "Account manager layer", inHouse: "Internal meetings" },
+      { factor: "AI Creative Integration", mayank: "Generative video & voice included", agency: "Billed as extra retainer", inHouse: "Requires extra tool licenses" },
+      { factor: "Cost Efficiency", mayank: "Flexible project / monthly fee", agency: "High fixed retainers + % of spend", inHouse: "Full-time salary + benefits" },
     ],
     process: [
       { step: "01", title: "Audit & Funnel Diagnostic", desc: "Review historical pixel data, tracking setup, landing page conversion rate, and past ad creatives." },
@@ -53,8 +62,11 @@ export const DEFAULT_SERVICES = [
     ],
     faqs: [
       { q: "Do you guarantee specific sales or leads?", a: "No ethical marketer guarantees exact numbers because conversions depend on product-market fit, offer pricing, and landing pages. I guarantee rigorous data-driven strategy, continuous testing, and transparent optimization." },
-      { q: "What minimum ad spend do you recommend?", a: "For meaningful testing on Meta Ads in India, a minimum monthly ad budget of ₹25,000 to ₹50,000 gives the Meta algorithm enough data to exit the learning phase." },
+      { q: "What minimum ad spend do you recommend in India?", a: "For meaningful testing on Meta Ads in India, a minimum monthly ad budget of ₹25,000 to ₹50,000 gives the Meta algorithm enough data to exit the learning phase." },
       { q: "Do you design the ad creatives as well?", a: "Yes! Creative strategy is half the battle. I provide ad copywriting, hook variations, and AI-assisted or Canva-designed visual creatives as part of the package." },
+      { q: "What is the difference between Boost Post and Ads Manager?", a: "Boosting a post optimizes strictly for cheap vanity likes and comments. Ads Manager allows custom conversion tracking, Pixel/CAPI event optimization, custom audiences, and structured sales funnels." },
+      { q: "How frequently do you report campaign performance?", a: "I provide transparent weekly performance summaries covering spend, impressions, CTR, CPC, leads/purchases, and planned creative tests for the upcoming week." },
+      { q: "Do I retain complete ownership of my ad account?", a: "Always. All campaigns run inside your own Meta Business Manager. You grant partner or admin access, ensuring you retain 100% of your pixel data, assets, and billing control." },
     ],
     metrics: { stat1: "24-48h", label1: "Setup & Launch", stat2: "Weekly", label2: "A/B Testing & Refresh" },
     mediaType: "metrics",
@@ -66,6 +78,9 @@ export const DEFAULT_SERVICES = [
     tone: "gold",
     headline: "BUILD A SOCIAL PRESENCE THAT PEOPLE REMEMBER AND TRUST.",
     intro: "End-to-end strategy, content calendar planning, and creative direction that give your brand a distinctive, authority-building voice across Instagram and YouTube.",
+    aeoQuestion: "What is modern social media management for growing brands?",
+    aeoAnswer: "Modern social media management is the systematic planning, creation, and distribution of short-form video reels, carousels, and stories designed to build organic brand authority. Rather than posting randomly, it aligns visual aesthetics, 3-second hook frameworks, and community engagement to turn passive social scrollers into qualified inbound leads.",
+    lastUpdated: "October 2026",
     overview: "From hook ideation to reel pacing and community engagement, I help brands show up consistently without sounding generic. We create content that positions your brand as a market leader while driving inbound inquiries.",
     includes: [
       "Comprehensive monthly content calendar",
@@ -80,6 +95,13 @@ export const DEFAULT_SERVICES = [
       "Founders and executives looking to build personal brands",
       "D2C and lifestyle brands needing a vibrant organic presence",
       "Service businesses looking for inbound organic client leads",
+      "Startups wanting polished, consistent feeds without agency bloat",
+    ],
+    comparisonTable: [
+      { factor: "Content Cadence", mayank: "3-5 high-retention posts/week", agency: "Generic daily fillers", inHouse: "Irregular when busy" },
+      { factor: "Hook Strategy", mayank: "Data-backed curiosity formulas", agency: "Stock template captions", inHouse: "Trial and error" },
+      { factor: "Production Speed", mayank: "Batched weekly deliveries", agency: "Slow multi-layer approvals", inHouse: "Bottlenecked by single person" },
+      { factor: "Strategic Focus", mayank: "Qualified inquiries & trust", agency: "Vanity likes & follow bots", inHouse: "Unstructured" },
     ],
     process: [
       { step: "01", title: "Brand Tone & Content Pillars", desc: "Identify 4-5 core content buckets that educate, entertain, and convert your ideal customer." },
@@ -90,6 +112,9 @@ export const DEFAULT_SERVICES = [
     faqs: [
       { q: "How many posts per week will you deliver?", a: "A typical high-impact cadence is 3-4 reels and 1-2 carousels per week. Quality, hook strength, and retention always beat spamming the feed." },
       { q: "Do I have to appear on camera?", a: "Not necessarily. We can produce faceless aesthetic videos, motion graphic carousels, and AI-powered storytelling, though founder-led video usually builds deeper trust." },
+      { q: "How do you handle caption writing and hashtags?", a: "Every post includes an optimized caption structured for social SEO with relevant keywords, clear line breaks, and a specific call-to-action like 'Comment GUIDE for the link'." },
+      { q: "Can you manage community comments and DMs?", a: "Yes, I can monitor comments and set up automated DM trigger workflows (e.g. ManyChat) to deliver lead magnets and handle basic inquiries immediately." },
+      { q: "What analytics will I see each month?", a: "You receive an honest monthly report detailing reach, non-follower accounts engaged, profile visits, website taps, top-performing hooks, and key learnings." },
     ],
     metrics: { stat1: "30-Day", label1: "Planned Content Cadence", stat2: "3-5x/wk", label2: "Consistent Posting Rhythm" },
     mediaType: "gallery",
@@ -101,6 +126,9 @@ export const DEFAULT_SERVICES = [
     tone: "charcoal",
     headline: "BRING CINEMATIC BRAND VISIONS TO LIFE WITH GENERATIVE AI.",
     intro: "Next-generation promotional videos, UGC ad concepts, and cinematic brand stories crafted using Runway, Kling AI, Google Flow, and Higgsfield.",
+    aeoQuestion: "What is generative AI video production for commercial brand ads?",
+    aeoAnswer: "Generative AI video production is the process of generating photorealistic or cinematic commercial video clips from text prompts and reference images using models like Runway Gen-3 Alpha and Kling AI. It eliminates costly physical video shoots while allowing rapid creative testing of diverse environments, angles, and concepts in days instead of weeks.",
+    lastUpdated: "October 2026",
     overview: "Cut production cycles from weeks to days. I script, prompt, generate, and composite high-aesthetic AI videos that look like big-budget studio productions at a fraction of traditional production costs.",
     includes: [
       "AI-generated brand commercial concepts",
@@ -115,6 +143,13 @@ export const DEFAULT_SERVICES = [
       "Brands wanting visually breathtaking ads without expensive studio shoots",
       "E-commerce stores needing product-in-action creative variations",
       "Creators looking for futuristic, cinematic music video or promo visuals",
+      "D2C brands testing multiple hook angles quickly on Meta Ads",
+    ],
+    comparisonTable: [
+      { factor: "Production Cost", mayank: "Fraction of studio rates", agency: "₹1L - ₹5L+ per shoot", inHouse: "Requires camera equipment" },
+      { factor: "Delivery Timeline", mayank: "2-4 days turnaround", agency: "3-6 weeks production", inHouse: "2-3 weeks" },
+      { factor: "Angle Variations", mayank: "5-10 distinct AI concepts", agency: "Limited to shoot day footage", inHouse: "Limited to available props" },
+      { factor: "Re-Shoot Cost", mayank: "Instant prompt re-generation", agency: "Full re-shoot budget required", inHouse: "Time-consuming setup" },
     ],
     process: [
       { step: "01", title: "Concept & Moodboarding", desc: "Define the visual tone, color grading, lighting styles, and narrative arc." },
@@ -125,6 +160,9 @@ export const DEFAULT_SERVICES = [
     faqs: [
       { q: "Which AI video tools do you utilize?", a: "I work with the latest state-of-the-art platforms including Runway Gen-3 Alpha, Kling AI, Google Flow, Higgsfield, and Midjourney for base imagery." },
       { q: "Can we include our actual product in the AI video?", a: "Yes! Using image-to-video reference mapping and compositing, your exact product packaging can be seamlessly integrated into AI environments." },
+      { q: "Do the characters and scenes remain consistent?", a: "Yes. Using image references, seed locking, and multi-prompt interpolation, I maintain consistent character appearance across multiple scenes." },
+      { q: "What resolutions and formats do you deliver?", a: "I deliver upscaled high-resolution video files formatted in 9:16 vertical (for Instagram Reels, TikTok, and YouTube Shorts) and 16:9 widescreen (for YouTube and websites)." },
+      { q: "Are AI-generated videos cleared for commercial advertising?", a: "Yes. All generations use commercial-tier platform subscriptions with full commercial usage rights and clearances for paid advertising." },
     ],
     metrics: { stat1: "24-48h", label1: "Concept to First Render", stat2: "4K AI", label2: "Upscaled Video Delivery" },
     mediaType: "video",
@@ -136,6 +174,9 @@ export const DEFAULT_SERVICES = [
     tone: "cream",
     headline: "COMMAND ATTENTION WITH STUDIO-GRADE AI VOICEOVERS.",
     intro: "Lifelike, emotive AI voice narration with natural cadence, tone selection, and dynamic sound design using ElevenLabs and HeyGen.",
+    aeoQuestion: "How do neural AI voiceovers enhance video ads?",
+    aeoAnswer: "Neural AI voiceovers use deep learning speech synthesis models like ElevenLabs Multilingual v2 to produce natural, human-sounding voice tracks with nuanced breathing, emotion, and conversational cadence. They allow marketers to produce multi-language ad voiceovers in hours without booking voice actors or studio recording sessions.",
+    lastUpdated: "October 2026",
     overview: "A great visual falls flat with dull audio. I produce studio-quality AI voice tracks with nuanced breathing, emotion, and pacing, perfectly synchronized to your video cuts for ads, explainers, and short-form reels.",
     includes: [
       "Voice persona & accent casting for your target market",
@@ -149,6 +190,13 @@ export const DEFAULT_SERVICES = [
       "Commercials and paid video ad campaigns",
       "SaaS product walkthroughs and explainer videos",
       "Instagram Reels and YouTube Shorts requiring punchy narration",
+      "Brands localizing campaigns across Hindi and Indian English accents",
+    ],
+    comparisonTable: [
+      { factor: "Turnaround Time", mayank: "Under 12-24 hours", agency: "5-7 days for voice talent", inHouse: "Depends on equipment" },
+      { factor: "Revision Cost", mayank: "Immediate script re-prompting", agency: "Re-recording studio fees", inHouse: "Re-recording time" },
+      { factor: "Licensing Rights", mayank: "Commercial broadcast included", agency: "Annual talent royalties", inHouse: "Internal only" },
+      { factor: "Audio Mastering", mayank: "Broadcast-ready EQ & compression", agency: "Separate sound engineer fee", inHouse: "Often raw, unmixed" },
     ],
     process: [
       { step: "01", title: "Script Cadence Review", desc: "Adapt copy for spoken rhythm, conversational naturalness, and clear pause beats." },
@@ -158,6 +206,9 @@ export const DEFAULT_SERVICES = [
     faqs: [
       { q: "Does the voice sound robotic?", a: "Not at all. Modern neural synthesis captures natural pauses, vocal fry, breathing, and genuine emotional inflection." },
       { q: "Do you respect ethical voice guidelines?", a: "Yes. I only use licensed commercial voice models. No unauthorized cloning or deceptive impersonation is ever used." },
+      { q: "Can you generate Indian English and Hindi voiceovers?", a: "Yes. ElevenLabs Multilingual models natively support Indian English accents as well as clear, natural conversational Hindi." },
+      { q: "Do you supply the background music as well?", a: "Yes. I pair the voice track with commercially licensed, royalty-free background scores and mix them using audio ducking so the voice cuts through cleanly." },
+      { q: "What audio formats do you export?", a: "Deliverables are supplied as uncompressed 24-bit 48kHz WAV files and web-ready 320kbps MP3s normalized to broadcast loudness standards (-14 LUFS)." },
     ],
     metrics: { stat1: "< 24h", label1: "Typical Turnaround", stat2: "Licensed", label2: "Commercial Audio Clearance" },
     mediaType: "audio",
@@ -169,6 +220,9 @@ export const DEFAULT_SERVICES = [
     tone: "gold",
     headline: "BOLD VISUAL ASSETS ENGINEERED TO STOP THE SCROLL.",
     intro: "Prompt-based visual ideation, custom Midjourney & Meta AI generations, and brand-consistent graphic design templates built for modern campaigns.",
+    aeoQuestion: "What is generative AI image design for modern branding?",
+    aeoAnswer: "Generative AI image design utilizes prompt engineering in Midjourney v6.1 and diffusion models to craft bespoke, editorial-grade visual assets tailored to a brand's color palette, lighting aesthetic, and story. It replaces generic stock photos with unique branded imagery optimized for high CTR in advertising.",
+    lastUpdated: "October 2026",
     overview: "Forget generic stock photos. I generate hyper-custom, editorial-quality imagery tailored to your brand's color palette, lighting aesthetic, and story. From 3D isometric models to photorealistic lifestyle setups, we create visuals competitors can't replicate.",
     includes: [
       "Custom Midjourney v6.1 & Meta AI prompt workflows",
@@ -182,6 +236,13 @@ export const DEFAULT_SERVICES = [
       "Brands wanting distinct, non-stock photography",
       "Ad campaigns needing fresh creative iterations",
       "Startups wanting polished key visuals on a bootstrap budget",
+      "D2C brands seeking surreal or futuristic editorial backdrops",
+    ],
+    comparisonTable: [
+      { factor: "Visual Uniqueness", mayank: "100% custom prompt-crafted", agency: "Overused Shutterstock/iStock", inHouse: "Limited to stock templates" },
+      { factor: "Iteration Speed", mayank: "Dozens of variations in 24h", agency: "Slow design proof rounds", inHouse: "Manual creation per image" },
+      { factor: "Asset Resolution", mayank: "4K AI upscaled renders", agency: "Standard web export", inHouse: "Depends on source file" },
+      { factor: "Brand Template Handoff", mayank: "Canva Pro editable links", agency: "Locked design files", inHouse: "Varies" },
     ],
     process: [
       { step: "01", title: "Style Directive", desc: "Build an aesthetic moodboard defining lighting, lens focal length, and color grade." },
@@ -190,6 +251,10 @@ export const DEFAULT_SERVICES = [
     ],
     faqs: [
       { q: "Can you match my existing brand guidelines?", a: "Yes! We incorporate your hex codes, brand geometry, and moodboard references into prompt tuning to maintain visual consistency." },
+      { q: "Can I edit the generated designs myself later?", a: "Yes. I organize final visual assets into shared Canva Pro master templates so your internal team can update copy or swap colors anytime." },
+      { q: "What aspect ratios do you provide for ads?", a: "I deliver static designs in 1:1 square (Instagram feed), 9:16 vertical (Instagram Stories & Reels), and 1.91:1 landscape (Facebook feed & web banners)." },
+      { q: "Are Midjourney assets copyright compliant?", a: "Yes. All images are generated on paid professional commercial tiers granting full commercial and promotional exploitation rights." },
+      { q: "How many revisions are included?", a: "Every project includes 2 rounds of prompt refinement and final typography adjustments to ensure you are thrilled with the finished assets." },
     ],
     metrics: { stat1: "Custom", label1: "Prompt-Crafted Aesthetics", stat2: "4K+", label2: "Upscaled Image Formats" },
     mediaType: "gallery",
@@ -201,6 +266,9 @@ export const DEFAULT_SERVICES = [
     tone: "brand",
     headline: "EVERY FRAME DESIGNED FOR MAXIMUM AUDIENCE RETENTION.",
     intro: "Psychological hook design, structured short-form scripts, and platform-specific content frameworks that convert passive scrollers into loyal followers.",
+    aeoQuestion: "How do retention hooks improve Instagram Reel performance?",
+    aeoAnswer: "Retention hooks capture viewer attention within the critical first 3 seconds of a short-form video using open curiosity loops, bold contrarian statements, or immediate visual movement. By preventing early scroll drop-offs, hooks signal high audience retention to the Instagram algorithm, which dramatically boosts organic distribution.",
+    lastUpdated: "October 2026",
     overview: "Virality is not luck—it's structure. I develop 3-second hook variations, tension-building body scripts, and clear calls-to-action (CTAs) that keep viewers watching past the initial scroll drop-off and taking real action.",
     includes: [
       "First 3-second hook frameworks (visual, auditory, text)",
@@ -214,6 +282,13 @@ export const DEFAULT_SERVICES = [
       "Founders and creators struggling with low reel retention",
       "Brands stuck below 1,000 views per post",
       "Marketing teams needing fresh, repeatable short-form video formulas",
+      "Businesses wanting reels that drive tangible customer inquiries",
+    ],
+    comparisonTable: [
+      { factor: "Hook Architecture", mayank: "3 distinct hook options per script", agency: "Generic corporate intros", inHouse: "Ad-libbed without formula" },
+      { factor: "Retention Engineering", mayank: "Pacing beats every 2-3 seconds", agency: "Slow, drawn-out video intros", inHouse: "Unstructured pacing" },
+      { factor: "Call-to-Action Design", mayank: "Automated DM & comment triggers", agency: "Vague 'Like and follow'", inHouse: "Often missing" },
+      { factor: "Script Readiness", mayank: "Teleprompter-ready with shot cues", agency: "Bullet points without copy", inHouse: "Impromptu recording" },
     ],
     process: [
       { step: "01", title: "Audience Psychology Analysis", desc: "Uncover burning pain points, common misconceptions, and desires in your market." },
@@ -222,6 +297,10 @@ export const DEFAULT_SERVICES = [
     ],
     faqs: [
       { q: "How do you choose which topics to cover?", a: "We analyze competitor top-performing content, search queries on YouTube/TikTok, and direct customer questions to ensure high search and curiosity intent." },
+      { q: "Why do most Instagram Reels fail to gain traction?", a: "Most reels fail because the creator spends the first 4 seconds introducing themselves or showing a slow logo. Viewers scroll within 1.5 seconds if value isn't established immediately." },
+      { q: "Do you write full scripts or just general outlines?", a: "I deliver full word-for-word teleprompter-ready scripts including exact spoken text, on-screen text overlays, and B-roll visual cues." },
+      { q: "How long should an ideal Instagram Reel be?", a: "For maximum retention and completion rate, 20 to 45 seconds is optimal for educational or promotional reels, with pacing changes every 2 to 3 seconds." },
+      { q: "Can these scripts be used for YouTube Shorts as well?", a: "Yes. All scripts are formatted to work seamlessly across Instagram Reels, YouTube Shorts, and LinkedIn video feeds." },
     ],
     metrics: { stat1: "3-Sec Hook", label1: "Retention Architecture", stat2: "Multi-Format", label2: "Reels & Shorts Adaptations" },
     mediaType: "metrics",
@@ -233,6 +312,9 @@ export const DEFAULT_SERVICES = [
     tone: "charcoal",
     headline: "CAPTURE HIGH-INTENT ORGANIC SEARCH TRAFFIC ON GOOGLE.",
     intro: "Search-optimized articles, strategic keyword mapping, and off-page backlink outreach backed by real, hands-on digital agency experience.",
+    aeoQuestion: "What is modern SEO and AEO content strategy in 2026?",
+    aeoAnswer: "Modern SEO and AEO strategy combines keyword search-intent research with structured answer-engine formatting. It organizes articles into direct 50-word answers for Google AI Overviews and featured snippets, establishes Schema.org JSON-LD structured data, and earns contextual backlinks to build long-term topical domain authority.",
+    lastUpdated: "October 2026",
     overview: "Drawing on my internship experience at DIDMIN, I produce well-researched, SEO-structured blog posts and establish quality off-page backlink signals that build domain authority and drive inbound search traffic.",
     includes: [
       "Search-intent keyword research (Short-tail & Long-tail)",
@@ -246,6 +328,13 @@ export const DEFAULT_SERVICES = [
       "B2B service businesses seeking organic inquiries",
       "Blogs and content sites seeking traffic growth",
       "Brands wanting to build long-term non-paid acquisition channels",
+      "Companies wanting to appear in Google AI Overviews and answer engines",
+    ],
+    comparisonTable: [
+      { factor: "Content Quality", mayank: "1,200-1,800w researched guides", agency: "Thin 500w AI filler", inHouse: "Irregular internal posts" },
+      { factor: "AEO & GEO Formatting", mayank: "Schema.org + 50w definition blocks", agency: "Old 2018 keyword stuffing", inHouse: "Unstructured text" },
+      { factor: "Backlink Approach", mayank: "Ethical contextual digital PR", agency: "Risky PBN / spam directories", inHouse: "No link outreach" },
+      { factor: "Internal Linking", mayank: "Topic clusters & breadcrumbs", agency: "Random standalone posts", inHouse: "Unmapped" },
     ],
     process: [
       { step: "01", title: "Keyword & Competitor Gap Analysis", desc: "Identify low-competition, high-intent keywords your competitors are ranking for." },
@@ -255,6 +344,10 @@ export const DEFAULT_SERVICES = [
     ],
     faqs: [
       { q: "How soon can I expect SEO results?", a: "Organic SEO typically shows noticeable momentum between 3 to 6 months as Google crawls, indexes, and tests user signals on your new content." },
+      { q: "What is the difference between SEO and AEO?", a: "SEO targets traditional 10 blue links on Google SERPs. AEO (Answer Engine Optimization) structures answers specifically for AI Overviews, voice search, and conversational bots like ChatGPT and Perplexity." },
+      { q: "Do you handle keyword research before writing?", a: "Yes. Every article is grounded in search volume and search intent analysis using tools like Google Keyword Planner and SEMrush to ensure real people are searching for the topic." },
+      { q: "Will the content pass AI detectors and read naturally?", a: "Yes. I write with a human, conversational, first-person editorial voice backed by concrete examples, actionable steps, and original perspectives." },
+      { q: "Do you build backlinks as well?", a: "I conduct ethical digital PR outreach, quality guest contributions, and high-authority business directory submissions to build natural, white-hat backlink signals." },
     ],
     metrics: { stat1: "1,200+ Wds", label1: "In-Depth Search Content", stat2: "White-Hat", label2: "Structured On-Page SEO" },
     mediaType: "metrics",

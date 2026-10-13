@@ -6,10 +6,17 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { BLOG_CATEGORIES } from '../data/blogData';
 import { Search, Clock, ArrowRight, Tag, BookOpen, Sparkles } from 'lucide-react';
 
+import { getCollectionPageSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
+
 export const Blog = () => {
   const { blogPosts = [] } = useSite();
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+
+  const blogSchemas = [
+    getCollectionPageSchema(),
+    getBreadcrumbSchema([{ name: 'Blog', path: '/blog' }]),
+  ];
 
   // Filter posts by published status, category, and search query
   const filteredPosts = useMemo(() => {
@@ -32,6 +39,7 @@ export const Blog = () => {
         title="Marketing & AI Blog | Mayank Aggarwal"
         description="Practical guides on Meta Ads, generative AI video workflows, short-form reel hooks, and modern SEO/AEO/GEO strategies by Mayank Aggarwal."
         canonicalPath="/blog"
+        jsonLd={blogSchemas}
       />
 
       <section

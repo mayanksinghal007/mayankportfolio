@@ -17,6 +17,8 @@ import { useSite } from '../context/SiteContext';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
+import { getProfessionalServiceSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
+
 export const Contact = () => {
   const { site, services, addInquiry } = useSite();
   const [searchParams] = useSearchParams();
@@ -38,6 +40,11 @@ export const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submittedId, setSubmittedId] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const contactSchemas = [
+    getProfessionalServiceSchema(),
+    getBreadcrumbSchema([{ name: 'Contact', path: '/contact' }]),
+  ];
 
   useEffect(() => {
     if (preselectedService) {
@@ -169,6 +176,7 @@ export const Contact = () => {
         title="Contact Mayank Aggarwal | Start a Project in Delhi"
         description="Get in touch with Mayank Aggarwal for Meta Ads management, AI video ads, or short-form content strategy. Direct WhatsApp and response within 12 hours."
         canonicalPath="/contact"
+        jsonLd={contactSchemas}
       />
 
       {/* CONTACT HEADER */}

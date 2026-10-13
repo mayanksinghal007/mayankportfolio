@@ -13,6 +13,7 @@ import { PROCESS_STEPS } from '../data/initialData';
 import { CtaBanner } from '../components/CtaBanner';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { getBreadcrumbSchema } from '../utils/seoSchemas';
 
 export const Process = () => {
   return (
@@ -21,6 +22,7 @@ export const Process = () => {
         title="Working Process & Methodology | Mayank Aggarwal"
         description="Explore the 4-stage client workflow: discovery diagnostic, strategy sprint, execution launch, and weekly iteration."
         canonicalPath="/process"
+        jsonLd={[getBreadcrumbSchema([{ name: 'Process & Workflow', path: '/process' }])]}
       />
 
       {/* PROCESS HEADER */}

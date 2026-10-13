@@ -162,6 +162,23 @@ if (fs.existsSync(robotsPath)) {
   errorsCount++;
 }
 
+// Check IndexNow key file
+const indexNowKey = '8f1a23c5b4d7e901f2a34b56c7d8e90a';
+const indexNowPath = path.resolve(distDir, `${indexNowKey}.txt`);
+if (fs.existsSync(indexNowPath)) {
+  const keyContent = fs.readFileSync(indexNowPath, 'utf8').trim();
+  if (keyContent === indexNowKey) {
+    console.log(`✓ [INDEXNOW] dist/${indexNowKey}.txt exists and key matches`);
+    passedChecks++;
+  } else {
+    console.error(`✗ [ERROR] dist/${indexNowKey}.txt content does not match expected key`);
+    errorsCount++;
+  }
+} else {
+  console.error(`✗ [ERROR] dist/${indexNowKey}.txt IndexNow key file is missing`);
+  errorsCount++;
+}
+
 console.log('\n=============================================');
 console.log(`AUDIT COMPLETE: ${passedChecks} checks passed, ${warningsCount} warnings, ${errorsCount} errors.`);
 console.log('=============================================\n');

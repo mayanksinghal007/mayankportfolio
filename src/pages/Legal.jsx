@@ -4,6 +4,7 @@ import { Shield, FileText, ChevronRight } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { getBreadcrumbSchema } from '../utils/seoSchemas';
 
 export const Legal = () => {
   const { site } = useSite();
@@ -15,6 +16,9 @@ export const Legal = () => {
     setActiveTab(location.pathname.includes('terms') ? 'terms' : 'privacy');
   }, [location.pathname]);
 
+  const legalPath = activeTab === 'privacy' ? '/privacy-policy' : '/terms';
+  const legalName = activeTab === 'privacy' ? 'Privacy Policy' : 'Terms of Service';
+
   return (
     <>
       <SeoHead
@@ -24,7 +28,8 @@ export const Legal = () => {
             ? 'Privacy Policy for Mayank Aggarwal portfolio. Explains collection, usage, and protection of contact inquiries under Indian DPDP Act guidelines.'
             : 'Terms of Service governing freelance engagements, payment milestones, intellectual property, and client deliverables with Mayank Aggarwal.'
         }
-        canonicalPath={activeTab === 'privacy' ? '/privacy-policy' : '/terms'}
+        canonicalPath={legalPath}
+        jsonLd={[getBreadcrumbSchema([{ name: legalName, path: legalPath }])]}
       />
 
       <section className="section-pad" style={{ paddingTop: '150px' }}>

@@ -22,8 +22,16 @@ import {
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
+import { getPersonSchema, getProfessionalServiceSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
+
 export const About = () => {
   const { site } = useSite();
+
+  const aboutSchemas = [
+    getPersonSchema(),
+    getProfessionalServiceSchema(),
+    getBreadcrumbSchema([{ name: 'About Mayank', path: '/about' }]),
+  ];
 
   return (
     <>
@@ -31,6 +39,7 @@ export const About = () => {
         title="About Mayank Aggarwal | Digital Marketer & AI Specialist"
         description="Learn about Mayank Aggarwal, a Digital Marketing & AI Specialist from Delhi, India with 1 year of hands-on experience in Meta Ads, AI video, and creative direction."
         canonicalPath="/about"
+        jsonLd={aboutSchemas}
       />
 
       {/* ABOUT HEADER SECTION */}
@@ -157,6 +166,66 @@ export const About = () => {
                     <div style={{ fontSize: '0.88rem', fontWeight: 600 }}>Accepting Clients</div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AUTHORITATIVE ENTITY DETAILS (NAP & GEO CONSISTENCY) */}
+      <section className="section-pad" style={{ paddingTop: '0px', paddingBottom: '40px' }}>
+        <div className="container">
+          <div
+            style={{
+              backgroundColor: 'var(--peach)',
+              border: '1px solid var(--border-color)',
+              borderLeft: '4px solid var(--brand)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '32px 36px',
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '16px' }}>
+              <div>
+                <span className="editorial-eyebrow" style={{ color: 'var(--brand)' }}>Authoritative Entity Details</span>
+                <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', marginTop: '4px', textTransform: 'none' }}>
+                  Mayank Aggarwal — Practitioner Overview
+                </h2>
+              </div>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.8rem', color: 'var(--mutedtext)', backgroundColor: 'var(--purewhite)', padding: '6px 14px', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
+                Delhi, India · Local & Global Remote Practice
+              </span>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', fontSize: '0.92rem', color: 'var(--charcoal)', marginTop: '20px' }}>
+              <div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700 }}>Full Name & Role</div>
+                <div style={{ fontWeight: 600, marginTop: '2px' }}>Mayank Aggarwal</div>
+                <div style={{ color: 'var(--mutedtext)', fontSize: '0.85rem' }}>Digital Marketing & AI Specialist</div>
+              </div>
+              <div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700 }}>Brand / Operating Practice</div>
+                <div style={{ fontWeight: 600, marginTop: '2px' }}>Klikwise</div>
+                <div style={{ color: 'var(--mutedtext)', fontSize: '0.85rem' }}>Freelance & Growth Consulting</div>
+              </div>
+              <div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700 }}>Location & Service Area</div>
+                <div style={{ fontWeight: 600, marginTop: '2px' }}>Delhi, India (NCR)</div>
+                <div style={{ color: 'var(--mutedtext)', fontSize: '0.85rem' }}>Serving Pan-India & Global Remote Clients</div>
+              </div>
+              <div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700 }}>Hands-on Experience</div>
+                <div style={{ fontWeight: 600, marginTop: '2px' }}>1 Year of Hands-on Experience</div>
+                <div style={{ color: 'var(--mutedtext)', fontSize: '0.85rem' }}>Meta Ads, AI Video & Short-Form Content</div>
+              </div>
+              <div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700 }}>Education & Alma Mater</div>
+                <div style={{ fontWeight: 600, marginTop: '2px' }}>B.Com (Hons.)</div>
+                <div style={{ color: 'var(--mutedtext)', fontSize: '0.85rem' }}>Shaheed Bhagat Singh College, University of Delhi</div>
+              </div>
+              <div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700 }}>Direct Contact & Response</div>
+                <div style={{ fontWeight: 600, marginTop: '2px' }}>mayank@klikwise.com · +91 9217756033</div>
+                <div style={{ color: 'var(--mutedtext)', fontSize: '0.85rem' }}>Replies within 12 hours</div>
               </div>
             </div>
           </div>

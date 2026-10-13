@@ -6,6 +6,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { marked } from 'marked';
 import { Clock, Calendar, ArrowLeft, ArrowRight, Share2, MessageCircle, CheckCircle2, ChevronRight, User } from 'lucide-react';
 import { SITE_CONFIG } from '../config/site';
+import { getBlogPostingSchema, getBreadcrumbSchema, getFaqSchema } from '../utils/seoSchemas';
 
 export const BlogPost = () => {
   const { slug } = useParams();
@@ -47,46 +48,14 @@ export const BlogPost = () => {
   }
 
   // BlogPosting Schema.org JSON-LD
-  const blogJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    description: post.metaDescription || post.summary,
-    image: post.coverImage,
-    datePublished: post.date,
-    dateModified: post.updated || post.date,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${SITE_CONFIG.siteUrl}/blog/${post.slug}`,
-    },
-    author: {
-      '@type': 'Person',
-      name: post.author || SITE_CONFIG.name,
-      jobTitle: post.authorRole || SITE_CONFIG.title,
-      url: SITE_CONFIG.siteUrl,
-    },
-    publisher: {
-      '@type': 'Person',
-      name: SITE_CONFIG.name,
-      url: SITE_CONFIG.siteUrl,
-    },
-  };
-
-  // FAQPage Schema if FAQs exist
-  const faqJsonLd = post.faqs && post.faqs.length > 0 ? {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: post.faqs.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: f.a,
-      },
-    })),
-  } : null;
-
-  const combinedSchemas = faqJsonLd ? [blogJsonLd, faqJsonLd] : blogJsonLd;
+  const combinedSchemas = [
+    getBlogPostingSchema(post),
+    getBreadcrumbSchema([
+      { name: 'Blog', path: '/blog' },
+      { name: post.title, path: `/blog/${post.slug}` },
+    ]),
+    getFaqSchema(post.faqs),
+  ].filter(Boolean);
 
   return (
     <>

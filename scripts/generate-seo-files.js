@@ -205,9 +205,13 @@ export function writeSeoFiles() {
     fs.writeFileSync(path.resolve(dir, 'llms.txt'), llmsContent, 'utf8');
     fs.writeFileSync(path.resolve(dir, 'llms-full.txt'), llmsContent, 'utf8');
     fs.writeFileSync(path.resolve(dir, 'humans.txt'), humansContent, 'utf8');
+    if (SITE_CONFIG.indexNowKey) {
+      fs.writeFileSync(path.resolve(dir, `${SITE_CONFIG.indexNowKey}.txt`), SITE_CONFIG.indexNowKey, 'utf8');
+      fs.writeFileSync(path.resolve(dir, 'indexnow.txt'), SITE_CONFIG.indexNowKey, 'utf8');
+    }
   }
 
-  console.log('✓ Generated sitemap.xml, robots.txt, rss.xml, llms.txt, and humans.txt');
+  console.log('✓ Generated sitemap.xml, robots.txt, rss.xml, llms.txt, humans.txt, and IndexNow key files');
 }
 
 writeSeoFiles();

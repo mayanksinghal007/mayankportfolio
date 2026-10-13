@@ -4,6 +4,7 @@ import { AdsSection } from '../components/AdsSection';
 import { CtaBanner } from '../components/CtaBanner';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { getBreadcrumbSchema } from '../utils/seoSchemas';
 
 export const AdsPage = () => {
   return (
@@ -12,6 +13,7 @@ export const AdsPage = () => {
         title="Meta Ads & Creative Gallery | Mayank Aggarwal"
         description="Curated gallery of high-converting Meta Ads, Instagram carousels, and AI video commercials designed by Mayank Aggarwal."
         canonicalPath="/ads"
+        jsonLd={[getBreadcrumbSchema([{ name: 'Ads Showcase', path: '/ads' }])]}
       />
 
       {/* ADS HERO HEADER */}
