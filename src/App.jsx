@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { SiteProvider } from './context/SiteContext';
@@ -6,6 +6,8 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
+import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { SearchModal } from './components/SearchModal';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 // Pages
@@ -50,9 +52,22 @@ const TrailingSlashHandler = () => {
 export const AppLayout = () => {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   // Activate 60fps lightweight intersection observer reveals on route changes
   useScrollReveal();
+
+  // Keyboard shortcut Cmd/Ctrl+K to toggle Search
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setIsSearchOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <>
@@ -66,7 +81,7 @@ export const AppLayout = () => {
       <div className="grain-overlay" />
 
       {/* Render Navbar only if not on Admin standalone view */}
-      {!isAdmin && <Navbar />}
+      {!isAdmin && <Navbar onOpenSearch={() => setIsSearchOpen(true)} />}
 
       <main>
         <Routes>
@@ -89,6 +104,12 @@ export const AppLayout = () => {
 
       {/* Render Footer only if not on Admin view */}
       {!isAdmin && <Footer />}
+
+      {/* Global Floating WhatsApp Direct Reachout */}
+      {!isAdmin && <FloatingWhatsApp />}
+
+      {/* Global Cmd/Ctrl+K Search Modal */}
+      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
       {/* Global Interactive Toast Notification */}
       <Toast />

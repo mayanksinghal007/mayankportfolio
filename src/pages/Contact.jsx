@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import {
   Mail,
   Phone,
@@ -33,6 +33,7 @@ export const Contact = () => {
     budget: '₹25,000 – ₹50,000',
     contact_method: 'WhatsApp',
     consent: false,
+    website_bot_trap: '', // Anti-spam honeypot
   };
 
   const [form, setForm] = useState(initialForm);
@@ -88,6 +89,18 @@ export const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    // Anti-Spam Honeypot Verification: Silently drop bot submissions
+    if (form.website_bot_trap && form.website_bot_trap.trim() !== '') {
+      setIsSubmitting(true);
+      setTimeout(() => {
+        setSubmittedId('INQ-SEC');
+        setIsSubmitted(true);
+        setIsSubmitting(false);
+      }, 400);
+      return;
+    }
+
     if (!validate()) return;
 
     setIsSubmitting(true);
@@ -311,7 +324,21 @@ export const Contact = () => {
                     </div>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleSubmit} noValidate>
+                    {/* Anti-Spam Honeypot Field (Hidden from Human Users) */}
+                    <div style={{ display: 'none' }} aria-hidden="true">
+                      <label htmlFor="website_bot_trap">Do not fill this field</label>
+                      <input
+                        type="text"
+                        id="website_bot_trap"
+                        name="website_bot_trap"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={form.website_bot_trap}
+                        onChange={handleChange}
+                      />
+                    </div>
+
                     <div style={{ marginBottom: '28px' }}>
                       <span className="editorial-eyebrow">Project Brief Form</span>
                       <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', color: 'var(--charcoal)', marginTop: '6px' }}>
@@ -322,38 +349,55 @@ export const Contact = () => {
                     {/* Name & Email Row */}
                     <div className="form-row">
                       <div className="form-group">
-                        <label className="form-label">Full Name *</label>
+                        <label htmlFor="contact-name" className="form-label">Full Name *</label>
                         <input
                           type="text"
+                          id="contact-name"
                           name="name"
                           value={form.name}
                           onChange={handleChange}
                           placeholder="e.g. Aman Sharma"
                           className="form-control"
+                          aria-required="true"
+                          aria-invalid={errors.name ? 'true' : 'false'}
+                          aria-describedby={errors.name ? 'name-error' : undefined}
                         />
-                        {errors.name && <div className="form-error">{errors.name}</div>}
+                        {errors.name && (
+                          <div id="name-error" className="form-error" role="alert">
+                            {errors.name}
+                          </div>
+                        )}
                       </div>
 
                       <div className="form-group">
-                        <label className="form-label">Email Address *</label>
+                        <label htmlFor="contact-email" className="form-label">Email Address *</label>
                         <input
                           type="email"
+                          id="contact-email"
                           name="email"
                           value={form.email}
                           onChange={handleChange}
                           placeholder="aman@yourbrand.com"
                           className="form-control"
+                          aria-required="true"
+                          aria-invalid={errors.email ? 'true' : 'false'}
+                          aria-describedby={errors.email ? 'email-error' : undefined}
                         />
-                        {errors.email && <div className="form-error">{errors.email}</div>}
+                        {errors.email && (
+                          <div id="email-error" className="form-error" role="alert">
+                            {errors.email}
+                          </div>
+                        )}
                       </div>
                     </div>
 
                     {/* Company & Service Row */}
                     <div className="form-row">
                       <div className="form-group">
-                        <label className="form-label">Company / Brand (Optional)</label>
+                        <label htmlFor="contact-company" className="form-label">Company / Brand (Optional)</label>
                         <input
                           type="text"
+                          id="contact-company"
                           name="company"
                           value={form.company}
                           onChange={handleChange}
@@ -363,12 +407,16 @@ export const Contact = () => {
                       </div>
 
                       <div className="form-group">
-                        <label className="form-label">Primary Service *</label>
+                        <label htmlFor="contact-service" className="form-label">Primary Service *</label>
                         <select
+                          id="contact-service"
                           name="service"
                           value={form.service}
                           onChange={handleChange}
                           className="form-control"
+                          aria-required="true"
+                          aria-invalid={errors.service ? 'true' : 'false'}
+                          aria-describedby={errors.service ? 'service-error' : undefined}
                         >
                           {services.map((s) => (
                             <option key={s.slug} value={s.name}>
@@ -382,15 +430,20 @@ export const Contact = () => {
                             General Consultation / Not Sure
                           </option>
                         </select>
-                        {errors.service && <div className="form-error">{errors.service}</div>}
+                        {errors.service && (
+                          <div id="service-error" className="form-error" role="alert">
+                            {errors.service}
+                          </div>
+                        )}
                       </div>
                     </div>
 
                     {/* Budget & Contact Method Row */}
                     <div className="form-row">
                       <div className="form-group">
-                        <label className="form-label">Estimated Monthly Budget</label>
+                        <label htmlFor="contact-budget" className="form-label">Estimated Monthly Budget</label>
                         <select
+                          id="contact-budget"
                           name="budget"
                           value={form.budget}
                           onChange={handleChange}
@@ -405,8 +458,9 @@ export const Contact = () => {
                       </div>
 
                       <div className="form-group">
-                        <label className="form-label">Preferred Response Method</label>
+                        <label htmlFor="contact-method" className="form-label">Preferred Response Method</label>
                         <select
+                          id="contact-method"
                           name="contact_method"
                           value={form.contact_method}
                           onChange={handleChange}
@@ -421,8 +475,9 @@ export const Contact = () => {
 
                     {/* Project Description */}
                     <div className="form-group">
-                      <label className="form-label">Project Objectives & Requirements *</label>
+                      <label htmlFor="contact-description" className="form-label">Project Objectives & Requirements *</label>
                       <textarea
+                        id="contact-description"
                         name="description"
                         rows={4}
                         value={form.description}
@@ -430,8 +485,15 @@ export const Contact = () => {
                         placeholder="Tell me about your product, current ad spend, target audience, timeline, or links to your social handles..."
                         className="form-control"
                         style={{ resize: 'vertical' }}
+                        aria-required="true"
+                        aria-invalid={errors.description ? 'true' : 'false'}
+                        aria-describedby={errors.description ? 'description-error' : undefined}
                       />
-                      {errors.description && <div className="form-error">{errors.description}</div>}
+                      {errors.description && (
+                        <div id="description-error" className="form-error" role="alert">
+                          {errors.description}
+                        </div>
+                      )}
                     </div>
 
                     {/* Consent Checkbox */}
@@ -443,12 +505,23 @@ export const Contact = () => {
                           checked={form.consent}
                           onChange={handleChange}
                           style={{ marginTop: '3px', accentColor: 'var(--brand)' }}
+                          aria-required="true"
+                          aria-invalid={errors.consent ? 'true' : 'false'}
+                          aria-describedby={errors.consent ? 'consent-error' : undefined}
                         />
                         <span>
-                          I agree to be contacted regarding my project inquiry. Information is confidential and never shared.
+                          I agree to be contacted regarding my project inquiry under the provisions of the{' '}
+                          <Link to="/privacy-policy" style={{ color: 'var(--brand)', textDecoration: 'underline' }}>
+                            Privacy Policy
+                          </Link>
+                          . Information remains strictly confidential and is never shared.
                         </span>
                       </label>
-                      {errors.consent && <div className="form-error">{errors.consent}</div>}
+                      {errors.consent && (
+                        <div id="consent-error" className="form-error" role="alert">
+                          {errors.consent}
+                        </div>
+                      )}
                     </div>
 
                     {/* Submit Button */}
@@ -466,6 +539,12 @@ export const Contact = () => {
                         </>
                       )}
                     </button>
+
+                    {/* Fast Turnaround Promise Note */}
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', marginTop: '16px', fontSize: '0.82rem', color: 'var(--mutedtext)' }}>
+                      <Clock size={14} color="var(--brand)" />
+                      <span><strong>Fast Turnaround Promise:</strong> I personally review inquiries and reply within 12 hours.</span>
+                    </div>
                   </form>
                 )}
               </div>

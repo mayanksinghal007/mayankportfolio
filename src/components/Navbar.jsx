@@ -1,25 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ArrowUpRight, Menu, X, Shield } from 'lucide-react';
+import { ArrowUpRight, Menu, X, Shield, Search } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
 
-export const Navbar = () => {
+export const Navbar = ({ onOpenSearch }) => {
   const { site, isAdminLoggedIn } = useSite();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 24);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+
+          // Add blur / border when scrolled past 24px
+          setIsScrolled(currentScrollY > 24);
+
+          // Top of page or mobile menu open: keep visible
+          if (currentScrollY < 80 || mobileMenuOpen) {
+            setIsVisible(true);
+          } else {
+            // Scroll down: hide; Scroll up: show
+            if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 8) {
+              setIsVisible(false);
+            } else if (lastScrollY - currentScrollY > 8) {
+              setIsVisible(true);
+            }
+          }
+
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY, mobileMenuOpen]);
 
   // Close mobile drawer on route change
   useEffect(() => {
     setMobileMenuOpen(false);
+    setIsVisible(true);
   }, [location.pathname]);
 
   const navItems = [
@@ -34,7 +63,7 @@ export const Navbar = () => {
   ];
 
   return (
-    <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
+    <header className={`site-header ${isScrolled ? 'scrolled' : ''} ${!isVisible ? 'hidden' : ''}`}>
       <div className="container nav-inner">
         {/* Brand Logo */}
         <Link to="/" className="nav-brand">
@@ -61,6 +90,21 @@ export const Navbar = () => {
 
         {/* Header Right Action */}
         <div className="nav-actions">
+          {/* Quick Search Button */}
+          {onOpenSearch && (
+            <button
+              type="button"
+              onClick={onOpenSearch}
+              className="nav-search-btn"
+              title="Search Site (Ctrl+K / Cmd+K)"
+              aria-label="Search site"
+            >
+              <Search size={15} />
+              <span className="nav-search-label">Search</span>
+              <kbd className="nav-search-kbd">⌘K</kbd>
+            </button>
+          )}
+
           <Link to="/contact" className="btn-primary">
             Start a Project <ArrowUpRight size={16} />
           </Link>
@@ -92,7 +136,20 @@ export const Navbar = () => {
             ))}
           </ul>
 
-          <div style={{ marginTop: '32px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ marginTop: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {onOpenSearch && (
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenSearch();
+                }}
+                className="btn-secondary"
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                <Search size={16} /> Search Content
+              </button>
+            )}
             <Link to="/contact" className="btn-primary" style={{ width: '100%' }}>
               Start a Project <ArrowUpRight size={16} />
             </Link>

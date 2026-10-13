@@ -9,6 +9,7 @@ import {
   CheckCircle2,
   Mail,
   MessageCircle,
+  Download,
 } from 'lucide-react';
 import { LinkedinIcon, InstagramIcon } from '../components/SocialIcons';
 import { useSite } from '../context/SiteContext';
@@ -79,6 +80,14 @@ export const About = () => {
                 <Link to="/contact" className="btn-primary">
                   Start a Project <ArrowUpRight size={16} />
                 </Link>
+                <a
+                  href={site.cvUrl || '/Mayank_Aggarwal_Resume.pdf'}
+                  download="Mayank_Aggarwal_Resume.pdf"
+                  className="btn-secondary"
+                  title="Download Mayank Aggarwal CV (PDF)"
+                >
+                  <Download size={16} /> Download CV
+                </a>
                 <a
                   href={site.linkedin}
                   target="_blank"
