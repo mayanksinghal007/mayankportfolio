@@ -13,6 +13,7 @@ export const DEFAULT_SITE = {
   whatsappMsg: "Hi Mayank, I'm interested in discussing a marketing or AI creative project.",
   linkedin: "https://www.linkedin.com/in/mayank-aggarwal",
   instagram: "https://www.instagram.com/mayankaggarwal_7",
+  github: "https://github.com/mayanksinghal007",
   availability: "Available for Freelance Projects & Full-Time Roles",
   experienceYears: "1 Year",
   adSpendManaged: "Meta Ads + AI Video",

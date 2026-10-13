@@ -16,7 +16,7 @@ import {
   ChevronRight,
   MessageCircle,
 } from 'lucide-react';
-import { LinkedinIcon, InstagramIcon } from './SocialIcons';
+import { LinkedinIcon, InstagramIcon, GithubIcon } from './SocialIcons';
 import { useSite } from '../context/SiteContext';
 
 export const Navbar = ({ onOpenSearch }) => {
@@ -276,6 +276,15 @@ export const Navbar = ({ onOpenSearch }) => {
               className="mobile-social-icon"
             >
               <InstagramIcon size={18} />
+            </a>
+            <a
+              href={site.github || 'https://github.com/mayanksinghal007'}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="mobile-social-icon"
+            >
+              <GithubIcon size={18} />
             </a>
             <a
               href={`mailto:${site.email}`}

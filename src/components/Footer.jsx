@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MessageCircle, ArrowUpRight, Shield } from 'lucide-react';
-import { LinkedinIcon, InstagramIcon } from './SocialIcons';
+import { LinkedinIcon, InstagramIcon, GithubIcon } from './SocialIcons';
 import { useSite } from '../context/SiteContext';
 
 export const Footer = () => {
@@ -99,6 +99,17 @@ export const Footer = () => {
                   style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
                   <InstagramIcon size={16} color="#FF3D0A" /> Instagram (@mayankaggarwal_7)
+                </a>
+              </li>
+              <li>
+                <a
+                  href={site.github || 'https://github.com/mayanksinghal007'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer-nav-link"
+                  style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
+                >
+                  <GithubIcon size={16} color="var(--softwhite)" /> GitHub (@mayanksinghal007)
                 </a>
               </li>
               <li>
