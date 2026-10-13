@@ -8,6 +8,7 @@ import { Toast } from './components/Toast';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { SearchModal } from './components/SearchModal';
+import { ScrollLeadModal } from './components/ScrollLeadModal';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 // Pages
@@ -110,6 +111,9 @@ export const AppLayout = () => {
 
       {/* Global Cmd/Ctrl+K Search Modal */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+
+      {/* 30% Scroll Contextual Lead Modal */}
+      {!isAdmin && <ScrollLeadModal />}
 
       {/* Global Interactive Toast Notification */}
       <Toast />

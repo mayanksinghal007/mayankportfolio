@@ -13,7 +13,8 @@ export const SITE_CONFIG = {
   location: "Delhi, India",
   experienceText: "1 year of hands-on experience",
   experienceYears: "1 Year",
-  email: "mayank@klikwise.com", // [REPLACE] Set your verified domain email
+  email: "riyansh.studio007@gmail.com",
+  inquiryEmail: "contact.klikwise@gmail.com",
   phone: "+91 9217756033",
   whatsapp: "919217756033",
   whatsappMsg: "Hi Mayank, I'm interested in discussing a marketing or AI creative project.",

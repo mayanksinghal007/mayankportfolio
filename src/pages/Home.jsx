@@ -25,7 +25,7 @@ import { ToolsMarquee } from '../components/ToolsMarquee';
 import { getPersonSchema, getProfessionalServiceSchema, getWebSiteSchema } from '../utils/seoSchemas';
 
 export const Home = () => {
-  const { site, services, portfolio, blogPosts = [] } = useSite();
+  const { site, services, portfolio, blogPosts = [], mediaAssets = {} } = useSite();
   const [activeMedia, setActiveMedia] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -157,8 +157,8 @@ export const Home = () => {
 
               <div className="hero-media-window">
                 <img
-                  src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80"
-                  alt="Mayank Aggarwal AI Showreel"
+                  src={mediaAssets.home_hero_visual?.url || "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80"}
+                  alt={mediaAssets.home_hero_visual?.alt || "Mayank Aggarwal AI Showreel"}
                   className="hero-media-bg"
                   width="1200"
                   height="800"
@@ -175,11 +175,12 @@ export const Home = () => {
                   <button
                     onClick={() =>
                       handleOpenMedia({
-                        title: 'Mayank Aggarwal — Creative & AI Showreel',
+                        title: mediaAssets.home_hero_visual?.title || 'Mayank Aggarwal — Creative & AI Showreel',
                         overview:
-                          'A high-octane montage of generative AI video, 3D typography, cinematic motion grading, and Meta ad campaign performance highlights.',
+                          mediaAssets.home_hero_visual?.subtitle || 'A high-octane montage of generative AI video, 3D typography, cinematic motion grading, and Meta ad campaign performance highlights.',
                         image:
-                          'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
+                          mediaAssets.home_hero_visual?.url || 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
+                        videoUrl: mediaAssets.home_hero_visual?.videoUrl || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                         hasVideoDemo: true,
                         tags: ['Runway Gen-3', 'ElevenLabs', 'Meta Ads', 'Editorial Cut'],
                       })
@@ -194,10 +195,10 @@ export const Home = () => {
                     Mayank Studio Production
                   </span>
                   <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--softwhite)', marginTop: '4px' }}>
-                    THE GENERATIVE ERA
+                    {mediaAssets.home_hero_visual?.title || 'THE GENERATIVE ERA'}
                   </h3>
                   <p style={{ fontSize: '0.82rem', color: 'rgba(255, 253, 249, 0.75)', marginTop: '4px' }}>
-                    Click to preview video & audio capabilities
+                    {mediaAssets.home_hero_visual?.subtitle || 'Click to preview video & audio capabilities'}
                   </p>
                 </div>
               </div>

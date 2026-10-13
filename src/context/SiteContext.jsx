@@ -5,6 +5,7 @@ import {
   DEFAULT_PORTFOLIO,
   INITIAL_INQUIRIES,
   DEFAULT_ADS,
+  DEFAULT_MEDIA_ASSETS,
 } from '../data/initialData';
 import { DEFAULT_BLOG_POSTS } from '../data/blogData';
 
@@ -24,6 +25,9 @@ const getStored = (key, fallback) => {
 export const SiteProvider = ({ children }) => {
   // Site Info
   const [site, setSite] = useState(() => getStored('mayank_site_info', DEFAULT_SITE));
+
+  // Media & Video CMS Assets
+  const [mediaAssets, setMediaAssets] = useState(() => getStored('mayank_media_assets', DEFAULT_MEDIA_ASSETS));
 
   // Services
   const [services, setServices] = useState(() => getStored('mayank_services', DEFAULT_SERVICES));
@@ -70,6 +74,14 @@ export const SiteProvider = ({ children }) => {
       } catch (e) {}
     }
   }, [site]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('mayank_media_assets', JSON.stringify(mediaAssets));
+      } catch (e) {}
+    }
+  }, [mediaAssets]);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -125,7 +137,34 @@ export const SiteProvider = ({ children }) => {
     showToast('Site settings updated successfully');
   };
 
+  // Media & Video CMS Actions
+  const updateMediaAsset = (key, updatedData) => {
+    setMediaAssets((prev) => {
+      const existing = prev[key] || {};
+      return {
+        ...prev,
+        [key]: {
+          ...existing,
+          ...updatedData,
+          updatedAt: new Date().toISOString(),
+        },
+      };
+    });
+    showToast('Media asset updated & published successfully');
+  };
+
+  const resetMediaAssets = () => {
+    setMediaAssets(DEFAULT_MEDIA_ASSETS);
+    showToast('Media assets restored to default showreels & photos');
+  };
+
   const addInquiry = (inquiryData) => {
+    // 1. Anti-Spam Honeypot Security Check
+    if (inquiryData.website_bot_trap || inquiryData.bot_field || inquiryData.website_security_token) {
+      console.warn('Spam bot submission caught by honeypot filter.');
+      return { id: `inq-bot-blocked`, status: 'Blocked' };
+    }
+
     const newInq = {
       id: `inq-${Date.now()}`,
       created_at: new Date().toISOString(),
@@ -133,7 +172,47 @@ export const SiteProvider = ({ children }) => {
       notes: '',
       ...inquiryData,
     };
+
+    // 2. Save locally for Admin Panel & offline resilience
     setInquiries((prev) => [newInq, ...prev]);
+
+    // 3. Dispatch to primary destination: contact.klikwise@gmail.com
+    const recipient = site?.inquiryEmail || 'contact.klikwise@gmail.com';
+    if (typeof window !== 'undefined') {
+      try {
+        const payload = {
+          _subject: `New Lead: ${inquiryData.name || 'Website Visitor'} [${inquiryData.page || 'Direct Inbound'}]`,
+          _template: 'table',
+          _captcha: 'false',
+          FullName: inquiryData.name || 'Not provided',
+          Phone_WhatsApp: inquiryData.phone || inquiryData.contact_method || 'Not provided',
+          Location_City: inquiryData.location || inquiryData.city || 'Not provided',
+          Email: inquiryData.email || 'Not provided',
+          Service_Interested: inquiryData.service || 'General Consultation / Growth Strategy',
+          Company_Brand: inquiryData.company || 'Individual / Startup',
+          Budget: inquiryData.budget || 'Flexible',
+          Message_Details: inquiryData.description || inquiryData.message || 'Submitted via 30% Scroll Lead Modal',
+          PageSource: inquiryData.page || (typeof window !== 'undefined' ? window.location.pathname : '/'),
+          SubmissionTime: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
+        };
+
+        fetch(`https://formsubmit.co/ajax/${recipient}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        })
+          .then((res) => res.json())
+          .catch((err) => {
+            console.log('Background lead dispatcher notification:', err);
+          });
+      } catch (err) {
+        console.warn('Inquiry email forward attempt:', err);
+      }
+    }
+
     showToast('Inquiry sent successfully! Mayank will get back to you shortly.');
     return newInq;
   };
@@ -321,6 +400,7 @@ export const SiteProvider = ({ children }) => {
 
   const resetAllData = () => {
     setSite(DEFAULT_SITE);
+    setMediaAssets(DEFAULT_MEDIA_ASSETS);
     setServices(DEFAULT_SERVICES);
     setPortfolio(DEFAULT_PORTFOLIO);
     setAds(DEFAULT_ADS);
@@ -333,6 +413,7 @@ export const SiteProvider = ({ children }) => {
     <SiteContext.Provider
       value={{
         site,
+        mediaAssets,
         services,
         portfolio,
         ads,
@@ -342,6 +423,8 @@ export const SiteProvider = ({ children }) => {
         toast,
         showToast,
         updateSiteInfo,
+        updateMediaAsset,
+        resetMediaAssets,
         addInquiry,
         updateInquiryStatus,
         updateInquiryNotes,

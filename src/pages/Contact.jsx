@@ -27,6 +27,8 @@ export const Contact = () => {
   const initialForm = {
     name: '',
     email: '',
+    phone: '',
+    location: '',
     company: '',
     service: preselectedService || 'Performance Marketing',
     description: '',
@@ -109,11 +111,14 @@ export const Contact = () => {
       const created = addInquiry({
         name: form.name,
         email: form.email,
+        phone: form.phone,
+        location: form.location,
         company: form.company,
         service: form.service,
         description: form.description,
         budget: form.budget,
         contact_method: form.contact_method,
+        page: '/contact',
       });
 
       // Fire celebratory confetti!
@@ -388,6 +393,35 @@ export const Contact = () => {
                             {errors.email}
                           </div>
                         )}
+                      </div>
+                    </div>
+
+                    {/* Phone & Location Row */}
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="contact-phone" className="form-label">WhatsApp / Phone Number</label>
+                        <input
+                          type="tel"
+                          id="contact-phone"
+                          name="phone"
+                          value={form.phone}
+                          onChange={handleChange}
+                          placeholder="e.g. +91 98765 43210"
+                          className="form-control"
+                        />
+                      </div>
+
+                      <div className="form-group">
+                        <label htmlFor="contact-location" className="form-label">City / Location (Kahan se ho)</label>
+                        <input
+                          type="text"
+                          id="contact-location"
+                          name="location"
+                          value={form.location}
+                          onChange={handleChange}
+                          placeholder="e.g. Delhi NCR, Mumbai, Bengaluru"
+                          className="form-control"
+                        />
                       </div>
                     </div>
 

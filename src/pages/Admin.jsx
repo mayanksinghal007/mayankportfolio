@@ -25,15 +25,20 @@ import {
   FileText,
   Megaphone,
   BookOpen,
+  Film,
+  MapPin,
+  Phone,
 } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
 import { AdminAdsTab } from '../components/AdminAdsTab';
 import { AdminBlogTab } from '../components/AdminBlogTab';
+import { AdminMediaTab } from '../components/AdminMediaTab';
 import { SeoHead } from '../components/SeoHead';
 
 export const Admin = () => {
   const {
     site,
+    mediaAssets = {},
     services,
     portfolio,
     ads,
@@ -346,6 +351,13 @@ export const Admin = () => {
             <BookOpen size={18} /> Blog CMS ({blogPosts.length})
           </button>
           <button
+            onClick={() => setActiveTab('media')}
+            className={`admin-tab-btn ${activeTab === 'media' ? 'active' : ''}`}
+            style={{ color: activeTab === 'media' ? 'var(--brand)' : 'inherit' }}
+          >
+            <Film size={18} /> Media & Video CMS ({Object.keys(mediaAssets).length})
+          </button>
+          <button
             onClick={() => setActiveTab('ads')}
             className={`admin-tab-btn ${activeTab === 'ads' ? 'active' : ''}`}
           >
@@ -374,16 +386,16 @@ export const Admin = () => {
         {/* Content View */}
         <main className="admin-content">
           {/* STATS STRIP */}
-          <div className="stats-cards-grid">
+          <div className="stats-cards-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))' }}>
             <div className="stat-card">
               <div className="val">{inquiries.length}</div>
               <div className="lbl">Total Client Inquiries</div>
             </div>
             <div className="stat-card">
               <div className="val" style={{ color: 'var(--brand)' }}>
-                {blogPosts.length}
+                {Object.keys(mediaAssets).length}
               </div>
-              <div className="lbl">Published Playbooks</div>
+              <div className="lbl">Managed Media Slots</div>
             </div>
             <div className="stat-card">
               <div className="val" style={{ color: 'var(--charcoal)' }}>
@@ -398,6 +410,9 @@ export const Admin = () => {
               <div className="lbl">Active Case Studies</div>
             </div>
           </div>
+
+          {/* TAB: MEDIA & VIDEO CMS MANAGEMENT */}
+          {activeTab === 'media' && <AdminMediaTab />}
 
           {/* TAB: BLOG CMS MANAGEMENT */}
           {activeTab === 'blog' && <AdminBlogTab />}
@@ -489,9 +504,19 @@ export const Admin = () => {
                               <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)' }}>{inq.company}</div>
                             )}
                             <div style={{ fontSize: '0.78rem', color: 'var(--brand)' }}>{inq.email}</div>
+                            {inq.phone && (
+                              <div style={{ fontSize: '0.75rem', color: '#10B981', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '2px' }}>
+                                <Phone size={11} /> {inq.phone}
+                              </div>
+                            )}
+                            {inq.location && (
+                              <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)', display: 'flex', alignItems: 'center', gap: '4px', marginTop: '2px' }}>
+                                <MapPin size={11} /> {inq.location}
+                              </div>
+                            )}
                           </td>
                           <td style={{ fontWeight: 600 }}>{inq.service}</td>
-                          <td>{inq.budget}</td>
+                          <td>{inq.budget || 'Flexible'}</td>
                           <td>
                             <span
                               style={{
@@ -507,7 +532,7 @@ export const Admin = () => {
                               ) : (
                                 <Mail size={13} color="#FF3D0A" />
                               )}
-                              {inq.contact_method}
+                              {inq.contact_method || 'WhatsApp'}
                             </span>
                           </td>
                           <td>
@@ -583,8 +608,16 @@ export const Admin = () => {
                           <div>{selectedInquiry.email}</div>
                         </div>
                         <div>
-                          <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)', fontWeight: 700 }}>COMPANY</div>
-                          <div>{selectedInquiry.company || 'Not Specified'}</div>
+                          <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)', fontWeight: 700 }}>PHONE / WHATSAPP</div>
+                          <div style={{ color: '#10B981', fontWeight: 600 }}>{selectedInquiry.phone || 'Not Specified'}</div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)', fontWeight: 700 }}>CITY / LOCATION (KAHAN SE HO)</div>
+                          <div>{selectedInquiry.location || 'Not Specified'}</div>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)', fontWeight: 700 }}>SOURCE PAGE</div>
+                          <div>{selectedInquiry.page || 'Direct Inbound Form'}</div>
                         </div>
                         <div>
                           <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)', fontWeight: 700 }}>SERVICE</div>
@@ -592,7 +625,7 @@ export const Admin = () => {
                         </div>
                         <div>
                           <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)', fontWeight: 700 }}>ESTIMATED BUDGET</div>
-                          <div>{selectedInquiry.budget}</div>
+                          <div>{selectedInquiry.budget || 'Flexible'}</div>
                         </div>
                       </div>
 

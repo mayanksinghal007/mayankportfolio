@@ -26,7 +26,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { getPersonSchema, getProfessionalServiceSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
 
 export const About = () => {
-  const { site } = useSite();
+  const { site, mediaAssets = {} } = useSite();
 
   const aboutSchemas = [
     getPersonSchema(),
@@ -120,8 +120,8 @@ export const About = () => {
                   }}
                 >
                     <img
-                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"
-                      alt="Mayank Aggarwal"
+                      src={mediaAssets.about_profile_photo?.url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"}
+                      alt={mediaAssets.about_profile_photo?.alt || "Mayank Aggarwal"}
                       style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.88 }}
                       onError={(e) => {
                         e.currentTarget.onerror = null;
@@ -225,7 +225,7 @@ export const About = () => {
               </div>
               <div>
                 <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--brand)', fontWeight: 700 }}>Direct Contact & Response</div>
-                <div style={{ fontWeight: 600, marginTop: '2px' }}>mayank@klikwise.com · +91 9217756033</div>
+                <div style={{ fontWeight: 600, marginTop: '2px' }}>riyansh.studio007@gmail.com · +91 9217756033</div>
                 <div style={{ color: 'var(--mutedtext)', fontSize: '0.85rem' }}>Replies within 12 hours</div>
               </div>
             </div>
