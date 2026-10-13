@@ -181,9 +181,10 @@ export const SiteProvider = ({ children }) => {
     if (typeof window !== 'undefined') {
       try {
         const payload = {
-          _subject: `New Lead: ${inquiryData.name || 'Website Visitor'} [${inquiryData.page || 'Direct Inbound'}]`,
+          _subject: `🎯 New Lead: ${inquiryData.name || 'Website Visitor'} [${inquiryData.page || 'Inbound'}]`,
           _template: 'table',
           _captcha: 'false',
+          _replyto: inquiryData.email || 'contact.klikwise@gmail.com',
           FullName: inquiryData.name || 'Not provided',
           Phone_WhatsApp: inquiryData.phone || inquiryData.contact_method || 'Not provided',
           Location_City: inquiryData.location || inquiryData.city || 'Not provided',
@@ -205,8 +206,13 @@ export const SiteProvider = ({ children }) => {
           body: JSON.stringify(payload),
         })
           .then((res) => res.json())
+          .then((data) => {
+            if (data?.message && data.message.includes('Activation')) {
+              console.info('FormSubmit Activation Pending on contact.klikwise@gmail.com');
+            }
+          })
           .catch((err) => {
-            console.log('Background lead dispatcher notification:', err);
+            console.log('Background lead dispatcher notice:', err);
           });
       } catch (err) {
         console.warn('Inquiry email forward attempt:', err);

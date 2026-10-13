@@ -119,19 +119,19 @@ export const ScrollLeadModal = () => {
 
   // Track 30% scroll trigger on every page
   useEffect(() => {
-    // Check if dismissed in this session for this specific route
-    const dismissedKey = `lead_modal_dismissed_${location.pathname}`;
-    const alreadyDismissed = sessionStorage.getItem(dismissedKey) === 'true';
-    const globallySubmitted = sessionStorage.getItem('lead_modal_submitted') === 'true';
+    // Reset submitted state on route change
+    setIsSubmitted(false);
 
-    if (alreadyDismissed || globallySubmitted) {
+    // Check if user explicitly closed the modal on this route in the current tab session
+    const dismissedKey = `lead_modal_dismissed_${location.pathname}`;
+    const routeDismissed = sessionStorage.getItem(dismissedKey) === 'true';
+
+    if (routeDismissed) {
       setHasDismissed(true);
       return;
     }
 
     setHasDismissed(false);
-    setIsSubmitted(false);
-
     let triggered = false;
 
     const handleScroll = () => {
@@ -143,13 +143,13 @@ export const ScrollLeadModal = () => {
       // Calculate scroll percentage
       const scrollProgress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
 
-      // 30% scroll trigger (or scrolled at least 350px on shorter pages)
-      if (scrollProgress >= 30 || (scrollHeight < 800 && scrollTop >= 200)) {
+      // 30% scroll trigger (or scrolled at least 250px on shorter pages)
+      if (scrollProgress >= 30 || (scrollHeight < 750 && scrollTop >= 220)) {
         triggered = true;
-        // Small graceful pause before popping up to prevent jarring the user
+        // Graceful smooth entrance
         setTimeout(() => {
           setIsOpen(true);
-        }, 350);
+        }, 300);
       }
     };
 
