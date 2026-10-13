@@ -43,9 +43,8 @@ export const Blog = () => {
       />
 
       <section
+        className="page-hero-pad"
         style={{
-          paddingTop: '130px',
-          paddingBottom: '90px',
           backgroundColor: 'var(--softwhite)',
           minHeight: '100vh',
         }}

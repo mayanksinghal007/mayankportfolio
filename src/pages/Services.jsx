@@ -73,7 +73,7 @@ export const Services = () => {
       />
 
       {/* SERVICES HEADER */}
-      <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '70px' }}>
+      <section className="page-hero-pad">
         <div className="container">
           <Breadcrumbs items={[{ name: 'Services', path: '/services' }]} />
           <div style={{ maxWidth: '820px' }}>

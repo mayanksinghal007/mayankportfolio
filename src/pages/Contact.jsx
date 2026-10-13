@@ -193,7 +193,7 @@ export const Contact = () => {
       />
 
       {/* CONTACT HEADER */}
-      <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '60px' }}>
+      <section className="page-hero-pad">
         <div className="container">
           <Breadcrumbs items={[{ name: 'Contact', path: '/contact' }]} />
           <div style={{ maxWidth: '820px' }}>

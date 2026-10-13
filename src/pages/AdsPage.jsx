@@ -17,7 +17,7 @@ export const AdsPage = () => {
       />
 
       {/* ADS HERO HEADER */}
-      <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '40px' }}>
+      <section className="page-hero-pad">
         <div className="container">
           <Breadcrumbs items={[{ name: 'Ads Showcase', path: '/ads' }]} />
           <div style={{ maxWidth: '820px' }}>

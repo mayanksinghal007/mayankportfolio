@@ -53,7 +53,7 @@ export const Portfolio = () => {
       />
 
       {/* PORTFOLIO HEADER */}
-      <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '50px' }}>
+      <section className="page-hero-pad">
         <div className="container">
           <Breadcrumbs items={[{ name: 'Portfolio', path: '/portfolio' }]} />
           <div style={{ maxWidth: '820px' }}>

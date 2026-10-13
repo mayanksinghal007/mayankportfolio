@@ -44,18 +44,10 @@ export const About = () => {
       />
 
       {/* ABOUT HEADER SECTION */}
-      <section className="section-pad" style={{ paddingTop: '150px' }}>
+      <section className="page-hero-pad">
         <div className="container">
           <Breadcrumbs items={[{ name: 'About Mayank', path: '/about' }]} />
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1.2fr 0.8fr',
-              gap: '60px',
-              alignItems: 'center',
-            }}
-            className="hero-grid"
-          >
+          <div className="hero-grid-split">
             <div>
               <span className="editorial-eyebrow">About Mayank Aggarwal</span>
               <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>

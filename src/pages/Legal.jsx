@@ -32,7 +32,7 @@ export const Legal = () => {
         jsonLd={[getBreadcrumbSchema([{ name: legalName, path: legalPath }])]}
       />
 
-      <section className="section-pad" style={{ paddingTop: '150px' }}>
+      <section className="page-hero-pad">
         <div className="container container-narrow">
           <Breadcrumbs
             items={[

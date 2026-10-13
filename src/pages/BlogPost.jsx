@@ -71,7 +71,7 @@ export const BlogPost = () => {
         jsonLd={combinedSchemas}
       />
 
-      <article style={{ paddingTop: '130px', paddingBottom: '90px', backgroundColor: 'var(--softwhite)', minHeight: '100vh' }}>
+      <article className="page-hero-pad" style={{ backgroundColor: 'var(--softwhite)', minHeight: '100vh' }}>
         <div className="site-container">
           <Breadcrumbs
             items={[

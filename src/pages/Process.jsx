@@ -26,7 +26,7 @@ export const Process = () => {
       />
 
       {/* PROCESS HEADER */}
-      <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '70px' }}>
+      <section className="page-hero-pad">
         <div className="container">
           <Breadcrumbs items={[{ name: 'Process & Workflow', path: '/process' }]} />
           <div style={{ maxWidth: '820px' }}>
@@ -49,18 +49,7 @@ export const Process = () => {
             {PROCESS_STEPS.map((step, idx) => (
               <div
                 key={step.step}
-                style={{
-                  backgroundColor: 'var(--purewhite)',
-                  border: '1.5px solid var(--border-color)',
-                  borderRadius: 'var(--radius-xl)',
-                  padding: '44px 36px',
-                  display: 'grid',
-                  gridTemplateColumns: '120px 1fr 1fr',
-                  gap: '36px',
-                  alignItems: 'flex-start',
-                  boxShadow: 'var(--shadow-sm)',
-                }}
-                className="hero-grid"
+                className="process-step-card"
               >
                 {/* Big Step Number */}
                 <div>

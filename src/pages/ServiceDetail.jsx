@@ -68,7 +68,7 @@ export const ServiceDetail = () => {
       />
 
       {/* SERVICE HEADER */}
-      <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '50px' }}>
+      <section className="page-hero-pad">
         <div className="container">
           <Breadcrumbs
             items={[
@@ -159,7 +159,7 @@ export const ServiceDetail = () => {
       {/* OVERVIEW & INCLUSIONS BREAKDOWN */}
       <section className="section-pad" style={{ backgroundColor: 'var(--cream-subtle)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: '48px' }} className="hero-grid">
+          <div className="hero-grid-split">
             {/* Left: Detailed Overview */}
             <div>
               <span className="editorial-eyebrow">Service Scope</span>
