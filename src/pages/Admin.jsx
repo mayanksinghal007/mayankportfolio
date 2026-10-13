@@ -24,9 +24,11 @@ import {
   Mic,
   FileText,
   Megaphone,
+  BookOpen,
 } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
 import { AdminAdsTab } from '../components/AdminAdsTab';
+import { AdminBlogTab } from '../components/AdminBlogTab';
 import { SeoHead } from '../components/SeoHead';
 
 export const Admin = () => {
@@ -36,6 +38,7 @@ export const Admin = () => {
     portfolio,
     ads,
     inquiries,
+    blogPosts = [],
     isAdminLoggedIn,
     loginAdmin,
     loginAdminDirect,
@@ -337,6 +340,12 @@ export const Admin = () => {
             <FolderKanban size={18} /> Portfolio CMS ({portfolio.length})
           </button>
           <button
+            onClick={() => setActiveTab('blog')}
+            className={`admin-tab-btn ${activeTab === 'blog' ? 'active' : ''}`}
+          >
+            <BookOpen size={18} /> Blog CMS ({blogPosts.length})
+          </button>
+          <button
             onClick={() => setActiveTab('ads')}
             className={`admin-tab-btn ${activeTab === 'ads' ? 'active' : ''}`}
           >
@@ -372,6 +381,12 @@ export const Admin = () => {
             </div>
             <div className="stat-card">
               <div className="val" style={{ color: 'var(--brand)' }}>
+                {blogPosts.length}
+              </div>
+              <div className="lbl">Published Playbooks</div>
+            </div>
+            <div className="stat-card">
+              <div className="val" style={{ color: 'var(--charcoal)' }}>
                 {ads.length}
               </div>
               <div className="lbl">Ad Creatives ({ads.filter((a) => a.type === 'photo').length}P / {ads.filter((a) => a.type === 'video').length}V)</div>
@@ -382,11 +397,10 @@ export const Admin = () => {
               </div>
               <div className="lbl">Active Case Studies</div>
             </div>
-            <div className="stat-card">
-              <div className="val">{services.length}</div>
-              <div className="lbl">Active Services</div>
-            </div>
           </div>
+
+          {/* TAB: BLOG CMS MANAGEMENT */}
+          {activeTab === 'blog' && <AdminBlogTab />}
 
           {/* TAB: ADS MANAGEMENT */}
           {activeTab === 'ads' && <AdminAdsTab />}
