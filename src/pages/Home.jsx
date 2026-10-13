@@ -19,9 +19,10 @@ import { AdsSection } from '../components/AdsSection';
 import { CtaBanner } from '../components/CtaBanner';
 import { EXPERIENCE_ITEMS, EDUCATION_ITEMS, PROCESS_STEPS, WHY_CHOOSE_ME } from '../data/initialData';
 import { HERO_STATS, PORTFOLIO_NOTE } from '../config/site';
+import { SeoHead } from '../components/SeoHead';
 
 export const Home = () => {
-  const { site, services, portfolio } = useSite();
+  const { site, services, portfolio, blogPosts = [] } = useSite();
   const [activeMedia, setActiveMedia] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -47,6 +48,12 @@ export const Home = () => {
 
   return (
     <>
+      <SeoHead
+        title="Mayank Aggarwal | Digital Marketing & AI Specialist Delhi"
+        description="Performance Meta Ads, generative AI video creation, and high-retention content strategy for modern brands by Mayank Aggarwal based in Delhi, India."
+        canonicalPath="/"
+      />
+
       {/* HERO SECTION */}
       <section className="hero-section">
         <div className="hero-glow-1" />
@@ -143,6 +150,10 @@ export const Home = () => {
                   src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80"
                   alt="Mayank Aggarwal AI Showreel"
                   className="hero-media-bg"
+                  width="1200"
+                  height="800"
+                  fetchPriority="high"
+                  decoding="async"
                   onError={(e) => {
                     e.currentTarget.onerror = null;
                     e.currentTarget.src = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80';
@@ -623,6 +634,130 @@ export const Home = () => {
                   View Full Profile <ArrowRight size={14} />
                 </Link>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* LATEST FROM THE BLOG SECTION */}
+      <section className="section-padding" style={{ backgroundColor: 'var(--peach)' }}>
+        <div className="container">
+          <div className="section-head" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
+            <div>
+              <span className="editorial-eyebrow">Tactical Playbooks & Guides</span>
+              <h2 className="display-title section-title">LATEST FROM THE BLOG.</h2>
+            </div>
+            <Link to="/blog" className="btn-secondary" style={{ padding: '10px 22px' }}>
+              Explore All 8 Articles <ArrowRight size={15} />
+            </Link>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '24px',
+            }}
+          >
+            {blogPosts.slice(0, 3).map((post) => (
+              <article
+                key={post.id}
+                className="portfolio-card"
+                style={{
+                  backgroundColor: 'var(--softwhite)',
+                  borderRadius: '18px',
+                  overflow: 'hidden',
+                  border: '1px solid var(--border-color)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                <Link
+                  to={`/blog/${post.slug}`}
+                  style={{
+                    display: 'block',
+                    aspectRatio: '16 / 9',
+                    overflow: 'hidden',
+                    position: 'relative',
+                  }}
+                >
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    loading="lazy"
+                    width="1200"
+                    height="675"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      e.currentTarget.src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80';
+                    }}
+                  />
+                  <span
+                    style={{
+                      position: 'absolute',
+                      top: '12px',
+                      left: '12px',
+                      backgroundColor: 'rgba(26, 26, 26, 0.85)',
+                      color: 'var(--softwhite)',
+                      fontSize: '0.7rem',
+                      fontWeight: 700,
+                      padding: '4px 10px',
+                      borderRadius: '999px',
+                      textTransform: 'uppercase',
+                    }}
+                  >
+                    {post.category}
+                  </span>
+                </Link>
+
+                <div style={{ padding: '22px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <div style={{ fontSize: '0.78rem', color: 'var(--mutedtext)', marginBottom: '8px' }}>
+                    {post.date} · {post.readTime}
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.2rem',
+                      color: 'var(--charcoal)',
+                      lineHeight: 1.3,
+                      marginBottom: '10px',
+                    }}
+                  >
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      style={{ color: 'inherit', textDecoration: 'none' }}
+                    >
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: '0.88rem',
+                      color: 'var(--mutedtext)',
+                      lineHeight: 1.55,
+                      marginBottom: '16px',
+                      flexGrow: 1,
+                    }}
+                  >
+                    {post.summary}
+                  </p>
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      color: 'var(--brand)',
+                      fontWeight: 700,
+                      fontSize: '0.85rem',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    Read Guide <ArrowRight size={14} />
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
         </div>

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Shield, FileText, ChevronRight } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
+import { SeoHead } from '../components/SeoHead';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Legal = () => {
   const { site } = useSite();
@@ -14,25 +16,27 @@ export const Legal = () => {
   }, [location.pathname]);
 
   return (
-    <section className="section-pad" style={{ paddingTop: '150px' }}>
-      <div className="container container-narrow">
-        <nav
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            fontSize: '0.82rem',
-            fontWeight: 600,
-            color: 'var(--mutedtext)',
-            marginBottom: '28px',
-          }}
-        >
-          <Link to="/" style={{ color: 'var(--mutedtext)' }}>Home</Link>
-          <ChevronRight size={14} />
-          <span style={{ color: 'var(--charcoal)' }}>
-            {activeTab === 'privacy' ? 'Privacy Policy' : 'Terms of Service'}
-          </span>
-        </nav>
+    <>
+      <SeoHead
+        title={activeTab === 'privacy' ? 'Privacy Policy | Mayank Aggarwal' : 'Terms of Service | Mayank Aggarwal'}
+        description={
+          activeTab === 'privacy'
+            ? 'Privacy Policy for Mayank Aggarwal portfolio. Explains collection, usage, and protection of contact inquiries under Indian DPDP Act guidelines.'
+            : 'Terms of Service governing freelance engagements, payment milestones, intellectual property, and client deliverables with Mayank Aggarwal.'
+        }
+        canonicalPath={activeTab === 'privacy' ? '/privacy-policy' : '/terms'}
+      />
+
+      <section className="section-pad" style={{ paddingTop: '150px' }}>
+        <div className="container container-narrow">
+          <Breadcrumbs
+            items={[
+              {
+                name: activeTab === 'privacy' ? 'Privacy Policy' : 'Terms of Service',
+                path: activeTab === 'privacy' ? '/privacy-policy' : '/terms',
+              },
+            ]}
+          />
 
         {/* Tab Switcher */}
         <div style={{ display: 'flex', gap: '10px', marginBottom: '32px' }}>
@@ -162,5 +166,6 @@ export const Legal = () => {
         )}
       </div>
     </section>
+    </>
   );
 };

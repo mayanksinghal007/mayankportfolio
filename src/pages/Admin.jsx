@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
 import { AdminAdsTab } from '../components/AdminAdsTab';
+import { SeoHead } from '../components/SeoHead';
 
 export const Admin = () => {
   const {
@@ -87,7 +88,13 @@ export const Admin = () => {
   // If Not Authenticated: Show High-Security Editorial Passkey Gate
   if (!isAdminLoggedIn) {
     return (
-      <div
+      <>
+        <SeoHead
+          title="Admin CMS Portal | Private Access"
+          description="Administration management portal for Mayank Aggarwal portfolio."
+          noindex={true}
+        />
+        <div
         style={{
           minHeight: '100vh',
           backgroundColor: 'var(--charcoal)',
@@ -177,6 +184,7 @@ export const Admin = () => {
           </div>
         </div>
       </div>
+      </>
     );
   }
 
@@ -270,7 +278,13 @@ export const Admin = () => {
   };
 
   return (
-    <div className="admin-layout">
+    <>
+      <SeoHead
+        title="Admin CMS Dashboard | Mayank Aggarwal"
+        description="Private CMS Dashboard"
+        noindex={true}
+      />
+      <div className="admin-layout">
       {/* Top Navbar */}
       <header className="admin-nav">
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
@@ -1142,5 +1156,6 @@ export const Admin = () => {
         </main>
       </div>
     </div>
+    </>
   );
 };

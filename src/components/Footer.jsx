@@ -51,6 +51,7 @@ export const Footer = () => {
               <li><Link to="/portfolio" className="footer-nav-link">Portfolio & Case Studies</Link></li>
               <li><Link to="/ads" className="footer-nav-link">Ads & Creative Work</Link></li>
               <li><Link to="/process" className="footer-nav-link">Working Process</Link></li>
+              <li><Link to="/blog" className="footer-nav-link">Articles & Guides</Link></li>
               <li><Link to="/contact" className="footer-nav-link">Start a Project</Link></li>
             </ul>
           </div>

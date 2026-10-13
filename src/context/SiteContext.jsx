@@ -6,43 +6,48 @@ import {
   INITIAL_INQUIRIES,
   DEFAULT_ADS,
 } from '../data/initialData';
+import { DEFAULT_BLOG_POSTS } from '../data/blogData';
 
 const SiteContext = createContext();
 
+// Helper to safely access localStorage during SSR / Prerendering in Node
+const getStored = (key, fallback) => {
+  if (typeof window === 'undefined') return fallback;
+  try {
+    const saved = localStorage.getItem(key);
+    return saved ? JSON.parse(saved) : fallback;
+  } catch (e) {
+    return fallback;
+  }
+};
+
 export const SiteProvider = ({ children }) => {
   // Site Info
-  const [site, setSite] = useState(() => {
-    const saved = localStorage.getItem('mayank_site_info');
-    return saved ? JSON.parse(saved) : DEFAULT_SITE;
-  });
+  const [site, setSite] = useState(() => getStored('mayank_site_info', DEFAULT_SITE));
 
   // Services
-  const [services, setServices] = useState(() => {
-    const saved = localStorage.getItem('mayank_services');
-    return saved ? JSON.parse(saved) : DEFAULT_SERVICES;
-  });
+  const [services, setServices] = useState(() => getStored('mayank_services', DEFAULT_SERVICES));
 
   // Portfolio
-  const [portfolio, setPortfolio] = useState(() => {
-    const saved = localStorage.getItem('mayank_portfolio');
-    return saved ? JSON.parse(saved) : DEFAULT_PORTFOLIO;
-  });
+  const [portfolio, setPortfolio] = useState(() => getStored('mayank_portfolio', DEFAULT_PORTFOLIO));
 
   // Ads
-  const [ads, setAds] = useState(() => {
-    const saved = localStorage.getItem('mayank_ads');
-    return saved ? JSON.parse(saved) : DEFAULT_ADS;
-  });
+  const [ads, setAds] = useState(() => getStored('mayank_ads', DEFAULT_ADS));
 
   // Inquiries
-  const [inquiries, setInquiries] = useState(() => {
-    const saved = localStorage.getItem('mayank_inquiries');
-    return saved ? JSON.parse(saved) : INITIAL_INQUIRIES;
-  });
+  const [inquiries, setInquiries] = useState(() => getStored('mayank_inquiries', INITIAL_INQUIRIES));
+
+  // Blog Posts
+  const [blogPosts, setBlogPosts] = useState(() => getStored('mayank_blog_posts', DEFAULT_BLOG_POSTS));
 
   // Admin Auth
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
-    return localStorage.getItem('mayank_admin_auth') === 'true';
+    if (typeof window === 'undefined') return false;
+    try {
+      return localStorage.getItem('mayank_admin_auth') === 'true';
+    } catch (e) {
+      return false;
+    }
   });
 
   // Toast notifications
@@ -50,34 +55,68 @@ export const SiteProvider = ({ children }) => {
 
   const showToast = (message, type = 'success') => {
     setToast({ id: Date.now(), message, type });
-    setTimeout(() => {
-      setToast(null);
-    }, 4000);
+    if (typeof window !== 'undefined') {
+      setTimeout(() => {
+        setToast(null);
+      }, 4000);
+    }
   };
 
   // Sync to localStorage
   useEffect(() => {
-    localStorage.setItem('mayank_site_info', JSON.stringify(site));
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('mayank_site_info', JSON.stringify(site));
+      } catch (e) {}
+    }
   }, [site]);
 
   useEffect(() => {
-    localStorage.setItem('mayank_services', JSON.stringify(services));
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('mayank_services', JSON.stringify(services));
+      } catch (e) {}
+    }
   }, [services]);
 
   useEffect(() => {
-    localStorage.setItem('mayank_portfolio', JSON.stringify(portfolio));
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('mayank_portfolio', JSON.stringify(portfolio));
+      } catch (e) {}
+    }
   }, [portfolio]);
 
   useEffect(() => {
-    localStorage.setItem('mayank_ads', JSON.stringify(ads));
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('mayank_ads', JSON.stringify(ads));
+      } catch (e) {}
+    }
   }, [ads]);
 
   useEffect(() => {
-    localStorage.setItem('mayank_inquiries', JSON.stringify(inquiries));
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('mayank_inquiries', JSON.stringify(inquiries));
+      } catch (e) {}
+    }
   }, [inquiries]);
 
   useEffect(() => {
-    localStorage.setItem('mayank_admin_auth', isAdminLoggedIn ? 'true' : 'false');
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('mayank_blog_posts', JSON.stringify(blogPosts));
+      } catch (e) {}
+    }
+  }, [blogPosts]);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      try {
+        localStorage.setItem('mayank_admin_auth', isAdminLoggedIn ? 'true' : 'false');
+      } catch (e) {}
+    }
   }, [isAdminLoggedIn]);
 
   // Actions
@@ -225,6 +264,40 @@ export const SiteProvider = ({ children }) => {
     showToast('Service details updated');
   };
 
+  // Blog Actions
+  const addBlogPost = (postData) => {
+    const now = new Date().toISOString().split('T')[0];
+    const newPost = {
+      id: `post-${Date.now()}`,
+      date: now,
+      updated: now,
+      published: true,
+      author: site.name || 'Mayank Aggarwal',
+      authorRole: site.title || 'Digital Marketing & AI Specialist',
+      ...postData,
+    };
+    setBlogPosts((prev) => [newPost, ...prev]);
+    showToast('Blog article created successfully');
+    return newPost;
+  };
+
+  const updateBlogPost = (id, updatedFields) => {
+    const now = new Date().toISOString().split('T')[0];
+    setBlogPosts((prev) =>
+      prev.map((post) =>
+        post.id === id
+          ? { ...post, ...updatedFields, updated: now }
+          : post
+      )
+    );
+    showToast('Blog article updated successfully');
+  };
+
+  const deleteBlogPost = (id) => {
+    setBlogPosts((prev) => prev.filter((post) => post.id !== id));
+    showToast('Blog article removed', 'info');
+  };
+
   const loginAdmin = (password) => {
     // Accepts demo admin password or quick access
     if (password === 'admin123' || password === 'mayank2026') {
@@ -252,6 +325,7 @@ export const SiteProvider = ({ children }) => {
     setPortfolio(DEFAULT_PORTFOLIO);
     setAds(DEFAULT_ADS);
     setInquiries(INITIAL_INQUIRIES);
+    setBlogPosts(DEFAULT_BLOG_POSTS);
     showToast('Demo data restored to defaults');
   };
 
@@ -263,6 +337,7 @@ export const SiteProvider = ({ children }) => {
         portfolio,
         ads,
         inquiries,
+        blogPosts,
         isAdminLoggedIn,
         toast,
         showToast,
@@ -282,6 +357,9 @@ export const SiteProvider = ({ children }) => {
         bulkUpdateAdStatus,
         reorderAds,
         updateService,
+        addBlogPost,
+        updateBlogPost,
+        deleteBlogPost,
         loginAdmin,
         loginAdminDirect,
         logoutAdmin,

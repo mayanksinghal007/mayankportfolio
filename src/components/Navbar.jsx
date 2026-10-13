@@ -29,6 +29,7 @@ export const Navbar = () => {
     { label: 'Portfolio', path: '/portfolio' },
     { label: 'Ads', path: '/ads' },
     { label: 'Process', path: '/process' },
+    { label: 'Blog', path: '/blog' },
     { label: 'Contact', path: '/contact' },
   ];
 

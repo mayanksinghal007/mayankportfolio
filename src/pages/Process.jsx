@@ -11,13 +11,22 @@ import {
 } from 'lucide-react';
 import { PROCESS_STEPS } from '../data/initialData';
 import { CtaBanner } from '../components/CtaBanner';
+import { SeoHead } from '../components/SeoHead';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Process = () => {
   return (
     <>
+      <SeoHead
+        title="Working Process & Methodology | Mayank Aggarwal"
+        description="Explore the 4-stage client workflow: discovery diagnostic, strategy sprint, execution launch, and weekly iteration."
+        canonicalPath="/process"
+      />
+
       {/* PROCESS HEADER */}
       <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '70px' }}>
         <div className="container">
+          <Breadcrumbs items={[{ name: 'Process & Workflow', path: '/process' }]} />
           <div style={{ maxWidth: '820px' }}>
             <span className="editorial-eyebrow">Proven Framework</span>
             <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>
@@ -119,7 +128,7 @@ export const Process = () => {
                   <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
                     {step.deliverables.map((deliv, i) => (
                       <li key={i} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.9rem', fontWeight: 600, color: 'var(--charcoal)' }}>
-                        <CheckCircle2 size={16} color="#FF3D0A" flexShrink={0} />
+                        <CheckCircle2 size={16} color="#FF3D0A" style={{ flexShrink: 0 }} />
                         <span>{deliv}</span>
                       </li>
                     ))}

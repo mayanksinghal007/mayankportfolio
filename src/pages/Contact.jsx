@@ -14,6 +14,8 @@ import {
 import { LinkedinIcon, InstagramIcon } from '../components/SocialIcons';
 import confetti from 'canvas-confetti';
 import { useSite } from '../context/SiteContext';
+import { SeoHead } from '../components/SeoHead';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const Contact = () => {
   const { site, services, addInquiry } = useSite();
@@ -163,9 +165,16 @@ export const Contact = () => {
 
   return (
     <>
+      <SeoHead
+        title="Contact Mayank Aggarwal | Start a Project in Delhi"
+        description="Get in touch with Mayank Aggarwal for Meta Ads management, AI video ads, or short-form content strategy. Direct WhatsApp and response within 12 hours."
+        canonicalPath="/contact"
+      />
+
       {/* CONTACT HEADER */}
       <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '60px' }}>
         <div className="container">
+          <Breadcrumbs items={[{ name: 'Contact', path: '/contact' }]} />
           <div style={{ maxWidth: '820px' }}>
             <span className="editorial-eyebrow">Get In Touch</span>
             <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>

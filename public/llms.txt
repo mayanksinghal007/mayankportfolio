@@ -1,0 +1,42 @@
+# Mayank Aggarwal — Digital Marketing & AI Specialist
+
+> Professional portfolio, services, and technical guides of Mayank Aggarwal, based in Delhi, India.
+
+## About
+Mayank Aggarwal is a Digital Marketing & AI Specialist with 1 year of hands-on experience in performance marketing, Meta Ads management, generative AI video production (Runway Gen-3, Kling AI), and short-form content strategy. He holds a B.Com (Hons) degree from Shaheed Bhagat Singh College, University of Delhi, and operates under the agency brand Klikwise.
+
+## Core Services
+- **Performance Marketing (Meta Ads):** Account structure, Pixel/CAPI setup, Advantage+ campaigns, and creative testing for D2C and service businesses.
+- **Social Media Management:** 30-day content calendar execution, reel scripting, and brand authority positioning.
+- **AI Video & Filmmaking:** Generative promotional videos and UGC ads using Runway Gen-3 Alpha, Kling AI, and sound design.
+- **AI Voiceover & Audio Design:** Neural voice narration using ElevenLabs Multilingual v2 with commercial audio clearance.
+- **AI Images & Creative Branding:** Midjourney v6.1 prompt engineering, static ad variations, and graphic design assets.
+- **Content & Reel Strategy:** 3-second hook formulas, retention pacing, and short-form video frameworks.
+- **SEO & Content Support:** Keyword mapping, on-page schema structuring, and high-intent blog content.
+
+## Key URLs
+- Homepage: https://example.com/
+- About Mayank: https://example.com/about
+- Services Directory: https://example.com/services
+- Portfolio Case Studies: https://example.com/portfolio
+- Ads Showcase: https://example.com/ads
+- Working Process: https://example.com/process
+- Marketing & AI Blog: https://example.com/blog
+- Contact & Inquiries: https://example.com/contact
+
+## Published Playbooks & Articles
+- [How to Start Meta Ads for a Small Business in India (Step by Step)](https://example.com/blog/how-to-start-meta-ads-small-business-india): To launch Meta Ads in India effectively, avoid the 'Boost Post' button. Instead, set up Meta Business Suite and Ads Manager, install the Meta Pixel on your website, create a Sales or Leads campaign objective, configure manual placements for Instagram Reels and Stories, and begin with a testing budget of ₹500 to ₹1,000 per day spread across 3 creative variations.
+- [Meta Ads Pixel and Conversions API Setup: A Beginner's Checklist](https://example.com/blog/meta-ads-pixel-conversions-api-setup-checklist): The Meta Pixel alone loses 15% to 30% of conversion data due to iOS privacy constraints, ad blockers, and browser cookie restrictions. To fix this, implement the Meta Conversions API (CAPI) alongside the browser Pixel. This creates a hybrid server-to-browser tracking setup that deduplicates events and restores accurate ROAS attribution.
+- [How to Make AI Video Ads with Runway, Kling and Higgsfield (Workflow)](https://example.com/blog/how-to-make-ai-video-ads-runway-kling-higgsfield): Creating photorealistic AI video ads without costly video shoots requires a hybrid pipeline: generate base character and product plates in Midjourney, animate motion vectors in Kling AI or Runway Gen-3 Alpha, inject camera movement prompts, composite real product packaging in DaVinci Resolve or Premiere, and master with ElevenLabs neural voiceover.
+- [ElevenLabs AI Voiceover for Ads: Tips for Natural-Sounding Audio](https://example.com/blog/elevenlabs-ai-voiceover-ads-natural-audio-tips): To prevent ElevenLabs voiceovers from sounding robotic or monotonous, select expressive narrative models (Eleven Multilingual v2 or Turbo v2.5), set Stability between 35% and 55%, calibrate Similarity to 75%, and use punctuation hacks (em-dashes, ellipses, phonetic spelling) to enforce natural human breathing beats.
+- [Instagram Reel Hooks: 15 Hook Formulas You Can Use Today](https://example.com/blog/instagram-reel-hooks-15-hook-formulas-you-can-use-today): Over 65% of viewers drop off an Instagram Reel within the first 3 seconds. High-performing hooks do not introduce the speaker; they instantly present an open curiosity loop, challenge a conventional industry belief, or call out a highly specific pain point through synchronized visual and spoken stimuli.
+- [SEO vs AEO vs GEO: How to Get Found in Google and AI Search in 2026](https://example.com/blog/seo-vs-aeo-vs-geo-search-optimization-2026): Traditional SEO optimizes for keyword rankings in ten blue links. AEO (Answer Engine Optimization) structures content into direct 50-word answers for Google AI Overviews and featured snippets. GEO (Generative Engine Optimization) formats brand entities, structured citations, and llms.txt files so LLMs like ChatGPT, Perplexity, and Claude cite your brand as an authoritative industry source.
+- [30-Day Social Media Content Calendar Template for Small Brands](https://example.com/blog/30-day-social-media-content-calendar-template): Consistency fails when brands try to brainstorm fresh content daily. A sustainable 30-day social media calendar relies on 4 core content pillars—Education (40%), Behind-the-Scenes/Proof (30%), Conversation/Culture (20%), and Direct Offers (10%)—batched across 2 recording sessions per month.
+- [Digital Marketing Career in India: How I Started with 1 Year of Experience](https://example.com/blog/digital-marketing-career-india-1-year-experience): Breaking into digital marketing in India in 2026 requires moving past surface-level certificates. Based on my journey through Shaheed Bhagat Singh College (B.Com Hons), digital marketing internships, and launching Klikwise, here is the honest roadmap: master Meta Ads mechanics, learn generative AI tools for rapid creative output, and build a public portfolio of real work.
+
+## Contact Details
+- Location: Delhi, India
+- Email: mayank@klikwise.com
+- WhatsApp: +919217756033
+- LinkedIn: https://www.linkedin.com/in/mayank-aggarwal
+- Instagram: https://www.instagram.com/mayankaggarwal_7

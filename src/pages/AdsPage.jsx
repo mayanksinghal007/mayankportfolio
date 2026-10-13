@@ -2,13 +2,22 @@ import React from 'react';
 import { Megaphone, Layers, Film, TrendingUp, Sparkles } from 'lucide-react';
 import { AdsSection } from '../components/AdsSection';
 import { CtaBanner } from '../components/CtaBanner';
+import { SeoHead } from '../components/SeoHead';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const AdsPage = () => {
   return (
     <>
+      <SeoHead
+        title="Meta Ads & Creative Gallery | Mayank Aggarwal"
+        description="Curated gallery of high-converting Meta Ads, Instagram carousels, and AI video commercials designed by Mayank Aggarwal."
+        canonicalPath="/ads"
+      />
+
       {/* ADS HERO HEADER */}
       <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '40px' }}>
         <div className="container">
+          <Breadcrumbs items={[{ name: 'Ads Showcase', path: '/ads' }]} />
           <div style={{ maxWidth: '820px' }}>
             <span className="editorial-eyebrow">
               <Megaphone size={14} style={{ marginRight: '6px', color: 'var(--brand)' }} />

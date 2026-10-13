@@ -15,6 +15,8 @@ import {
 } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
 import { CtaBanner } from '../components/CtaBanner';
+import { SeoHead } from '../components/SeoHead';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 const serviceIcons = {
   'performance-marketing': TrendingUp,
@@ -55,9 +57,16 @@ export const Services = () => {
 
   return (
     <>
+      <SeoHead
+        title="Digital Marketing & AI Creative Services | Mayank Aggarwal"
+        description="Explore performance marketing, Meta Ads, social media strategy, AI video production, and SEO services tailored for ambitious Indian and global brands."
+        canonicalPath="/services"
+      />
+
       {/* SERVICES HEADER */}
       <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '70px' }}>
         <div className="container">
+          <Breadcrumbs items={[{ name: 'Services', path: '/services' }]} />
           <div style={{ maxWidth: '820px' }}>
             <span className="editorial-eyebrow">Full-Stack Offerings</span>
             <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>

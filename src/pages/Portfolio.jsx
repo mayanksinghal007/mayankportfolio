@@ -5,6 +5,8 @@ import { useSite } from '../context/SiteContext';
 import { MediaModal } from '../components/MediaModal';
 import { CtaBanner } from '../components/CtaBanner';
 import { PORTFOLIO_NOTE } from '../config/site';
+import { SeoHead } from '../components/SeoHead';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 const CATEGORIES = [
   'All',
@@ -37,9 +39,16 @@ export const Portfolio = () => {
 
   return (
     <>
+      <SeoHead
+        title="Portfolio & Case Studies | Mayank Aggarwal"
+        description="Explore concept campaigns, AI video showreels, Meta ad funnels, and creative strategy projects by Mayank Aggarwal."
+        canonicalPath="/portfolio"
+      />
+
       {/* PORTFOLIO HEADER */}
       <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '50px' }}>
         <div className="container">
+          <Breadcrumbs items={[{ name: 'Portfolio', path: '/portfolio' }]} />
           <div style={{ maxWidth: '820px' }}>
             <span className="editorial-eyebrow">Case Studies & Creative Showcase</span>
             <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>

@@ -1,10 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Home, Compass } from 'lucide-react';
+import { SeoHead } from '../components/SeoHead';
 
 export const NotFound = () => {
   return (
-    <section
+    <>
+      <SeoHead
+        title="Page Not Found (404) | Mayank Aggarwal"
+        description="The requested page could not be found. Return to Mayank Aggarwal's portfolio homepage to explore case studies, marketing services, and AI guides."
+        noindex={true}
+      />
+      <section
       style={{
         minHeight: '85vh',
         display: 'flex',
@@ -51,5 +58,6 @@ export const NotFound = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };

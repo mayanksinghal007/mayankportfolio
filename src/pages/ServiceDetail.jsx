@@ -17,6 +17,8 @@ import {
 import { useSite } from '../context/SiteContext';
 import { MediaModal } from '../components/MediaModal';
 import { CtaBanner } from '../components/CtaBanner';
+import { SeoHead } from '../components/SeoHead';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const ServiceDetail = () => {
   const { slug } = useParams();
@@ -45,29 +47,41 @@ export const ServiceDetail = () => {
     setIsModalOpen(true);
   };
 
+  const serviceJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.name,
+    serviceType: service.name,
+    description: service.intro || service.overview,
+    provider: {
+      '@type': 'Person',
+      name: site.name || 'Mayank Aggarwal',
+      jobTitle: site.title || 'Digital Marketing & AI Specialist',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'India',
+    },
+  };
+
   return (
     <>
+      <SeoHead
+        title={`${service.name} Services | Mayank Aggarwal`}
+        description={service.intro || service.overview}
+        canonicalPath={`/services/${service.slug}`}
+        jsonLd={serviceJsonLd}
+      />
+
       {/* SERVICE HEADER */}
       <section className="section-pad" style={{ paddingTop: '150px', paddingBottom: '70px' }}>
         <div className="container">
-          {/* Breadcrumb */}
-          <nav
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              fontSize: '0.82rem',
-              fontWeight: 600,
-              color: 'var(--mutedtext)',
-              marginBottom: '28px',
-            }}
-          >
-            <Link to="/" style={{ color: 'var(--mutedtext)' }}>Home</Link>
-            <ChevronRight size={14} />
-            <Link to="/services" style={{ color: 'var(--mutedtext)' }}>Services</Link>
-            <ChevronRight size={14} />
-            <span style={{ color: 'var(--charcoal)' }}>{service.name}</span>
-          </nav>
+          <Breadcrumbs
+            items={[
+              { name: 'Services', path: '/services' },
+              { name: service.name, path: `/services/${service.slug}` },
+            ]}
+          />
 
           <div style={{ maxWidth: '880px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>

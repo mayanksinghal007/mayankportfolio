@@ -1,0 +1,11 @@
+/* TEAM */
+Founder & Developer: Mayank Aggarwal
+Role: Digital Marketing & AI Specialist
+Location: Delhi, India
+Website: https://example.com
+
+/* TECH STACK */
+Frontend: React 19, React Router 7, Vite 8
+Styling: Vanilla CSS Design Tokens, Bricolage Grotesque, Instrument Serif, DM Sans, JetBrains Mono
+Prerendering: Static SSR HTML via renderToString
+SEO: Schema.org JSON-LD, Open Graph, Twitter Cards, llms.txt

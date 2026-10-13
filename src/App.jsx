@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import React, { useEffect, Suspense, lazy } from 'react';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { SiteProvider } from './context/SiteContext';
 import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
@@ -17,26 +18,42 @@ import { AdsPage } from './pages/AdsPage';
 import { Admin } from './pages/Admin';
 import { Legal } from './pages/Legal';
 import { NotFound } from './pages/NotFound';
+import { Blog } from './pages/Blog';
+import { BlogPost } from './pages/BlogPost';
 
 // Helper to automatically scroll to top on every navigation
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
+    }
   }, [pathname]);
 
   return null;
 };
 
-// Layout Wrapper
-const AppLayout = () => {
+// Trailing slash redirect helper for consistent canonical indexing
+const TrailingSlashHandler = () => {
+  const location = useLocation();
+  if (location.pathname.length > 1 && location.pathname.endsWith('/')) {
+    const cleanPath = location.pathname.slice(0, -1);
+    return <Navigate to={`${cleanPath}${location.search}${location.hash}`} replace />;
+  }
+  return null;
+};
+
+// Exported Layout Wrapper for client and SSR prerendering
+export const AppLayout = () => {
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
 
   return (
     <>
       <ScrollToTop />
+      <TrailingSlashHandler />
+
       {/* Editorial Grain Overlay */}
       <div className="grain-overlay" />
 
@@ -53,6 +70,8 @@ const AppLayout = () => {
           <Route path="/ads" element={<AdsPage />} />
           <Route path="/process" element={<Process />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/privacy-policy" element={<Legal />} />
           <Route path="/terms" element={<Legal />} />
@@ -71,10 +90,12 @@ const AppLayout = () => {
 
 export default function App() {
   return (
-    <SiteProvider>
-      <BrowserRouter>
-        <AppLayout />
-      </BrowserRouter>
-    </SiteProvider>
+    <HelmetProvider>
+      <SiteProvider>
+        <BrowserRouter>
+          <AppLayout />
+        </BrowserRouter>
+      </SiteProvider>
+    </HelmetProvider>
   );
 }

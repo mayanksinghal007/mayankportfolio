@@ -19,15 +19,24 @@ import {
   SKILL_CATEGORIES,
   WHY_CHOOSE_ME,
 } from '../data/initialData';
+import { SeoHead } from '../components/SeoHead';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 
 export const About = () => {
   const { site } = useSite();
 
   return (
     <>
+      <SeoHead
+        title="About Mayank Aggarwal | Digital Marketer & AI Specialist"
+        description="Learn about Mayank Aggarwal, a Digital Marketing & AI Specialist from Delhi, India with 1 year of hands-on experience in Meta Ads, AI video, and creative direction."
+        canonicalPath="/about"
+      />
+
       {/* ABOUT HEADER SECTION */}
       <section className="section-pad" style={{ paddingTop: '150px' }}>
         <div className="container">
+          <Breadcrumbs items={[{ name: 'About Mayank', path: '/about' }]} />
           <div
             style={{
               display: 'grid',
