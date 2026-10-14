@@ -2,71 +2,71 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mayank Aggarwal — Marketing &amp; AI Playbooks</title>
-    <link>https://example.com/blog</link>
+    <link>https://mayank-aggarwal.vercel.app/blog</link>
     <description>Tactical guides on Meta Ads, generative AI video workflows, short-form reel hooks, and modern SEO/AEO/GEO strategies by Mayank Aggarwal.</description>
     <language>en-IN</language>
-    <lastBuildDate>Tue, 13 Oct 2026 08:06:50 GMT</lastBuildDate>
-    <atom:link href="https://example.com/rss.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 14 Oct 2026 10:32:48 GMT</lastBuildDate>
+    <atom:link href="https://mayank-aggarwal.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title><![CDATA[How to Start Meta Ads for a Small Business in India (Step by Step)]]></title>
-      <link>https://example.com/blog/how-to-start-meta-ads-small-business-india</link>
-      <guid isPermaLink="true">https://example.com/blog/how-to-start-meta-ads-small-business-india</guid>
+      <link>https://mayank-aggarwal.vercel.app/blog/how-to-start-meta-ads-small-business-india</link>
+      <guid isPermaLink="true">https://mayank-aggarwal.vercel.app/blog/how-to-start-meta-ads-small-business-india</guid>
       <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[To launch Meta Ads in India effectively, avoid the 'Boost Post' button. Instead, set up Meta Business Suite and Ads Manager, install the Meta Pixel on your website, create a Sales or Leads campaign objective, configure manual placements for Instagram Reels and Stories, and begin with a testing budget of ₹500 to ₹1,000 per day spread across 3 creative variations.]]></description>
       <category>Performance Marketing</category>
     </item>
     <item>
       <title><![CDATA[Meta Ads Pixel and Conversions API Setup: A Beginner's Checklist]]></title>
-      <link>https://example.com/blog/meta-ads-pixel-conversions-api-setup-checklist</link>
-      <guid isPermaLink="true">https://example.com/blog/meta-ads-pixel-conversions-api-setup-checklist</guid>
+      <link>https://mayank-aggarwal.vercel.app/blog/meta-ads-pixel-conversions-api-setup-checklist</link>
+      <guid isPermaLink="true">https://mayank-aggarwal.vercel.app/blog/meta-ads-pixel-conversions-api-setup-checklist</guid>
       <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[The Meta Pixel alone loses 15% to 30% of conversion data due to iOS privacy constraints, ad blockers, and browser cookie restrictions. To fix this, implement the Meta Conversions API (CAPI) alongside the browser Pixel. This creates a hybrid server-to-browser tracking setup that deduplicates events and restores accurate ROAS attribution.]]></description>
       <category>Performance Marketing</category>
     </item>
     <item>
       <title><![CDATA[How to Make AI Video Ads with Runway, Kling and Higgsfield (Workflow)]]></title>
-      <link>https://example.com/blog/how-to-make-ai-video-ads-runway-kling-higgsfield</link>
-      <guid isPermaLink="true">https://example.com/blog/how-to-make-ai-video-ads-runway-kling-higgsfield</guid>
+      <link>https://mayank-aggarwal.vercel.app/blog/how-to-make-ai-video-ads-runway-kling-higgsfield</link>
+      <guid isPermaLink="true">https://mayank-aggarwal.vercel.app/blog/how-to-make-ai-video-ads-runway-kling-higgsfield</guid>
       <pubDate>Fri, 25 Sep 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Creating photorealistic AI video ads without costly video shoots requires a hybrid pipeline: generate base character and product plates in Midjourney, animate motion vectors in Kling AI or Runway Gen-3 Alpha, inject camera movement prompts, composite real product packaging in DaVinci Resolve or Premiere, and master with ElevenLabs neural voiceover.]]></description>
       <category>AI Video Creation</category>
     </item>
     <item>
       <title><![CDATA[ElevenLabs AI Voiceover for Ads: Tips for Natural-Sounding Audio]]></title>
-      <link>https://example.com/blog/elevenlabs-ai-voiceover-ads-natural-audio-tips</link>
-      <guid isPermaLink="true">https://example.com/blog/elevenlabs-ai-voiceover-ads-natural-audio-tips</guid>
+      <link>https://mayank-aggarwal.vercel.app/blog/elevenlabs-ai-voiceover-ads-natural-audio-tips</link>
+      <guid isPermaLink="true">https://mayank-aggarwal.vercel.app/blog/elevenlabs-ai-voiceover-ads-natural-audio-tips</guid>
       <pubDate>Mon, 28 Sep 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[To prevent ElevenLabs voiceovers from sounding robotic or monotonous, select expressive narrative models (Eleven Multilingual v2 or Turbo v2.5), set Stability between 35% and 55%, calibrate Similarity to 75%, and use punctuation hacks (em-dashes, ellipses, phonetic spelling) to enforce natural human breathing beats.]]></description>
       <category>AI Voiceover</category>
     </item>
     <item>
       <title><![CDATA[Instagram Reel Hooks: 15 Hook Formulas You Can Use Today]]></title>
-      <link>https://example.com/blog/instagram-reel-hooks-15-hook-formulas-you-can-use-today</link>
-      <guid isPermaLink="true">https://example.com/blog/instagram-reel-hooks-15-hook-formulas-you-can-use-today</guid>
+      <link>https://mayank-aggarwal.vercel.app/blog/instagram-reel-hooks-15-hook-formulas-you-can-use-today</link>
+      <guid isPermaLink="true">https://mayank-aggarwal.vercel.app/blog/instagram-reel-hooks-15-hook-formulas-you-can-use-today</guid>
       <pubDate>Thu, 01 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Over 65% of viewers drop off an Instagram Reel within the first 3 seconds. High-performing hooks do not introduce the speaker; they instantly present an open curiosity loop, challenge a conventional industry belief, or call out a highly specific pain point through synchronized visual and spoken stimuli.]]></description>
       <category>Content Strategy</category>
     </item>
     <item>
       <title><![CDATA[SEO vs AEO vs GEO: How to Get Found in Google and AI Search in 2026]]></title>
-      <link>https://example.com/blog/seo-vs-aeo-vs-geo-search-optimization-2026</link>
-      <guid isPermaLink="true">https://example.com/blog/seo-vs-aeo-vs-geo-search-optimization-2026</guid>
+      <link>https://mayank-aggarwal.vercel.app/blog/seo-vs-aeo-vs-geo-search-optimization-2026</link>
+      <guid isPermaLink="true">https://mayank-aggarwal.vercel.app/blog/seo-vs-aeo-vs-geo-search-optimization-2026</guid>
       <pubDate>Sun, 04 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Traditional SEO optimizes for keyword rankings in ten blue links. AEO (Answer Engine Optimization) structures content into direct 50-word answers for Google AI Overviews and featured snippets. GEO (Generative Engine Optimization) formats brand entities, structured citations, and llms.txt files so LLMs like ChatGPT, Perplexity, and Claude cite your brand as an authoritative industry source.]]></description>
       <category>SEO & Growth</category>
     </item>
     <item>
       <title><![CDATA[30-Day Social Media Content Calendar Template for Small Brands]]></title>
-      <link>https://example.com/blog/30-day-social-media-content-calendar-template</link>
-      <guid isPermaLink="true">https://example.com/blog/30-day-social-media-content-calendar-template</guid>
+      <link>https://mayank-aggarwal.vercel.app/blog/30-day-social-media-content-calendar-template</link>
+      <guid isPermaLink="true">https://mayank-aggarwal.vercel.app/blog/30-day-social-media-content-calendar-template</guid>
       <pubDate>Wed, 07 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Consistency fails when brands try to brainstorm fresh content daily. A sustainable 30-day social media calendar relies on 4 core content pillars—Education (40%), Behind-the-Scenes/Proof (30%), Conversation/Culture (20%), and Direct Offers (10%)—batched across 2 recording sessions per month.]]></description>
       <category>Social Media Management</category>
     </item>
     <item>
       <title><![CDATA[Digital Marketing Career in India: How I Started with 1 Year of Experience]]></title>
-      <link>https://example.com/blog/digital-marketing-career-india-1-year-experience</link>
-      <guid isPermaLink="true">https://example.com/blog/digital-marketing-career-india-1-year-experience</guid>
+      <link>https://mayank-aggarwal.vercel.app/blog/digital-marketing-career-india-1-year-experience</link>
+      <guid isPermaLink="true">https://mayank-aggarwal.vercel.app/blog/digital-marketing-career-india-1-year-experience</guid>
       <pubDate>Sat, 10 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Breaking into digital marketing in India in 2026 requires moving past surface-level certificates. Based on my journey through Shaheed Bhagat Singh College (B.Com Hons), digital marketing internships, and launching Klikwise, here is the honest roadmap: master Meta Ads mechanics, learn generative AI tools for rapid creative output, and build a public portfolio of real work.]]></description>
       <category>Career & Perspectives</category>

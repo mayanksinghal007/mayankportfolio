@@ -2,7 +2,7 @@
 Founder & Developer: Mayank Aggarwal
 Role: Digital Marketing & AI Specialist
 Location: Delhi, India
-Website: https://example.com
+Website: https://mayank-aggarwal.vercel.app
 
 /* TECH STACK */
 Frontend: React 19, React Router 7, Vite 8

@@ -23,7 +23,7 @@ export const SITE_CONFIG = {
   instagram: "https://www.instagram.com/mayankaggarwal_7",
   cvUrl: "/Mayank_Aggarwal_Resume.pdf", // [REPLACE] upload your resume to /public
   indexNowKey: "8f1a23c5b4d7e901f2a34b56c7d8e90a",
-  siteUrl: typeof window !== "undefined" && window.location ? window.location.origin : "https://example.com",
+  siteUrl: typeof window !== "undefined" && window.location ? window.location.origin : "https://mayank-aggarwal.vercel.app",
 };
 
 // Verified Company Spellings (Single Source of Truth)
