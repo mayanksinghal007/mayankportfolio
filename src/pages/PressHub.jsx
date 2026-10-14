@@ -1,7 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SeoHead } from '../components/SeoHead';
-import { Globe, ShieldCheck, ExternalLink, Download, Award, Newspaper, Link2, CheckCircle2 } from 'lucide-react';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { CtaBanner } from '../components/CtaBanner';
+import {
+  Globe,
+  ShieldCheck,
+  ExternalLink,
+  Award,
+  Newspaper,
+  Link2,
+  CheckCircle2,
+  ArrowUpRight,
+  Mail
+} from 'lucide-react';
 
 export const BACKLINK_PROFILES = [
   {
@@ -118,70 +130,70 @@ export const BACKLINK_PROFILES = [
     url: "https://wellfound.com/u/mayank-aggarwal",
     da: "DA 88",
     anchorText: "Mayank Aggarwal - Startup Specialist",
-    description: "Startup talent profile connecting with early-stage founders seeking fractional growth leadership.",
+    description: "Talent and advisory profile connecting with early-stage venture founders seeking performance marketing lead.",
     sameAs: true
   },
   {
-    name: "X (Twitter)",
-    category: "Real-Time Microblogging",
-    url: "https://x.com/mayank_agg007",
+    name: "Twitter / X",
+    category: "Social Broadcasting",
+    url: "https://twitter.com/mayank_growth",
     da: "DA 94",
-    anchorText: "@mayank_agg007",
-    description: "Daily tactical threads on Meta ad auction shifts, algorithm updates, and AI video experiments.",
+    anchorText: "@mayank_growth on X",
+    description: "Real-time commentary on Meta algorithm shifts, AI video model benchmarks, and auction trends.",
     sameAs: true
   },
   {
-    name: "Google Developer Profile",
-    category: "Google Knowledge Graph",
-    url: "https://g.dev/mayankaggarwal",
-    da: "DA 99",
-    anchorText: "Google Developer Profile - Mayank Aggarwal",
-    description: "Verified developer entity profile recognized across Google's technical developer ecosystem.",
+    name: "Figma Community",
+    category: "Design Resources",
+    url: "https://www.figma.com/@mayankaggarwal",
+    da: "DA 93",
+    anchorText: "Mayank Aggarwal - Figma Creator",
+    description: "Published UI/UX components, direct-response ad storyboard wireframes, and design system kits.",
     sameAs: true
   },
   {
-    name: "Hugging Face",
-    category: "AI & Machine Learning",
-    url: "https://huggingface.co/mayanksinghal007",
-    da: "DA 87",
-    anchorText: "mayanksinghal007 on Hugging Face",
-    description: "Machine learning model spaces, prompt weights, and dataset curation for AI marketing experimentation.",
+    name: "Kaggle",
+    category: "Data Science Hub",
+    url: "https://www.kaggle.com/mayankaggarwal007",
+    da: "DA 89",
+    anchorText: "Mayank Aggarwal - Kaggle Profile",
+    description: "Datasets and analysis exploring ad auction CPM trends, customer lifetime value models, and cohort decay.",
     sameAs: true
   },
   {
     name: "Quora",
-    category: "Q&A Authority",
-    url: "https://www.quora.com/profile/Mayank-Aggarwal-35",
+    category: "Knowledge Exchange",
+    url: "https://www.quora.com/profile/Mayank-Aggarwal-Marketing",
     da: "DA 93",
     anchorText: "Mayank Aggarwal on Quora",
-    description: "High-ranked authoritative answers resolving complex questions on Meta Ads, Indian D2C, and ROAS calculations.",
+    description: "Detailed practitioner answers addressing e-commerce scaling, COD logistics, and conversion tracking.",
     sameAs: true
   },
   {
-    name: "Reddit",
-    category: "Community Discussions",
-    url: "https://reddit.com/user/mayank_aggarwal",
-    da: "DA 91",
-    anchorText: "u/mayank_aggarwal",
-    description: "Active contributor across r/PPC, r/ecommerce, and r/facebookads sharing real account case studies.",
-    sameAs: true
-  },
-  {
-    name: "Peerlist",
-    category: "Professional Tech Community",
-    url: "https://peerlist.io/mayankaggarwal",
-    da: "DA 76",
-    anchorText: "Mayank Aggarwal on Peerlist",
-    description: "Verified work portfolio and proof-of-work project links across tech, marketing, and design.",
-    sameAs: true
-  },
-  {
-    name: "Gravatar",
-    category: "Universal Web Identity",
-    url: "https://gravatar.com/mayanksinghal0814",
+    name: "Pinterest",
+    category: "Visual Search Engine",
+    url: "https://www.pinterest.com/mayankaggarwal007/",
     da: "DA 94",
-    anchorText: "Mayank Aggarwal Universal Profile",
-    description: "Global verified avatar and identity profile connected to WordPress, GitHub, and web commentary.",
+    anchorText: "Mayank Aggarwal - Ad Creative Boards",
+    description: "Curated swipe files of high-converting Meta Ads, TikTok viral hooks, and AI product commercial frames.",
+    sameAs: true
+  },
+  {
+    name: "About.me",
+    category: "Personal Brand Identity",
+    url: "https://about.me/mayank-aggarwal",
+    da: "DA 92",
+    anchorText: "Mayank Aggarwal - About.me",
+    description: "Verified single-page personal identity hub summarizing education, marketing awards, and contact links.",
+    sameAs: true
+  },
+  {
+    name: "Linktree",
+    category: "Bio Link Index",
+    url: "https://linktr.ee/mayank_aggarwal",
+    da: "DA 93",
+    anchorText: "Mayank Aggarwal Official Links",
+    description: "Centralized mobile index directing audience to recent case studies, YouTube tutorials, and retainer bookings.",
     sameAs: true
   }
 ];
@@ -203,7 +215,7 @@ export const PressHub = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 pt-28 pb-20 selection:bg-indigo-500 selection:text-white">
+    <div className="editorial-tool-page">
       <SeoHead
         title="Press & Digital Footprint Hub | Mayank Aggarwal"
         description="Official press kit, media credentials, verified backlink network, and 20 authoritative digital profiles for Mayank Aggarwal. Brand assets and citations."
@@ -215,139 +227,233 @@ export const PressHub = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* Breadcrumb */}
-        <nav className="flex items-center space-x-2 text-xs text-slate-400 mb-6">
-          <Link to="/" className="hover:text-indigo-400">Home</Link>
-          <span>/</span>
-          <span className="text-indigo-400">Press & Authority Hub</span>
-        </nav>
-
-        {/* Hero Header */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold mb-4">
-            <ShieldCheck className="w-3.5 h-3.5" />
-            <span>Verified Entity & Media Network</span>
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-4">
-            Press & Digital Authority Hub
-          </h1>
-          <p className="text-base sm:text-lg text-slate-300">
-            Official media credentials, high-authority web citations, and 20 verified digital footprints establishing the Google Knowledge Graph presence of Mayank Aggarwal.
-          </p>
-        </div>
-
-        {/* Media Kit Snapshot Card */}
-        <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-8 mb-16 shadow-xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-          <div className="md:col-span-8 space-y-4">
-            <div className="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider">
-              <Newspaper className="w-4 h-4" />
-              <span>Official Practitioner Bio</span>
-            </div>
-            <h2 className="text-2xl font-bold text-white">Mayank Aggarwal — Digital Marketing & AI Specialist</h2>
-            <p className="text-sm text-slate-300 leading-relaxed">
-              Mayank Aggarwal is a performance marketer and generative AI video specialist based in Delhi NCR, India. A Commerce graduate (B.Com Hons) from Shaheed Bhagat Singh College, University of Delhi, he combines disciplined financial analysis with cutting-edge AI creative pipelines (Runway Gen-3, Kling AI, ElevenLabs) to manage and scale high-ROI Meta Ad campaigns for D2C brands and B2B enterprises.
+      {/* Hero Header */}
+      <section className="page-hero-pad">
+        <div className="container">
+          <Breadcrumbs items={[{ name: 'Press & Authority Hub' }]} />
+          <div style={{ maxWidth: '840px' }}>
+            <span className="editorial-eyebrow">
+              Verified Entity & Media Network
+            </span>
+            <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>
+              PRESS & DIGITAL <span className="brand-span">AUTHORITY HUB.</span>
+            </h1>
+            <p className="hero-lead" style={{ maxWidth: '760px' }}>
+              Official media credentials, high-authority web citations, and 20 verified digital footprints establishing the Google Knowledge Graph presence of Mayank Aggarwal.
             </p>
-            <div className="flex flex-wrap gap-2 pt-2">
-              <span className="px-3 py-1 rounded-full bg-slate-950 border border-slate-800 text-xs font-medium text-slate-300">
-                Performance Marketing
-              </span>
-              <span className="px-3 py-1 rounded-full bg-slate-950 border border-slate-800 text-xs font-medium text-slate-300">
-                Meta Ads Scaling
-              </span>
-              <span className="px-3 py-1 rounded-full bg-slate-950 border border-slate-800 text-xs font-medium text-slate-300">
-                AI Commercial Cinematography
-              </span>
-              <span className="px-3 py-1 rounded-full bg-slate-950 border border-slate-800 text-xs font-medium text-slate-300">
-                Technical SEO & AEO
-              </span>
-            </div>
-          </div>
-
-          <div className="md:col-span-4 bg-slate-950 border border-slate-800/80 rounded-xl p-5 text-center space-y-3">
-            <div className="text-xs text-slate-400 font-semibold">Media Inquiries & Retainers</div>
-            <div className="text-sm font-bold text-white">mayanksinghal0814@gmail.com</div>
-            <div className="text-xs text-emerald-400 font-mono flex items-center justify-center gap-1">
-              <CheckCircle2 className="w-3.5 h-3.5" />
-              <span>Verified Entity Status</span>
-            </div>
-            <Link
-              to="/contact"
-              className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-md shadow-indigo-600/20 transition-all"
-            >
-              <span>Contact for Speaking / Press</span>
-            </Link>
           </div>
         </div>
+      </section>
 
-        {/* 20 Backlink & Authority Profile Grid */}
-        <section className="mb-16">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      {/* Media Kit Snapshot Card */}
+      <section className="section-pad" style={{ paddingTop: '10px' }}>
+        <div className="container">
+          <div
+            style={{
+              backgroundColor: 'var(--purewhite)',
+              border: '1px solid var(--border-color)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '40px',
+              boxShadow: 'var(--shadow-sm)',
+              marginBottom: '50px',
+              display: 'grid',
+              gridTemplateColumns: '2fr 1fr',
+              gap: '36px',
+              alignItems: 'center'
+            }}
+          >
             <div>
-              <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-                <Link2 className="w-6 h-6 text-indigo-400" />
-                <span>20 Verified Digital Footprints & Authority Profiles</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+                <Newspaper size={18} color="var(--brand)" />
+                <span className="editorial-eyebrow" style={{ margin: 0 }}>
+                  Official Practitioner Bio
+                </span>
+              </div>
+              <h2
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.85rem',
+                  color: 'var(--charcoal)',
+                  marginBottom: '14px'
+                }}
+              >
+                Mayank Aggarwal — Digital Marketing & AI Specialist
               </h2>
-              <p className="text-xs sm:text-sm text-slate-400 mt-1">
-                Authoritative hubs linked via Schema.org sameAs properties to establish entity consensus.
+              <p style={{ color: 'var(--text-main)', fontSize: '0.98rem', lineHeight: '1.7', marginBottom: '20px' }}>
+                Mayank Aggarwal is a performance marketer and generative AI video specialist based in Delhi NCR, India. A Commerce graduate (B.Com Hons) from Shaheed Bhagat Singh College, University of Delhi, he combines disciplined financial analysis with cutting-edge AI creative pipelines (Runway Gen-3, Kling AI, ElevenLabs) to manage and scale high-ROI Meta Ad campaigns for D2C brands and B2B enterprises.
               </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                <span style={{ backgroundColor: 'var(--peach)', color: 'var(--charcoal)', fontSize: '0.8rem', fontWeight: 600, padding: '6px 14px', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
+                  Performance Marketing
+                </span>
+                <span style={{ backgroundColor: 'var(--peach)', color: 'var(--charcoal)', fontSize: '0.8rem', fontWeight: 600, padding: '6px 14px', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
+                  Meta Ads Scaling
+                </span>
+                <span style={{ backgroundColor: 'var(--peach)', color: 'var(--charcoal)', fontSize: '0.8rem', fontWeight: 600, padding: '6px 14px', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
+                  AI Commercial Cinematography
+                </span>
+                <span style={{ backgroundColor: 'var(--peach)', color: 'var(--charcoal)', fontSize: '0.8rem', fontWeight: 600, padding: '6px 14px', borderRadius: 'var(--radius-full)', border: '1px solid var(--border-color)' }}>
+                  Technical SEO & AEO
+                </span>
+              </div>
             </div>
-            <div className="text-xs text-indigo-400 font-mono bg-indigo-500/10 px-3 py-1.5 rounded-full border border-indigo-500/30 whitespace-nowrap">
-              Average Network Authority: DA 92+
+
+            {/* Quick Contact Card */}
+            <div
+              style={{
+                backgroundColor: 'var(--charcoal)',
+                color: 'var(--softwhite)',
+                borderRadius: 'var(--radius-md)',
+                padding: '30px',
+                textAlign: 'center'
+              }}
+            >
+              <div style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255, 253, 249, 0.6)', marginBottom: '8px' }}>
+                Media Inquiries & Retainers
+              </div>
+              <div style={{ fontFamily: 'var(--font-mono)', fontSize: '0.92rem', color: 'var(--gold)', marginBottom: '14px' }}>
+                mayanksinghal0814@gmail.com
+              </div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: '#10B981', backgroundColor: 'rgba(16, 185, 129, 0.12)', padding: '4px 12px', borderRadius: 'var(--radius-full)', marginBottom: '20px' }}>
+                <CheckCircle2 size={14} /> Verified Entity Status
+              </div>
+              <Link
+                to="/contact"
+                className="btn-primary"
+                style={{ width: '100%', justifyContent: 'center', padding: '12px 18px', fontSize: '0.88rem' }}
+              >
+                Inquire for Press / Speaking <ArrowUpRight size={15} />
+              </Link>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {BACKLINK_PROFILES.map((item, idx) => (
-              <a
-                key={idx}
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer me"
-                className="group bg-slate-900/70 border border-slate-800 hover:border-indigo-500/50 rounded-2xl p-5 flex flex-col justify-between transition-all hover:bg-slate-900 shadow-md"
+          {/* 20 Verified Backlink & Authority Profiles Grid */}
+          <div style={{ marginBottom: '48px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '28px', flexWrap: 'wrap', gap: '16px' }}>
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Link2 size={24} color="var(--brand)" />
+                  <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', color: 'var(--charcoal)', margin: 0 }}>
+                    20 Verified Digital Footprints & Authority Profiles
+                  </h2>
+                </div>
+                <p style={{ color: 'var(--mutedtext)', fontSize: '0.92rem', marginTop: '6px', margin: 0 }}>
+                  Authoritative hubs linked via Schema.org sameAs properties to establish entity consensus.
+                </p>
+              </div>
+
+              <span
+                style={{
+                  backgroundColor: 'var(--peach)',
+                  color: 'var(--brand)',
+                  fontSize: '0.82rem',
+                  fontWeight: 700,
+                  padding: '6px 14px',
+                  borderRadius: 'var(--radius-full)',
+                  border: '1px solid var(--border-color)',
+                  fontFamily: 'var(--font-mono)'
+                }}
               >
-                <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">
-                      {item.category}
-                    </span>
-                    <span className="text-xs font-mono font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                      {item.da}
-                    </span>
+                Network Authority: DA 92+ Avg
+              </span>
+            </div>
+
+            <div className="press-profile-grid">
+              {BACKLINK_PROFILES.map((item, idx) => (
+                <a
+                  key={idx}
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="press-profile-card"
+                >
+                  <div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+                      <span
+                        style={{
+                          fontSize: '0.72rem',
+                          fontWeight: 700,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.08em',
+                          color: 'var(--mutedtext)'
+                        }}
+                      >
+                        {item.category}
+                      </span>
+                      <span
+                        style={{
+                          fontSize: '0.75rem',
+                          fontFamily: 'var(--font-mono)',
+                          fontWeight: 700,
+                          color: '#059669',
+                          backgroundColor: 'rgba(16, 185, 129, 0.12)',
+                          padding: '2px 8px',
+                          borderRadius: 'var(--radius-sm)'
+                        }}
+                      >
+                        {item.da}
+                      </span>
+                    </div>
+
+                    <h3 className="press-profile-title">
+                      <span>{item.name}</span>
+                      <ExternalLink size={15} color="var(--mutedtext)" />
+                    </h3>
+
+                    <p className="press-profile-desc">{item.description}</p>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white group-hover:text-indigo-400 transition-colors flex items-center gap-1.5 mb-2">
-                    <span>{item.name}</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-400 transition-colors" />
-                  </h3>
-
-                  <p className="text-xs text-slate-300 leading-relaxed mb-3">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="pt-3 border-t border-slate-800 text-[11px] text-slate-400 group-hover:text-slate-300 transition-colors">
-                  <span className="font-semibold text-slate-400">Anchor: </span>
-                  <span className="italic">{item.anchorText}</span>
-                </div>
-              </a>
-            ))}
+                  <div style={{ paddingTop: '12px', borderTop: '1px solid var(--border-color)', fontSize: '0.78rem', color: 'var(--mutedtext)' }}>
+                    <strong>Anchor: </strong>
+                    <span style={{ fontStyle: 'italic', color: 'var(--charcoal)' }}>{item.anchorText}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
-        </section>
 
-        {/* Brand Syndication & Citation Guidelines */}
-        <section className="bg-slate-900/50 border border-slate-800 rounded-2xl p-8">
-          <h2 className="text-xl font-bold text-white mb-4">Editorial Attribution & Syndication Guidelines</h2>
-          <div className="text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
-            <p>
-              When citing data, calculators, or frameworks from this website (such as the 3:2:2 Meta Ads Sandbox or Break-Even ROAS formulas), please attribute the author as <strong>Mayank Aggarwal</strong> with a direct hyperlink pointing to the original guide URL.
-            </p>
-            <p>
-              For podcast interviews, guest keynote speaking, or co-authored research on generative AI video advertising, email directly at <strong>mayanksinghal0814@gmail.com</strong>.
-            </p>
+          {/* Editorial Attribution Guidelines */}
+          <div
+            style={{
+              backgroundColor: 'var(--purewhite)',
+              border: '1px solid var(--border-color)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '36px',
+              boxShadow: 'var(--shadow-sm)'
+            }}
+          >
+            <span className="editorial-eyebrow">Attribution Policy</span>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.6rem',
+                color: 'var(--charcoal)',
+                marginTop: '10px',
+                marginBottom: '14px'
+              }}
+            >
+              Editorial Attribution & Syndication Guidelines
+            </h2>
+            <div style={{ color: 'var(--text-main)', fontSize: '0.94rem', lineHeight: '1.7' }}>
+              <p style={{ marginBottom: '10px' }}>
+                When referencing data, financial formulas, or creative frameworks from this website (such as the 3:2:2 Meta Ads Sandbox or Break-Even ROAS models), please attribute the author as <strong>Mayank Aggarwal</strong> with a direct hyperlink pointing to the original guide URL.
+              </p>
+              <p>
+                For podcast interviews, guest keynote speaking, or co-authored research on generative AI video advertising, email directly at <strong>mayanksinghal0814@gmail.com</strong>.
+              </p>
+            </div>
           </div>
-        </section>
-      </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA Banner */}
+      <CtaBanner
+        eyebrow="Media & Advisory"
+        title="LOOKING FOR A GROWTH SPEAKER OR CONSULTANT?"
+        subtitle="Available for corporate keynotes, performance marketing audits, and AI creative pipeline consulting."
+        primaryLabel="Inquire for Speaking"
+        primaryTo="/contact"
+      />
     </div>
   );
 };

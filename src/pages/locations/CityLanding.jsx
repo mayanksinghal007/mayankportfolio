@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { SeoHead } from '../../components/SeoHead';
-import { MapPin, CheckCircle, ArrowRight, TrendingUp, Sparkles, Building, PhoneCall, Award } from 'lucide-react';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { CtaBanner } from '../../components/CtaBanner';
+import {
+  MapPin,
+  CheckCircle,
+  ArrowUpRight,
+  TrendingUp,
+  Sparkles,
+  Building,
+  PhoneCall,
+  Award,
+  ChevronDown
+} from 'lucide-react';
 
 export const CITY_DATA = {
   delhi: {
@@ -85,6 +97,11 @@ export const CityLanding = () => {
   const { city } = useParams();
   const currentCityKey = city ? city.toLowerCase() : 'delhi';
   const cityInfo = CITY_DATA[currentCityKey];
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   if (!cityInfo) {
     return <Navigate to="/locations/delhi" replace />;
@@ -138,31 +155,36 @@ export const CityLanding = () => {
     }
   };
 
+  const cityFaqs = [
+    {
+      q: `Why hire a specialized performance marketer for ${cityInfo.name} businesses?`,
+      a: `Businesses in ${cityInfo.name} face intense auction competition and rising ad CPMs. Working directly with an agile specialist provides senior-level account attention, custom AI video creatives, and unit-economic discipline without agency overhead.`
+    },
+    {
+      q: `What is the typical onboarding timeline for ${cityInfo.name} clients?`,
+      a: "Full account audits, Conversion API verification, tracking architecture, and the first batch of 6-8 creative angles are delivered within 5 to 7 business days."
+    },
+    {
+      q: `Do you conduct in-person strategy meetings in ${cityInfo.name}?`,
+      a: `Yes. For Delhi NCR clients (Delhi, Gurugram, Noida), in-person quarterly marketing reviews and creative briefings are available. For Mumbai and Bengaluru clients, we coordinate via high-touch video sprints with scheduled on-site workshops as needed.`
+    }
+  ];
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": `Why hire a specialized performance marketer for ${cityInfo.name} businesses?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": `Businesses in ${cityInfo.name} face intense auction competition and rising ad CPMs. Working directly with an agile specialist provides senior-level account attention, custom AI video creatives, and unit-economic discipline without agency overhead.`
-        }
-      },
-      {
-        "@type": "Question",
-        "name": `What is the typical onboarding timeline for ${cityInfo.name} clients?`,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Full account audits, Conversion API verification, tracking architecture, and the first batch of 6-8 creative angles are delivered within 5 to 7 business days."
-        }
+    "mainEntity": cityFaqs.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": f.a
       }
-    ]
+    }))
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 pt-28 pb-20 selection:bg-indigo-500 selection:text-white">
+    <div className="editorial-tool-page">
       <SeoHead
         title={cityInfo.seoTitle}
         description={cityInfo.metaDescription}
@@ -178,141 +200,333 @@ export const CityLanding = () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* City Selector Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8 text-xs scrollbar-none">
-          <span className="text-slate-400 font-semibold uppercase tracking-wider flex items-center gap-1 mr-2">
-            <MapPin className="w-3.5 h-3.5 text-indigo-400" /> Regional Hubs:
-          </span>
-          {Object.entries(CITY_DATA).map(([key, item]) => (
-            <Link
-              key={key}
-              to={`/locations/${key}`}
-              className={`px-3 py-1.5 rounded-full font-medium transition-all whitespace-nowrap ${
-                key === currentCityKey
-                  ? 'bg-indigo-600 text-white font-bold shadow-md shadow-indigo-500/20'
-                  : 'bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800'
-              }`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </div>
+      {/* Header & Regional Navigation */}
+      <section className="page-hero-pad">
+        <div className="container">
+          <Breadcrumbs
+            items={[
+              { name: 'Regional Hubs', path: '/locations/delhi' },
+              { name: cityInfo.name }
+            ]}
+          />
 
-        {/* Hero Section */}
-        <div className="max-w-3xl mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-semibold mb-4">
-            <Building className="w-3.5 h-3.5" />
-            <span>Regional Growth Partner • {cityInfo.fullName}</span>
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight mb-5">
-            {cityInfo.h1}
-          </h1>
-          <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-6">
-            {cityInfo.subhead}
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-lg shadow-indigo-600/20 transition-all"
+          {/* Regional Hub Selector Pills */}
+          <div className="location-pills-bar">
+            <span
+              style={{
+                fontSize: '0.82rem',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.08em',
+                color: 'var(--mutedtext)',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                marginRight: '8px'
+              }}
             >
-              <span>Schedule {cityInfo.name} Growth Consultation</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link
-              to="/services/meta-ads"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-800 font-semibold text-sm transition-all"
-            >
-              <span>View Service Breakdown</span>
-            </Link>
+              <MapPin size={15} color="var(--brand)" /> Regional Hubs:
+            </span>
+            {Object.entries(CITY_DATA).map(([key, item]) => (
+              <Link
+                key={key}
+                to={`/locations/${key}`}
+                className={`location-pill ${key === currentCityKey ? 'active' : ''}`}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
-        </div>
 
-        {/* Local Market Context Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-            <div className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-2">Target Market Focus</div>
-            <div className="text-base font-bold text-white mb-2">{cityInfo.marketFocus}</div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Tailored campaign creative architectures mapped to local purchasing behavior and competitive ad auctions.
+          <div style={{ maxWidth: '880px' }}>
+            <span className="editorial-eyebrow">
+              Regional Growth Partner • {cityInfo.fullName}
+            </span>
+            <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>
+              {cityInfo.h1}
+            </h1>
+            <p className="hero-lead" style={{ maxWidth: '780px' }}>
+              {cityInfo.subhead}
             </p>
-          </div>
 
-          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-            <div className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-2">Average Meta Ad CPM</div>
-            <div className="text-2xl font-black text-white mb-2">{cityInfo.avgCpm}</div>
-            <p className="text-xs text-slate-400 leading-relaxed">
-              Real-world auction benchmarks observed across active client ad accounts in the {cityInfo.name} geographical zone.
-            </p>
-          </div>
-
-          <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">
-            <div className="text-xs font-bold text-indigo-400 uppercase tracking-wider mb-2">Key Commercial Hubs</div>
-            <div className="flex flex-wrap gap-1.5 mt-2">
-              {cityInfo.localHubs.map((hub, idx) => (
-                <span key={idx} className="bg-slate-950 px-2.5 py-1 rounded-md text-[11px] text-slate-300 border border-slate-800">
-                  {hub}
-                </span>
-              ))}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '28px' }}>
+              <Link
+                to="/contact"
+                className="btn-primary"
+                style={{ padding: '14px 28px', fontSize: '0.95rem' }}
+              >
+                Schedule {cityInfo.name} Growth Call <ArrowUpRight size={17} />
+              </Link>
+              <Link
+                to="/services"
+                className="btn-secondary"
+                style={{ padding: '14px 24px', fontSize: '0.95rem' }}
+              >
+                View Full-Stack Services
+              </Link>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Featured Case Study Snapshot */}
-        <div className="bg-gradient-to-br from-indigo-950/40 via-slate-900 to-slate-900 border border-indigo-500/30 rounded-2xl p-8 mb-16 shadow-xl">
-          <div className="flex items-center gap-2 text-indigo-400 text-xs font-bold uppercase tracking-wider mb-3">
-            <Award className="w-4 h-4" />
-            <span>Local Market Verification • Case Study</span>
-          </div>
-          <h2 className="text-2xl font-bold text-white mb-3">
-            {cityInfo.caseStudyTitle}
-          </h2>
-          <p className="text-slate-300 text-sm leading-relaxed mb-6 max-w-2xl">
-            {cityInfo.caseStudyDesc}
-          </p>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-800">
-            <div>
-              <div className="text-xs text-slate-400">Campaign Objective</div>
-              <div className="text-sm font-bold text-white">Sales & Conversions</div>
-            </div>
-            <div>
-              <div className="text-xs text-slate-400">Testing Architecture</div>
-              <div className="text-sm font-bold text-white">Dynamic 3:2:2 Sandbox</div>
-            </div>
-            <div>
-              <div className="text-xs text-slate-400">Tracking Fidelity</div>
-              <div className="text-sm font-bold text-white">CAPI Event Score 9.2</div>
-            </div>
-            <div>
-              <div className="text-xs text-slate-400">Attribution</div>
-              <div className="text-sm font-bold text-emerald-400">7-Day Click / 1-Day View</div>
-            </div>
-          </div>
-        </div>
-
-        {/* Localized FAQ Accordion */}
-        <section className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8">
-          <h2 className="text-xl font-bold text-white mb-6">Frequently Asked Questions for {cityInfo.name} Businesses</h2>
-          <div className="space-y-6">
-            <div>
-              <h3 className="font-bold text-sm text-white mb-2">
-                Why work with Mayank Aggarwal instead of a large {cityInfo.name} digital agency?
+      {/* Local Market Context Cards */}
+      <section className="section-pad" style={{ paddingTop: '10px' }}>
+        <div className="container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '24px',
+              marginBottom: '48px'
+            }}
+          >
+            {/* Market Focus */}
+            <div
+              style={{
+                backgroundColor: 'var(--purewhite)',
+                border: '1px solid var(--border-color)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '32px',
+                boxShadow: 'var(--shadow-sm)'
+              }}
+            >
+              <div
+                style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--brand)',
+                  marginBottom: '8px'
+                }}
+              >
+                Target Market Focus
+              </div>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '1.25rem',
+                  color: 'var(--charcoal)',
+                  marginBottom: '10px'
+                }}
+              >
+                {cityInfo.marketFocus}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Large agencies often pitch with senior founders but delegate day-to-day accounts to junior interns managing 15+ brands simultaneously. I cap my active client roster to deliver dedicated senior strategy, custom AI video rendering, and direct WhatsApp communication with zero bureaucratic delays.
+              <p style={{ color: 'var(--mutedtext)', fontSize: '0.9rem', lineHeight: '1.6' }}>
+                Tailored campaign creative architectures mapped to local customer demographics, offline retail competition, and e-commerce buying behavior.
               </p>
             </div>
-            <div>
-              <h3 className="font-bold text-sm text-white mb-2">
-                Do you offer in-person strategy sessions in {cityInfo.name}?
-              </h3>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                Yes. For Delhi NCR clients (Delhi, Gurugram, Noida), in-person quarterly marketing roadmaps and creative briefings are available. For Mumbai and Bengaluru clients, we coordinate via high-touch video reviews with scheduled on-site sprints as required.
+
+            {/* Auction Benchmarks */}
+            <div
+              style={{
+                backgroundColor: 'var(--purewhite)',
+                border: '1px solid var(--border-color)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '32px',
+                boxShadow: 'var(--shadow-sm)'
+              }}
+            >
+              <div
+                style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--brand)',
+                  marginBottom: '8px'
+                }}
+              >
+                Average Meta Ad CPM
+              </div>
+              <div
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '2rem',
+                  fontWeight: 800,
+                  color: 'var(--charcoal)',
+                  marginBottom: '10px'
+                }}
+              >
+                {cityInfo.avgCpm}
+              </div>
+              <p style={{ color: 'var(--mutedtext)', fontSize: '0.9rem', lineHeight: '1.6' }}>
+                Real-world auction benchmarks observed across active client ad accounts in the {cityInfo.name} geographical zone.
               </p>
             </div>
+
+            {/* Commercial Hubs */}
+            <div
+              style={{
+                backgroundColor: 'var(--purewhite)',
+                border: '1px solid var(--border-color)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '32px',
+                boxShadow: 'var(--shadow-sm)'
+              }}
+            >
+              <div
+                style={{
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--brand)',
+                  marginBottom: '12px'
+                }}
+              >
+                Key Commercial Hubs Served
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {cityInfo.localHubs.map((hub, idx) => (
+                  <span
+                    key={idx}
+                    style={{
+                      backgroundColor: 'var(--peach)',
+                      color: 'var(--charcoal)',
+                      fontSize: '0.8rem',
+                      fontWeight: 600,
+                      padding: '6px 12px',
+                      borderRadius: 'var(--radius-full)',
+                      border: '1px solid var(--border-color)'
+                    }}
+                  >
+                    {hub}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
-        </section>
-      </div>
+
+          {/* Featured Case Study Card */}
+          <div
+            style={{
+              backgroundColor: 'var(--charcoal)',
+              color: 'var(--softwhite)',
+              borderRadius: 'var(--radius-lg)',
+              padding: '42px 36px',
+              boxShadow: 'var(--shadow-lg)',
+              marginBottom: '48px'
+            }}
+          >
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+              <Award size={18} color="var(--gold)" />
+              <span className="editorial-eyebrow gold" style={{ margin: 0 }}>
+                Local Market Case Study • Verified Results
+              </span>
+            </div>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: '1.85rem',
+                color: 'var(--softwhite)',
+                marginBottom: '14px'
+              }}
+            >
+              {cityInfo.caseStudyTitle}
+            </h2>
+            <p
+              style={{
+                color: 'rgba(255, 253, 249, 0.8)',
+                fontSize: '0.98rem',
+                lineHeight: '1.7',
+                maxWidth: '720px',
+                marginBottom: '28px'
+              }}
+            >
+              {cityInfo.caseStudyDesc}
+            </p>
+
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))',
+                gap: '20px',
+                paddingTop: '24px',
+                borderTop: '1px solid var(--charcoal-border)'
+              }}
+            >
+              <div>
+                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255, 253, 249, 0.55)', marginBottom: '4px' }}>
+                  Campaign Objective
+                </div>
+                <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--softwhite)' }}>
+                  Sales & Conversions
+                </div>
+              </div>
+
+              <div>
+                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255, 253, 249, 0.55)', marginBottom: '4px' }}>
+                  Testing Architecture
+                </div>
+                <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--softwhite)' }}>
+                  Dynamic 3:2:2 Creative Sandbox
+                </div>
+              </div>
+
+              <div>
+                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255, 253, 249, 0.55)', marginBottom: '4px' }}>
+                  Tracking Fidelity
+                </div>
+                <div style={{ fontSize: '0.95rem', fontWeight: 700, color: 'var(--gold)' }}>
+                  CAPI Event Quality 9.2/10
+                </div>
+              </div>
+
+              <div>
+                <div style={{ fontSize: '0.72rem', textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255, 253, 249, 0.55)', marginBottom: '4px' }}>
+                  Attribution Model
+                </div>
+                <div style={{ fontSize: '0.95rem', fontWeight: 700, color: '#10B981' }}>
+                  7-Day Click / 1-Day View
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Frequently Asked Questions */}
+      <section className="section-pad" style={{ backgroundColor: 'var(--cream-subtle)' }}>
+        <div className="container container-narrow">
+          <div className="section-head center">
+            <span className="editorial-eyebrow">Local Insights</span>
+            <h2 className="display-title section-title">FREQUENTLY ASKED QUESTIONS FOR {cityInfo.name.toUpperCase()} BRANDS.</h2>
+          </div>
+
+          <div className="faq-list">
+            {cityFaqs.map((faq, i) => (
+              <div key={i} className={`faq-item ${openFaq === i ? 'open' : ''}`}>
+                <button className="faq-question-btn" onClick={() => toggleFaq(i)}>
+                  <span>{faq.q}</span>
+                  <ChevronDown
+                    size={18}
+                    style={{
+                      transform: openFaq === i ? 'rotate(180deg)' : 'none',
+                      transition: 'transform 0.2s ease',
+                      flexShrink: 0
+                    }}
+                  />
+                </button>
+                {openFaq === i && (
+                  <div className="faq-answer">
+                    <p>{faq.a}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Bottom CTA Banner */}
+      <CtaBanner
+        eyebrow={`Regional Growth Partner • ${cityInfo.name}`}
+        title={`READY TO SCALE YOUR ${cityInfo.name.toUpperCase()} BRAND?`}
+        subtitle="Schedule a 1-on-1 discovery consultation to review your current ad performance, diagnose acquisition bottlenecks, and build a high-ROI scaling plan."
+        primaryLabel={`Schedule ${cityInfo.name} Strategy Call`}
+        primaryTo="/contact"
+      />
     </div>
   );
 };
