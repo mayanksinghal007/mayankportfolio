@@ -37,8 +37,8 @@ export const About = () => {
   return (
     <>
       <SeoHead
-        title="About Mayank Aggarwal | Digital Marketer & AI Specialist"
-        description="Learn about Mayank Aggarwal, a Digital Marketing & AI Specialist from Delhi, India with 1 year of hands-on experience in Meta Ads, AI video, and creative direction."
+        title="About Mayank Aggarwal | Digital Marketing & AI"
+        description="About Mayank Aggarwal — Digital Marketing & AI Specialist in Delhi with 1 year experience in Meta Ads, AI video creation, and creative direction."
         canonicalPath="/about"
         jsonLd={aboutSchemas}
       />
@@ -75,6 +75,7 @@ export const About = () => {
                 <a
                   href={site.cvUrl || '/Mayank_Aggarwal_Resume.pdf'}
                   download="Mayank_Aggarwal_Resume.pdf"
+                  rel="nofollow"
                   className="btn-secondary"
                   title="Download Mayank Aggarwal CV (PDF)"
                 >
@@ -83,7 +84,7 @@ export const About = () => {
                 <a
                   href={site.linkedin}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="btn-secondary"
                 >
                   <LinkedinIcon size={16} /> LinkedIn
@@ -91,7 +92,7 @@ export const About = () => {
                 <a
                   href={site.instagram}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="btn-secondary"
                 >
                   <InstagramIcon size={16} /> Instagram
@@ -120,12 +121,16 @@ export const About = () => {
                   }}
                 >
                     <img
-                      src={mediaAssets.about_profile_photo?.url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80"}
+                      src={mediaAssets.about_profile_photo?.url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=75"}
                       alt={mediaAssets.about_profile_photo?.alt || "Mayank Aggarwal"}
+                      width="600"
+                      height="750"
+                      loading="lazy"
+                      decoding="async"
                       style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.88 }}
                       onError={(e) => {
                         e.currentTarget.onerror = null;
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1200&q=80';
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=75';
                       }}
                     />
                   <div

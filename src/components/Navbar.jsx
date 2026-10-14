@@ -241,7 +241,7 @@ export const Navbar = ({ onOpenSearch }) => {
           <a
             href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`}
             target="_blank"
-            rel="noopener noreferrer"
+            rel="noopener noreferrer nofollow"
             className="btn-whatsapp"
             style={{ width: '100%', justifyContent: 'center' }}
           >
@@ -262,7 +262,7 @@ export const Navbar = ({ onOpenSearch }) => {
             <a
               href={site.linkedin}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               aria-label="LinkedIn"
               className="mobile-social-icon"
             >
@@ -271,7 +271,7 @@ export const Navbar = ({ onOpenSearch }) => {
             <a
               href={site.instagram}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               aria-label="Instagram"
               className="mobile-social-icon"
             >
@@ -280,7 +280,7 @@ export const Navbar = ({ onOpenSearch }) => {
             <a
               href={site.github || 'https://github.com/mayanksinghal007'}
               target="_blank"
-              rel="noopener noreferrer"
+              rel="noopener noreferrer nofollow"
               aria-label="GitHub"
               className="mobile-social-icon"
             >
@@ -288,6 +288,7 @@ export const Navbar = ({ onOpenSearch }) => {
             </a>
             <a
               href={`mailto:${site.email}`}
+              rel="nofollow"
               aria-label="Email Mayank"
               className="mobile-social-icon"
             >

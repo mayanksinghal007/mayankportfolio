@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, useLocation, Link } from 'react-router-dom';
 import {
   Mail,
   Phone,
@@ -22,7 +22,8 @@ import { getProfessionalServiceSchema, getBreadcrumbSchema } from '../utils/seoS
 export const Contact = () => {
   const { site, services, addInquiry } = useSite();
   const [searchParams] = useSearchParams();
-  const preselectedService = searchParams.get('service') || '';
+  const location = useLocation();
+  const preselectedService = location.state?.service || searchParams.get('service') || '';
 
   const initialForm = {
     name: '',
@@ -164,7 +165,7 @@ export const Contact = () => {
       title: 'Direct Call',
       value: site.phone,
       subtext: 'Mon-Sat 10:00 AM – 8:00 PM IST',
-      href: `tel:${site.phone}`,
+      href: `tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`,
       action: 'Call Now',
       color: '#FFB92E',
     },
@@ -235,7 +236,7 @@ export const Contact = () => {
                       key={i}
                       href={c.href}
                       target={c.href.startsWith('http') ? '_blank' : undefined}
-                      rel="noopener noreferrer"
+                      rel={c.href.startsWith('http') ? 'noopener noreferrer nofollow' : 'nofollow'}
                       className="contact-card-channel"
                     >
                       <div className="channel-icon-wrap" style={{ backgroundColor: `${c.color}15`, color: c.color }}>

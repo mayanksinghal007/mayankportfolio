@@ -35,7 +35,7 @@ export const FloatingWhatsApp = () => {
       <a
         href={whatsappUrl}
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         aria-label="Direct WhatsApp Chat with Mayank Aggarwal"
         aria-describedby="whatsapp-tooltip"
         className="floating-whatsapp-btn"

@@ -100,6 +100,7 @@ export const Admin = () => {
         <SeoHead
           title="Admin CMS Portal | Private Access"
           description="Administration management portal for Mayank Aggarwal portfolio."
+          canonicalPath="/admin"
           noindex={true}
         />
         <div
@@ -290,6 +291,7 @@ export const Admin = () => {
       <SeoHead
         title="Admin CMS Dashboard | Mayank Aggarwal"
         description="Private CMS Dashboard"
+        canonicalPath="/admin"
         noindex={true}
       />
       <div className="admin-layout">

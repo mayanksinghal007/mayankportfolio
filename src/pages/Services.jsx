@@ -66,7 +66,7 @@ export const Services = () => {
   return (
     <>
       <SeoHead
-        title="Digital Marketing & AI Creative Services | Mayank Aggarwal"
+        title="Marketing & AI Creative Services | Mayank Aggarwal"
         description="Explore performance marketing, Meta Ads, social media strategy, AI video production, and SEO services tailored for ambitious Indian and global brands."
         canonicalPath="/services"
         jsonLd={servicesSchemas}
@@ -180,7 +180,8 @@ export const Services = () => {
                       Deep Dive & Process <ArrowUpRight size={14} />
                     </Link>
                     <Link
-                      to={`/contact?service=${encodeURIComponent(s.name)}`}
+                      to="/contact"
+                      state={{ service: s.name }}
                       className="btn-secondary"
                       style={{ padding: '10px 16px', fontSize: '0.82rem' }}
                     >

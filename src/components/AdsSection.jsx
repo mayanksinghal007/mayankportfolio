@@ -333,7 +333,10 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                     <img
                       src={displayThumb}
                       alt={ad.title}
+                      width="640"
+                      height="400"
                       loading="lazy"
+                      decoding="async"
                       style={{
                         width: '100%',
                         height: '100%',
@@ -344,7 +347,7 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                       onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                       onError={(e) => {
                         e.currentTarget.onerror = null;
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1200&q=80';
+                        e.currentTarget.src = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=75';
                       }}
                     />
 

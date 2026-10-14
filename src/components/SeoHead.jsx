@@ -45,16 +45,21 @@ export const SeoHead = ({
       : `${cleanBaseUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`
     : defaultImage;
 
-  // Title formatting: keep title within 50-65 chars target
-  const displayTitle = title
-    ? title.includes('Mayank Aggarwal') || title.length > 48
-      ? title
-      : `${title} | Mayank Aggarwal`
-    : `${SITE_CONFIG.name} | ${SITE_CONFIG.title}`;
+  // Title formatting: strictly keep within 58 chars max for zero SEO audit truncation
+  let displayTitle = title || `${SITE_CONFIG.name} | ${SITE_CONFIG.title}`;
+  if (!displayTitle.includes('Mayank Aggarwal') && displayTitle.length + 18 <= 58) {
+    displayTitle = `${displayTitle} | Mayank Aggarwal`;
+  }
+  if (displayTitle.length > 58) {
+    displayTitle = displayTitle.slice(0, 58).trim();
+  }
 
-  const metaDesc =
+  let metaDesc =
     description ||
     'Portfolio of Mayank Aggarwal — Digital Marketing & AI Specialist in Delhi, India. Performance Meta Ads, generative AI video creation, and creative direction.';
+  if (metaDesc.length > 153) {
+    metaDesc = metaDesc.slice(0, 150).replace(/\s+\S*$/, '') + '.';
+  }
 
   const robotsDirective = noindex
     ? 'noindex, nofollow'

@@ -115,7 +115,7 @@ export const BlogPost = () => {
             </div>
 
             <h1 className="hero-h1 display-hero" style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15, marginBottom: '20px' }}>
-              {post.title}
+              {post.h1 || (post.title.length <= 70 ? post.title : (post.seoTitle && post.seoTitle.length <= 70 ? post.seoTitle : post.title.slice(0, 68)))}
             </h1>
 
             {/* Answer-First Summary Box (AEO Optimization) */}
@@ -327,7 +327,7 @@ export const BlogPost = () => {
                 <a
                   href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hi Mayank, I just read your article "${post.title}" and would like to discuss working together.`)}`}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="btn-whatsapp"
                   style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
                 >

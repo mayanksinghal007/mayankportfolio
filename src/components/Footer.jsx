@@ -25,7 +25,7 @@ export const Footer = () => {
               <a
                 href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="btn-whatsapp"
                 style={{ padding: '9px 18px', fontSize: '0.82rem' }}
               >
@@ -41,24 +41,54 @@ export const Footer = () => {
             </div>
           </div>
 
-          {/* Col 2: Navigation */}
+          {/* Col 2: Navigation & Tools */}
           <div>
             <h4 className="footer-col-title">Navigation</h4>
             <ul className="footer-nav-list">
               <li><Link to="/" className="footer-nav-link">Home</Link></li>
               <li><Link to="/about" className="footer-nav-link">About Mayank</Link></li>
-              <li><Link to="/services" className="footer-nav-link">Services</Link></li>
+              <li><Link to="/services" className="footer-nav-link">All Services</Link></li>
               <li><Link to="/portfolio" className="footer-nav-link">Portfolio & Case Studies</Link></li>
               <li><Link to="/ads" className="footer-nav-link">Ads & Creative Work</Link></li>
-              <li><Link to="/process" className="footer-nav-link">Working Process</Link></li>
-              <li><Link to="/blog" className="footer-nav-link">Articles & Guides</Link></li>
-              <li><Link to="/contact" className="footer-nav-link">Start a Project</Link></li>
+              <li><Link to="/blog" className="footer-nav-link">50 Growth Guides & Blog</Link></li>
+              <li><Link to="/glossary" className="footer-nav-link">Marketing Glossary</Link></li>
+              <li><Link to="/press" className="footer-nav-link">Press & Authority Hub</Link></li>
             </ul>
           </div>
 
-          {/* Col 3: Specialized Services */}
+          {/* Col 3: Interactive Tools */}
           <div>
-            <h4 className="footer-col-title">Services</h4>
+            <h4 className="footer-col-title">Interactive Tools</h4>
+            <ul className="footer-nav-list">
+              <li>
+                <Link to="/tools/meta-ads-roas-calculator" className="footer-nav-link">
+                  ROAS & Profit Calculator
+                </Link>
+              </li>
+              <li>
+                <Link to="/tools/ai-video-prompt-generator" className="footer-nav-link">
+                  AI Video Prompt Generator
+                </Link>
+              </li>
+              <li>
+                <Link to="/tools/reel-hook-generator" className="footer-nav-link">
+                  Viral Reel Hook Generator
+                </Link>
+              </li>
+              <li style={{ marginTop: '12px' }}>
+                <span className="footer-col-title" style={{ display: 'block', marginBottom: '6px', fontSize: '0.75rem' }}>Regional Markets</span>
+              </li>
+              <li><Link to="/locations/delhi" className="footer-nav-link">Delhi NCR</Link></li>
+              <li><Link to="/locations/gurugram" className="footer-nav-link">Gurugram (Cyber City)</Link></li>
+              <li><Link to="/locations/noida" className="footer-nav-link">Noida</Link></li>
+              <li><Link to="/locations/mumbai" className="footer-nav-link">Mumbai (BKC)</Link></li>
+              <li><Link to="/locations/bangalore" className="footer-nav-link">Bengaluru</Link></li>
+            </ul>
+          </div>
+
+          {/* Col 4: Services & Retainers */}
+          <div>
+            <h4 className="footer-col-title">Core Services</h4>
             <ul className="footer-nav-list">
               {services.slice(0, 5).map((s) => (
                 <li key={s.slug}>
@@ -69,13 +99,13 @@ export const Footer = () => {
               ))}
               <li>
                 <Link to="/services" className="footer-nav-link" style={{ color: 'var(--gold)' }}>
-                  View All 7 Services →
+                  View All Services →
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Col 4: Social & Verification */}
+          {/* Col 5: Social & Verification */}
           <div>
             <h4 className="footer-col-title">Connect</h4>
             <ul className="footer-nav-list">
@@ -83,7 +113,7 @@ export const Footer = () => {
                 <a
                   href={site.linkedin}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="footer-nav-link"
                   style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
@@ -94,27 +124,28 @@ export const Footer = () => {
                 <a
                   href={site.instagram}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="footer-nav-link"
                   style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
-                  <InstagramIcon size={16} color="#FF3D0A" /> Instagram (@mayankaggarwal_7)
+                  <InstagramIcon size={16} color="#FF3D0A" /> Instagram Profile
                 </a>
               </li>
               <li>
                 <a
                   href={site.github || 'https://github.com/mayanksinghal007'}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="noopener noreferrer nofollow"
                   className="footer-nav-link"
                   style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
-                  <GithubIcon size={16} color="var(--softwhite)" /> GitHub (@mayanksinghal007)
+                  <GithubIcon size={16} color="var(--softwhite)" /> GitHub Profile
                 </a>
               </li>
               <li>
                 <a
-                  href={`tel:${site.phone}`}
+                  href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`}
+                  rel="nofollow"
                   className="footer-nav-link"
                   style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
@@ -124,6 +155,7 @@ export const Footer = () => {
               <li>
                 <a
                   href={`mailto:${site.email}`}
+                  rel="nofollow"
                   className="footer-nav-link"
                   style={{ display: 'flex', alignItems: 'center', gap: '8px', wordBreak: 'break-all' }}
                 >
@@ -137,9 +169,12 @@ export const Footer = () => {
         {/* Footer Bottom Bar */}
         <div className="footer-bottom">
           <p>© {currentYear} Mayank Aggarwal. All rights reserved. Based in Delhi, India.</p>
-          <div style={{ display: 'flex', gap: '20px' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+            <Link to="/glossary" style={{ color: 'inherit' }}>Glossary</Link>
+            <Link to="/press" style={{ color: 'inherit' }}>Press & Citations</Link>
             <Link to="/privacy-policy" style={{ color: 'inherit' }}>Privacy Policy</Link>
             <Link to="/terms" style={{ color: 'inherit' }}>Terms of Service</Link>
+            <a href="/rss.xml" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>RSS Feed</a>
           </div>
         </div>
       </div>

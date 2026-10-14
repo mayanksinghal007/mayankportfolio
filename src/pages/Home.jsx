@@ -58,7 +58,7 @@ export const Home = () => {
   return (
     <>
       <SeoHead
-        title="Mayank Aggarwal | Digital Marketing & AI Specialist Delhi"
+        title="Mayank Aggarwal | Digital Marketing & AI Specialist"
         description="Performance Meta Ads, generative AI video creation, and high-retention content strategy for modern brands by Mayank Aggarwal based in Delhi, India."
         canonicalPath="/"
         jsonLd={homeSchemas}
@@ -97,7 +97,7 @@ export const Home = () => {
               <a
                 href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="btn-whatsapp"
                 style={{ padding: '13px 20px' }}
                 title="Instant Chat on WhatsApp"
@@ -355,6 +355,10 @@ export const Home = () => {
                     src={project.image}
                     alt={project.title}
                     className="project-thumb"
+                    width="600"
+                    height="400"
+                    loading="lazy"
+                    decoding="async"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
                       e.currentTarget.src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80';

@@ -24,7 +24,17 @@ function generateSitemap() {
     { loc: '/ads', changefreq: 'weekly', priority: '0.8' },
     { loc: '/process', changefreq: 'monthly', priority: '0.7' },
     { loc: '/contact', changefreq: 'monthly', priority: '0.8' },
-    { loc: '/blog', changefreq: 'weekly', priority: '0.9' },
+    { loc: '/blog', changefreq: 'daily', priority: '0.9' },
+    { loc: '/tools/meta-ads-roas-calculator', changefreq: 'weekly', priority: '0.9' },
+    { loc: '/tools/ai-video-prompt-generator', changefreq: 'weekly', priority: '0.9' },
+    { loc: '/tools/reel-hook-generator', changefreq: 'weekly', priority: '0.9' },
+    { loc: '/locations/delhi', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/locations/gurugram', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/locations/noida', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/locations/mumbai', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/locations/bangalore', changefreq: 'monthly', priority: '0.8' },
+    { loc: '/glossary', changefreq: 'weekly', priority: '0.8' },
+    { loc: '/press', changefreq: 'monthly', priority: '0.8' },
     { loc: '/privacy-policy', changefreq: 'yearly', priority: '0.3' },
     { loc: '/terms', changefreq: 'yearly', priority: '0.3' },
   ];
@@ -133,19 +143,31 @@ ${DEFAULT_BLOG_POSTS.map(
 function generateLlms() {
   return `# Mayank Aggarwal — Digital Marketing & AI Specialist
 
-> Professional portfolio, services, and technical guides of Mayank Aggarwal, based in Delhi, India.
+> Professional portfolio, interactive marketing tools, and technical guides of Mayank Aggarwal, based in Delhi, India.
 
 ## About
 Mayank Aggarwal is a Digital Marketing & AI Specialist with 1 year of hands-on experience in performance marketing, Meta Ads management, generative AI video production (Runway Gen-3, Kling AI), and short-form content strategy. He holds a B.Com (Hons) degree from Shaheed Bhagat Singh College, University of Delhi, and operates under the agency brand Klikwise.
 
-## Core Services
+## Core Capabilities & Services
 - **Performance Marketing (Meta Ads):** Account structure, Pixel/CAPI setup, Advantage+ campaigns, and creative testing for D2C and service businesses.
 - **Social Media Management:** 30-day content calendar execution, reel scripting, and brand authority positioning.
 - **AI Video & Filmmaking:** Generative promotional videos and UGC ads using Runway Gen-3 Alpha, Kling AI, and sound design.
 - **AI Voiceover & Audio Design:** Neural voice narration using ElevenLabs Multilingual v2 with commercial audio clearance.
 - **AI Images & Creative Branding:** Midjourney v6.1 prompt engineering, static ad variations, and graphic design assets.
 - **Content & Reel Strategy:** 3-second hook formulas, retention pacing, and short-form video frameworks.
-- **SEO & Content Support:** Keyword mapping, on-page schema structuring, and high-intent blog content.
+- **SEO & AEO Architecture:** Keyword mapping, on-page schema structuring, and high-intent topical clusters.
+
+## Free Interactive Marketing Tools
+- [Meta Ads ROAS & Profit Calculator](${siteUrl}/tools/meta-ads-roas-calculator): Compute true net margins, break-even ROAS, and COD RTO impact.
+- [AI Video Prompt Generator](${siteUrl}/tools/ai-video-prompt-generator): Generate cinematic commercial camera prompts for Runway Gen-3 and Kling AI.
+- [Viral Reel Hook Generator](${siteUrl}/tools/reel-hook-generator): High-retention 3-second video hooks with visual and audio cues.
+
+## Regional Hubs
+- [Delhi Performance Marketing](${siteUrl}/locations/delhi): D2C fashion, retail, and luxury brand ad management.
+- [Gurugram Performance Marketing](${siteUrl}/locations/gurugram): B2B SaaS and high-ticket pipeline generation.
+- [Noida Performance Marketing](${siteUrl}/locations/noida): IT services and export manufacturing lead generation.
+- [Mumbai Performance Marketing](${siteUrl}/locations/mumbai): Consumer goods, fintech, and beauty brand scaling.
+- [Bengaluru AI Performance Marketing](${siteUrl}/locations/bangalore): Tech startups, mobile apps, and generative video ads.
 
 ## Key URLs
 - Homepage: ${siteUrl}/
@@ -154,10 +176,12 @@ Mayank Aggarwal is a Digital Marketing & AI Specialist with 1 year of hands-on e
 - Portfolio Case Studies: ${siteUrl}/portfolio
 - Ads Showcase: ${siteUrl}/ads
 - Working Process: ${siteUrl}/process
-- Marketing & AI Blog: ${siteUrl}/blog
+- Marketing & AI Blog (50 Playbooks): ${siteUrl}/blog
+- Marketing Glossary: ${siteUrl}/glossary
+- Press & Authority Hub (20 Digital Profiles): ${siteUrl}/press
 - Contact & Inquiries: ${siteUrl}/contact
 
-## Published Playbooks & Articles
+## Published Playbooks & Articles (50 Comprehensive Guides)
 ${DEFAULT_BLOG_POSTS.map((p) => `- [${p.title}](${siteUrl}/blog/${p.slug}): ${p.summary}`).join('\n')}
 
 ## Contact Details

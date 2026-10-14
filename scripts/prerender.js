@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { DEFAULT_SERVICES } from '../src/data/initialData.js';
+import { DEFAULT_BLOG_POSTS } from '../src/data/blogData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,39 +19,43 @@ if (!fs.existsSync(templatePath)) {
 
 const baseTemplate = fs.readFileSync(templatePath, 'utf8');
 
-// List of all public routes to statically prerender
-const routes = [
+// List of core public routes
+const coreRoutes = [
   '/',
   '/about',
   '/services',
-  '/services/performance-marketing',
-  '/services/social-media-management',
-  '/services/ai-video-creation',
-  '/services/ai-voiceover',
-  '/services/ai-creative-design',
-  '/services/content-reel-strategy',
-  '/services/seo-content',
   '/portfolio',
   '/ads',
   '/process',
   '/contact',
   '/blog',
-  '/blog/how-to-start-meta-ads-small-business-india',
-  '/blog/meta-ads-pixel-conversions-api-setup-checklist',
-  '/blog/how-to-make-ai-video-ads-runway-kling-higgsfield',
-  '/blog/elevenlabs-ai-voiceover-ads-natural-audio-tips',
-  '/blog/instagram-reel-hooks-15-hook-formulas-you-can-use-today',
-  '/blog/seo-vs-aeo-vs-geo-search-optimization-2026',
-  '/blog/30-day-social-media-content-calendar-template',
-  '/blog/digital-marketing-career-india-1-year-experience',
+  '/tools/meta-ads-roas-calculator',
+  '/tools/ai-video-prompt-generator',
+  '/tools/reel-hook-generator',
+  '/locations/delhi',
+  '/locations/gurugram',
+  '/locations/noida',
+  '/locations/mumbai',
+  '/locations/bangalore',
+  '/glossary',
+  '/press',
   '/privacy-policy',
   '/terms',
   '/admin',
   '/404',
 ];
 
+// Service routes
+const serviceRoutes = DEFAULT_SERVICES.map((s) => `/services/${s.slug}`);
+
+// Dynamic 50 blog post routes
+const blogRoutes = DEFAULT_BLOG_POSTS.map((b) => `/blog/${b.slug}`);
+
+// All combined public routes to statically prerender
+const routes = [...coreRoutes, ...serviceRoutes, ...blogRoutes];
+
 async function prerender() {
-  console.log(`Starting static HTML prerendering for ${routes.length} routes...`);
+  console.log(`Starting static HTML prerendering for ${routes.length} total pages...`);
 
   const ssrEntryPath = path.resolve(distSsrDir, 'prerender-entry.js');
   if (!fs.existsSync(ssrEntryPath)) {
@@ -59,6 +65,8 @@ async function prerender() {
 
   // Import the built SSR module
   const { render } = await import(`file://${ssrEntryPath.replace(/\\/g, '/')}`);
+
+  let successCount = 0;
 
   for (const route of routes) {
     try {
@@ -151,7 +159,7 @@ async function prerender() {
       }
 
       fs.writeFileSync(outFilePath, pageHtml, 'utf8');
-      console.log(`✓ Prerendered: ${route} -> ${path.relative(rootDir, outFilePath)}`);
+      successCount++;
     } catch (err) {
       console.error(`Failed to prerender ${route}:`, err);
     }
@@ -162,7 +170,7 @@ async function prerender() {
     fs.rmSync(distSsrDir, { recursive: true, force: true });
   } catch (e) {}
 
-  console.log('✓ Prerendering successfully completed.');
+  console.log(`✓ Successfully prerendered ${successCount} / ${routes.length} static HTML pages.`);
 }
 
 prerender().catch((err) => {

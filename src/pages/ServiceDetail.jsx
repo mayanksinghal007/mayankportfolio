@@ -104,7 +104,8 @@ export const ServiceDetail = () => {
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', marginTop: '24px' }}>
               <Link
-                to={`/contact?service=${encodeURIComponent(service.name)}`}
+                to="/contact"
+                state={{ service: service.name }}
                 className="btn-primary"
               >
                 Inquire About This Service <ArrowUpRight size={16} />
@@ -112,7 +113,7 @@ export const ServiceDetail = () => {
               <a
                 href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hi Mayank, I'm interested in your ${service.name} service.`)}`}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="btn-whatsapp"
               >
                 Discuss on WhatsApp
@@ -293,8 +294,12 @@ export const ServiceDetail = () => {
                   }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80"
+                    src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=75"
                     alt="AI Video Sample"
+                    width="1200"
+                    height="675"
+                    loading="lazy"
+                    decoding="async"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }}
                   />
                   <div
@@ -630,7 +635,8 @@ export const ServiceDetail = () => {
         title={`READY TO ACCELERATE WITH ${service.name.toUpperCase()}?`}
         subtitle="Let's build a customized proposal and jump straight into execution."
         primaryLabel="Inquire About This Service"
-        primaryTo={`/contact?service=${encodeURIComponent(service.name)}`}
+        primaryTo="/contact"
+        primaryState={{ service: service.name }}
       />
 
       {/* Media Modal */}

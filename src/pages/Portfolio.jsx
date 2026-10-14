@@ -139,6 +139,10 @@ export const Portfolio = () => {
                       src={project.image}
                       alt={project.title}
                       className="project-thumb"
+                      width="600"
+                      height="400"
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         e.currentTarget.onerror = null;
                         e.currentTarget.src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80';
@@ -238,7 +242,8 @@ export const Portfolio = () => {
                           View Case Study <ArrowUpRight size={14} />
                         </button>
                         <Link
-                          to={`/contact?service=${encodeURIComponent(project.category)}`}
+                          to="/contact"
+                          state={{ service: project.category }}
                           className="btn-secondary"
                           style={{ padding: '10px 14px', fontSize: '0.82rem' }}
                           title="Discuss a project like this"

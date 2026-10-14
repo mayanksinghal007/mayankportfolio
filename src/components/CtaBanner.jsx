@@ -9,6 +9,7 @@ export const CtaBanner = ({
   subtitle = "Whether it's structuring your Meta Ads campaigns, producing cinematic AI video, or building your social presence—let's work together.",
   primaryLabel = "Discuss Your Project",
   primaryTo = "/contact",
+  primaryState = null,
 }) => {
   const { site } = useSite();
 
@@ -24,13 +25,13 @@ export const CtaBanner = ({
             <p className="cta-banner-sub">{subtitle}</p>
 
             <div className="cta-banner-actions">
-              <Link to={primaryTo} className="btn-primary" style={{ padding: '15px 34px', fontSize: '1rem' }}>
+              <Link to={primaryTo} state={primaryState} className="btn-primary" style={{ padding: '15px 34px', fontSize: '1rem' }}>
                 {primaryLabel} <ArrowUpRight size={18} />
               </Link>
               <a
                 href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
                 className="btn-whatsapp"
                 style={{ padding: '15px 30px', fontSize: '1rem' }}
               >

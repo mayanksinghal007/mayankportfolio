@@ -25,6 +25,12 @@ import { Legal } from './pages/Legal';
 import { NotFound } from './pages/NotFound';
 import { Blog } from './pages/Blog';
 import { BlogPost } from './pages/BlogPost';
+import { RoasCalculator } from './pages/tools/RoasCalculator';
+import { AiPromptGenerator } from './pages/tools/AiPromptGenerator';
+import { ReelHookGenerator } from './pages/tools/ReelHookGenerator';
+import { CityLanding } from './pages/locations/CityLanding';
+import { Glossary } from './pages/Glossary';
+import { PressHub } from './pages/PressHub';
 
 // Helper to automatically scroll to top on every navigation
 const ScrollToTop = () => {
@@ -96,6 +102,12 @@ export const AppLayout = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/tools/meta-ads-roas-calculator" element={<RoasCalculator />} />
+          <Route path="/tools/ai-video-prompt-generator" element={<AiPromptGenerator />} />
+          <Route path="/tools/reel-hook-generator" element={<ReelHookGenerator />} />
+          <Route path="/locations/:city" element={<CityLanding />} />
+          <Route path="/glossary" element={<Glossary />} />
+          <Route path="/press" element={<PressHub />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/privacy-policy" element={<Legal />} />
           <Route path="/terms" element={<Legal />} />

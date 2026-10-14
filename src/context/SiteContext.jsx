@@ -41,8 +41,14 @@ export const SiteProvider = ({ children }) => {
   // Inquiries
   const [inquiries, setInquiries] = useState(() => getStored('mayank_inquiries', INITIAL_INQUIRIES));
 
-  // Blog Posts
-  const [blogPosts, setBlogPosts] = useState(() => getStored('mayank_blog_posts', DEFAULT_BLOG_POSTS));
+  // Blog Posts (ensure full 50 posts are present)
+  const [blogPosts, setBlogPosts] = useState(() => {
+    const stored = getStored('mayank_blog_posts', null);
+    if (!stored || !Array.isArray(stored) || stored.length < DEFAULT_BLOG_POSTS.length) {
+      return DEFAULT_BLOG_POSTS;
+    }
+    return stored;
+  });
 
   // Admin Auth
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(() => {
