@@ -24,7 +24,13 @@ const getStored = (key, fallback) => {
 
 export const SiteProvider = ({ children }) => {
   // Site Info
-  const [site, setSite] = useState(() => getStored('mayank_site_info', DEFAULT_SITE));
+  const [site, setSite] = useState(() => {
+    const stored = getStored('mayank_site_info', DEFAULT_SITE);
+    if (stored && (!stored.linkedin || stored.linkedin.includes('linkedin.com/in/mayank-aggarwal'))) {
+      return { ...stored, linkedin: DEFAULT_SITE.linkedin };
+    }
+    return stored;
+  });
 
   // Media & Video CMS Assets
   const [mediaAssets, setMediaAssets] = useState(() => getStored('mayank_media_assets', DEFAULT_MEDIA_ASSETS));

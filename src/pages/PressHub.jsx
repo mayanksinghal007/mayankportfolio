@@ -19,7 +19,7 @@ export const BACKLINK_PROFILES = [
   {
     name: "LinkedIn",
     category: "Professional Network",
-    url: "https://www.linkedin.com/in/mayank-aggarwal-25b45131b/",
+    url: "https://lnkd.in/p/gfrXbbjH",
     da: "DA 98",
     anchorText: "Mayank Aggarwal - Digital Marketing Specialist",
     description: "Official professional network profile detailing performance marketing leadership, corporate retainers, and commerce background.",

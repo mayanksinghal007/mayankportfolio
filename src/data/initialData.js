@@ -12,7 +12,7 @@ export const DEFAULT_SITE = {
   phone: "+91 9217756033",
   whatsapp: "919217756033",
   whatsappMsg: "Hi Mayank, I'm interested in discussing a marketing or AI creative project.",
-  linkedin: "https://www.linkedin.com/in/mayank-aggarwal",
+  linkedin: "https://lnkd.in/p/gfrXbbjH",
   instagram: "https://www.instagram.com/mayankaggarwal_7",
   github: "https://github.com/mayanksinghal007",
   availability: "Available for Freelance Projects & Full-Time Roles",

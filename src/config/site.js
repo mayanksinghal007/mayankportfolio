@@ -20,7 +20,7 @@ export const SITE_CONFIG = {
   whatsapp: "919217756033",
   whatsappMsg: "Hi Mayank, I'm interested in discussing a marketing or AI creative project.",
   replyTime: "Replies within 12 hours",
-  linkedin: "https://www.linkedin.com/in/mayank-aggarwal",
+  linkedin: "https://lnkd.in/p/gfrXbbjH",
   instagram: "https://www.instagram.com/mayankaggarwal_7",
   cvUrl: "/Mayank_Aggarwal_Resume.pdf", // [REPLACE] upload your resume to /public
   indexNowKey: "8f1a23c5b4d7e901f2a34b56c7d8e90a",
