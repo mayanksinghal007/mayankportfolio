@@ -88,6 +88,75 @@ export const Home = () => {
               I help ambitious brands turn ideas into high-converting Meta Ads, unforgettable social media presence, and cinematic generative AI video and creative assets.
             </p>
 
+            {/* Profile Authority & Trust Badge */}
+            <div
+              className="hero-profile-badge"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '14px',
+                margin: '10px 0 24px 0',
+                padding: '6px 18px 6px 6px',
+                backgroundColor: 'var(--card-bg)',
+                border: '1px solid var(--border-color)',
+                borderRadius: '999px',
+                boxShadow: '0 4px 18px rgba(0, 0, 0, 0.05)',
+                maxWidth: '100%',
+              }}
+            >
+              <div
+                style={{
+                  width: '60px',
+                  height: '60px',
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  border: '2.5px solid #FFFFFF',
+                  boxShadow: '0 2px 10px rgba(0, 0, 0, 0.12)',
+                  flexShrink: 0,
+                  backgroundColor: '#ECECEC',
+                }}
+              >
+                <picture>
+                  <source srcSet="/images/mayank-aggarwal-avatar.webp" type="image/webp" />
+                  <img
+                    src="/images/mayank-aggarwal.jpg"
+                    alt="Mayank Aggarwal - Digital Marketing & AI Specialist"
+                    width="60"
+                    height="60"
+                    fetchPriority="high"
+                    decoding="async"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      objectPosition: 'center 20%',
+                      display: 'block',
+                    }}
+                  />
+                </picture>
+              </div>
+              <div style={{ lineHeight: 1.35 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexWrap: 'wrap' }}>
+                  <span style={{ fontWeight: 700, fontSize: '0.96rem', color: 'var(--charcoal)', letterSpacing: '-0.01em' }}>
+                    Mayank Aggarwal
+                  </span>
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: '7px',
+                      height: '7px',
+                      borderRadius: '50%',
+                      backgroundColor: '#10B981',
+                    }}
+                    title="Available for Projects in Delhi NCR & Worldwide"
+                  />
+                </div>
+                <div style={{ fontSize: '0.78rem', color: 'var(--mutedtext)', fontWeight: 500 }}>
+                  Digital Marketing & AI Specialist
+                </div>
+              </div>
+            </div>
+
             <div className="hero-cta-group">
               <Link to="/portfolio" className="btn-dark">
                 Explore Selected Work <ArrowUpRight size={17} />

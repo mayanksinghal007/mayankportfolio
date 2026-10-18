@@ -41,8 +41,11 @@ export const About = () => {
         title="About Mayank Aggarwal | Digital Marketing & AI"
         description="About Mayank Aggarwal — Digital Marketing & AI Specialist in Delhi with 1 year experience in Meta Ads, AI video creation, and creative direction."
         canonicalPath="/about"
+        ogImage="/images/mayank-aggarwal-og.jpg"
         jsonLd={aboutSchemas}
-      />
+      >
+        <link rel="preload" as="image" href="/images/mayank-aggarwal.webp" type="image/webp" fetchPriority="high" />
+      </SeoHead>
 
       {/* ABOUT HEADER SECTION */}
       <section className="page-hero-pad">
@@ -121,42 +124,53 @@ export const About = () => {
                     backgroundColor: '#222',
                   }}
                 >
+                  <picture>
+                    <source srcSet="/images/mayank-aggarwal.webp" type="image/webp" />
                     <img
-                      src={mediaAssets.about_profile_photo?.url || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=75"}
-                      alt={mediaAssets.about_profile_photo?.alt || "Mayank Aggarwal"}
-                      width="600"
-                      height="750"
-                      loading="lazy"
+                      src="/images/mayank-aggarwal.jpg"
+                      alt="Mayank Aggarwal, Digital Marketing and AI Specialist based in Delhi, India"
+                      width="850"
+                      height="1106"
+                      fetchPriority="high"
                       decoding="async"
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.88 }}
-                      onError={(e) => {
-                        e.currentTarget.onerror = null;
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=75';
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'center top',
+                        display: 'block',
                       }}
                     />
+                  </picture>
+
+                  {/* Dark gradient overlay for crystal-clear caption contrast */}
                   <div
                     style={{
                       position: 'absolute',
                       inset: 0,
-                      background: 'linear-gradient(to top, rgba(20,20,20,0.95) 0%, transparent 60%)',
+                      background: 'linear-gradient(to top, rgba(10, 10, 12, 0.96) 0%, rgba(10, 10, 12, 0.65) 32%, rgba(10, 10, 12, 0.15) 55%, transparent 75%)',
+                      pointerEvents: 'none',
                     }}
                   />
+
+                  {/* Caption & Entity Identity with High-Contrast Text */}
                   <div
                     style={{
                       position: 'absolute',
                       bottom: '24px',
                       left: '24px',
                       right: '24px',
-                      color: 'var(--softwhite)',
+                      color: '#FFFFFF',
+                      zIndex: 2,
                     }}
                   >
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: 'var(--brand)', padding: '4px 10px', borderRadius: 'var(--radius-full)', fontSize: '0.72rem', fontWeight: 700, textTransform: 'uppercase', marginBottom: '8px' }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: 'var(--brand)', color: '#FFFDF9', padding: '5px 12px', borderRadius: 'var(--radius-full)', fontSize: '0.74rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '10px' }}>
                       <Sparkles size={12} /> Delhi, India
                     </div>
-                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', lineHeight: 1 }}>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', lineHeight: 1.1, color: '#FFFFFF', fontWeight: 800, letterSpacing: '0.01em', textShadow: '0 2px 10px rgba(0,0,0,0.85)', margin: 0 }}>
                       MAYANK AGGARWAL
                     </h3>
-                    <p style={{ fontSize: '0.85rem', color: 'rgba(255,253,249,0.8)', marginTop: '4px' }}>
+                    <p style={{ fontSize: '0.9rem', color: '#FFFDF9', marginTop: '6px', fontWeight: 500, textShadow: '0 1px 4px rgba(0,0,0,0.85)', letterSpacing: '0.01em' }}>
                       Digital Marketing & AI Specialist
                     </p>
                   </div>

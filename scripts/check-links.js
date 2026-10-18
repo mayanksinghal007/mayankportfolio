@@ -31,6 +31,7 @@ for (const file of files) {
       h.startsWith('/') &&
       !h.startsWith('//') &&
       !h.startsWith('/assets') &&
+      !h.startsWith('/images') &&
       !h.startsWith('/Mayank_') &&
       !h.startsWith('/site.webmanifest') &&
       !h.startsWith('/rss.xml') &&

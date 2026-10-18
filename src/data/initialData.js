@@ -781,8 +781,9 @@ export const DEFAULT_MEDIA_ASSETS = {
     name: "About Me Portrait / Photo",
     location: "About Page — Profile Editorial Card",
     type: "image",
-    url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=75",
-    alt: "Mayank Aggarwal",
+    url: "/images/mayank-aggarwal.jpg",
+    webpUrl: "/images/mayank-aggarwal.webp",
+    alt: "Mayank Aggarwal, Digital Marketing and AI Specialist based in Delhi, India",
     caption: "Mayank Aggarwal · Digital Marketing & AI Specialist",
   },
   services_ai_video: {
