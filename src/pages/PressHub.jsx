@@ -219,18 +219,15 @@ export const PressHub = () => {
       <SeoHead
         title="Press & Digital Footprint Hub | Mayank Aggarwal"
         description="Official press kit, media credentials, verified backlink network, and 20 authoritative digital profiles for Mayank Aggarwal. Brand assets and citations."
-        canonical="https://mayank-aggarwal.vercel.app/press"
-        type="website"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        canonicalPath="/press"
+        ogType="website"
+        jsonLd={personSchema}
       />
 
       {/* Hero Header */}
       <section className="page-hero-pad">
         <div className="container">
-          <Breadcrumbs items={[{ name: 'Press & Authority Hub' }]} />
+          <Breadcrumbs items={[{ name: 'Press & Authority Hub', path: '/press' }]} />
           <div style={{ maxWidth: '840px' }}>
             <span className="editorial-eyebrow">
               Verified Entity & Media Network

@@ -25,6 +25,9 @@ export const SITE_CONFIG = {
   cvUrl: "/Mayank_Aggarwal_Resume.pdf", // [REPLACE] upload your resume to /public
   indexNowKey: "8f1a23c5b4d7e901f2a34b56c7d8e90a",
   siteUrl: typeof window !== "undefined" && window.location ? window.location.origin : "https://mayank-aggarwal.vercel.app",
+  googleVerification: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_GOOGLE_SITE_VERIFICATION) || "pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc",
+  bingVerification: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_BING_SITE_VERIFICATION) || "bing-webmaster-verification-placeholder-code",
+  gaMeasurementId: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_GA4_MEASUREMENT_ID) || "G-99QPLF52NX",
 };
 
 // Verified Company Spellings (Single Source of Truth)

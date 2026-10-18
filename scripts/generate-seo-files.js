@@ -79,7 +79,7 @@ Allow: /
 Disallow: /admin
 Disallow: /admin/
 
-# Explicit permissions for search and generative AI answer crawlers
+# Explicit permissions for search engines and generative AI answer crawlers
 User-agent: Googlebot
 Allow: /
 
@@ -98,6 +98,9 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-User
+Allow: /
+
 User-agent: Claude-SearchBot
 Allow: /
 
@@ -108,6 +111,9 @@ User-agent: Google-Extended
 Allow: /
 
 User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /
 
 Sitemap: ${siteUrl}/sitemap.xml

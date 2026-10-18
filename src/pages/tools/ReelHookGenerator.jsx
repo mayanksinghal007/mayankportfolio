@@ -111,12 +111,23 @@ export const ReelHookGenerator = () => {
       <SeoHead
         title="Viral Short-Form Reel Hook Generator for 2026"
         description="Free viral video hook generator for Instagram Reels, TikTok, and YouTube Shorts. Generate high-retention 3-second hooks with audio and visual cues."
-        canonical="https://mayank-aggarwal.vercel.app/tools/reel-hook-generator"
-        type="website"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        canonicalPath="/tools/reel-hook-generator"
+        ogType="website"
+        jsonLd={[
+          faqSchema,
+          {
+            '@type': 'WebApplication',
+            name: 'Viral Short-Form Reel Hook Generator',
+            applicationCategory: 'SocialMediaApplication',
+            operatingSystem: 'Any',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'INR',
+            },
+            description: 'Generate high-retention 3-second opening video hooks for Instagram Reels, YouTube Shorts, and TikTok.',
+          },
+        ]}
       />
 
       {/* Hero Header */}
@@ -125,7 +136,7 @@ export const ReelHookGenerator = () => {
           <Breadcrumbs
             items={[
               { name: 'Interactive Tools', path: '/tools/reel-hook-generator' },
-              { name: 'Reel Hook Generator' }
+              { name: 'Reel Hook Generator', path: '/tools/reel-hook-generator' }
             ]}
           />
           <div style={{ maxWidth: '840px' }}>

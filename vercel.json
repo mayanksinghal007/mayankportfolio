@@ -15,7 +15,7 @@
         { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:; font-src 'self' https: data: fonts.gstatic.com; connect-src 'self' https: wss:; frame-src 'self' https://www.youtube.com https://youtube.com https://player.vimeo.com;"
+          "value": "default-src 'self' https: data: blob: 'unsafe-inline' 'unsafe-eval'; img-src 'self' https: data: blob:; media-src 'self' https: data: blob:; font-src 'self' https: data: fonts.gstatic.com; connect-src 'self' https: wss:; frame-src 'self' https://www.googletagmanager.com https://www.youtube.com https://youtube.com https://player.vimeo.com;"
         }
       ]
     },
@@ -27,6 +27,63 @@
           "value": "public, max-age=31536000, immutable"
         }
       ]
+    },
+    {
+      "source": "/(sitemap\\.xml|robots\\.txt|llms\\.txt|humans\\.txt|rss\\.xml)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.(?<domain>.*)"
+        }
+      ],
+      "destination": "https://:domain/$1",
+      "permanent": true
+    },
+    {
+      "source": "/blog/roas-vs-mer-marketing-efficiency-ratio",
+      "destination": "/blog/roas-vs-mer-which-marketing-metric-matters-2026",
+      "permanent": true
+    },
+    {
+      "source": "/blog/fix-meta-ads-tracking-capi-pixel-guide",
+      "destination": "/blog/meta-ads-pixel-conversions-api-setup-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/blog/drop-cost-per-lead-cpl-meta-ads-service-business",
+      "destination": "/blog/how-to-reduce-meta-ads-cpl-india",
+      "permanent": true
+    },
+    {
+      "source": "/blog/combat-creative-fatigue-meta-ads-fresh-angles",
+      "destination": "/blog/meta-ads-creative-fatigue-testing-framework",
+      "permanent": true
+    },
+    {
+      "source": "/blog/technical-seo-checklist-crawlability-speed",
+      "destination": "/blog/core-web-vitals-inp-lcp-optimization-react",
+      "permanent": true
+    },
+    {
+      "source": "/blog/runway-gen-3-ai-video-ads-commercial-workflow",
+      "destination": "/blog/runway-gen-3-alpha-camera-prompts-cheat-sheet",
+      "permanent": true
+    },
+    {
+      "source": "/blog/meta-ads-targeting-broad-vs-lookalikes-retargeting",
+      "destination": "/blog/meta-ads-custom-audiences-lookalike-strategy",
+      "permanent": true
     }
   ],
   "rewrites": [

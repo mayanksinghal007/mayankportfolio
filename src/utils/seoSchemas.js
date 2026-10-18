@@ -65,13 +65,14 @@ export const getPersonSchema = (siteUrl = getBaseSiteUrl()) => ({
 });
 
 /**
- * 2. ProfessionalService / LocalBusiness Schema (NAP consistency & GEO)
+ * 2. LocalBusiness / ProfessionalService Schema (NAP consistency, Local SEO & GEO)
  */
-export const getProfessionalServiceSchema = (siteUrl = getBaseSiteUrl()) => ({
-  '@type': 'ProfessionalService',
-  '@id': `${siteUrl}/#organization`,
-  name: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`,
-  alternateName: COMPANIES.KLIKWISE,
+export const getLocalBusinessSchema = (siteUrl = getBaseSiteUrl()) => ({
+  '@type': ['LocalBusiness', 'ProfessionalService'],
+  '@id': `${siteUrl}/#localbusiness`,
+  name: `${SITE_CONFIG.name} — ${SITE_CONFIG.brandName}`,
+  alternateName: [COMPANIES.KLIKWISE, 'Mayank Aggarwal', 'Klikwise Digital Marketing'],
+  description: 'Digital Marketing & AI Specialist in Delhi, India providing Meta Ads management, generative AI video production, and social media growth retainers.',
   url: siteUrl,
   logo: `${siteUrl}/assets/hero.png`,
   image: `${siteUrl}/assets/hero.png`,
@@ -80,8 +81,10 @@ export const getProfessionalServiceSchema = (siteUrl = getBaseSiteUrl()) => ({
   priceRange: '$$',
   address: {
     '@type': 'PostalAddress',
+    streetAddress: 'Connaught Place / South Delhi Hub',
     addressLocality: 'Delhi',
     addressRegion: 'Delhi',
+    postalCode: '110001',
     addressCountry: 'IN',
   },
   geo: {
@@ -89,6 +92,11 @@ export const getProfessionalServiceSchema = (siteUrl = getBaseSiteUrl()) => ({
     latitude: 28.6139,
     longitude: 77.2090,
   },
+  sameAs: [
+    SITE_CONFIG.linkedin,
+    SITE_CONFIG.instagram,
+    'https://github.com/mayanksinghal007',
+  ],
   areaServed: [
     { '@type': 'Country', name: 'India' },
     { '@type': 'City', name: 'Delhi' },
@@ -118,17 +126,46 @@ export const getProfessionalServiceSchema = (siteUrl = getBaseSiteUrl()) => ({
   ],
 });
 
+// Backward-compatible alias
+export const getProfessionalServiceSchema = getLocalBusinessSchema;
+
+/**
+ * 2b. Organization Schema (Brand authority & structured knowledge graph)
+ */
+export const getOrganizationSchema = (siteUrl = getBaseSiteUrl()) => ({
+  '@type': 'Organization',
+  '@id': `${siteUrl}/#organization`,
+  name: COMPANIES.KLIKWISE,
+  legalName: 'Klikwise Digital Marketing',
+  alternateName: `${SITE_CONFIG.name} — ${SITE_CONFIG.title}`,
+  url: siteUrl,
+  logo: `${siteUrl}/assets/hero.png`,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: SITE_CONFIG.phone,
+    contactType: 'customer service',
+    email: SITE_CONFIG.email,
+    areaServed: 'IN',
+    availableLanguage: ['English', 'Hindi'],
+  },
+  sameAs: [
+    SITE_CONFIG.linkedin,
+    SITE_CONFIG.instagram,
+    'https://github.com/mayanksinghal007',
+  ],
+});
+
 /**
  * 3. WebSite with SearchAction Schema
  */
 export const getWebSiteSchema = (siteUrl = getBaseSiteUrl()) => ({
   '@type': 'WebSite',
   '@id': `${siteUrl}/#website`,
-  name: 'Mayank Aggarwal Portfolio',
+  name: `${SITE_CONFIG.name} — ${COMPANIES.KLIKWISE}`,
   url: siteUrl,
   description: 'Portfolio, marketing playbooks, and generative AI creative services by Mayank Aggarwal in Delhi, India.',
   publisher: {
-    '@id': `${siteUrl}/#person`,
+    '@id': `${siteUrl}/#organization`,
   },
   potentialAction: {
     '@type': 'SearchAction',
@@ -152,16 +189,23 @@ export const getBreadcrumbSchema = (items = [], siteUrl = getBaseSiteUrl()) => {
   return {
     '@type': 'BreadcrumbList',
     itemListElement: fullItems.map((item, index) => {
-      let cleanPath = item.path || '/';
-      if (!cleanPath.startsWith('http')) {
-        if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
-        cleanPath = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
+      let cleanPath = item.path || '';
+      let fullUrl = siteUrl;
+      if (cleanPath) {
+        if (cleanPath.startsWith('http')) {
+          fullUrl = cleanPath;
+        } else {
+          if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+          fullUrl = `${siteUrl}${cleanPath === '/' ? '' : cleanPath}`;
+        }
+      } else {
+        fullUrl = siteUrl;
       }
       return {
         '@type': 'ListItem',
         position: index + 1,
         name: item.name,
-        item: cleanPath,
+        item: fullUrl,
       };
     }),
   };

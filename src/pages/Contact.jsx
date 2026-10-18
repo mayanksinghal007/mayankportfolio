@@ -17,7 +17,7 @@ import { useSite } from '../context/SiteContext';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
-import { getProfessionalServiceSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
+import { getOrganizationSchema, getLocalBusinessSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
 
 export const Contact = () => {
   const { site, services, addInquiry } = useSite();
@@ -46,7 +46,8 @@ export const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const contactSchemas = [
-    getProfessionalServiceSchema(),
+    getOrganizationSchema(),
+    getLocalBusinessSchema(),
     getBreadcrumbSchema([{ name: 'Contact', path: '/contact' }]),
   ];
 
@@ -281,6 +282,42 @@ export const Contact = () => {
                   Every project inquiry receives a personalized review within <strong>12 business hours</strong>, including preliminary scope suggestions and next steps.
                 </p>
               </div>
+
+              {/* Verified NAP (Name, Address, Phone) & Operating Hours */}
+              <address
+                style={{
+                  fontStyle: 'normal',
+                  backgroundColor: 'var(--softwhite)',
+                  borderRadius: 'var(--radius-lg)',
+                  padding: '24px',
+                  marginTop: '20px',
+                  border: '1px solid var(--border-color)',
+                  fontSize: '0.88rem',
+                  lineHeight: 1.65,
+                  color: 'var(--mutedtext)',
+                }}
+              >
+                <div style={{ color: 'var(--charcoal)', fontWeight: 700, fontSize: '1rem', marginBottom: '4px' }}>
+                  {site.name} · {site.brandName}
+                </div>
+                <div style={{ color: 'var(--mutedtext)' }}>Delhi, National Capital Region (NCR), India · PIN: 110001</div>
+                <div style={{ marginTop: '8px' }}>
+                  <strong>Phone:</strong>{' '}
+                  <a href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`} rel="nofollow" style={{ color: 'var(--charcoal)', fontWeight: 600 }}>
+                    {site.phone}
+                  </a>
+                </div>
+                <div>
+                  <strong>Email:</strong>{' '}
+                  <a href={`mailto:${site.email}`} rel="nofollow" style={{ color: 'var(--brand)', fontWeight: 600 }}>
+                    {site.email}
+                  </a>
+                </div>
+                <div style={{ marginTop: '8px', fontSize: '0.82rem', color: 'var(--mutedtext)' }}>
+                  <strong>Business Hours:</strong> Monday – Friday: 9:00 AM – 7:00 PM IST<br />
+                  Saturday: 10:00 AM – 4:00 PM IST (Sunday Closed)
+                </div>
+              </address>
             </div>
 
             {/* Right Column: Interactive Brief Form */}

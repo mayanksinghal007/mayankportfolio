@@ -39,6 +39,47 @@ export const Footer = () => {
                 Start a Project <ArrowUpRight size={14} />
               </Link>
             </div>
+
+            {/* NAP (Name, Address, Phone) & Local SEO Authority Block */}
+            <address
+              style={{
+                fontStyle: 'normal',
+                marginTop: '18px',
+                paddingTop: '14px',
+                borderTop: '1px solid rgba(255,255,255,0.08)',
+                fontSize: '0.82rem',
+                lineHeight: 1.6,
+                color: 'var(--mutedtext)',
+              }}
+            >
+              <div style={{ color: 'var(--softwhite)', fontWeight: 700, marginBottom: '2px' }}>
+                {site.name} · {site.brandName}
+              </div>
+              <div>Delhi, NCR, India · PIN: 110001</div>
+              <div>
+                Phone / WhatsApp:{' '}
+                <a
+                  href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`}
+                  rel="nofollow"
+                  style={{ color: 'var(--softwhite)', textDecoration: 'none' }}
+                >
+                  {site.phone}
+                </a>
+              </div>
+              <div>
+                Email:{' '}
+                <a
+                  href={`mailto:${site.email}`}
+                  rel="nofollow"
+                  style={{ color: 'var(--softwhite)', textDecoration: 'none' }}
+                >
+                  {site.email}
+                </a>
+              </div>
+              <div style={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>
+                Hours: Mon–Fri 9:00 AM – 7:00 PM IST | Sat 10:00 AM – 4:00 PM IST
+              </div>
+            </address>
           </div>
 
           {/* Col 2: Navigation & Tools */}

@@ -108,12 +108,23 @@ export const RoasCalculator = () => {
       <SeoHead
         title="Meta Ads ROAS & Profit Calculator for Indian D2C"
         description="Free Meta Ads ROAS & real net profit calculator for Indian D2C e-commerce brands. Compute break-even ROAS, POAS, COD RTO impact, and net margins."
-        canonical="https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator"
-        type="website"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        canonicalPath="/tools/meta-ads-roas-calculator"
+        ogType="website"
+        jsonLd={[
+          faqSchema,
+          {
+            '@type': 'WebApplication',
+            name: 'Meta Ads ROAS & Profit Calculator',
+            applicationCategory: 'BusinessApplication',
+            operatingSystem: 'Any',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'INR',
+            },
+            description: 'Free Meta Ads ROAS & real net profit calculator for Indian D2C e-commerce brands.',
+          },
+        ]}
       />
 
       {/* Hero Header */}
@@ -122,7 +133,7 @@ export const RoasCalculator = () => {
           <Breadcrumbs
             items={[
               { name: 'Interactive Tools', path: '/tools/meta-ads-roas-calculator' },
-              { name: 'ROAS & Profit Calculator' }
+              { name: 'ROAS & Profit Calculator', path: '/tools/meta-ads-roas-calculator' }
             ]}
           />
           <div style={{ maxWidth: '840px' }}>

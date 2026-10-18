@@ -22,7 +22,7 @@ import { HERO_STATS, PORTFOLIO_NOTE } from '../config/site';
 import { SeoHead } from '../components/SeoHead';
 import { ToolsMarquee } from '../components/ToolsMarquee';
 
-import { getPersonSchema, getProfessionalServiceSchema, getWebSiteSchema } from '../utils/seoSchemas';
+import { getPersonSchema, getOrganizationSchema, getLocalBusinessSchema, getWebSiteSchema } from '../utils/seoSchemas';
 
 export const Home = () => {
   const { site, services, portfolio, blogPosts = [], mediaAssets = {} } = useSite();
@@ -38,7 +38,8 @@ export const Home = () => {
 
   const homeSchemas = [
     getPersonSchema(),
-    getProfessionalServiceSchema(),
+    getOrganizationSchema(),
+    getLocalBusinessSchema(),
     getWebSiteSchema(),
   ];
 

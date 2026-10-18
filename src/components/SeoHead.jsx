@@ -11,13 +11,16 @@ export const SeoHead = ({
   title,
   description,
   canonicalPath = '',
+  canonical = '',
   ogType = 'website',
+  type,
   ogImage,
   noindex = false,
   publishedTime,
   modifiedTime,
   author,
   jsonLd,
+  children,
 }) => {
   const baseSiteUrl =
     (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_SITE_URL) ||
@@ -27,8 +30,21 @@ export const SeoHead = ({
   // Normalize site URL without trailing slash
   const cleanBaseUrl = baseSiteUrl.replace(/\/+$/, '');
 
-  // Normalize canonical path: ensure leading slash, no trailing slash (except root)
+  // Normalize canonical path: accept canonicalPath or canonical (extracting path if absolute URL)
   let cleanPath = canonicalPath || '';
+  if (!cleanPath && canonical) {
+    if (canonical.startsWith('http')) {
+      try {
+        const parsed = new URL(canonical);
+        cleanPath = parsed.pathname;
+      } catch (e) {
+        cleanPath = canonical;
+      }
+    } else {
+      cleanPath = canonical;
+    }
+  }
+
   if (!cleanPath.startsWith('/')) {
     cleanPath = '/' + cleanPath;
   }
@@ -36,6 +52,7 @@ export const SeoHead = ({
     cleanPath = cleanPath.slice(0, -1);
   }
   const canonicalUrl = `${cleanBaseUrl}${cleanPath === '/' ? '' : cleanPath}`;
+  const effectiveOgType = ogType || type || 'website';
 
   // Default fallback image
   const defaultImage = `${cleanBaseUrl}/assets/hero.png`;
@@ -76,8 +93,26 @@ export const SeoHead = ({
       <meta name="theme-color" content="#FFFDF9" />
       <meta name="author" content={author || SITE_CONFIG.name} />
 
+      {/* Search Engine Verification Meta Tags */}
+      <meta
+        name="google-site-verification"
+        content={
+          (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_GOOGLE_SITE_VERIFICATION) ||
+          SITE_CONFIG.googleVerification ||
+          'google-site-verification-placeholder-code'
+        }
+      />
+      <meta
+        name="msvalidate.01"
+        content={
+          (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_BING_SITE_VERIFICATION) ||
+          SITE_CONFIG.bingVerification ||
+          'bing-webmaster-verification-placeholder-code'
+        }
+      />
+
       {/* Open Graph / Facebook */}
-      <meta property="og:type" content={ogType} />
+      <meta property="og:type" content={effectiveOgType} />
       <meta property="og:site_name" content="Mayank Aggarwal Portfolio" />
       <meta property="og:title" content={displayTitle} />
       <meta property="og:description" content={metaDesc} />
@@ -92,13 +127,13 @@ export const SeoHead = ({
       <meta name="twitter:image" content={finalImage} />
 
       {/* Article Specific Open Graph */}
-      {ogType === 'article' && publishedTime && (
+      {effectiveOgType === 'article' && publishedTime && (
         <meta property="article:published_time" content={publishedTime} />
       )}
-      {ogType === 'article' && modifiedTime && (
+      {effectiveOgType === 'article' && modifiedTime && (
         <meta property="article:modified_time" content={modifiedTime} />
       )}
-      {ogType === 'article' && author && (
+      {effectiveOgType === 'article' && author && (
         <meta property="article:author" content={author} />
       )}
 
@@ -114,6 +149,8 @@ export const SeoHead = ({
           )}
         </script>
       )}
+
+      {children}
     </Helmet>
   );
 };

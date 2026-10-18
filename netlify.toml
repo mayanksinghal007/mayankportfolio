@@ -2,6 +2,75 @@
   command = "npm run build"
   publish = "dist"
 
+# Security & Performance Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+# 301 Permanent Redirects for canonical URLs
+[[redirects]]
+  from = "/blog/roas-vs-mer-marketing-efficiency-ratio"
+  to = "/blog/roas-vs-mer-which-marketing-metric-matters-2026"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/fix-meta-ads-tracking-capi-pixel-guide"
+  to = "/blog/meta-ads-pixel-conversions-api-setup-checklist"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/drop-cost-per-lead-cpl-meta-ads-service-business"
+  to = "/blog/how-to-reduce-meta-ads-cpl-india"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/combat-creative-fatigue-meta-ads-fresh-angles"
+  to = "/blog/meta-ads-creative-fatigue-testing-framework"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/technical-seo-checklist-crawlability-speed"
+  to = "/blog/core-web-vitals-inp-lcp-optimization-react"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/runway-gen-3-ai-video-ads-commercial-workflow"
+  to = "/blog/runway-gen-3-alpha-camera-prompts-cheat-sheet"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/meta-ads-targeting-broad-vs-lookalikes-retargeting"
+  to = "/blog/meta-ads-custom-audiences-lookalike-strategy"
+  status = 301
+  force = true
+
+# SPA Fallback Routing
 [[redirects]]
   from = "/*"
   to = "/index.html"

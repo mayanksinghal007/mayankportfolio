@@ -188,16 +188,9 @@ export const CityLanding = () => {
       <SeoHead
         title={cityInfo.seoTitle}
         description={cityInfo.metaDescription}
-        canonical={cityInfo.canonicalUrl}
-        type="website"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        canonicalPath={`/locations/${city}`}
+        ogType="website"
+        jsonLd={[localBusinessSchema, faqSchema]}
       />
 
       {/* Header & Regional Navigation */}
@@ -206,7 +199,7 @@ export const CityLanding = () => {
           <Breadcrumbs
             items={[
               { name: 'Regional Hubs', path: '/locations/delhi' },
-              { name: cityInfo.name }
+              { name: cityInfo.name, path: `/locations/${city}` }
             ]}
           />
 

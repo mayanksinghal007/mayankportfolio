@@ -9,6 +9,7 @@ import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { SearchModal } from './components/SearchModal';
 import { ScrollLeadModal } from './components/ScrollLeadModal';
+import { AnalyticsTracker } from './components/AnalyticsTracker';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
 // Pages
@@ -80,6 +81,7 @@ export const AppLayout = () => {
     <>
       <ScrollToTop />
       <TrailingSlashHandler />
+      <AnalyticsTracker />
 
       {/* Top Reading Progress Bar */}
       {!isAdmin && <ScrollProgressBar />}

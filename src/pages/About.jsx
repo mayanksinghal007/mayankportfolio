@@ -23,14 +23,15 @@ import {
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 
-import { getPersonSchema, getProfessionalServiceSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
+import { getPersonSchema, getOrganizationSchema, getLocalBusinessSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
 
 export const About = () => {
   const { site, mediaAssets = {} } = useSite();
 
   const aboutSchemas = [
     getPersonSchema(),
-    getProfessionalServiceSchema(),
+    getOrganizationSchema(),
+    getLocalBusinessSchema(),
     getBreadcrumbSchema([{ name: 'About Mayank', path: '/about' }]),
   ];
 

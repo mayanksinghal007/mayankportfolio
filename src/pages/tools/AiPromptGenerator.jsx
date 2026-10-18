@@ -91,12 +91,23 @@ export const AiPromptGenerator = () => {
       <SeoHead
         title="AI Video Ad Prompt Generator for Runway & Kling"
         description="Generate cinematic commercial AI video prompts for Runway Gen-3, Kling AI, and Midjourney. Fine-tune camera lenses, lighting, and motion parameters."
-        canonical="https://mayank-aggarwal.vercel.app/tools/ai-video-prompt-generator"
-        type="website"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        canonicalPath="/tools/ai-video-prompt-generator"
+        ogType="website"
+        jsonLd={[
+          faqSchema,
+          {
+            '@type': 'WebApplication',
+            name: 'AI Video Ad Prompt Generator',
+            applicationCategory: 'MultimediaApplication',
+            operatingSystem: 'Any',
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'INR',
+            },
+            description: 'Generate commercial camera prompts for Runway Gen-3 Alpha, Kling AI, and Midjourney.',
+          },
+        ]}
       />
 
       {/* Hero Header */}
@@ -105,7 +116,7 @@ export const AiPromptGenerator = () => {
           <Breadcrumbs
             items={[
               { name: 'Interactive Tools', path: '/tools/ai-video-prompt-generator' },
-              { name: 'AI Video Prompt Generator' }
+              { name: 'AI Video Prompt Generator', path: '/tools/ai-video-prompt-generator' }
             ]}
           />
           <div style={{ maxWidth: '840px' }}>
