@@ -1,122 +1,200 @@
-# SEO Manual Action Guide: Next Steps for Live Verification & Indexing
+# Complete SEO, AEO & GEO Manual Action Guide: External Logins & Setup
 
-All programmatic code foundations, static HTML prerendering, robots.txt bot allowances, verification tags, Schema.org JSON-LD graphs, sitemap generation, and GA4 tracking hooks have been implemented directly in the codebase.
+> **Note**: This file is mirrored at [seo/MANUAL-STEPS.md](file:///c:/Users/pc/Desktop/MAYANK%20PORTFOLIO%20WEBSITE/seo/MANUAL-STEPS.md). All programmatic code, static HTML prerendering (79 pages), Google Tag Manager (`GTM-M4LM5ZS2`), Google Analytics 4 (`G-99QPLF52NX`), Google Search Console verification meta tags and HTML file (`google82f1f02845411ec0.html`), robots.txt AI allowances, IndexNow keys, Schema.org JSON-LD graphs, automated event tracking, and XML sitemaps are **100% implemented and live in the codebase**.
 
-The following steps require external platform dashboard access and cannot be automated from code. Complete these in order:
+This document outlines the **exact sequential steps** that require your manual login into third-party dashboards (Google Search Console, Bing, GA4, Google Business Profile, and citation platforms).
 
 ---
 
-## 1. Google Search Console (GSC) Setup & Verification
+## 1. Google Search Console (GSC) — Verification & Priority Indexing
 
-### Step 1.1: Add Your Property
-1. Navigate to [Google Search Console](https://search.google.com/search-console).
-2. Sign in with your primary Google account (`contact.klikwise@gmail.com` or `riyansh.studio007@gmail.com`).
-3. Select **Add Property**:
-   - Recommended: **URL prefix** -> enter your production URL: `https://mayank-aggarwal.vercel.app` (or your custom domain if connected).
+### Step 1.1: Sign In & Add Property
+1. Go to [Google Search Console](https://search.google.com/search-console).
+2. Sign in with your primary Google account (`contact.klikwise@gmail.com` or your admin email).
+3. In the top-left dropdown, click **Add Property**.
+4. Select **URL prefix** (recommended for Vercel deployments):
+   - Enter: `https://mayank-aggarwal.vercel.app` (or your custom domain if DNS is mapped).
+   - Click **Continue**.
 
-### Step 1.2: Verify Ownership in Google Search Console
-Both verification methods are already built into the codebase:
-- **Method A (HTML File)**: Select **HTML file** verification -> click **Verify**. (The file `google82f1f02845411ec0.html` is served at `https://mayank-aggarwal.vercel.app/google82f1f02845411ec0.html`).
-- **Method B (HTML Tag - Active)**: Both verification tags are embedded into every page's `<head>`:
-  - `<meta name="google-site-verification" content="pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc" />`
-  - `<meta name="google-site-verification" content="10MtCl154U961mQNyVLU_cxYmyPz7sqMwxu5tpHmxvc" />`
-- **In Vercel**: Add `VITE_GOOGLE_SITE_VERIFICATION=pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc` in your Vercel Environment Variables.
-Click **Verify** in Google Search Console. Ownership will be confirmed instantly!
+### Step 1.2: Instant Ownership Verification
+Your site already has both verification methods active:
+- **Method A (HTML File - Active)**:
+  - In the verification popup, select **HTML file**.
+  - Google will check for `google82f1f02845411ec0.html` (which is already live at `https://mayank-aggarwal.vercel.app/google82f1f02845411ec0.html`).
+  - Click **Verify**.
+- **Method B (HTML Tag - Backup)**:
+  - Select **HTML tag**. Both tags are embedded in every page's `<head>`:
+    - `<meta name="google-site-verification" content="pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc" />`
+    - `<meta name="google-site-verification" content="10MtCl154U961mQNyVLU_cxYmyPz7sqMwxu5tpHmxvc" />`
+  - Click **Verify**.
+  - Result: **Ownership verified successfully!**
 
-### Step 1.3: Submit Your XML Sitemap
-1. In the left sidebar of Google Search Console, click on **Sitemaps**.
-2. Under "Add a new sitemap", enter: `sitemap.xml`.
+### Step 1.3: Submit XML Sitemap
+1. In the left sidebar of Google Search Console, click **Sitemaps**.
+2. Under "Add a new sitemap", enter: `sitemap.xml`
 3. Click **Submit**.
-4. Confirm that the status shows **Success** and all 79 URLs are discovered.
+4. Refresh after 30 seconds: The status will display **Success** with **79 discovered pages**.
 
-### Step 1.4: Request Priority Indexing for the Homepage
-1. At the top of Search Console, paste your homepage URL: `https://mayank-aggarwal.vercel.app/` into the **Inspect any URL** search bar.
-2. Click **Test Live URL**.
-3. Once the live test confirms "URL is available to Google", click **Request Indexing**.
-
----
-
-## 2. Bing Webmaster Tools Setup & IndexNow Verification
-
-### Step 2.1: Create Account & Import from Search Console
-1. Navigate to [Bing Webmaster Tools](https://www.bing.com/webmasters).
-2. Click **Get Started** and sign in with Microsoft or Google.
-3. Choose **Import from Google Search Console** (fastest method — automatically imports your verified site, sitemap, and settings).
-4. Alternatively, choose **Add your site manually** using URL prefix `https://mayank-aggarwal.vercel.app`:
-   - Copy the verification code from the `msvalidate.01` meta tag.
-   - Set in `.env`: `VITE_BING_SITE_VERIFICATION=YOUR_BING_CODE`.
-   - Set in Vercel Environment Variables: `VITE_BING_SITE_VERIFICATION=YOUR_BING_CODE`.
-   - Deploy and click **Verify**.
-
-### Step 2.2: Verify Sitemap & IndexNow
-1. Go to **Sitemaps** in the Bing Webmaster sidebar.
-2. Ensure `https://mayank-aggarwal.vercel.app/sitemap.xml` is listed and status is **Success**.
-3. Confirm **IndexNow** protocol:
-   - The site codebase already contains your pre-configured IndexNow key file: `/8f1a23c5b4d7e901f2a34b56c7d8e90a.txt` and `/indexnow.txt`.
-   - Bing uses this automatically to index newly published pages within minutes.
+### Step 1.4: Request Priority Indexing for Top 7 Pages
+To trigger Googlebot crawler priority right away:
+1. Paste the URL into the top inspection search bar:
+   - `https://mayank-aggarwal.vercel.app/`
+2. Click **Test Live URL** (takes ~15–30 seconds).
+3. Once the live test confirms green checkmarks, click **Request Indexing**.
+4. Repeat for the 6 core pillar pages:
+   - `https://mayank-aggarwal.vercel.app/services`
+   - `https://mayank-aggarwal.vercel.app/services/meta-ads`
+   - `https://mayank-aggarwal.vercel.app/portfolio`
+   - `https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator`
+   - `https://mayank-aggarwal.vercel.app/locations/delhi`
+   - `https://mayank-aggarwal.vercel.app/contact`
 
 ---
 
-## 3. Google Analytics 4 (GA4) Status: Configured (G-99QPLF52NX)
+## 2. Bing Webmaster Tools & IndexNow Setup
 
-Your Google tag `G-99QPLF52NX` is already embedded directly in `index.html` and wired to SPA transitions via `src/components/AnalyticsTracker.jsx`.
+### Step 2.1: 1-Click Import from Google Search Console
+1. Visit [Bing Webmaster Tools](https://www.bing.com/webmasters).
+2. Click **Get Started** and sign in with your Google account.
+3. Click **Import from Google Search Console**.
+4. Grant read permissions. Bing will automatically import your verified property, sitemap, and settings instantly without needing manual DNS or meta tag verification!
 
-### Step 3.1: Set Environment Variable in Vercel
-1. Go to your **Vercel Dashboard** -> Project Settings -> **Environment Variables**.
-2. Add:
-   - Key: `VITE_GA4_MEASUREMENT_ID`
-   - Value: `G-99QPLF52NX`
-3. Trigger a redeploy (or git push).
-
-### Step 3.2: Verify Real-Time Hits
-1. Open your live site: `https://mayank-aggarwal.vercel.app/`
-2. In Google Analytics, navigate to **Reports** > **Realtime**.
-3. You should see yourself as an active user within 5–10 seconds, and page_view events firing as you click around!
+### Step 2.2: Confirm IndexNow Status
+- Bing utilizes the **IndexNow protocol** for instant discovery.
+- Your project root already has the key configured:
+  - File: `https://mayank-aggarwal.vercel.app/8f1a23c5b4d7e901f2a34b56c7d8e90a.txt`
+  - Key: `8f1a23c5b4d7e901f2a34b56c7d8e90a`
+- Bing and Yandex will crawl every updated URL within minutes.
 
 ---
 
-## 4. Google Business Profile (GMB) for Local SEO & Delhi NCR Authority
+## 3. Google Analytics 4 (GA4) — Real-Time Verification & Conversion Tracking
 
-If operating as a regional performance marketing agency or consultancy in Delhi NCR:
+Your GA4 tag `G-99QPLF52NX` is already embedded and wired via `src/components/AnalyticsTracker.jsx`.
+
+### Step 3.1: Confirm Live Traffic
+1. Open [Google Analytics](https://analytics.google.com).
+2. Select your property (`Mayank Aggarwal Portfolio` / `G-99QPLF52NX`).
+3. Click **Reports** > **Realtime**.
+4. Open `https://mayank-aggarwal.vercel.app/` in an incognito browser window.
+5. Within 5 seconds, your session will show on the real-time globe.
+
+### Step 3.2: Mark Custom Events as Key Conversions
+Your site now automatically dispatches the following events on interaction:
+- `form_submit` (when a user sends the contact form)
+- `whatsapp_click` (when a user clicks any WhatsApp chat button)
+- `call_click` (when a user clicks a phone call link)
+- `cta_click` (when a user clicks primary CTA buttons or calculator links)
+- `newsletter_signup` (when a user subscribes to the VIP Growth Dispatch)
+
+**To configure them as Key Conversions in GA4**:
+1. In GA4, click **Admin** (gear icon in lower left).
+2. Under "Data display", click **Events**.
+3. Under the list of incoming events, toggle the switch **Mark as key event** (or **Mark as conversion**) for:
+   - `form_submit` (Primary Lead Conversion)
+   - `whatsapp_click` (High-Intent Conversion)
+   - `call_click` (Direct Phone Inquiry)
+   - `newsletter_signup` (Subscriber Conversion)
+4. These events will now report under your acquisition attribution reports and ROAS dashboards.
+
+---
+
+## 4. Google Business Profile (GBP) — Local SEO & Delhi NCR Authority
+
+For commanding local search ("Performance marketer in Delhi", "Meta ads agency Delhi NCR", "AI video agency Delhi"):
 
 ### Step 4.1: Claim or Create Profile
-1. Navigate to [Google Business Profile](https://www.google.com/business/).
+1. Go to [Google Business Profile](https://www.google.com/business/).
 2. Click **Manage now**.
-3. Business Name: `Mayank Aggarwal — Klikwise Digital Marketing` (consistent with LocalBusiness schema).
-4. Business Category:
-   - Primary: `Marketing Agency` or `Internet Marketing Service`
-   - Secondary: `Advertising Agency`, `Marketing Consultant`
+3. Enter exact Business Name: `Mayank Aggarwal — Klikwise Digital Marketing`
 
-### Step 4.2: Match NAP Exactly with Website
-To build high local pack authority, your Google Business Profile details MUST match your website's footer and contact page:
-- **Name**: Mayank Aggarwal (Klikwise)
-- **Address / Service Area**: Delhi, New Delhi, Gurugram, Noida, National Capital Region (NCR), India.
-- **Phone**: `+91 9217756033`
+### Step 4.2: Enter Exact NAP Information
+Your GBP profile details **MUST MATCH** the Schema.org LocalBusiness data in code:
+- **Business Name**: `Mayank Aggarwal — Klikwise Digital Marketing`
+- **Primary Category**: `Marketing Agency`
+- **Secondary Categories**: `Internet Marketing Service`, `Advertising Agency`, `Marketing Consultant`
+- **Service Areas**:
+  - Delhi, New Delhi
+  - Gurugram (Cyber City, Golf Course Road)
+  - Noida (Sector 62, Sector 18)
+  - Faridabad, Ghaziabad
+  - National Capital Region (NCR), India
+- **Phone Number**: `+91 9217756033`
 - **Website URL**: `https://mayank-aggarwal.vercel.app`
-- **Hours**:
-  - Monday – Friday: 9:00 AM – 7:00 PM
-  - Saturday: 10:00 AM – 4:00 PM
+- **Appointment / Contact Link**: `https://mayank-aggarwal.vercel.app/contact`
+- **Operating Hours**:
+  - Monday – Friday: 09:00 AM – 07:00 PM IST
+  - Saturday: 10:00 AM – 04:00 PM IST
   - Sunday: Closed
 
-### Step 4.3: Complete Verification
-1. Complete phone OTP or video verification as prompted by Google.
-2. Add high-resolution photos: logo, workspace, and showreel thumbnails.
-3. Link your website URL and contact inquiry page: `https://mayank-aggarwal.vercel.app/contact`.
+### Step 4.3: Profile Media & Verification
+1. Complete phone OTP or video verification as required by Google.
+2. Upload high-resolution visual assets:
+   - Profile Logo (from `/assets/hero/mayank.png` or favicon)
+   - Workspace photos / Showreel thumbnail
+3. Publish your first Google Post announcing:
+   - *"Scaling D2C brands and tech startups with Meta Ads & Generative AI video workflows. Explore our free ROAS calculator at mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator"*
 
 ---
 
-## 5. PageSpeed Insights & Core Web Vitals Audit
+## 5. Directory & Citation Submission Sequence (Top 25 Priority)
 
-1. Open [Google PageSpeed Insights](https://pagespeed.web.dev/).
-2. Run your live deployment URL for these top landing pages:
-   - Homepage: `https://mayank-aggarwal.vercel.app/`
-   - Services Hub: `https://mayank-aggarwal.vercel.app/services`
-   - Contact Page: `https://mayank-aggarwal.vercel.app/contact`
-   - ROAS Calculator: `https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator`
-   - High-Intent Regional Hub: `https://mayank-aggarwal.vercel.app/locations/delhi`
-3. Verify that **Mobile** scores achieve:
-   - Performance: **90+**
-   - Accessibility: **95+**
-   - Best Practices: **100**
-   - SEO: **100**
-4. Check [PAGESPEED-CHECKLIST.md](file:///c:/Users/pc/Desktop/MAYANK%20PORTFOLIO%20WEBSITE/PAGESPEED-CHECKLIST.md) for full metrics reference.
+To build initial domain authority (DR 0 -> DR 35+) and entity signals for AI search engines, submit your business to these top platforms using the ready-to-copy text in `/seo/backlinks.md`:
+
+### Week 1: Professional & Entity Profiles (Immediate Indexing)
+- [ ] **LinkedIn Company Page**: Create `Klikwise Digital Marketing` linked to your personal profile.
+- [ ] **Crunchbase**: Add company profile `Klikwise` (founder: Mayank Aggarwal, headquarters: Delhi).
+- [ ] **Wellfound (AngelList)**: Create agency profile under Growth Marketing / Performance Ads.
+- [ ] **GitHub**: Ensure profile `mayanksinghal007` links to `https://mayank-aggarwal.vercel.app`.
+- [ ] **Behance**: Create agency portfolio showcase linking to `/portfolio`.
+- [ ] **Dribbble**: Create designer/creative strategist profile.
+- [ ] **Medium**: Setup publication for publishing syndicated articles.
+- [ ] **Dev.to & Hashnode**: Setup developer / AI creator blog handles.
+
+### Week 2: B2B Agency & Review Platforms
+- [ ] **Clutch.co**: Submit free agency profile under *Digital Marketing & PPC Agencies in Delhi*.
+- [ ] **GoodFirms**: Register under *Top Advertising Agencies in India*.
+- [ ] **Sortlist**: Create service profile for *Meta Ads & Social Media Marketing*.
+- [ ] **DesignRush**: Submit listing for *Performance Marketing & Video Agencies*.
+- [ ] **UpCity**: Free directory submission.
+
+### Week 3: Indian Local Business Citations
+- [ ] **IndiaMART**: Register seller profile under *Digital Marketing Services Delhi*.
+- [ ] **Justdial**: Add free business listing for *Internet Marketing Services Connaught Place / Delhi*.
+- [ ] **Sulekha**: Create listing for *PPC & Social Media Marketing Experts*.
+- [ ] **TradeIndia**: Add service catalog.
+
+### Ready-to-Copy Description (Use on Directory Forms):
+> **Tagline**: Performance Marketing & Generative AI Creative Strategist | Delhi NCR & Worldwide  
+> **Short (50 words)**: Mayank Aggarwal is a performance marketer and creative strategist based in Delhi NCR, specializing in high-ROAS Meta and Google ad campaigns, AI video commercials, and full-funnel customer acquisition. Partnering with D2C brands, funded startups, and B2B enterprises to scale profitably through data-driven performance and modern creative production.  
+> **Contact**: `contact.klikwise@gmail.com` | `+91 9217756033` | `https://mayank-aggarwal.vercel.app`
+
+Track your live listing URLs in the table located in `/seo/backlinks.md`.
+
+---
+
+## 6. Cold Outreach & Link Building Execution
+
+Use the **10 battle-tested email outreach templates** located in `/seo/backlinks.md#outreach-email-templates`:
+1. Guest Post Pitch (for marketing blogs like Social Media Examiner, Marketing Land, YourStory)
+2. Broken Link Outreach (finding 404 links on marketing resource pages)
+3. Resource Page Link Request (suggesting your free Meta Ads ROAS Calculator)
+4. Unlinked Brand Mention Request (converting mentions of "Klikwise" or "Mayank Aggarwal")
+5. Podcast Guest Pitch (pitching your expertise on AI video advertising & Meta ROAS)
+6. PR / Journalist Pitch via HARO / Connectively / Featured.com
+7. Strategic Agency Partnership (cross-referral with web development agencies)
+8. Testimonial Exchange (for SaaS ad tools like AdCreative, Motion, Foreplay)
+9. Directory Profile Update / NAP Correction
+10. Polite 4-Day Follow-Up Template
+
+---
+
+## 7. Ongoing Maintenance Cadence
+
+| Cadence | Action Item | Platform |
+| :--- | :--- | :--- |
+| **Weekly (Tuesday)** | Publish 2 articles from `/seo/content-calendar.md` | Codebase & Vercel |
+| **Weekly (Friday)** | Send 10 outreach emails from `/seo/backlinks.md` | Gmail / Hunter.io |
+| **Bi-Weekly** | Inspect Search Console coverage & queries | Google Search Console |
+| **Monthly** | Review GA4 conversion goals & ROAS attribution | Google Analytics 4 |
+| **Monthly** | Run PageSpeed audit on core templates | PageSpeed Insights |

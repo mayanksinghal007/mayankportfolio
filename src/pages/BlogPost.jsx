@@ -1,16 +1,20 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSite } from '../context/SiteContext';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { marked } from 'marked';
-import { Clock, Calendar, ArrowLeft, ArrowRight, Share2, MessageCircle, CheckCircle2, ChevronRight, User } from 'lucide-react';
+import { Clock, Calendar, ArrowLeft, ArrowRight, Share2, MessageCircle, CheckCircle2, ChevronRight, User, Copy, Check, Mail, Send } from 'lucide-react';
+import { LinkedinIcon, InstagramIcon, XTwitterIcon } from '../components/SocialIcons';
 import { SITE_CONFIG } from '../config/site';
 import { getBlogPostingSchema, getBreadcrumbSchema, getFaqSchema } from '../utils/seoSchemas';
 
 export const BlogPost = () => {
   const { slug } = useParams();
   const { blogPosts = [], site } = useSite();
+  const [copied, setCopied] = useState(false);
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
 
   const post = useMemo(() => {
     return blogPosts.find((p) => p.slug === slug);
@@ -23,11 +27,124 @@ export const BlogPost = () => {
       .slice(0, 3);
   }, [blogPosts, post, slug]);
 
+
   // Convert markdown content to sanitized HTML
   const parsedContent = useMemo(() => {
     if (!post || !post.content) return '';
     return marked.parse(post.content);
   }, [post]);
+
+  const canonicalUrl = post ? `${SITE_CONFIG.domain}/blog/${post.slug}` : '';
+
+  const handleCopyLink = () => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(canonicalUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2500);
+    }
+  };
+
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    if (!newsletterEmail || !newsletterEmail.includes('@')) return;
+    setIsSubscribed(true);
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'newsletter_signup', {
+        event_category: 'engagement',
+        event_label: post?.slug || 'blog_newsletter',
+        newsletter_topic: post?.category || 'all',
+      });
+    }
+  };
+
+  const renderShareButtons = (label = 'Share this guide:') => (
+    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', margin: '20px 0' }}>
+      <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--charcoal)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+        {label}
+      </span>
+      <a
+        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        aria-label="Share on LinkedIn"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          padding: '6px 14px',
+          borderRadius: '999px',
+          backgroundColor: '#0077b5',
+          color: '#ffffff',
+          fontSize: '0.78rem',
+          fontWeight: 600,
+          textDecoration: 'none',
+        }}
+      >
+        <LinkedinIcon size={14} color="#ffffff" /> LinkedIn
+      </a>
+      <a
+        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(post?.title || '')}`}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        aria-label="Share on X (Twitter)"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          padding: '6px 14px',
+          borderRadius: '999px',
+          backgroundColor: '#000000',
+          color: '#ffffff',
+          fontSize: '0.78rem',
+          fontWeight: 600,
+          textDecoration: 'none',
+        }}
+      >
+        <XTwitterIcon size={14} color="#ffffff" /> X / Twitter
+      </a>
+      <a
+        href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${post?.title || ''} — Read here: ${canonicalUrl}`)}`}
+        target="_blank"
+        rel="noopener noreferrer nofollow"
+        aria-label="Share on WhatsApp"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          padding: '6px 14px',
+          borderRadius: '999px',
+          backgroundColor: '#25D366',
+          color: '#ffffff',
+          fontSize: '0.78rem',
+          fontWeight: 600,
+          textDecoration: 'none',
+        }}
+      >
+        <MessageCircle size={14} /> WhatsApp
+      </a>
+      <button
+        onClick={handleCopyLink}
+        type="button"
+        aria-label="Copy link to article"
+        style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '6px',
+          padding: '6px 14px',
+          borderRadius: '999px',
+          backgroundColor: copied ? 'var(--brand)' : 'var(--card-bg)',
+          color: copied ? '#ffffff' : 'var(--charcoal)',
+          border: '1px solid var(--border-color)',
+          fontSize: '0.78rem',
+          fontWeight: 600,
+          cursor: 'pointer',
+          transition: 'all 0.2s ease',
+        }}
+      >
+        {copied ? <Check size={14} /> : <Copy size={14} />} {copied ? 'Copied!' : 'Copy Link'}
+      </button>
+    </div>
+  );
 
   if (!post) {
     return (
@@ -148,6 +265,9 @@ export const BlogPost = () => {
               </p>
             </div>
 
+            {/* Top Social Share Actions */}
+            {renderShareButtons('Share this guide:')}
+
             {/* Featured Image */}
             <div
               style={{
@@ -190,9 +310,97 @@ export const BlogPost = () => {
               className="blog-prose"
               dangerouslySetInnerHTML={{ __html: parsedContent }}
               style={{
-                marginBottom: '48px',
+                marginBottom: '36px',
               }}
             />
+
+            {/* Article Tags */}
+            {post.tags && post.tags.length > 0 && (
+              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center', margin: '20px 0 28px 0' }}>
+                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--mutedtext)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  Tags:
+                </span>
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    style={{
+                      fontSize: '0.78rem',
+                      padding: '4px 12px',
+                      backgroundColor: 'var(--card-bg)',
+                      border: '1px solid var(--border-color)',
+                      borderRadius: '999px',
+                      color: 'var(--charcoal)',
+                      fontWeight: 500,
+                    }}
+                  >
+                    #{tag}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Bottom Social Share Actions */}
+            <div style={{ padding: '20px 0', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)', marginBottom: '40px' }}>
+              {renderShareButtons('Found this valuable? Share with your peers:')}
+            </div>
+
+            {/* VIP Newsletter Dispatch Card */}
+            <div
+              style={{
+                backgroundColor: 'var(--card-bg)',
+                border: '1px solid var(--border-color)',
+                borderRadius: '20px',
+                padding: '36px',
+                marginBottom: '48px',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', color: 'var(--brand)', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                <Mail size={16} /> VIP Growth Dispatch
+              </div>
+              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--charcoal)', marginBottom: '10px' }}>
+                GET PERFORMANCE MARKETING & AI PLAYBOOKS EVERY TUESDAY
+              </h3>
+              <p style={{ fontSize: '0.92rem', color: 'var(--mutedtext)', lineHeight: 1.6, marginBottom: '20px', maxWidth: '620px' }}>
+                Join 2,500+ D2C brand founders, agency media buyers, and creators in Delhi NCR and worldwide. Zero fluff, real Meta ad tests, ROAS breakdowns, and AI prompt workflows.
+              </p>
+
+              {isSubscribed ? (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 18px', backgroundColor: 'var(--peach)', borderLeft: '4px solid var(--brand)', borderRadius: '8px', color: 'var(--charcoal)', fontWeight: 600, fontSize: '0.9rem' }}>
+                  <CheckCircle2 size={18} color="var(--brand)" />
+                  <span>You're in! Check your inbox next Tuesday for your first growth strategy brief.</span>
+                </div>
+              ) : (
+                <form onSubmit={handleNewsletterSubmit} style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', maxWidth: '520px' }}>
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your work email address"
+                    value={newsletterEmail}
+                    onChange={(e) => setNewsletterEmail(e.target.value)}
+                    style={{
+                      flex: '1 1 240px',
+                      padding: '12px 16px',
+                      borderRadius: '10px',
+                      border: '1px solid var(--border-color)',
+                      fontSize: '0.9rem',
+                      backgroundColor: 'var(--softwhite)',
+                      color: 'var(--charcoal)',
+                      outline: 'none',
+                    }}
+                  />
+                  <button
+                    type="submit"
+                    className="btn-primary"
+                    style={{ padding: '12px 22px', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                  >
+                    Subscribe Free <Send size={14} />
+                  </button>
+                </form>
+              )}
+            </div>
 
             {/* Frequently Asked Questions (FAQ) Section */}
             {post.faqs && post.faqs.length > 0 && (
