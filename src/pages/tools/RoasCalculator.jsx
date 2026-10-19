@@ -19,18 +19,49 @@ import {
 } from 'lucide-react';
 
 export const RoasCalculator = () => {
+  // Mode: 'USD' (International / US / UK) vs 'INR' (Indian D2C)
+  const [currency, setCurrency] = useState('USD');
+
   // Financial Inputs
-  const [adSpend, setAdSpend] = useState(100000);
-  const [revenue, setRevenue] = useState(350000);
+  const [adSpend, setAdSpend] = useState(5000);
+  const [revenue, setRevenue] = useState(17500);
   const [cogsPercent, setCogsPercent] = useState(30);
-  const [shippingPerOrder, setShippingPerOrder] = useState(90);
-  const [aov, setAov] = useState(1500);
-  const [rtoPercent, setRtoPercent] = useState(15);
-  const [pgPercent, setPgPercent] = useState(2);
+  const [shippingPerOrder, setShippingPerOrder] = useState(6);
+  const [aov, setAov] = useState(75);
+  const [rtoPercent, setRtoPercent] = useState(3);
+  const [pgPercent, setPgPercent] = useState(2.9);
   const [openFaq, setOpenFaq] = useState(null);
+
+  const handleCurrencyChange = (newCur) => {
+    setCurrency(newCur);
+    if (newCur === 'USD') {
+      setAdSpend(5000);
+      setRevenue(17500);
+      setCogsPercent(30);
+      setShippingPerOrder(6);
+      setAov(75);
+      setRtoPercent(3);
+      setPgPercent(2.9);
+    } else {
+      setAdSpend(100000);
+      setRevenue(350000);
+      setCogsPercent(30);
+      setShippingPerOrder(90);
+      setAov(1500);
+      setRtoPercent(15);
+      setPgPercent(2.0);
+    }
+  };
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
+  };
+
+  const formatCurrency = (val) => {
+    if (currency === 'USD') {
+      return `$${Math.round(val).toLocaleString('en-US')}`;
+    }
+    return `₹${Math.round(val).toLocaleString('en-IN')}`;
   };
 
   // Computations
@@ -41,10 +72,11 @@ export const RoasCalculator = () => {
     // Total COGS
     const totalCogs = revenue * (cogsPercent / 100);
 
-    // Shipping fees (forward + return for RTO)
+    // Shipping fees (forward + return for RTO/returns)
     const deliveredOrders = estimatedOrders * (1 - rtoPercent / 100);
     const rtoOrders = estimatedOrders * (rtoPercent / 100);
-    const totalShipping = deliveredOrders * shippingPerOrder + rtoOrders * shippingPerOrder * 1.6;
+    const returnMultiplier = currency === 'INR' ? 1.6 : 1.2;
+    const totalShipping = deliveredOrders * shippingPerOrder + rtoOrders * shippingPerOrder * returnMultiplier;
 
     // Payment gateway fees
     const totalPgFees = revenue * (pgPercent / 100);
@@ -69,7 +101,7 @@ export const RoasCalculator = () => {
       isProfitable: netProfit > 0,
       status: rawRoas >= breakEvenRoas * 1.3 ? 'Scalable' : rawRoas >= breakEvenRoas ? 'Break-Even' : 'Loss-Making'
     };
-  }, [adSpend, revenue, cogsPercent, shippingPerOrder, aov, rtoPercent, pgPercent]);
+  }, [adSpend, revenue, cogsPercent, shippingPerOrder, aov, rtoPercent, pgPercent, currency]);
 
   const faqs = [
     {
@@ -77,16 +109,16 @@ export const RoasCalculator = () => {
       a: 'ROAS (Return on Ad Spend) measures gross revenue divided by ad spend. POAS (Profit On Ad Spend) measures gross profit divided by ad spend, factoring in COGS, logistics, and gateway fees.'
     },
     {
-      q: 'How do you calculate Break-Even ROAS in Indian e-commerce?',
-      a: 'Break-Even ROAS = 1 / [1 - (COGS% + Gateway% + Shipping Cost / AOV)]. For an Indian brand with 30% COGS and 10% logistics costs, break-even ROAS is typically 1.67x.'
+      q: 'How do you calculate Break-Even ROAS in e-commerce?',
+      a: 'Break-Even ROAS = 1 / [1 - (COGS% + Gateway% + Shipping Cost / AOV)]. For a DTC brand with 30% COGS and 10% fulfillment/returns cost, break-even ROAS is typically 1.67x.'
     },
     {
-      q: 'Why does high Return-to-Origin (RTO) distort ROAS in India?',
-      a: 'Meta Ads records COD orders as purchases at checkout. If 20% to 25% of orders are rejected upon delivery, your real bank cash ROAS is 25% lower than reported in Ads Manager.'
+      q: 'Why do returns or COD Return-to-Origin (RTO) distort ROAS?',
+      a: 'Meta Ads records purchases at checkout. If 10% to 20% of orders are returned or rejected upon delivery, your real bank cash ROAS is significantly lower than reported in Ads Manager.'
     },
     {
-      q: 'How can Indian D2C stores increase net contribution margins?',
-      a: 'The highest leverage levers are: (1) Increasing AOV via 2-pack and 3-pack product bundles, (2) Offering instant UPI discounts to convert COD to prepaid, and (3) Implementing WhatsApp automated address verification.'
+      q: 'How can DTC stores increase net contribution margins?',
+      a: 'The highest leverage levers are: (1) Increasing AOV via multi-pack product bundles, (2) Optimizing high-converting direct-response video hooks, and (3) Implementing post-purchase email/SMS flows to drive organic repeat purchases.'
     }
   ];
 
@@ -106,8 +138,8 @@ export const RoasCalculator = () => {
   return (
     <div className="editorial-tool-page">
       <SeoHead
-        title="Meta Ads ROAS & Profit Calculator for Indian D2C"
-        description="Free Meta Ads ROAS & real net profit calculator for Indian D2C e-commerce brands. Compute break-even ROAS, POAS, COD RTO impact, and net margins."
+        title="Meta Ads ROAS & Profit Calculator | Global E-Commerce & DTC"
+        description="Free Meta Ads ROAS & real net profit calculator for US, UK, and global e-commerce brands. Compute break-even ROAS, POAS, COGS, returns, and contribution margin."
         canonicalPath="/tools/meta-ads-roas-calculator"
         ogType="website"
         jsonLd={[
@@ -120,9 +152,9 @@ export const RoasCalculator = () => {
             offers: {
               '@type': 'Offer',
               price: '0',
-              priceCurrency: 'INR',
+              priceCurrency: currency,
             },
-            description: 'Free Meta Ads ROAS & real net profit calculator for Indian D2C e-commerce brands.',
+            description: 'Free Meta Ads ROAS & real net profit calculator for US, UK, and global e-commerce brands.',
           },
         ]}
       />
@@ -142,7 +174,7 @@ export const RoasCalculator = () => {
               META ADS ROAS & <span className="brand-span">NET PROFIT CALCULATOR.</span>
             </h1>
             <p className="hero-lead" style={{ maxWidth: '740px' }}>
-              Calculate your true net profit, break-even ROAS, and realistic margins after accounting for COGS, shipping, payment gateway fees, and Indian COD Return-to-Origin (RTO).
+              Calculate your true net profit, break-even ROAS, and realistic margins after accounting for COGS, shipping/fulfillment, payment gateway fees (Stripe/Shopify), and return/RTO rates.
             </p>
           </div>
         </div>
@@ -162,20 +194,60 @@ export const RoasCalculator = () => {
                 <span className="badge-pill" style={{ fontSize: '0.74rem' }}>Live Model</span>
               </div>
 
+              {/* Currency Mode Switcher */}
+              <div style={{ display: 'flex', gap: '8px', marginBottom: '20px', background: 'var(--cream-subtle)', padding: '4px', borderRadius: '8px' }}>
+                <button
+                  type="button"
+                  onClick={() => handleCurrencyChange('USD')}
+                  style={{
+                    flex: 1,
+                    padding: '8px 12px',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    background: currency === 'USD' ? 'var(--charcoal)' : 'transparent',
+                    color: currency === 'USD' ? '#fff' : 'var(--text-muted)',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  Global / US ($ USD)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleCurrencyChange('INR')}
+                  style={{
+                    flex: 1,
+                    padding: '8px 12px',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    background: currency === 'INR' ? 'var(--charcoal)' : 'transparent',
+                    color: currency === 'INR' ? '#fff' : 'var(--text-muted)',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  Domestic (₹ INR COD)
+                </button>
+              </div>
+
               {/* Ad Spend Slider */}
               <div className="tool-input-group">
                 <div className="tool-input-label-row">
                   <label htmlFor="adSpendInput" className="tool-input-label">
-                    Monthly Ad Spend (₹)
+                    Monthly Ad Spend ({currency === 'USD' ? '$' : '₹'})
                   </label>
-                  <span className="tool-input-val">₹{adSpend.toLocaleString('en-IN')}</span>
+                  <span className="tool-input-val">{formatCurrency(adSpend)}</span>
                 </div>
                 <input
                   id="adSpendInput"
                   type="range"
-                  min="10000"
-                  max="2500000"
-                  step="5000"
+                  min={currency === 'USD' ? 500 : 10000}
+                  max={currency === 'USD' ? 100000 : 2500000}
+                  step={currency === 'USD' ? 250 : 5000}
                   value={adSpend}
                   onChange={(e) => setAdSpend(Number(e.target.value))}
                   className="tool-slider"
@@ -186,16 +258,16 @@ export const RoasCalculator = () => {
               <div className="tool-input-group">
                 <div className="tool-input-label-row">
                   <label htmlFor="revenueInput" className="tool-input-label">
-                    Gross Attributed Revenue (₹)
+                    Gross Attributed Revenue ({currency === 'USD' ? '$' : '₹'})
                   </label>
-                  <span className="tool-input-val">₹{revenue.toLocaleString('en-IN')}</span>
+                  <span className="tool-input-val">{formatCurrency(revenue)}</span>
                 </div>
                 <input
                   id="revenueInput"
                   type="range"
-                  min="10000"
-                  max="10000000"
-                  step="10000"
+                  min={currency === 'USD' ? 1000 : 10000}
+                  max={currency === 'USD' ? 300000 : 10000000}
+                  step={currency === 'USD' ? 500 : 10000}
                   value={revenue}
                   onChange={(e) => setRevenue(Number(e.target.value))}
                   className="tool-slider"
@@ -220,13 +292,13 @@ export const RoasCalculator = () => {
                 </div>
                 <div className="tool-input-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="aovInput" className="tool-input-label" style={{ display: 'block', marginBottom: '6px' }}>
-                    Avg Order Value (AOV ₹)
+                    Avg Order Value ({currency === 'USD' ? '$' : '₹'})
                   </label>
                   <input
                     id="aovInput"
                     type="number"
-                    min="200"
-                    max="50000"
+                    min={currency === 'USD' ? 10 : 200}
+                    max={currency === 'USD' ? 1000 : 50000}
                     value={aov}
                     onChange={(e) => setAov(Number(e.target.value))}
                     className="tool-number-input"
@@ -237,13 +309,14 @@ export const RoasCalculator = () => {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                 <div className="tool-input-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="shippingInput" className="tool-input-label" style={{ display: 'block', marginBottom: '6px' }}>
-                    Forward Freight / Order (₹)
+                    Fulfillment / Order ({currency === 'USD' ? '$' : '₹'})
                   </label>
                   <input
                     id="shippingInput"
                     type="number"
                     min="0"
-                    max="500"
+                    max={currency === 'USD' ? 50 : 500}
+                    step={currency === 'USD' ? '0.5' : '5'}
                     value={shippingPerOrder}
                     onChange={(e) => setShippingPerOrder(Number(e.target.value))}
                     className="tool-number-input"
@@ -251,7 +324,7 @@ export const RoasCalculator = () => {
                 </div>
                 <div className="tool-input-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="rtoInput" className="tool-input-label" style={{ display: 'block', marginBottom: '6px' }}>
-                    COD Return-to-Origin (%)
+                    {currency === 'USD' ? 'Return Rate (%)' : 'COD Return Rate (%)'}
                   </label>
                   <input
                     id="rtoInput"
@@ -323,7 +396,7 @@ export const RoasCalculator = () => {
                         color: stats.isProfitable ? '#10B981' : '#EF4444'
                       }}
                     >
-                      ₹{stats.netProfit.toLocaleString('en-IN')}
+                      {formatCurrency(stats.netProfit)}
                     </div>
                     <div className="tool-metric-sub">
                       Net Margin: <strong style={{ color: 'var(--softwhite)' }}>{stats.netMarginPercent}%</strong>
@@ -342,25 +415,25 @@ export const RoasCalculator = () => {
                   <div className="tool-breakdown-row">
                     <span>Product Manufacturing (COGS)</span>
                     <strong style={{ color: '#FCA5A5', fontFamily: 'var(--font-mono)' }}>
-                      -₹{stats.totalCogs.toLocaleString('en-IN')}
+                      -{formatCurrency(stats.totalCogs)}
                     </strong>
                   </div>
                   <div className="tool-breakdown-row">
-                    <span>Forward & Reverse Shipping</span>
+                    <span>Fulfillment & Returns Logistics</span>
                     <strong style={{ color: '#FCA5A5', fontFamily: 'var(--font-mono)' }}>
-                      -₹{stats.totalShipping.toLocaleString('en-IN')}
+                      -{formatCurrency(stats.totalShipping)}
                     </strong>
                   </div>
                   <div className="tool-breakdown-row">
-                    <span>Payment Gateway Fees</span>
+                    <span>Merchant / Gateway Fees</span>
                     <strong style={{ color: '#FCA5A5', fontFamily: 'var(--font-mono)' }}>
-                      -₹{stats.totalPgFees.toLocaleString('en-IN')}
+                      -{formatCurrency(stats.totalPgFees)}
                     </strong>
                   </div>
                   <div className="tool-breakdown-row" style={{ borderBottom: 'none', paddingTop: '14px', fontWeight: 700 }}>
                     <span style={{ color: 'var(--softwhite)' }}>Ad Spend Incurred</span>
                     <strong style={{ color: '#FCA5A5', fontFamily: 'var(--font-mono)' }}>
-                      -₹{adSpend.toLocaleString('en-IN')}
+                      -{formatCurrency(adSpend)}
                     </strong>
                   </div>
                 </div>
@@ -400,14 +473,14 @@ export const RoasCalculator = () => {
                 marginBottom: '16px'
               }}
             >
-              Why Most Indian D2C Brands Go Broke at a 3x ROAS
+              Why Most E-Commerce Brands Struggle Even at a 3x ROAS
             </h2>
             <div style={{ color: 'var(--text-main)', fontSize: '0.98rem', lineHeight: '1.75' }}>
               <p style={{ marginBottom: '14px' }}>
-                Many agency media buyers celebrate a 3x Return on Ad Spend inside Meta Ads Manager while founders notice store bank accounts draining. In Indian e-commerce, Cash on Delivery accounts for 55% to 75% of total checkout volume. With standard 15% to 25% Return-to-Origin (RTO) rates, courier partners charge both forward logistics and reverse delivery surcharges on rejected packages.
+                Many media buyers celebrate a 3x Return on Ad Spend inside Meta Ads Manager while founders notice store bank accounts draining. In global DTC and domestic e-commerce alike, true unit economics determine cash profitability. Between product COGS (typically 25%–35%), shipping freight, payment processor fees (Stripe/Shopify 2.9% or COD reverse surcharges), and customer returns/chargebacks, an apparent 3.0x front-end ROAS frequently yields an operational net profit margin under 5%.
               </p>
               <p>
-                When factoring in product COGS (typically 30%), courier freight (10%), payment gateway charges (2%), and write-offs on damaged return inventory, an apparent 2.5x to 3.0x front-end ROAS frequently yields an operational net margin close to zero. Sustainable brand scaling requires transitioning from front-end ROAS tracking to <strong>POAS (Profit On Ad Spend)</strong> and <strong>Contribution Margin 3 (CM3)</strong> discipline.
+                When factoring in hidden fees, forward logistics, and return inventory write-downs, scaling ad spend without knowing your break-even floor accelerates cash burn. Sustainable brand scaling requires transitioning from front-end ROAS tracking to <strong>POAS (Profit On Ad Spend)</strong> and <strong>Contribution Margin 3 (CM3)</strong> discipline.
               </p>
             </div>
           </div>

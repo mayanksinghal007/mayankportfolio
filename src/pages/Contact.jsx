@@ -32,8 +32,8 @@ export const Contact = () => {
     company: '',
     service: preselectedService || 'Performance Marketing',
     description: '',
-    budget: '₹25,000 – ₹50,000',
-    contact_method: 'WhatsApp',
+    budget: '$1,500 – $3,000 / mo',
+    contact_method: 'Email',
     consent: false,
     website_bot_trap: '', // Anti-spam honeypot
   };
@@ -449,14 +449,14 @@ export const Contact = () => {
                       </div>
 
                       <div className="form-group">
-                        <label htmlFor="contact-location" className="form-label">City / Location (Kahan se ho)</label>
+                        <label htmlFor="contact-location" className="form-label">City / Country</label>
                         <input
                           type="text"
                           id="contact-location"
                           name="location"
                           value={form.location}
                           onChange={handleChange}
-                          placeholder="e.g. Delhi NCR, Mumbai, Bengaluru"
+                          placeholder="e.g. Austin TX, London, Toronto, Dubai, Delhi"
                           className="form-control"
                         />
                       </div>
@@ -520,11 +520,12 @@ export const Contact = () => {
                           onChange={handleChange}
                           className="form-control"
                         >
-                          <option value="Under ₹25,000">Under ₹25,000</option>
-                          <option value="₹25,000 – ₹50,000">₹25,000 – ₹50,000</option>
-                          <option value="₹50,000 – ₹1,00,000">₹50,000 – ₹1,00,000</option>
-                          <option value="₹1,00,000+">₹1,00,000+</option>
-                          <option value="To Be Discussed">To Be Discussed</option>
+                          <option value="$1,500 – $3,000 / mo">$1,500 – $3,000 / month (Core Growth Retainer)</option>
+                          <option value="$3,000 – $6,000 / mo">$3,000 – $6,000 / month (Scale & Creative Testing)</option>
+                          <option value="$6,000+ / mo">$6,000+ / month (Enterprise & Multi-Market Scale)</option>
+                          <option value="$1,000 – $2,500 (Project Creative)">$1,000 – $2,500 (AI Video / Creative Pack Project)</option>
+                          <option value="Under $1,500 / Project">Under $1,500 / Starter Project</option>
+                          <option value="To Be Discussed">To Be Discussed on Discovery Call</option>
                         </select>
                       </div>
 

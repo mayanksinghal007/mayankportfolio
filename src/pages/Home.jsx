@@ -53,14 +53,15 @@ export const Home = () => {
     'Content Calendars',
     'Runway Gen-3 Alpha',
     'Kling AI Workflows',
-    'SEO & Backlinks',
+    'Direct Response Hooks',
+    'UGC Creative Strategy',
   ];
 
   return (
     <>
       <SeoHead
-        title="Mayank Aggarwal | Digital Marketing & AI Specialist"
-        description="Performance Meta Ads, generative AI video creation, and high-retention content strategy for modern brands by Mayank Aggarwal based in Delhi, India."
+        title="Mayank Aggarwal | Performance Marketing & AI Video Creative Partner"
+        description="Performance Meta Ads, cinematic generative AI commercial videos, and high-retention creative strategy for ambitious brands in the US, UK, and worldwide by Mayank Aggarwal."
         canonicalPath="/"
         jsonLd={homeSchemas}
       />
@@ -75,7 +76,7 @@ export const Home = () => {
           <div>
             <div className="hero-tag">
               <span className="pulse-dot" />
-              <span>{site.title} · {site.location}</span>
+              <span>{site.title} · Global Remote / US & Worldwide</span>
             </div>
 
             <h1 className="hero-h1 display-hero">
@@ -85,7 +86,7 @@ export const Home = () => {
             </h1>
 
             <p className="hero-lead">
-              I help ambitious brands turn ideas into high-converting Meta Ads, unforgettable social media presence, and cinematic generative AI video and creative assets.
+              I partner with ambitious brands across the US, UK, and worldwide to build high-converting Meta Ads, automated email retention funnels, and cinematic generative AI commercial videos.
             </p>
 
             {/* Profile Authority & Trust Badge */}
@@ -158,11 +159,11 @@ export const Home = () => {
             </div>
 
             <div className="hero-cta-group">
-              <Link to="/portfolio" className="btn-dark">
-                Explore Selected Work <ArrowUpRight size={17} />
+              <Link to="/contact" className="btn-brand">
+                Book a Discovery Call <ArrowUpRight size={17} />
               </Link>
-              <Link to="/services" className="btn-secondary">
-                View All Services <ArrowRight size={17} />
+              <Link to="/portfolio" className="btn-dark">
+                Explore Selected Work <ArrowRight size={17} />
               </Link>
               <a
                 href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`}

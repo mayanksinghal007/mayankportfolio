@@ -73,6 +73,11 @@
       "permanent": true
     },
     {
+      "source": "/services/seo-content",
+      "destination": "/services/performance-marketing",
+      "permanent": true
+    },
+    {
       "source": "/blog/roas-vs-mer-marketing-efficiency-ratio",
       "destination": "/blog/roas-vs-mer-which-marketing-metric-matters-2026",
       "permanent": true

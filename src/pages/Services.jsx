@@ -8,7 +8,7 @@ import {
   Mic,
   Palette,
   Film,
-  Search,
+  Mail,
   CheckCircle2,
   ChevronDown,
   Sparkles,
@@ -25,7 +25,7 @@ const serviceIcons = {
   'ai-voiceover': Mic,
   'ai-creative-design': Palette,
   'content-reel-strategy': Film,
-  'seo-content': Search,
+  'email-marketing': Mail,
 };
 
 import { getProfessionalServiceSchema, getBreadcrumbSchema, getFaqSchema } from '../utils/seoSchemas';
@@ -44,8 +44,8 @@ export const Services = () => {
       a: 'Absolutely. Many clients bundle Meta Performance Marketing with AI Video creative production and Social Media Management for a seamless end-to-end growth engine.',
     },
     {
-      q: 'Do you work with clients outside of Delhi / India?',
-      a: 'Yes! While I am based in Delhi, I collaborate remotely with brands and founders across India, the US, UK, UAE, and Southeast Asia via Slack, WhatsApp, and Google Meet.',
+      q: 'How do you work with international clients across different timezones?',
+      a: 'I collaborate seamlessly with brands, agencies, and founders across the United States (EST/PST), United Kingdom (GMT), Canada, UAE (GST), and globally. We operate asynchronously via Slack, Notion, and Loom, with scheduled bi-weekly strategy calls via Google Meet.',
     },
     {
       q: 'How are campaign deliverables tracked and reported?',
@@ -66,8 +66,8 @@ export const Services = () => {
   return (
     <>
       <SeoHead
-        title="Marketing & AI Creative Services | Mayank Aggarwal"
-        description="Explore performance marketing, Meta Ads, social media strategy, AI video production, and SEO services tailored for ambitious Indian and global brands."
+        title="Performance Marketing & AI Creative Services | Mayank Aggarwal"
+        description="Explore performance marketing, Meta & Google Ads, AI video commercial production, direct-response UGC strategy, and lifecycle email marketing for ambitious global brands."
         canonicalPath="/services"
         jsonLd={servicesSchemas}
       />

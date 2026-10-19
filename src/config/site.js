@@ -44,7 +44,7 @@ export const COMPANIES = {
 export const HERO_STATS = [
   { value: "1 Year", label: "Hands-on Experience" },
   { value: "Meta + AI Video", label: "Core Focus" },
-  { value: "Delhi, India", label: "Location" },
+  { value: "Global / Remote", label: "US, UK & Worldwide" },
   { value: "< 12 Hours", label: "Response Time" },
 ];
 
