@@ -35,18 +35,19 @@ Your site already has both verification methods active:
 3. Click **Submit**.
 4. Refresh after 30 seconds: The status will display **Success** with **79 discovered pages**.
 
-### Step 1.4: Request Priority Indexing for Top 7 Pages
+### Step 1.4: Request Priority Indexing for Top 7 Core Pages
 To trigger Googlebot crawler priority right away:
 1. Paste the URL into the top inspection search bar:
    - `https://mayank-aggarwal.vercel.app/`
 2. Click **Test Live URL** (takes ~15–30 seconds).
 3. Once the live test confirms green checkmarks, click **Request Indexing**.
-4. Repeat for the 6 core pillar pages:
+4. Repeat for the primary commercial and tool pages:
    - `https://mayank-aggarwal.vercel.app/services`
-   - `https://mayank-aggarwal.vercel.app/services/meta-ads`
+   - `https://mayank-aggarwal.vercel.app/services/performance-marketing`
+   - `https://mayank-aggarwal.vercel.app/services/ai-video-creation`
+   - `https://mayank-aggarwal.vercel.app/services/email-marketing`
    - `https://mayank-aggarwal.vercel.app/portfolio`
    - `https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator`
-   - `https://mayank-aggarwal.vercel.app/locations/delhi`
    - `https://mayank-aggarwal.vercel.app/contact`
 
 ---
@@ -151,25 +152,29 @@ To build initial domain authority (DR 0 -> DR 35+) and entity signals for AI sea
 - [ ] **Medium**: Setup publication for publishing syndicated articles.
 - [ ] **Dev.to & Hashnode**: Setup developer / AI creator blog handles.
 
-### Week 2: B2B Agency & Review Platforms
-- [ ] **Clutch.co**: Submit free agency profile under *Digital Marketing & PPC Agencies in Delhi*.
-- [ ] **GoodFirms**: Register under *Top Advertising Agencies in India*.
-- [ ] **Sortlist**: Create service profile for *Meta Ads & Social Media Marketing*.
-- [ ] **DesignRush**: Submit listing for *Performance Marketing & Video Agencies*.
-- [ ] **UpCity**: Free directory submission.
+### Week 2: B2B Agency & Review Platforms (US / UK / Global)
+- [ ] **Clutch.co**: Submit free agency profile under *Top Performance Marketing & Paid Advertising Agencies*.
+- [ ] **Crunchbase**: Add company profile `Klikwise` (founder: Mayank Aggarwal, website: `https://mayank-aggarwal.vercel.app`).
+- [ ] **GoodFirms**: Register under *Top PPC & Performance Marketing Agencies*.
+- [ ] **DesignRush**: Submit listing for *AI Video Production & Creative Agencies*.
+- [ ] **Sortlist**: Create service profile for *Meta Ads & Generative AI Commercials*.
+- [ ] **Wellfound (AngelList)**: Create agency profile under Growth Marketing / Performance Media Buying.
 
-### Week 3: Indian Local Business Citations
-- [ ] **IndiaMART**: Register seller profile under *Digital Marketing Services Delhi*.
-- [ ] **Justdial**: Add free business listing for *Internet Marketing Services Connaught Place / Delhi*.
-- [ ] **Sulekha**: Create listing for *PPC & Social Media Marketing Experts*.
-- [ ] **TradeIndia**: Add service catalog.
+### Week 3: High-Authority AI & Marketing Tool Directories (Viral Inbound Engine)
+Your live interactive tools are high-leverage assets for gaining thousands of international visitors and DA 70-90+ editorial backlinks:
+- [ ] **Product Hunt**: Submit free launch for *Meta Ads ROAS & Profit Calculator* (`/tools/meta-ads-roas-calculator`).
+- [ ] **Toolify.ai**: Submit *AI Video Prompt Generator* (`/tools/ai-video-prompt-generator`).
+- [ ] **There's An AI For That**: Submit *AI Video Ad Creative Prompt Engine*.
+- [ ] **Futurepedia.io**: Submit under *Marketing & E-commerce Tools*.
+- [ ] **AlternativeTo.net**: Add as a free alternative to paid ad calculators.
+- [ ] **BetaList**: Submit *Mayank Aggarwal Performance & AI Creative Suite*.
 
-### Ready-to-Copy Description (Use on Directory Forms):
-> **Tagline**: Performance Marketing & Generative AI Creative Strategist | Delhi NCR & Worldwide  
-> **Short (50 words)**: Mayank Aggarwal is a performance marketer and creative strategist based in Delhi NCR, specializing in high-ROAS Meta and Google ad campaigns, AI video commercials, and full-funnel customer acquisition. Partnering with D2C brands, funded startups, and B2B enterprises to scale profitably through data-driven performance and modern creative production.  
-> **Contact**: `contact.klikwise@gmail.com` | `+91 9217756033` | `https://mayank-aggarwal.vercel.app`
+### Ready-to-Copy Description (Use on Directory & Profile Forms):
+> **Tagline**: Performance Marketing (Meta Ads) & AI Video Creative Partner | US, UK & Worldwide  
+> **Short (50 words)**: Mayank Aggarwal is an international performance marketer and generative AI creative specialist. He partners with ambitious e-commerce brands, funded startups, and B2B companies across the US, UK, and worldwide to scale customer acquisition through high-ROAS Meta and Google ad campaigns, cinematic AI video commercials, and lifecycle email retention funnels.  
+> **Contact**: `contact.klikwise@gmail.com` | `riyansh.studio007@gmail.com` | `https://mayank-aggarwal.vercel.app`
 
-Track your live listing URLs in the table located in `/seo/backlinks.md`.
+Track your live listing URLs in the table located in `/seo/backlinks.md` and `/seo/WORLDWIDE-CLIENT-ACQUISITION-PLAYBOOK.md`.
 
 ---
 
