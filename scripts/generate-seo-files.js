@@ -86,6 +86,18 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
+User-agent: SemrushBot
+Allow: /
+
+User-agent: SemrushBot-SA
+Allow: /
+
+User-agent: SemrushBot-BA
+Allow: /
+
+User-agent: SemrushBot-SI
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
