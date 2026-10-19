@@ -134,11 +134,20 @@ async function prerender() {
         `<div id="root">${cleanHtml}</div>`
       );
 
+      // International SEO hreflang tags
+      const currentUrl = `https://mayank-aggarwal.vercel.app${route === '/' ? '' : route}`;
+      const hreflangTags = [
+        `<link rel="alternate" hreflang="en-IN" href="${currentUrl}" />`,
+        `<link rel="alternate" hreflang="en" href="${currentUrl}" />`,
+        `<link rel="alternate" hreflang="x-default" href="${currentUrl}" />`,
+      ];
+
       // Inject head tags into <head>
       const headTags = [
         extractedTitle,
         ...new Set(extractedMetas),
         ...new Set(extractedLinks),
+        ...hreflangTags,
         ...extractedScripts,
       ].filter(Boolean).join('\n    ');
 
