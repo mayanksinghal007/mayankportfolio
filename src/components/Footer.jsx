@@ -131,7 +131,7 @@ export const Footer = () => {
           <div>
             <h4 className="footer-col-title">Core Services</h4>
             <ul className="footer-nav-list">
-              {services.slice(0, 5).map((s) => (
+              {services.map((s) => (
                 <li key={s.slug}>
                   <Link to={`/services/${s.slug}`} className="footer-nav-link">
                     {s.name}

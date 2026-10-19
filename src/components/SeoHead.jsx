@@ -90,6 +90,10 @@ export const SeoHead = ({
       <meta name="robots" content={robotsDirective} />
       <meta name="googlebot" content={robotsDirective} />
       <link rel="canonical" href={canonicalUrl} />
+      {/* International SEO & Hreflang Tags */}
+      <link rel="alternate" hrefLang="en-IN" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="x-default" href={canonicalUrl} />
       <meta name="theme-color" content="#FFFDF9" />
       <meta name="author" content={author || SITE_CONFIG.name} />
 
