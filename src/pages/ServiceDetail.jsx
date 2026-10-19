@@ -293,15 +293,18 @@ export const ServiceDetail = () => {
                     marginBottom: '24px',
                   }}
                 >
-                  <img
-                    src="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=75"
-                    alt="AI Video Sample"
-                    width="1200"
-                    height="675"
-                    loading="lazy"
-                    decoding="async"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }}
-                  />
+                  <picture>
+                    <source srcSet="/images/hero-showreel.webp" type="image/webp" />
+                    <img
+                      src="/images/hero-showreel.jpg"
+                      alt="AI Video Sample"
+                      width="1200"
+                      height="675"
+                      loading="lazy"
+                      decoding="async"
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }}
+                    />
+                  </picture>
                   <div
                     style={{
                       position: 'absolute',
@@ -317,7 +320,7 @@ export const ServiceDetail = () => {
                         handleOpenMedia({
                           title: 'AI Commercial & UGC Video Showcase',
                           overview: 'Sample cut generated with Runway Gen-3 Alpha, Kling AI, and color-graded in DaVinci Resolve.',
-                          image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
+                          image: '/images/hero-showreel.jpg',
                           hasVideoDemo: true,
                         })
                       }
@@ -342,7 +345,7 @@ export const ServiceDetail = () => {
                       handleOpenMedia({
                         title: 'AI Commercial & UGC Video Showcase',
                         overview: 'Sample cut generated with Runway Gen-3 Alpha, Kling AI, and color-graded in DaVinci Resolve.',
-                        image: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
+                        image: '/images/hero-showreel.jpg',
                         hasVideoDemo: true,
                       })
                     }

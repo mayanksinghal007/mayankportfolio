@@ -144,7 +144,7 @@ Avoid hashtag stuffing (30 hashtags now triggers spam penalties). Use 3 to 5 hyp
     date: "2026-09-16",
     updated: "2026-10-12",
     readTime: "8 min read",
-    coverImage: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=75",
+    coverImage: "/images/hero-showreel.jpg",
     author: "Mayank Aggarwal",
     authorRole: "Digital Marketing & AI Specialist",
     published: true,

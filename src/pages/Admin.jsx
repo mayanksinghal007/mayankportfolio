@@ -280,7 +280,7 @@ export const Admin = () => {
         model: aiModel,
         prompt: aiPrompt,
         status: 'Render Completed in 4.2s (4K 60fps)',
-        previewUrl: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
+        previewUrl: '/images/hero-showreel.jpg',
       });
       showToast('AI simulation rendered successfully!');
     }, 1200);

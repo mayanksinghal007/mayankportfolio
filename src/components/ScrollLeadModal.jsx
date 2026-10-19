@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { X, Sparkles, Send, CheckCircle2, ShieldCheck, MapPin, Phone, Mail, User, ArrowRight } from 'lucide-react';
-import confetti from 'canvas-confetti';
 import { useSite } from '../context/SiteContext';
 
 // Page-specific contextual templates to maximize conversion and relevance
@@ -132,25 +131,29 @@ export const ScrollLeadModal = () => {
     }
 
     setHasDismissed(false);
-    let triggered = false;
+    let ticking = false;
 
     const handleScroll = () => {
-      if (triggered) return;
+      if (triggered || ticking) return;
 
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      
-      // Calculate scroll percentage
-      const scrollProgress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        
+        // Calculate scroll percentage
+        const scrollProgress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
 
-      // 30% scroll trigger (or scrolled at least 250px on shorter pages)
-      if (scrollProgress >= 30 || (scrollHeight < 750 && scrollTop >= 220)) {
-        triggered = true;
-        // Graceful smooth entrance
-        setTimeout(() => {
-          setIsOpen(true);
-        }, 300);
-      }
+        // 30% scroll trigger (or scrolled at least 250px on shorter pages)
+        if (scrollProgress >= 30 || (scrollHeight < 750 && scrollTop >= 220)) {
+          triggered = true;
+          // Graceful smooth entrance
+          setTimeout(() => {
+            setIsOpen(true);
+          }, 300);
+        }
+        ticking = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -246,14 +249,16 @@ export const ScrollLeadModal = () => {
       });
 
       // 2. Fire celebratory confetti
-      try {
-        confetti({
-          particleCount: 70,
-          spread: 60,
-          origin: { y: 0.6 },
-          colors: ['#FF3D0A', '#FFB92E', '#191919', '#FFE8D2'],
-        });
-      } catch (err) {}
+      import('canvas-confetti')
+        .then(({ default: confetti }) => {
+          confetti({
+            particleCount: 70,
+            spread: 60,
+            origin: { y: 0.6 },
+            colors: ['#FF3D0A', '#FFB92E', '#191919', '#FFE8D2'],
+          });
+        })
+        .catch(() => {});
 
       setIsSubmitted(true);
       setIsSubmitting(false);

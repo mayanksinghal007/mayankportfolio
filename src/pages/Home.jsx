@@ -117,9 +117,9 @@ export const Home = () => {
                 }}
               >
                 <picture>
-                  <source srcSet="/images/mayank-aggarwal-avatar.webp" type="image/webp" />
+                  <source srcSet="/images/mayank-aggarwal-avatar-60.webp" type="image/webp" />
                   <img
-                    src="/images/mayank-aggarwal.jpg"
+                    src="/images/mayank-aggarwal-avatar-60.jpg"
                     alt="Mayank Aggarwal - Digital Marketing & AI Specialist"
                     width="60"
                     height="60"
@@ -226,19 +226,19 @@ export const Home = () => {
               </div>
 
               <div className="hero-media-window">
-                <img
-                  src={mediaAssets.home_hero_visual?.url || "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80"}
-                  alt={mediaAssets.home_hero_visual?.alt || "Mayank Aggarwal AI Showreel"}
-                  className="hero-media-bg"
-                  width="1200"
-                  height="800"
-                  fetchPriority="high"
-                  decoding="async"
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80';
-                  }}
-                />
+                <picture>
+                  <source media="(max-width: 640px)" srcSet="/images/hero-showreel-mobile.webp" type="image/webp" />
+                  <source srcSet="/images/hero-showreel.webp" type="image/webp" />
+                  <img
+                    src={mediaAssets.home_hero_visual?.url || "/images/hero-showreel.jpg"}
+                    alt={mediaAssets.home_hero_visual?.alt || "Mayank Aggarwal AI Showreel"}
+                    className="hero-media-bg"
+                    width="800"
+                    height="533"
+                    fetchPriority="high"
+                    decoding="async"
+                  />
+                </picture>
                 <div className="hero-media-overlay" />
 
                 <div className="hero-media-content">
@@ -249,7 +249,7 @@ export const Home = () => {
                         overview:
                           mediaAssets.home_hero_visual?.subtitle || 'A high-octane montage of generative AI video, 3D typography, cinematic motion grading, and Meta ad campaign performance highlights.',
                         image:
-                          mediaAssets.home_hero_visual?.url || 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
+                          mediaAssets.home_hero_visual?.url || '/images/hero-showreel.jpg',
                         videoUrl: mediaAssets.home_hero_visual?.videoUrl || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
                         hasVideoDemo: true,
                         tags: ['Runway Gen-3', 'ElevenLabs', 'Meta Ads', 'Editorial Cut'],

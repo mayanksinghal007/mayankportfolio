@@ -12,7 +12,6 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import { LinkedinIcon, InstagramIcon } from '../components/SocialIcons';
-import confetti from 'canvas-confetti';
 import { useSite } from '../context/SiteContext';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
@@ -124,16 +123,16 @@ export const Contact = () => {
       });
 
       // Fire celebratory confetti!
-      try {
-        confetti({
-          particleCount: 80,
-          spread: 70,
-          origin: { y: 0.6 },
-          colors: ['#FF3D0A', '#FFB92E', '#191919', '#FFE8D2'],
-        });
-      } catch (err) {
-        // Fallback gracefully
-      }
+      import('canvas-confetti')
+        .then(({ default: confetti }) => {
+          confetti({
+            particleCount: 80,
+            spread: 70,
+            origin: { y: 0.6 },
+            colors: ['#FF3D0A', '#FFB92E', '#191919', '#FFE8D2'],
+          });
+        })
+        .catch(() => {});
 
       setSubmittedId(created.id);
       setIsSubmitted(true);

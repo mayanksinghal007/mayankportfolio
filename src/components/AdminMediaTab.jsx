@@ -24,7 +24,7 @@ const PRESET_LIBRARY = [
   {
     name: 'Cyberpunk Neon Studio',
     type: 'image',
-    url: 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80',
+    url: '/images/hero-showreel.jpg',
   },
   {
     name: 'Minimalist Editorial Portrait',
@@ -322,7 +322,7 @@ export const AdminMediaTab = () => {
                   }}
                 >
                   <img
-                    src={asset.url || 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=400&q=80'}
+                    src={asset.url || '/images/hero-showreel.jpg'}
                     alt={asset.name}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => {
@@ -463,7 +463,7 @@ export const AdminMediaTab = () => {
                   />
                 ) : (
                   <img
-                    src={editBuffer.url || 'https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80'}
+                    src={editBuffer.url || '/images/hero-showreel.jpg'}
                     alt={editBuffer.name}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => {

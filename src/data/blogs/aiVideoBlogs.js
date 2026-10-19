@@ -15,7 +15,7 @@ export const AI_VIDEO_BLOGS = [
     date: "2026-09-25",
     updated: "2026-10-12",
     readTime: "11 min read",
-    coverImage: "https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=800&q=75",
+    coverImage: "/images/hero-showreel.jpg",
     author: "Mayank Aggarwal",
     authorRole: "Digital Marketing & AI Specialist",
     published: true,

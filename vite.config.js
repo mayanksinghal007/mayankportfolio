@@ -1,10 +1,19 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
   build: {
+    modulePreload: {
+      resolveDependencies(filename, deps) {
+        // Only preload critical chunks for the homepage!
+        // Never preload admin-bundle, markdown-parser, or confetti on the homepage.
+        return deps.filter((dep) => {
+          const lower = dep.toLowerCase();
+          return !lower.includes('admin') && !lower.includes('markdown') && !lower.includes('confetti');
+        });
+      },
+    },
     rollupOptions: {
       output: {
         manualChunks(id) {

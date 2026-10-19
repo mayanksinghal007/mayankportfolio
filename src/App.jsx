@@ -12,26 +12,50 @@ import { ScrollLeadModal } from './components/ScrollLeadModal';
 import { AnalyticsTracker } from './components/AnalyticsTracker';
 import { useScrollReveal } from './hooks/useScrollReveal';
 
-// Pages
+// Statically load Home for instant client hydration on the homepage
 import { Home } from './pages/Home';
-import { About } from './pages/About';
-import { Services } from './pages/Services';
-import { ServiceDetail } from './pages/ServiceDetail';
-import { Portfolio } from './pages/Portfolio';
-import { Process } from './pages/Process';
-import { Contact } from './pages/Contact';
-import { AdsPage } from './pages/AdsPage';
-import { Admin } from './pages/Admin';
-import { Legal } from './pages/Legal';
-import { NotFound } from './pages/NotFound';
-import { Blog } from './pages/Blog';
-import { BlogPost } from './pages/BlogPost';
-import { RoasCalculator } from './pages/tools/RoasCalculator';
-import { AiPromptGenerator } from './pages/tools/AiPromptGenerator';
-import { ReelHookGenerator } from './pages/tools/ReelHookGenerator';
-import { CityLanding } from './pages/locations/CityLanding';
-import { Glossary } from './pages/Glossary';
-import { PressHub } from './pages/PressHub';
+
+// Lazy-load secondary pages so the initial home JS bundle remains ultra-lightweight
+const LazyAbout = lazy(() => import('./pages/About').then((m) => ({ default: m.About })));
+const LazyServices = lazy(() => import('./pages/Services').then((m) => ({ default: m.Services })));
+const LazyServiceDetail = lazy(() => import('./pages/ServiceDetail').then((m) => ({ default: m.ServiceDetail })));
+const LazyPortfolio = lazy(() => import('./pages/Portfolio').then((m) => ({ default: m.Portfolio })));
+const LazyProcess = lazy(() => import('./pages/Process').then((m) => ({ default: m.Process })));
+const LazyContact = lazy(() => import('./pages/Contact').then((m) => ({ default: m.Contact })));
+const LazyAdsPage = lazy(() => import('./pages/AdsPage').then((m) => ({ default: m.AdsPage })));
+const LazyAdmin = lazy(() => import('./pages/Admin').then((m) => ({ default: m.Admin })));
+const LazyLegal = lazy(() => import('./pages/Legal').then((m) => ({ default: m.Legal })));
+const LazyNotFound = lazy(() => import('./pages/NotFound').then((m) => ({ default: m.NotFound })));
+const LazyBlog = lazy(() => import('./pages/Blog').then((m) => ({ default: m.Blog })));
+const LazyBlogPost = lazy(() => import('./pages/BlogPost').then((m) => ({ default: m.BlogPost })));
+const LazyRoasCalculator = lazy(() => import('./pages/tools/RoasCalculator').then((m) => ({ default: m.RoasCalculator })));
+const LazyAiPromptGenerator = lazy(() => import('./pages/tools/AiPromptGenerator').then((m) => ({ default: m.AiPromptGenerator })));
+const LazyReelHookGenerator = lazy(() => import('./pages/tools/ReelHookGenerator').then((m) => ({ default: m.ReelHookGenerator })));
+const LazyCityLanding = lazy(() => import('./pages/locations/CityLanding').then((m) => ({ default: m.CityLanding })));
+const LazyGlossary = lazy(() => import('./pages/Glossary').then((m) => ({ default: m.Glossary })));
+const LazyPressHub = lazy(() => import('./pages/PressHub').then((m) => ({ default: m.PressHub })));
+
+const defaultPages = {
+  Home,
+  About: LazyAbout,
+  Services: LazyServices,
+  ServiceDetail: LazyServiceDetail,
+  Portfolio: LazyPortfolio,
+  Process: LazyProcess,
+  Contact: LazyContact,
+  AdsPage: LazyAdsPage,
+  Admin: LazyAdmin,
+  Legal: LazyLegal,
+  NotFound: LazyNotFound,
+  Blog: LazyBlog,
+  BlogPost: LazyBlogPost,
+  RoasCalculator: LazyRoasCalculator,
+  AiPromptGenerator: LazyAiPromptGenerator,
+  ReelHookGenerator: LazyReelHookGenerator,
+  CityLanding: LazyCityLanding,
+  Glossary: LazyGlossary,
+  PressHub: LazyPressHub,
+};
 
 // Helper to automatically scroll to top on every navigation
 const ScrollToTop = () => {
@@ -57,7 +81,8 @@ const TrailingSlashHandler = () => {
 };
 
 // Exported Layout Wrapper for client and SSR prerendering
-export const AppLayout = () => {
+export const AppLayout = ({ pagesOverride }) => {
+  const pages = pagesOverride || defaultPages;
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -77,6 +102,26 @@ export const AppLayout = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const HomeComponent = pages.Home;
+  const AboutComponent = pages.About;
+  const ServicesComponent = pages.Services;
+  const ServiceDetailComponent = pages.ServiceDetail;
+  const PortfolioComponent = pages.Portfolio;
+  const AdsPageComponent = pages.AdsPage;
+  const ProcessComponent = pages.Process;
+  const ContactComponent = pages.Contact;
+  const BlogComponent = pages.Blog;
+  const BlogPostComponent = pages.BlogPost;
+  const RoasCalculatorComponent = pages.RoasCalculator;
+  const AiPromptGeneratorComponent = pages.AiPromptGenerator;
+  const ReelHookGeneratorComponent = pages.ReelHookGenerator;
+  const CityLandingComponent = pages.CityLanding;
+  const GlossaryComponent = pages.Glossary;
+  const PressHubComponent = pages.PressHub;
+  const AdminComponent = pages.Admin;
+  const LegalComponent = pages.Legal;
+  const NotFoundComponent = pages.NotFound;
+
   return (
     <>
       <ScrollToTop />
@@ -93,28 +138,30 @@ export const AppLayout = () => {
       {!isAdmin && <Navbar onOpenSearch={() => setIsSearchOpen(true)} />}
 
       <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/services/:slug" element={<ServiceDetail />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/ads" element={<AdsPage />} />
-          <Route path="/process" element={<Process />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/tools/meta-ads-roas-calculator" element={<RoasCalculator />} />
-          <Route path="/tools/ai-video-prompt-generator" element={<AiPromptGenerator />} />
-          <Route path="/tools/reel-hook-generator" element={<ReelHookGenerator />} />
-          <Route path="/locations/:city" element={<CityLanding />} />
-          <Route path="/glossary" element={<Glossary />} />
-          <Route path="/press" element={<PressHub />} />
-          <Route path="/admin" element={<Admin />} />
-          <Route path="/privacy-policy" element={<Legal />} />
-          <Route path="/terms" element={<Legal />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
+          <Routes>
+            <Route path="/" element={<HomeComponent />} />
+            <Route path="/about" element={<AboutComponent />} />
+            <Route path="/services" element={<ServicesComponent />} />
+            <Route path="/services/:slug" element={<ServiceDetailComponent />} />
+            <Route path="/portfolio" element={<PortfolioComponent />} />
+            <Route path="/ads" element={<AdsPageComponent />} />
+            <Route path="/process" element={<ProcessComponent />} />
+            <Route path="/contact" element={<ContactComponent />} />
+            <Route path="/blog" element={<BlogComponent />} />
+            <Route path="/blog/:slug" element={<BlogPostComponent />} />
+            <Route path="/tools/meta-ads-roas-calculator" element={<RoasCalculatorComponent />} />
+            <Route path="/tools/ai-video-prompt-generator" element={<AiPromptGeneratorComponent />} />
+            <Route path="/tools/reel-hook-generator" element={<ReelHookGeneratorComponent />} />
+            <Route path="/locations/:city" element={<CityLandingComponent />} />
+            <Route path="/glossary" element={<GlossaryComponent />} />
+            <Route path="/press" element={<PressHubComponent />} />
+            <Route path="/admin" element={<AdminComponent />} />
+            <Route path="/privacy-policy" element={<LegalComponent />} />
+            <Route path="/terms" element={<LegalComponent />} />
+            <Route path="*" element={<NotFoundComponent />} />
+          </Routes>
+        </Suspense>
       </main>
 
       {/* Render Footer only if not on Admin view */}

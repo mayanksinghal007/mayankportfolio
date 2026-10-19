@@ -56,6 +56,13 @@ htmlFiles.forEach((filePath) => {
     return;
   }
 
+  // Skip verification files (e.g. Google Site Verification)
+  if (/^google[a-f0-9]+\.html$/i.test(relPath) || relPath.includes('verification')) {
+    console.log(`✓ [VERIFICATION FILE] ${relPath}: Skipped from public content SEO checks`);
+    return;
+  }
+
+
   // 1. Title Check
   const titleMatch = content.match(/<title>([^<]*)<\/title>/i);
   if (!titleMatch || !titleMatch[1].trim()) {
