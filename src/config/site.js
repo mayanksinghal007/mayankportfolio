@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   tagline: "Performance Meta Ads & Generative AI Creative",
   headline: "CREATIVE THINKING. SMART MARKETING. AI-POWERED EXECUTION.",
   subheadline: "Helping ambitious brands build high-converting Meta Ads, consistent social media presence, and generative AI video and creative assets.",
-  location: "Delhi, India",
+  location: "Global / Remote (US, UK & Worldwide)",
   experienceText: "1 year of hands-on experience",
   experienceYears: "1 Year",
   email: "riyansh.studio007@gmail.com",

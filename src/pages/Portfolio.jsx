@@ -16,7 +16,7 @@ const CATEGORIES = [
   'AI Voiceover',
   'AI Images & Creative Design',
   'Content & Reel Strategy',
-  'SEO & Content',
+  'Email Marketing & Retention',
 ];
 
 import { getBreadcrumbSchema } from '../utils/seoSchemas';

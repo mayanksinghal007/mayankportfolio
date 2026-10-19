@@ -151,7 +151,7 @@ export const ServiceDetail = () => {
             </p>
             <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '8px', fontSize: '0.82rem', color: 'var(--mutedtext)', borderTop: '1px solid rgba(0,0,0,0.06)', paddingTop: '10px' }}>
               <span style={{ fontWeight: 600, color: 'var(--charcoal)' }}>Strategy & Execution:</span>
-              <span>Mayank Aggarwal · Digital Marketing & AI Specialist (Delhi, India) · 1 Year Hands-on Experience</span>
+              <span>Mayank Aggarwal · Performance Marketing & AI Creative Specialist · Global Remote (US, UK & Worldwide) · 1 Year Hands-on Experience</span>
             </div>
           </div>
         </div>

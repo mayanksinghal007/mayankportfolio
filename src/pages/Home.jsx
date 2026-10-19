@@ -149,7 +149,7 @@ export const Home = () => {
                       borderRadius: '50%',
                       backgroundColor: '#10B981',
                     }}
-                    title="Available for Projects in Delhi NCR & Worldwide"
+                    title="Available for Projects in US, UK & Worldwide"
                   />
                 </div>
                 <div style={{ fontSize: '0.78rem', color: 'var(--mutedtext)', fontWeight: 500 }}>

@@ -38,8 +38,8 @@ export const About = () => {
   return (
     <>
       <SeoHead
-        title="About Mayank Aggarwal | Digital Marketing & AI"
-        description="About Mayank Aggarwal — Digital Marketing & AI Specialist in Delhi with 1 year experience in Meta Ads, AI video creation, and creative direction."
+        title="About Mayank Aggarwal | Performance Marketing & AI Video Creative Partner"
+        description="Learn about Mayank Aggarwal — Performance Marketing and Generative AI Creative Partner collaborating with ambitious brands in the US, UK, and worldwide."
         canonicalPath="/about"
         ogImage="/images/mayank-aggarwal-og.jpg"
         jsonLd={aboutSchemas}
@@ -62,13 +62,13 @@ export const About = () => {
 
               <div style={{ fontSize: '1.05rem', color: 'var(--mutedtext)', lineHeight: 1.8, marginBottom: '32px' }}>
                 <p style={{ marginBottom: '16px' }}>
-                  I'm Mayank Aggarwal, a <strong>Digital Marketing & AI Specialist</strong> based in <strong>Delhi, India</strong>. I operate at the intersection of quantitative growth marketing and bleeding-edge generative AI production.
+                  I'm Mayank Aggarwal, a <strong>Performance Marketing & AI Creative Specialist</strong> collaborating remotely with ambitious brands across the <strong>United States, United Kingdom, Canada, UAE, and worldwide</strong>. I operate at the intersection of quantitative growth marketing and modern generative AI video production.
                 </p>
                 <p style={{ marginBottom: '16px' }}>
                   Too often, brands are caught between traditional agencies that move too slowly or creative freelancers who don't understand customer acquisition costs (CAC) and ROAS. I solve that disconnect by pairing data-driven Meta ad campaign architecture with viral short-form reel hooks and studio-quality AI video/audio.
                 </p>
                 <p>
-                  With 1 year of hands-on experience managing freelance campaigns at <strong>Klikwise</strong>, driving marketing workflows at <strong>ENKT AI</strong>, and executing organic SEO campaigns at <strong>DIDMIN</strong>, I treat every engagement with complete transparency and focused execution.
+                  With 1 year of hands-on experience managing freelance campaigns at <strong>Klikwise</strong>, driving marketing workflows at <strong>ENKT AI</strong>, and executing content growth at <strong>DIDMIN</strong>, I treat every engagement with complete transparency and focused execution.
                 </p>
               </div>
 
