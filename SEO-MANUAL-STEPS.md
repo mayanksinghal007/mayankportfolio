@@ -22,12 +22,19 @@ Your site already has both verification methods active:
   - In the verification popup, select **HTML file**.
   - Google will check for `google82f1f02845411ec0.html` (which is already live at `https://mayank-aggarwal.vercel.app/google82f1f02845411ec0.html`).
   - Click **Verify**.
-- **Method B (HTML Tag - Backup)**:
-  - Select **HTML tag**. Both tags are embedded in every page's `<head>`:
+- **Method B (HTML Tag - Instant & Guaranteed)**:
+  - In Google Search Console, select **HTML tag**.
+  - The verification tag is embedded directly in every page's `<head>`:
     - `<meta name="google-site-verification" content="pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc" />`
-    - `<meta name="google-site-verification" content="10MtCl154U961mQNyVLU_cxYmyPz7sqMwxu5tpHmxvc" />`
   - Click **Verify**.
   - Result: **Ownership verified successfully!**
+
+- **Method C (Domain / DNS TXT Record - Optional)**:
+  - If verifying a Domain property via DNS provider (e.g., Cloudflare, GoDaddy, Namecheap):
+    - Type: `TXT`
+    - Name: `@`
+    - Value: `google-site-verification=pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc`
+  - Click **Verify**.
 
 ### Step 1.3: Submit XML Sitemap
 1. In the left sidebar of Google Search Console, click **Sitemaps**.

@@ -57,7 +57,7 @@ htmlFiles.forEach((filePath) => {
   }
 
   // Skip verification files (e.g. Google & Semrush Site Verification)
-  if (/^(google|semrush|bing)[a-f0-9_-]*\.html$/i.test(relPath) || relPath.includes('verification')) {
+  if (/^(google|semrush|bing)[a-zA-Z0-9_-]*\.html$/i.test(relPath) || relPath.includes('verification')) {
     console.log(`✓ [VERIFICATION FILE] ${relPath}: Skipped from public content SEO checks`);
     return;
   }

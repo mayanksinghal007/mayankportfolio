@@ -142,10 +142,18 @@ async function prerender() {
         `<link rel="alternate" hreflang="x-default" href="${currentUrl}" />`,
       ];
 
+      // Deduplicate verification meta tags that are already configured in baseTemplate
+      const filteredMetas = extractedMetas.filter((meta) => {
+        if (/name=["'](google-site-verification|msvalidate\.01|semrush-site-verification)["']/i.test(meta)) {
+          return false;
+        }
+        return true;
+      });
+
       // Inject head tags into <head>
       const headTags = [
         extractedTitle,
-        ...new Set(extractedMetas),
+        ...new Set(filteredMetas),
         ...new Set(extractedLinks),
         ...hreflangTags,
         ...extractedScripts,

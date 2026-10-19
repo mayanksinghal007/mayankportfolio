@@ -78,7 +78,6 @@ User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /admin/
-Disallow: /google*.html
 
 # Explicit permissions for search engines and generative AI answer crawlers
 User-agent: Googlebot
