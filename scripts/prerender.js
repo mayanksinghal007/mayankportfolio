@@ -147,8 +147,10 @@ async function prerender() {
       // Ensure verification tokens are properly populated if template has unexpanded placeholders
       const googleToken = process.env.VITE_GOOGLE_SITE_VERIFICATION || 'pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc';
       const bingToken = process.env.VITE_BING_SITE_VERIFICATION || 'bing-webmaster-verification-placeholder-code';
+      const semrushToken = process.env.VITE_SEMRUSH_SITE_VERIFICATION || 'semrush-verification-code';
       pageHtml = pageHtml.replace(/%VITE_GOOGLE_SITE_VERIFICATION%/g, googleToken);
       pageHtml = pageHtml.replace(/%VITE_BING_SITE_VERIFICATION%/g, bingToken);
+      pageHtml = pageHtml.replace(/%VITE_SEMRUSH_SITE_VERIFICATION%/g, semrushToken);
 
       // Determine output file path
       let outFilePath;
