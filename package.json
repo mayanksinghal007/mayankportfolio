@@ -11,6 +11,7 @@
     "build:seo": "node scripts/generate-seo-files.js",
     "build": "vite build && vite build --ssr src/prerender-entry.jsx --outDir dist-ssr && node scripts/prerender.js && node scripts/generate-seo-files.js",
     "indexnow": "node scripts/submit-indexnow.js",
+    "google:index": "node scripts/submit-google-indexing.js",
     "seo:check": "node scripts/seo-check.js",
     "lint": "oxlint",
     "preview": "vite preview"

@@ -129,6 +129,128 @@ export const AnalyticsTracker = () => {
     };
   }, [location.pathname, location.search, measurementId, isConfigured]);
 
+  // 5. Core Web Vitals (CWV) Real User Monitoring (LCP, CLS, INP, FCP)
+  useEffect(() => {
+    if (typeof window === 'undefined' || !isConfigured || typeof PerformanceObserver === 'undefined') return;
+
+    let reported = false;
+    let lcpVal = 0;
+    let clsVal = 0;
+    let inpVal = 0;
+
+    let lcpObserver;
+    let clsObserver;
+    let inpObserver;
+    let fcpObserver;
+
+    try {
+      // LCP (Largest Contentful Paint)
+      lcpObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntries();
+        const last = entries[entries.length - 1];
+        if (last) {
+          lcpVal = Math.round(last.startTime);
+        }
+      });
+      lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
+    } catch {}
+
+    try {
+      // CLS (Cumulative Layout Shift)
+      clsObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (!entry.hadRecentInput) {
+            clsVal += entry.value;
+          }
+        }
+      });
+      clsObserver.observe({ type: 'layout-shift', buffered: true });
+    } catch {}
+
+    try {
+      // INP / FID (Interaction to Next Paint)
+      inpObserver = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (entry.duration > inpVal) {
+            inpVal = Math.round(entry.duration);
+          }
+        }
+      });
+      inpObserver.observe({ type: 'first-input', buffered: true });
+    } catch {}
+
+    try {
+      // FCP (First Contentful Paint)
+      fcpObserver = new PerformanceObserver((list) => {
+        const entries = list.getEntriesByName('first-contentful-paint');
+        if (entries.length > 0 && typeof window.gtag === 'function') {
+          const fcp = Math.round(entries[0].startTime);
+          window.gtag('event', 'FCP', {
+            value: fcp,
+            metric_value: fcp,
+            metric_rating: fcp <= 1800 ? 'good' : fcp <= 3000 ? 'needs-improvement' : 'poor',
+            event_category: 'Web Vitals',
+            non_interaction: true,
+          });
+          fcpObserver.disconnect();
+        }
+      });
+      fcpObserver.observe({ type: 'paint', buffered: true });
+    } catch {}
+
+    const reportVitals = () => {
+      if (reported || typeof window.gtag !== 'function') return;
+      reported = true;
+
+      if (lcpVal > 0) {
+        window.gtag('event', 'LCP', {
+          value: lcpVal,
+          metric_value: lcpVal,
+          metric_rating: lcpVal <= 2500 ? 'good' : lcpVal <= 4000 ? 'needs-improvement' : 'poor',
+          event_category: 'Web Vitals',
+          non_interaction: true,
+        });
+      }
+
+      const roundedCls = Math.round(clsVal * 1000) / 1000;
+      window.gtag('event', 'CLS', {
+        value: Math.round(roundedCls * 1000),
+        metric_value: roundedCls,
+        metric_rating: roundedCls <= 0.1 ? 'good' : roundedCls <= 0.25 ? 'needs-improvement' : 'poor',
+        event_category: 'Web Vitals',
+        non_interaction: true,
+      });
+
+      if (inpVal > 0) {
+        window.gtag('event', 'INP', {
+          value: inpVal,
+          metric_value: inpVal,
+          metric_rating: inpVal <= 200 ? 'good' : inpVal <= 500 ? 'needs-improvement' : 'poor',
+          event_category: 'Web Vitals',
+          non_interaction: true,
+        });
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        reportVitals();
+      }
+    };
+
+    window.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('pagehide', reportVitals);
+
+    return () => {
+      window.removeEventListener('visibilitychange', handleVisibilityChange);
+      window.removeEventListener('pagehide', reportVitals);
+      if (lcpObserver) lcpObserver.disconnect();
+      if (clsObserver) clsObserver.disconnect();
+      if (inpObserver) inpObserver.disconnect();
+      if (fcpObserver) fcpObserver.disconnect();
+    };
+  }, [isConfigured]);
+
   return null;
 };
 
