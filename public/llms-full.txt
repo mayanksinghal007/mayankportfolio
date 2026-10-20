@@ -169,6 +169,22 @@ Mayank Aggarwal is a Digital Marketing & AI Specialist with 1 year of hands-on e
 - [Bristol Creative Tech & Virtual Production Studios: Global Entertainment B2B in GBP (£)](https://mayankaggarwal-one.vercel.app/blog/bristol-creative-tech-virtual-production-studios-ads): undefined
 - [Corporate & Commercial Law Firms in Dubai: High-Net-Worth Advisory Lead Gen in AED (د.إ)](https://mayankaggarwal-one.vercel.app/blog/dubai-commercial-corporate-law-firm-lead-generation): undefined
 - [Programmatic International SEO & Hreflang Architecture: Scaling Across 40 Regional Locales](https://mayankaggarwal-one.vercel.app/blog/multi-lingual-seo-hreflang-programmatic-internationalization): undefined
+- [B2B SaaS Pricing Page CRO & Meta Ads Retargeting: Converting $5k-$50k ACV in USD ($)](https://mayankaggarwal-one.vercel.app/blog/b2b-saas-pricing-page-cro-meta-ads-retargeting): undefined
+- [Oxford Biotech Spinouts & Life Sciences: Series A/B Capital & Pharma Partnering in GBP (£)](https://mayankaggarwal-one.vercel.app/blog/oxford-biotech-spinout-venture-capital-b2b-marketing): undefined
+- [Supercar Rental & Exotic Fleet Marketing in Dubai: High-Roller Bookings in AED (د.إ)](https://mayankaggarwal-one.vercel.app/blog/dubai-luxury-car-rental-supercar-fleet-meta-ads): undefined
+- [Generative AI UGC Avatars & Synthetic Video Ads: High-Velocity Creative Testing on Meta](https://mayankaggarwal-one.vercel.app/blog/generative-ai-ugc-avatars-video-creative-testing-meta): undefined
+- [Fintech & Neobank CAC Optimization on Meta Ads: Account Funding & KYB in USD ($)](https://mayankaggarwal-one.vercel.app/blog/fintech-neobank-customer-acquisition-cost-optimization): undefined
+- [Sheffield Advanced Metallurgy & Aerospace Forgings: Precision Engineering Tenders in GBP (£)](https://mayankaggarwal-one.vercel.app/blog/sheffield-advanced-metallurgy-aerospace-forging-ads): undefined
+- [Luxury Yacht Charters in Dubai Marina & Harbour: High-Ticket Private Cruise Booking in AED (د.إ)](https://mayankaggarwal-one.vercel.app/blog/dubai-yacht-charter-marina-private-cruise-lead-generation): undefined
+- [Server-Side Google Tag Manager on Cloud Run: Zero-Data-Loss Tracking & Ad Blocker Resilience](https://mayankaggarwal-one.vercel.app/blog/server-side-google-tag-manager-cloud-run-deployment): undefined
+- [Enterprise Cybersecurity & SOC 2 Compliance: CISO Lead Generation on Meta in USD ($)](https://mayankaggarwal-one.vercel.app/blog/enterprise-cybersecurity-soc2-compliance-lead-gen): undefined
+- [Newcastle & North East Offshore Wind & Subsea Engineering: Global Energy Tenders in GBP (£)](https://mayankaggarwal-one.vercel.app/blog/newcastle-clean-energy-offshore-wind-subsea-b2b): undefined
+- [Single & Multi-Family Office Wealth Advisory in Dubai: UHNW Client Acquisition in AED (د.إ)](https://mayankaggarwal-one.vercel.app/blog/dubai-family-office-wealth-management-lead-generation): undefined
+- [AI-Powered Ad Transcreation & Dialectical Localization: Scaling Across 15 Languages](https://mayankaggarwal-one.vercel.app/blog/ai-powered-localization-transcreation-cross-border-ads): undefined
+- [MedTech & FDA 510(k) Medical Device Commercialization: Hospital Procurement in USD ($)](https://mayankaggarwal-one.vercel.app/blog/medtech-fda-510k-medical-device-commercialization-ads): undefined
+- [Belfast Cyber Security Hub & Northern Ireland FinTech: Transatlantic B2B Growth in GBP (£)](https://mayankaggarwal-one.vercel.app/blog/belfast-cyber-fintech-northern-ireland-tech-ads): undefined
+- [High-End Interior Architecture & Villa Fit-Out in Dubai: Multi-Million AED Project Lead Gen](https://mayankaggarwal-one.vercel.app/blog/dubai-luxury-interior-design-architectural-lead-generation): undefined
+- [Dynamic Edge SEO Caching with Cloudflare Workers: Sub-50ms Crawl Responses for Googlebot](https://mayankaggarwal-one.vercel.app/blog/dynamic-edge-seo-caching-cloudflare-workers-fast-crawl): undefined
 
 ## Contact Details
 - Location: Delhi, India
