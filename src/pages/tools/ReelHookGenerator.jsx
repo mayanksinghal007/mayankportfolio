@@ -123,7 +123,7 @@ export const ReelHookGenerator = () => {
             offers: {
               '@type': 'Offer',
               price: '0',
-              priceCurrency: 'INR',
+              priceCurrency: 'USD',
             },
             description: 'Generate high-retention 3-second opening video hooks for Instagram Reels, YouTube Shorts, and TikTok.',
           },

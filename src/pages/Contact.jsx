@@ -18,6 +18,57 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 
 import { getOrganizationSchema, getLocalBusinessSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
 
+const CURRENCY_BUDGET_TIERS = {
+  USD: [
+    { value: '$1,500 – $3,000 / mo', label: '$1,500 – $3,000 / month (Core Growth Retainer)' },
+    { value: '$3,000 – $6,000 / mo', label: '$3,000 – $6,000 / month (Scale & Creative Testing)' },
+    { value: '$6,000+ / mo', label: '$6,000+ / month (Enterprise & Multi-Market Scale)' },
+    { value: '$1,000 – $2,500 (Project Creative)', label: '$1,000 – $2,500 (AI Video / Creative Pack Project)' },
+    { value: 'Under $1,500 / Project', label: 'Under $1,500 / Starter Project' },
+    { value: 'To Be Discussed', label: 'To Be Discussed on Discovery Call' },
+  ],
+  GBP: [
+    { value: '£1,200 – £2,500 / mo', label: '£1,200 – £2,500 / month (Core Growth Retainer)' },
+    { value: '£2,500 – £5,000 / mo', label: '£2,500 – £5,000 / month (Scale & Creative Testing)' },
+    { value: '£5,000+ / mo', label: '£5,000+ / month (Enterprise & Multi-Market Scale)' },
+    { value: '£800 – £2,000 (Project Creative)', label: '£800 – £2,000 (AI Video / Creative Pack Project)' },
+    { value: 'Under £1,000 / Project', label: 'Under £1,000 / Starter Project' },
+    { value: 'To Be Discussed', label: 'To Be Discussed on Discovery Call' },
+  ],
+  AED: [
+    { value: '5,500 – 11,000 د.إ / mo', label: '5,500 – 11,000 د.إ / month (Core Growth Retainer)' },
+    { value: '11,000 – 22,000 د.إ / mo', label: '11,000 – 22,000 د.إ / month (Scale & Creative Testing)' },
+    { value: '22,000+ د.إ / mo', label: '22,000+ د.إ / month (Enterprise & GCC Scaling)' },
+    { value: '3,500 – 9,000 د.إ (Project Creative)', label: '3,500 – 9,000 د.إ (AI Video / Creative Pack Project)' },
+    { value: 'Under 5,000 د.إ / Project', label: 'Under 5,000 د.إ / Starter Project' },
+    { value: 'To Be Discussed', label: 'To Be Discussed on Discovery Call' },
+  ],
+  EUR: [
+    { value: '€1,400 – €2,800 / mo', label: '€1,400 – €2,800 / month (Core Growth Retainer)' },
+    { value: '€2,800 – €5,500 / mo', label: '€2,800 – €5,500 / month (Scale & Creative Testing)' },
+    { value: '€5,500+ / mo', label: '€5,500+ / month (Enterprise & Multi-Market Scale)' },
+    { value: '€900 – €2,200 (Project Creative)', label: '€900 – €2,200 (AI Video / Creative Pack Project)' },
+    { value: 'Under €1,400 / Project', label: 'Under €1,400 / Starter Project' },
+    { value: 'To Be Discussed', label: 'To Be Discussed on Discovery Call' },
+  ],
+  INR: [
+    { value: '₹30,000 – ₹60,000 / mo', label: '₹30,000 – ₹60,000 / month (Core Growth Retainer)' },
+    { value: '₹60,000 – ₹1,20,000 / mo', label: '₹60,000 – ₹1,20,000 / month (Scale & Creative Testing)' },
+    { value: '₹1,20,000+ / mo', label: '₹1,20,000+ / month (Enterprise & Multi-Market Scale)' },
+    { value: '₹20,000 – ₹50,000 (Project Creative)', label: '₹20,000 – ₹50,000 (AI Video / Creative Pack Project)' },
+    { value: 'Under ₹30,000 / Project', label: 'Under ₹30,000 / Starter Project' },
+    { value: 'To Be Discussed', label: 'To Be Discussed on Discovery Call' },
+  ],
+  RUB: [
+    { value: '140,000 – 280,000 ₽ / mo', label: '140,000 – 280,000 ₽ / month (Core Growth Retainer)' },
+    { value: '280,000 – 550,000 ₽ / mo', label: '280,000 – 550,000 ₽ / month (Scale & Creative Testing)' },
+    { value: '550,000+ ₽ / mo', label: '550,000+ ₽ / month (Enterprise & Multi-Market Scale)' },
+    { value: '90,000 – 230,000 ₽ (Project Creative)', label: '90,000 – 230,000 ₽ (AI Video / Creative Pack Project)' },
+    { value: 'Under 140,000 ₽ / Project', label: 'Under 140,000 ₽ / Starter Project' },
+    { value: 'To Be Discussed', label: 'To Be Discussed on Discovery Call' },
+  ],
+};
+
 export const Contact = () => {
   const { site, services, addInquiry } = useSite();
   const [searchParams] = useSearchParams();
@@ -32,6 +83,7 @@ export const Contact = () => {
     company: '',
     service: preselectedService || 'Performance Marketing',
     description: '',
+    currency: 'USD',
     budget: '$1,500 – $3,000 / mo',
     contact_method: 'Email',
     consent: false,
@@ -55,6 +107,15 @@ export const Contact = () => {
       setForm((prev) => ({ ...prev, service: preselectedService }));
     }
   }, [preselectedService]);
+
+  const handleCurrencyChange = (newCurrency) => {
+    const defaultBudget = CURRENCY_BUDGET_TIERS[newCurrency]?.[0]?.value || 'To Be Discussed';
+    setForm((prev) => ({
+      ...prev,
+      currency: newCurrency,
+      budget: defaultBudget,
+    }));
+  };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -117,6 +178,7 @@ export const Contact = () => {
         company: form.company,
         service: form.service,
         description: form.description,
+        currency: form.currency || 'USD',
         budget: form.budget,
         contact_method: form.contact_method,
         page: '/contact',
@@ -164,7 +226,7 @@ export const Contact = () => {
       icon: Phone,
       title: 'Direct Call',
       value: site.phone,
-      subtext: 'Mon-Sat 10:00 AM – 8:00 PM IST',
+      subtext: 'Mon–Fri 9:00 AM – 7:00 PM IST · Requests 24/7',
       href: `tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`,
       action: 'Call Now',
       color: '#FFB92E',
@@ -312,9 +374,9 @@ export const Contact = () => {
                     {site.email}
                   </a>
                 </div>
-                <div style={{ marginTop: '8px', fontSize: '0.82rem', color: 'var(--mutedtext)' }}>
-                  <strong>Business Hours:</strong> Monday – Friday: 9:00 AM – 7:00 PM IST<br />
-                  Saturday: 10:00 AM – 4:00 PM IST (Sunday Closed)
+                <div style={{ marginTop: '8px', fontSize: '0.84rem', color: 'var(--mutedtext)', lineHeight: 1.6 }}>
+                  <strong>Project Intake:</strong> Available for project requests 24/7. Submit your inquiry anytime, and I'll follow up as soon as possible.<br />
+                  <span style={{ fontSize: '0.78rem', color: 'var(--mutedtext)', opacity: 0.85 }}>Direct consultation calls: Mon–Fri 9:00 AM – 7:00 PM IST (GMT+5:30)</span>
                 </div>
               </address>
             </div>
@@ -509,40 +571,62 @@ export const Contact = () => {
                       </div>
                     </div>
 
-                    {/* Budget & Contact Method Row */}
+                    {/* Currency & Budget Row */}
                     <div className="form-row">
-                      <div className="form-group">
-                        <label htmlFor="contact-budget" className="form-label">Estimated Monthly Budget</label>
+                      <div className="form-group" style={{ flex: '0 0 130px' }}>
+                        <label htmlFor="contact-currency" className="form-label">Currency</label>
+                        <select
+                          id="contact-currency"
+                          name="currency"
+                          value={form.currency}
+                          onChange={(e) => handleCurrencyChange(e.target.value)}
+                          className="form-control"
+                          aria-label="Select Budget Currency"
+                        >
+                          <option value="USD">USD ($)</option>
+                          <option value="GBP">GBP (£)</option>
+                          <option value="AED">AED (د.إ)</option>
+                          <option value="EUR">EUR (€)</option>
+                          <option value="INR">INR (₹)</option>
+                          <option value="RUB">RUB (₽)</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group" style={{ flex: 1 }}>
+                        <label htmlFor="contact-budget" className="form-label">
+                          Estimated Monthly Advertising Budget ({form.currency})
+                        </label>
                         <select
                           id="contact-budget"
                           name="budget"
                           value={form.budget}
                           onChange={handleChange}
                           className="form-control"
+                          aria-label={`Estimated Monthly Advertising Budget in ${form.currency}`}
                         >
-                          <option value="$1,500 – $3,000 / mo">$1,500 – $3,000 / month (Core Growth Retainer)</option>
-                          <option value="$3,000 – $6,000 / mo">$3,000 – $6,000 / month (Scale & Creative Testing)</option>
-                          <option value="$6,000+ / mo">$6,000+ / month (Enterprise & Multi-Market Scale)</option>
-                          <option value="$1,000 – $2,500 (Project Creative)">$1,000 – $2,500 (AI Video / Creative Pack Project)</option>
-                          <option value="Under $1,500 / Project">Under $1,500 / Starter Project</option>
-                          <option value="To Be Discussed">To Be Discussed on Discovery Call</option>
+                          {(CURRENCY_BUDGET_TIERS[form.currency] || CURRENCY_BUDGET_TIERS.USD).map((tier) => (
+                            <option key={tier.value} value={tier.value}>
+                              {tier.label}
+                            </option>
+                          ))}
                         </select>
                       </div>
+                    </div>
 
-                      <div className="form-group">
-                        <label htmlFor="contact-method" className="form-label">Preferred Response Method</label>
-                        <select
-                          id="contact-method"
-                          name="contact_method"
-                          value={form.contact_method}
-                          onChange={handleChange}
-                          className="form-control"
-                        >
-                          <option value="WhatsApp">WhatsApp Message</option>
-                          <option value="Email">Email Response</option>
-                          <option value="Phone call">Phone Call</option>
-                        </select>
-                      </div>
+                    {/* Preferred Response Method Row */}
+                    <div className="form-group">
+                      <label htmlFor="contact-method" className="form-label">Preferred Response Method</label>
+                      <select
+                        id="contact-method"
+                        name="contact_method"
+                        value={form.contact_method}
+                        onChange={handleChange}
+                        className="form-control"
+                      >
+                        <option value="WhatsApp">WhatsApp Message</option>
+                        <option value="Email">Email Response</option>
+                        <option value="Phone call">Phone Call</option>
+                      </select>
                     </div>
 
                     {/* Project Description */}

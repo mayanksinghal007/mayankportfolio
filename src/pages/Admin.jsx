@@ -211,7 +211,7 @@ export const Admin = () => {
 
   // Export Inquiries to CSV
   const handleExportCSV = () => {
-    const headers = ['ID', 'Date', 'Name', 'Email', 'Company', 'Service', 'Budget', 'Method', 'Status', 'Notes'];
+    const headers = ['ID', 'Date', 'Name', 'Email', 'Company', 'Service', 'Currency', 'Budget', 'Method', 'Status', 'Notes'];
     const rows = inquiries.map((i) => [
       i.id,
       new Date(i.created_at).toLocaleDateString(),
@@ -219,6 +219,7 @@ export const Admin = () => {
       i.email,
       `"${i.company || ''}"`,
       `"${i.service}"`,
+      `"${i.currency || 'USD'}"`,
       `"${i.budget}"`,
       i.contact_method,
       i.status,
@@ -518,7 +519,14 @@ export const Admin = () => {
                             )}
                           </td>
                           <td style={{ fontWeight: 600 }}>{inq.service}</td>
-                          <td>{inq.budget || 'Flexible'}</td>
+                          <td>
+                            {inq.currency && (
+                              <span style={{ fontSize: '0.7rem', padding: '1px 6px', borderRadius: '4px', backgroundColor: 'rgba(255, 61, 10, 0.15)', color: '#FF7A00', marginRight: '6px', fontWeight: 700 }}>
+                                {inq.currency}
+                              </span>
+                            )}
+                            {inq.budget || 'Flexible'}
+                          </td>
                           <td>
                             <span
                               style={{

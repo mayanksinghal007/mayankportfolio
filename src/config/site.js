@@ -22,6 +22,7 @@ export const SITE_CONFIG = {
   replyTime: "Replies within 12 hours",
   linkedin: "https://lnkd.in/p/gfrXbbjH",
   instagram: "https://www.instagram.com/mayankaggarwal_7",
+  github: "https://github.com/mayanksinghal007",
   cvUrl: "/Mayank_Aggarwal_Resume.pdf", // [REPLACE] upload your resume to /public
   indexNowKey: "8f1a23c5b4d7e901f2a34b56c7d8e90a",
   siteUrl: typeof window !== "undefined" && window.location ? window.location.origin : "https://mayankaggarwal-one.vercel.app",

@@ -203,6 +203,7 @@ export const SiteProvider = ({ children }) => {
           Email: inquiryData.email || 'Not provided',
           Service_Interested: inquiryData.service || 'General Consultation / Growth Strategy',
           Company_Brand: inquiryData.company || 'Individual / Startup',
+          Currency: inquiryData.currency || 'USD',
           Budget: inquiryData.budget || 'Flexible',
           Message_Details: inquiryData.description || inquiryData.message || 'Submitted via 30% Scroll Lead Modal',
           PageSource: inquiryData.page || (typeof window !== 'undefined' ? window.location.pathname : '/'),

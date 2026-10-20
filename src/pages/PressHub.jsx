@@ -161,15 +161,6 @@ export const BACKLINK_PROFILES = [
     sameAs: true
   },
   {
-    name: "Quora",
-    category: "Knowledge Exchange",
-    url: "https://www.quora.com/profile/Mayank-Aggarwal-Marketing",
-    da: "DA 93",
-    anchorText: "Mayank Aggarwal on Quora",
-    description: "Detailed practitioner answers addressing e-commerce scaling, COD logistics, and conversion tracking.",
-    sameAs: true
-  },
-  {
     name: "Pinterest",
     category: "Visual Search Engine",
     url: "https://www.pinterest.com/mayankaggarwal007/",

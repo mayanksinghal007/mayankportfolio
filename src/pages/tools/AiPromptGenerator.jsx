@@ -103,7 +103,7 @@ export const AiPromptGenerator = () => {
             offers: {
               '@type': 'Offer',
               price: '0',
-              priceCurrency: 'INR',
+              priceCurrency: 'USD',
             },
             description: 'Generate commercial camera prompts for Runway Gen-3 Alpha, Kling AI, and Midjourney.',
           },

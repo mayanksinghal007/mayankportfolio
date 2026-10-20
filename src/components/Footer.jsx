@@ -76,8 +76,8 @@ export const Footer = () => {
                   {site.email}
                 </a>
               </div>
-              <div style={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.5)', marginTop: '4px' }}>
-                Hours: Mon–Fri 9:00 AM – 7:00 PM IST | Sat 10:00 AM – 4:00 PM IST
+              <div style={{ fontSize: '0.76rem', color: 'rgba(255,255,255,0.65)', marginTop: '4px' }}>
+                Project Inquiries: Available 24/7 · Replies within 12 hours
               </div>
             </address>
           </div>

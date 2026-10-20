@@ -6,7 +6,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { GlobalCtaRails } from './components/GlobalCtaRails';
 import { AiChatAssistant } from './components/AiChatAssistant';
 import { SearchModal } from './components/SearchModal';
 import { ScrollLeadModal } from './components/ScrollLeadModal';
@@ -171,8 +171,8 @@ export const AppLayout = ({ pagesOverride }) => {
       {/* Global AI Marketing Assistant (Powered by Vercel AI Gateway) */}
       {!isAdmin && <AiChatAssistant />}
 
-      {/* Global Floating WhatsApp Direct Reachout */}
-      {!isAdmin && <FloatingWhatsApp />}
+      {/* Global Persistent CTA Rails (Left Social & AI Rail, Right Contact Rail, Mobile Conversion Dock) */}
+      {!isAdmin && <GlobalCtaRails />}
 
       {/* Global Cmd/Ctrl+K Search Modal */}
       <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />

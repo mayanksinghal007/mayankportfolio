@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Sparkles, X, Send, Bot, User, MessageCircle, ArrowRight } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
 
-export const AiChatAssistant = () => {
+export const AiChatAssistant = ({ showFloatingTrigger = false }) => {
   const { site } = useSite();
   const [isOpen, setIsOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -22,6 +22,34 @@ I'm Mayank Aggarwal's AI marketing assistant. Ask me anything about **Meta Ads s
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // Listen for global open/close events from Left Rail & Mobile Dock
+  useEffect(() => {
+    const handleOpenAi = (e) => {
+      if (e?.detail?.forceClose) {
+        setIsOpen(false);
+      } else if (e?.detail?.forceOpen) {
+        setIsOpen(true);
+      } else {
+        setIsOpen((prev) => !prev);
+      }
+    };
+    window.addEventListener('open-mayank-ai', handleOpenAi);
+    return () => window.removeEventListener('open-mayank-ai', handleOpenAi);
+  }, []);
+
+  // Keyboard accessibility: Close dialog on Escape key and restore focus
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+        const trigger = document.querySelector('[data-ai-trigger="true"]');
+        trigger?.focus();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   useEffect(() => {
     if (isOpen) {
@@ -81,83 +109,73 @@ You can connect with him directly on **WhatsApp: [+91 9217756033](https://wa.me/
 
   return (
     <>
-      {/* Floating AI Button (Positioned cleanly right above WhatsApp) */}
-      <div
-        className="floating-ai-container"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        style={{
-          position: 'fixed',
-          bottom: '96px',
-          right: '28px',
-          zIndex: 990,
-        }}
-      >
+      {/* Optional Legacy Floating AI Trigger (Hidden by default; controlled by Left Rail & Mobile Dock) */}
+      {showFloatingTrigger && (
         <div
-          className={`floating-whatsapp-tooltip ${isHovered && !isOpen ? 'visible' : ''}`}
-          role="tooltip"
-          id="ai-tooltip"
-        >
-          <span>Ask Mayank AI</span>
-          <span className="tooltip-sub">Vercel AI Gateway Live</span>
-        </div>
-
-        <button
-          onClick={() => setIsOpen((prev) => !prev)}
-          aria-label="Open Mayank AI Marketing Assistant"
-          aria-expanded={isOpen}
-          style={{
-            width: '56px',
-            height: '56px',
-            borderRadius: '50%',
-            background: 'linear-gradient(135deg, #1A1A1A 0%, #2A1810 50%, #FF3D0A 100%)',
-            border: '2px solid rgba(255, 61, 10, 0.4)',
-            boxShadow: '0 8px 24px rgba(255, 61, 10, 0.35)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease',
-            color: '#FFFFFF',
-          }}
-          onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.92)')}
-          onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-        >
-          {isOpen ? <X size={24} color="#FFFDF9" /> : <Sparkles size={24} color="#FF7A00" />}
-          <span
-            style={{
-              position: 'absolute',
-              top: '2px',
-              right: '2px',
-              width: '10px',
-              height: '10px',
-              backgroundColor: '#10B981',
-              borderRadius: '50%',
-              border: '2px solid #111',
-            }}
-          />
-        </button>
-      </div>
-
-      {/* Modern AI Chat Drawer / Modal */}
-      {isOpen && (
-        <div
+          className="floating-ai-container"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           style={{
             position: 'fixed',
-            bottom: '164px',
+            bottom: '96px',
             right: '28px',
-            width: 'min(410px, calc(100vw - 36px))',
-            height: 'min(560px, calc(100vh - 190px))',
-            backgroundColor: '#141414',
-            borderRadius: '24px',
-            border: '1px solid rgba(255, 255, 255, 0.12)',
-            boxShadow: '0 24px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 61, 10, 0.2)',
-            display: 'flex',
-            flexDirection: 'column',
-            zIndex: 999,
-            overflow: 'hidden',
-            fontFamily: 'var(--font-sans, system-ui, sans-serif)',
+            zIndex: 990,
           }}
+        >
+          <div
+            className={`floating-whatsapp-tooltip ${isHovered && !isOpen ? 'visible' : ''}`}
+            role="tooltip"
+            id="ai-tooltip"
+          >
+            <span>Ask Mayank AI</span>
+            <span className="tooltip-sub">Vercel AI Gateway Live</span>
+          </div>
+
+          <button
+            onClick={() => setIsOpen((prev) => !prev)}
+            aria-label="Open Mayank AI Marketing Assistant"
+            aria-expanded={isOpen}
+            style={{
+              width: '56px',
+              height: '56px',
+              borderRadius: '50%',
+              background: 'linear-gradient(135deg, #1A1A1A 0%, #2A1810 50%, #FF3D0A 100%)',
+              border: '2px solid rgba(255, 61, 10, 0.4)',
+              boxShadow: '0 8px 24px rgba(255, 61, 10, 0.35)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              transition: 'transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease',
+              color: '#FFFFFF',
+            }}
+            onMouseDown={(e) => (e.currentTarget.style.transform = 'scale(0.92)')}
+            onMouseUp={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+          >
+            {isOpen ? <X size={24} color="#FFFDF9" /> : <Sparkles size={24} color="#FF7A00" />}
+            <span
+              style={{
+                position: 'absolute',
+                top: '2px',
+                right: '2px',
+                width: '10px',
+                height: '10px',
+                backgroundColor: '#10B981',
+                borderRadius: '50%',
+                border: '2px solid #111',
+              }}
+            />
+          </button>
+        </div>
+      )}
+
+      {/* Accessible AI Chat Drawer / Modal Panel */}
+      {isOpen && (
+        <div
+          className="ai-chat-drawer"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Ask Mayank AI Marketing Assistant"
         >
           {/* Header */}
           <div
