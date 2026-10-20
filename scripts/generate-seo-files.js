@@ -98,6 +98,7 @@ Allow: /
 User-agent: SemrushBot-SI
 Allow: /
 
+# OpenAI Models & ChatGPT Search
 User-agent: GPTBot
 Allow: /
 
@@ -107,6 +108,7 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+# Anthropic Claude & Claude Search
 User-agent: ClaudeBot
 Allow: /
 
@@ -116,19 +118,58 @@ Allow: /
 User-agent: Claude-SearchBot
 Allow: /
 
+# Perplexity AI Answer Engine
 User-agent: PerplexityBot
 Allow: /
 
+# Google Gemini & Extended AI
 User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# Apple Intelligence & Siri Search
+User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
+# Meta AI & Social Crawlers
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+# ByteDance / Doubao AI
+User-agent: Bytespider
+Allow: /
+
+# Other Major AI Engines
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
 User-agent: CCBot
 Allow: /
 
+# Sitemaps & Generative AI Knowledge Manifests (llmstxt.org)
 Sitemap: ${siteUrl}/sitemap.xml
+# LLMs-Txt: ${siteUrl}/llms.txt
+# LLMs-Full-Txt: ${siteUrl}/llms-full.txt
 `;
 }
 

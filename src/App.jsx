@@ -7,6 +7,7 @@ import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
+import { AiChatAssistant } from './components/AiChatAssistant';
 import { SearchModal } from './components/SearchModal';
 import { ScrollLeadModal } from './components/ScrollLeadModal';
 import { AnalyticsTracker } from './components/AnalyticsTracker';
@@ -166,6 +167,9 @@ export const AppLayout = ({ pagesOverride }) => {
 
       {/* Render Footer only if not on Admin view */}
       {!isAdmin && <Footer />}
+
+      {/* Global AI Marketing Assistant (Powered by Vercel AI Gateway) */}
+      {!isAdmin && <AiChatAssistant />}
 
       {/* Global Floating WhatsApp Direct Reachout */}
       {!isAdmin && <FloatingWhatsApp />}
