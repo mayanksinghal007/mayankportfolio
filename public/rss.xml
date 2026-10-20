@@ -5,7 +5,7 @@
     <link>https://mayankaggarwal-one.vercel.app/blog</link>
     <description>Tactical guides on Meta Ads, generative AI video workflows, short-form reel hooks, and modern SEO/AEO/GEO strategies by Mayank Aggarwal.</description>
     <language>en-IN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 05:40:13 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 05:47:21 GMT</lastBuildDate>
     <atom:link href="https://mayankaggarwal-one.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title><![CDATA[How to Start Meta Ads for a Small Business in India (Step by Step)]]></title>
@@ -565,6 +565,38 @@
       <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/global-ecommerce-vat-fulfillment-meta-ads</guid>
       <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Expanding an e-commerce brand globally from domestic sales into multiple international territories (US, UK, European Union, UAE, CIS) is the fastest route to eight-figure scale. However, international growth frequently falters not in the ad auction, but at the checkout and fulfillment stages. Hidden import tariffs, unexpected courier delivery delays, uncollected EU Import One-Stop Shop (IOSS) VAT, and sluggish single-origin shipping result in cart abandonment rates exceeding 80%. This playbook details how to align multi-warehouse fulfillment, automated tax engines, and localized Meta ad creatives into a seamless international scaling engine.]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[Omnichannel Scaling: Meta Ads + Google Performance Max Budget Balancing]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/meta-ads-google-performance-max-budget-allocation</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/meta-ads-google-performance-max-budget-allocation</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[As direct-to-consumer (DTC) brands scale toward eight-figure annual revenues, managing advertising budgets in isolation across Meta Ads and Google Ads becomes a major source of capital misallocation. Google's automated Performance Max (PMax) campaigns frequently cannibalize branded search traffic, claiming inflated conversion attribution for customers originally introduced via Meta Instagram Reels. Winning growth directors deploy a synchronized cross-channel budget framework governed by Blended Marketing Efficiency Ratio (MER) and incrementality testing.]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[Edinburgh & Glasgow Fintech: App Install Campaigns & FCA Compliance]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/edinburgh-glasgow-fintech-meta-ads</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/edinburgh-glasgow-fintech-meta-ads</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Scotland has emerged as one of Europe's premier financial technology hubs, with Edinburgh and Glasgow anchoring a thriving ecosystem of open banking platforms, wealthtech applications, and SME payment processors. However, scaling mobile fintech applications on Meta Ads across the UK requires navigating two formidable obstacles: strict Financial Conduct Authority (FCA) Financial Promotions regulations (including mandatory risk warnings) and post-iOS privacy frameworks (SKAdNetwork 4.0/5.0). This playbook outlines how Scottish fintech scale-ups drive low Cost Per Install (CPI) metrics while remaining 100% compliant in GBP (£).]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[Dubai Yacht Charter & Luxury Hospitality: AI Video Production on Meta Ads]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/dubai-luxury-yacht-hospitality-ai-video-ads</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/dubai-luxury-yacht-hospitality-ai-video-ads</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Dubai's coastline—stretching from Dubai Marina and Dubai Harbour to the iconic Palm Jumeirah and the World Islands—represents one of the world's most competitive markets for luxury superyacht charters, private boat rentals, and ultra-luxury hospitality. With tourists and affluent residents spending anywhere from AED 3,500 for a sunset cruise to AED 75,000+ for private superyacht weekend bookings, paid advertising on Meta Ads is the primary customer acquisition channel. However, luxury buyers ignore standard static photos. Generative AI video workflows enable luxury operators to showcase photorealistic sunset tours and VIP experiences at a fraction of physical production costs.]]></description>
+      <category>AI Video Creation</category>
+    </item>
+    <item>
+      <title><![CDATA[Localizing Digital Products for Central Asia: Kazakhstan & Uzbekistan Paid Ad Frameworks]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/central-asia-kazakhstan-uzbekistan-paid-ads</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/central-asia-kazakhstan-uzbekistan-paid-ads</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Central Asia—led by the booming digital economies of Kazakhstan (Almaty and Astana) and Uzbekistan (Tashkent)—represents one of the most dynamic, under-served digital frontiers in the world. With over 55 million citizens, rapid smartphone penetration, and world-class mobile payment adoption (Kaspi.kz in Kazakhstan; Click and Payme in Uzbekistan), international tech startups, e-learning platforms, and direct-to-consumer brands can achieve extraordinary return on ad spend. However, scaling requires mastering local payment gateways, bilingual creative nuances (Russian, Kazakh, Uzbek), and Telegram-first mobile funnels.]]></description>
       <category>Performance Marketing</category>
     </item>
   </channel>
