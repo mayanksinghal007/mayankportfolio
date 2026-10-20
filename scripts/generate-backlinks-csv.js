@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-const targetDomain = 'https://mayank-aggarwal.vercel.app';
+const targetDomain = 'https://mayankaggarwal-one.vercel.app';
 
 export const BACKLINKS_100 = [
   // 1-10: TOP TIER LIVE & CONTENT PLATFORMS
