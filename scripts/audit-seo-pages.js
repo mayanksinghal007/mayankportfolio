@@ -92,7 +92,7 @@ function checkDir(dir) {
       let externalCount = 0;
       for (const m of hrefMatches) {
         const href = m[1];
-        if (href.startsWith('http') && !href.includes('mayank-aggarwal.vercel.app')) {
+        if (href.startsWith('http') && !href.includes('mayankaggarwal-one.vercel.app') && !href.includes('mayank-aggarwal.vercel.app')) {
           externalCount++;
         }
         if ((href.includes(' ') || href.includes('%20')) && !href.startsWith('https://images.unsplash.com') && !href.startsWith('https://wa.me') && !href.startsWith('mailto:')) {

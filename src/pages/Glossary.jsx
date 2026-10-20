@@ -191,14 +191,14 @@ export const Glossary = () => {
   const definedTermSetSchema = {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
-    "@id": "https://mayank-aggarwal.vercel.app/glossary#definedtermset",
+    "@id": "https://mayankaggarwal-one.vercel.app/glossary#definedtermset",
     "name": "Digital Marketing, AI Video & SEO Terminology Glossary",
     "description": "Comprehensive glossary of technical performance marketing, generative AI video, and AEO/GEO definitions compiled by Mayank Aggarwal.",
     "hasDefinedTerm": GLOSSARY_TERMS.map(t => ({
       "@type": "DefinedTerm",
       "name": t.term,
       "description": t.definition,
-      "inDefinedTermSet": "https://mayank-aggarwal.vercel.app/glossary#definedtermset"
+      "inDefinedTermSet": "https://mayankaggarwal-one.vercel.app/glossary#definedtermset"
     }))
   };
 

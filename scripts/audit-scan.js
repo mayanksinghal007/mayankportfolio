@@ -120,8 +120,8 @@ for (const filePath of htmlFiles) {
   for (const lm of linkMatches) {
     const href = lm[1].split('#')[0].split('?')[0];
     if (!href || href === '' || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) continue;
-    if (href.startsWith('https://mayank-aggarwal.vercel.app')) {
-      const clean = href.replace('https://mayank-aggarwal.vercel.app', '') || '/';
+    if (href.startsWith('https://mayankaggarwal-one.vercel.app') || href.startsWith('https://mayank-aggarwal.vercel.app')) {
+      const clean = href.replace('https://mayankaggarwal-one.vercel.app', '').replace('https://mayank-aggarwal.vercel.app', '') || '/';
       if (clean.length > 1 && clean.endsWith('/')) {
         report.trailingSlashLinks.push({ relPath, href });
       }
@@ -218,7 +218,9 @@ for (const filePath of htmlFiles) {
   const matches = [...html.matchAll(/<a\s+[^>]*href=["']([^"'#?]+)["']/gi)];
   for (const m of matches) {
     let href = m[1];
-    if (href.startsWith('https://mayank-aggarwal.vercel.app')) {
+    if (href.startsWith('https://mayankaggarwal-one.vercel.app')) {
+      href = href.replace('https://mayankaggarwal-one.vercel.app', '') || '/';
+    } else if (href.startsWith('https://mayank-aggarwal.vercel.app')) {
       href = href.replace('https://mayank-aggarwal.vercel.app', '') || '/';
     }
     if (incomingLinks[href] !== undefined) {

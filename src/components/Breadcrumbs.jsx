@@ -11,7 +11,7 @@ export const Breadcrumbs = ({ items = [] }) => {
   const baseSiteUrl =
     (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_SITE_URL) ||
     SITE_CONFIG.siteUrl ||
-    'https://mayank-aggarwal.vercel.app';
+    'https://mayankaggarwal-one.vercel.app';
   const cleanBase = baseSiteUrl.replace(/\/+$/, '');
 
   const breadcrumbsList = [

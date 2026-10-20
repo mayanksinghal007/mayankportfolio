@@ -12,7 +12,7 @@ export const getBaseSiteUrl = () => {
   if (typeof window !== 'undefined' && window.location && window.location.origin) {
     return window.location.origin.replace(/\/+$/, '');
   }
-  return (SITE_CONFIG.siteUrl || 'https://mayank-aggarwal.vercel.app').replace(/\/+$/, '');
+  return (SITE_CONFIG.siteUrl || 'https://mayankaggarwal-one.vercel.app').replace(/\/+$/, '');
 };
 
 /**

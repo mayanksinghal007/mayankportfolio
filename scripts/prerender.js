@@ -135,8 +135,11 @@ async function prerender() {
       );
 
       // International SEO hreflang tags
-      const currentUrl = `https://mayank-aggarwal.vercel.app${route === '/' ? '' : route}`;
+      const currentUrl = `https://mayankaggarwal-one.vercel.app${route === '/' ? '' : route}`;
       const hreflangTags = [
+        `<link rel="alternate" hreflang="en-US" href="${currentUrl}" />`,
+        `<link rel="alternate" hreflang="en-GB" href="${currentUrl}" />`,
+        `<link rel="alternate" hreflang="en-AE" href="${currentUrl}" />`,
         `<link rel="alternate" hreflang="en-IN" href="${currentUrl}" />`,
         `<link rel="alternate" hreflang="en" href="${currentUrl}" />`,
         `<link rel="alternate" hreflang="x-default" href="${currentUrl}" />`,

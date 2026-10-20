@@ -202,10 +202,10 @@ export const PressHub = () => {
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://mayank-aggarwal.vercel.app/#person",
+    "@id": "https://mayankaggarwal-one.vercel.app/#person",
     "name": "Mayank Aggarwal",
     "jobTitle": "Digital Marketing & AI Specialist",
-    "url": "https://mayank-aggarwal.vercel.app",
+    "url": "https://mayankaggarwal-one.vercel.app",
     "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=75",
     "alumniOf": {
       "@type": "CollegeOrUniversity",

@@ -34,7 +34,8 @@ export const BlogPost = () => {
     return marked.parse(post.content);
   }, [post]);
 
-  const canonicalUrl = post ? `${SITE_CONFIG.domain}/blog/${post.slug}` : '';
+  const baseSiteUrl = (SITE_CONFIG.siteUrl || 'https://mayankaggarwal-one.vercel.app').replace(/\/+$/, '');
+  const canonicalUrl = post ? `${baseSiteUrl}/blog/${post.slug}` : '';
 
   const handleCopyLink = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
