@@ -20,7 +20,7 @@ const sitemapContent = fs.readFileSync(sitemapPath, 'utf8');
 const urlMatches = [...sitemapContent.matchAll(/<loc>([^<]+)<\/loc>/g)].map(m => m[1]);
 console.log(`Found ${urlMatches.length} URLs in sitemap.xml`);
 
-const host = 'mayank-aggarwal.vercel.app';
+const host = 'mayankaggarwal-one.vercel.app';
 const payload = {
   host,
   key,

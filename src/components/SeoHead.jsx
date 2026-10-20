@@ -25,7 +25,7 @@ export const SeoHead = ({
   const baseSiteUrl =
     (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_SITE_URL) ||
     SITE_CONFIG.siteUrl ||
-    'https://mayank-aggarwal.vercel.app';
+    'https://mayankaggarwal-one.vercel.app';
 
   // Normalize site URL without trailing slash
   const cleanBaseUrl = baseSiteUrl.replace(/\/+$/, '');

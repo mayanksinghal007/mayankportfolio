@@ -1,4 +1,4 @@
-# Robots.txt for Mayank Aggarwal Portfolio (https://mayank-aggarwal.vercel.app)
+# Robots.txt for Mayank Aggarwal Portfolio (https://mayankaggarwal-one.vercel.app)
 User-agent: *
 Allow: /
 Disallow: /admin
@@ -92,6 +92,6 @@ User-agent: CCBot
 Allow: /
 
 # Sitemaps & Generative AI Knowledge Manifests (llmstxt.org)
-Sitemap: https://mayank-aggarwal.vercel.app/sitemap.xml
-# LLMs-Txt: https://mayank-aggarwal.vercel.app/llms.txt
-# LLMs-Full-Txt: https://mayank-aggarwal.vercel.app/llms-full.txt
+Sitemap: https://mayankaggarwal-one.vercel.app/sitemap.xml
+# LLMs-Txt: https://mayankaggarwal-one.vercel.app/llms.txt
+# LLMs-Full-Txt: https://mayankaggarwal-one.vercel.app/llms-full.txt

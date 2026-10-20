@@ -11,7 +11,7 @@ const rootDir = path.resolve(__dirname, '..');
 const publicDir = path.resolve(rootDir, 'public');
 const distDir = path.resolve(rootDir, 'dist');
 
-const siteUrl = (process.env.VITE_SITE_URL || SITE_CONFIG.siteUrl || 'https://mayank-aggarwal.vercel.app').replace(/\/+$/, '');
+const siteUrl = (process.env.VITE_SITE_URL || SITE_CONFIG.siteUrl || 'https://mayankaggarwal-one.vercel.app').replace(/\/+$/, '');
 const today = new Date().toISOString().split('T')[0];
 
 // 1. SITEMAP.XML

@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-const baseUrl = 'https://mayank-aggarwal.vercel.app';
+const baseUrl = 'https://mayankaggarwal-one.vercel.app';
 
 const staticPages = [
   { url: `${baseUrl}/`, name: 'Homepage (Founder Brand & Reel)', category: 'Core Pages', priority: '1.0', freq: 'Weekly', intent: 'Brand positioning, proof points, portfolio introduction' },
