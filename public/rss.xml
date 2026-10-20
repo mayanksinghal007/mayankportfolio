@@ -5,7 +5,7 @@
     <link>https://mayankaggarwal-one.vercel.app/blog</link>
     <description>Tactical guides on Meta Ads, generative AI video workflows, short-form reel hooks, and modern SEO/AEO/GEO strategies by Mayank Aggarwal.</description>
     <language>en-IN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 05:32:47 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 05:37:08 GMT</lastBuildDate>
     <atom:link href="https://mayankaggarwal-one.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title><![CDATA[How to Start Meta Ads for a Small Business in India (Step by Step)]]></title>
@@ -502,6 +502,38 @@
       <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[For tech founders, B2B services, and digital products expanding across Eastern Europe, the CIS, Central Asia, and the Middle East, deciding where to allocate paid media budgets often comes down to two dominant platforms: Telegram Ads and Meta Ads (Facebook & Instagram). While Meta offers superior algorithmic broad targeting and visual video formats, Telegram delivers unparalleled direct channel engagement and friction-free Mini-App checkout flows.]]></description>
       <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[Generative Engine Optimization (GEO): Preparing Brands for SearchGPT, Perplexity & Gemini]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/generative-engine-optimization-guide</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/generative-engine-optimization-guide</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Search behavior is undergoing its most radical transformation since the inception of the web. As users transition from entering keyword queries on Google to seeking synthesized direct answers on OpenAI SearchGPT, Perplexity AI, Claude, and Google AI Overviews, traditional SEO metrics like rank position and keyword density are losing relevance. Generative Engine Optimization (GEO) is the discipline of structuring brand entity data, statistical citations, and semantic content architectures so large language models select your brand as their primary cited authority.]]></description>
+      <category>SEO & AEO</category>
+    </item>
+    <item>
+      <title><![CDATA[Manchester Fashion E-Commerce: Creative Testing Systems for Meta Ads]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/manchester-fashion-ecommerce-meta-ads</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/manchester-fashion-ecommerce-meta-ads</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Greater Manchester stands as the historic textile powerhouse and modern e-commerce capital of the United Kingdom, producing some of Europe's largest direct-to-consumer apparel and streetwear powerhouses. However, rapid consumer trend shifts, soaring British returns rates (often exceeding 30%), and brutal creative ad fatigue on Instagram Reels have made traditional fashion advertising unsustainable. Winning Manchester apparel brands now use rapid, data-driven creative testing systems to scale spend profitably in GBP (£).]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[Luxury Perfume & Oud Brands: Visual Storytelling via AI Video in Dubai]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/uae-perfume-ai-video-ads</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/uae-perfume-ai-video-ads</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[The Arabian Gulf fragrance industry represents one of the world's most lucrative luxury consumer sectors, with the UAE and Saudi Arabia commanding the highest per-capita fragrance consumption globally. Yet, luxury perfume houses face an inherent marketing barrier: you cannot smell a smartphone screen. To sell high-ticket oud oils, taif rose extracts, and ambergris blends across Dubai, Abu Dhabi, and Riyadh, brands must translate scent into evocative visual emotions. Generative AI video tools—specifically Runway Gen-3, Midjourney v6, and Kling—enable luxury fragrance brands to produce cinema-grade commercials at a fraction of traditional production budgets.]]></description>
+      <category>AI Video Creation</category>
+    </item>
+    <item>
+      <title><![CDATA[End-to-End Analytics Setup: Connecting CRM, Multi-Currency Gateways & Paid Ads]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/end-to-end-analytics-setup-guide</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/end-to-end-analytics-setup-guide</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[As modern enterprises scale paid media across international boundaries, traditional single-currency tracking configurations rapidly break down. When transactions occur across multiple currencies (USD, GBP, AED, EUR, RUB) through disparate payment gateways (Stripe, checkout links, wire invoices, regional processors) and convert across extended sales cycles inside CRMs (HubSpot, Salesforce), browser-based pixel tracking loses up to 40% of conversion data. This comprehensive guide outlines the end-to-end data engineering architecture required to connect multi-currency checkouts, server-side attribution APIs, and CRM pipelines into a unified source of truth.]]></description>
+      <category>Technical SEO</category>
     </item>
   </channel>
 </rss>
