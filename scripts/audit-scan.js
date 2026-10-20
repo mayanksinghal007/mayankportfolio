@@ -154,6 +154,7 @@ console.log('Missing Canonical:', report.missingCanonical.length);
 console.log('Multiple Canonicals on page:', report.multipleCanonical.length);
 console.log('Images missing alt attribute:', report.missingAlt.length);
 console.log('Broken Internal Links:', report.brokenInternalLinks.length);
+if (report.brokenInternalLinks.length > 0) console.log(JSON.stringify(report.brokenInternalLinks, null, 2));
 console.log('Trailing Slash Links:', report.trailingSlashLinks.length);
 
 // Cross-page duplicate title & description checks

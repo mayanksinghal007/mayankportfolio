@@ -16,6 +16,7 @@ import { CONTENT_STRATEGY_BLOGS } from './blogs/contentStrategyBlogs.js';
 import { SEO_AEO_GEO_BLOGS } from './blogs/seoAeoGeoBlogs.js';
 import { ECOMMERCE_CRO_BLOGS } from './blogs/ecommerceCroBlogs.js';
 import { CAREER_PERSPECTIVES_BLOGS } from './blogs/careerPerspectivesBlogs.js';
+import { INTERNATIONAL_BLOGS } from './blogs/internationalBlogs.js';
 
 export const DEFAULT_BLOG_POSTS = [
   ...META_ADS_BLOGS,          // Posts 1 - 10
@@ -24,7 +25,8 @@ export const DEFAULT_BLOG_POSTS = [
   ...CONTENT_STRATEGY_BLOGS,  // Posts 25 - 32
   ...SEO_AEO_GEO_BLOGS,       // Posts 33 - 40
   ...ECOMMERCE_CRO_BLOGS,     // Posts 41 - 45
-  ...CAREER_PERSPECTIVES_BLOGS // Posts 46 - 50
+  ...CAREER_PERSPECTIVES_BLOGS, // Posts 46 - 50
+  ...INTERNATIONAL_BLOGS      // Posts 51 - 54 (US, UK, UAE, Russia International Series)
 ];
 
 export const BLOG_CATEGORIES = [
@@ -35,5 +37,6 @@ export const BLOG_CATEGORIES = [
   "Content Strategy",
   "SEO & AEO",
   "E-Commerce & CRO",
-  "Career & Strategy"
+  "Career & Strategy",
+  "International Strategy"
 ];

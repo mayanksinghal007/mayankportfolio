@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 export const RoasCalculator = () => {
-  // Mode: 'USD' (International / US / UK) vs 'INR' (Indian D2C)
+  // Mode: 'USD' | 'GBP' | 'AED' | 'INR'
   const [currency, setCurrency] = useState('USD');
 
   // Financial Inputs
@@ -42,6 +42,22 @@ export const RoasCalculator = () => {
       setAov(75);
       setRtoPercent(3);
       setPgPercent(2.9);
+    } else if (newCur === 'GBP') {
+      setAdSpend(4000);
+      setRevenue(14000);
+      setCogsPercent(30);
+      setShippingPerOrder(5);
+      setAov(60);
+      setRtoPercent(4);
+      setPgPercent(2.5);
+    } else if (newCur === 'AED') {
+      setAdSpend(18000);
+      setRevenue(65000);
+      setCogsPercent(28);
+      setShippingPerOrder(25);
+      setAov(280);
+      setRtoPercent(8);
+      setPgPercent(2.8);
     } else {
       setAdSpend(100000);
       setRevenue(350000);
@@ -57,11 +73,21 @@ export const RoasCalculator = () => {
     setOpenFaq(openFaq === index ? null : index);
   };
 
+  const curSymbol = currency === 'USD' ? '$' : currency === 'GBP' ? '£' : currency === 'AED' ? 'AED ' : '₹';
+
   const formatCurrency = (val) => {
-    if (currency === 'USD') {
-      return `$${Math.round(val).toLocaleString('en-US')}`;
+    const rounded = Math.round(val);
+    switch (currency) {
+      case 'USD':
+        return `$${rounded.toLocaleString('en-US')}`;
+      case 'GBP':
+        return `£${rounded.toLocaleString('en-GB')}`;
+      case 'AED':
+        return `AED ${rounded.toLocaleString('en-AE')}`;
+      case 'INR':
+      default:
+        return `₹${rounded.toLocaleString('en-IN')}`;
     }
-    return `₹${Math.round(val).toLocaleString('en-IN')}`;
   };
 
   // Computations
@@ -195,42 +221,78 @@ export const RoasCalculator = () => {
               </div>
 
               {/* Currency Mode Switcher */}
-              <div style={{ display: 'flex', gap: '8px', marginBottom: '20px', background: 'var(--cream-subtle)', padding: '4px', borderRadius: '8px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px', marginBottom: '20px', background: 'var(--cream-subtle)', padding: '4px', borderRadius: '8px' }}>
                 <button
                   type="button"
                   onClick={() => handleCurrencyChange('USD')}
                   style={{
-                    flex: 1,
-                    padding: '8px 12px',
-                    fontSize: '0.85rem',
+                    padding: '8px 4px',
+                    fontSize: '0.8rem',
                     fontWeight: 600,
                     border: 'none',
                     borderRadius: '6px',
                     cursor: 'pointer',
                     background: currency === 'USD' ? 'var(--charcoal)' : 'transparent',
                     color: currency === 'USD' ? '#fff' : 'var(--text-muted)',
-                    transition: 'all 0.2s ease'
+                    transition: 'all 0.2s ease',
+                    textAlign: 'center'
                   }}
                 >
-                  Global / US ($ USD)
+                  US ($)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleCurrencyChange('GBP')}
+                  style={{
+                    padding: '8px 4px',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    background: currency === 'GBP' ? 'var(--charcoal)' : 'transparent',
+                    color: currency === 'GBP' ? '#fff' : 'var(--text-muted)',
+                    transition: 'all 0.2s ease',
+                    textAlign: 'center'
+                  }}
+                >
+                  UK (£)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleCurrencyChange('AED')}
+                  style={{
+                    padding: '8px 4px',
+                    fontSize: '0.8rem',
+                    fontWeight: 600,
+                    border: 'none',
+                    borderRadius: '6px',
+                    cursor: 'pointer',
+                    background: currency === 'AED' ? 'var(--charcoal)' : 'transparent',
+                    color: currency === 'AED' ? '#fff' : 'var(--text-muted)',
+                    transition: 'all 0.2s ease',
+                    textAlign: 'center'
+                  }}
+                >
+                  UAE (AED)
                 </button>
                 <button
                   type="button"
                   onClick={() => handleCurrencyChange('INR')}
                   style={{
-                    flex: 1,
-                    padding: '8px 12px',
-                    fontSize: '0.85rem',
+                    padding: '8px 4px',
+                    fontSize: '0.8rem',
                     fontWeight: 600,
                     border: 'none',
                     borderRadius: '6px',
                     cursor: 'pointer',
                     background: currency === 'INR' ? 'var(--charcoal)' : 'transparent',
                     color: currency === 'INR' ? '#fff' : 'var(--text-muted)',
-                    transition: 'all 0.2s ease'
+                    transition: 'all 0.2s ease',
+                    textAlign: 'center'
                   }}
                 >
-                  Domestic (₹ INR COD)
+                  India (₹)
                 </button>
               </div>
 
@@ -238,16 +300,16 @@ export const RoasCalculator = () => {
               <div className="tool-input-group">
                 <div className="tool-input-label-row">
                   <label htmlFor="adSpendInput" className="tool-input-label">
-                    Monthly Ad Spend ({currency === 'USD' ? '$' : '₹'})
+                    Monthly Ad Spend ({curSymbol.trim()})
                   </label>
                   <span className="tool-input-val">{formatCurrency(adSpend)}</span>
                 </div>
                 <input
                   id="adSpendInput"
                   type="range"
-                  min={currency === 'USD' ? 500 : 10000}
-                  max={currency === 'USD' ? 100000 : 2500000}
-                  step={currency === 'USD' ? 250 : 5000}
+                  min={currency === 'INR' ? 10000 : (currency === 'AED' ? 1500 : 500)}
+                  max={currency === 'INR' ? 2500000 : (currency === 'AED' ? 350000 : 100000)}
+                  step={currency === 'INR' ? 5000 : (currency === 'AED' ? 500 : 250)}
                   value={adSpend}
                   onChange={(e) => setAdSpend(Number(e.target.value))}
                   className="tool-slider"
@@ -258,16 +320,16 @@ export const RoasCalculator = () => {
               <div className="tool-input-group">
                 <div className="tool-input-label-row">
                   <label htmlFor="revenueInput" className="tool-input-label">
-                    Gross Attributed Revenue ({currency === 'USD' ? '$' : '₹'})
+                    Gross Attributed Revenue ({curSymbol.trim()})
                   </label>
                   <span className="tool-input-val">{formatCurrency(revenue)}</span>
                 </div>
                 <input
                   id="revenueInput"
                   type="range"
-                  min={currency === 'USD' ? 1000 : 10000}
-                  max={currency === 'USD' ? 300000 : 10000000}
-                  step={currency === 'USD' ? 500 : 10000}
+                  min={currency === 'INR' ? 10000 : (currency === 'AED' ? 3000 : 1000)}
+                  max={currency === 'INR' ? 10000000 : (currency === 'AED' ? 1000000 : 300000)}
+                  step={currency === 'INR' ? 10000 : (currency === 'AED' ? 1000 : 500)}
                   value={revenue}
                   onChange={(e) => setRevenue(Number(e.target.value))}
                   className="tool-slider"
@@ -292,13 +354,13 @@ export const RoasCalculator = () => {
                 </div>
                 <div className="tool-input-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="aovInput" className="tool-input-label" style={{ display: 'block', marginBottom: '6px' }}>
-                    Avg Order Value ({currency === 'USD' ? '$' : '₹'})
+                    Avg Order Value ({curSymbol.trim()})
                   </label>
                   <input
                     id="aovInput"
                     type="number"
-                    min={currency === 'USD' ? 10 : 200}
-                    max={currency === 'USD' ? 1000 : 50000}
+                    min={currency === 'INR' ? 200 : (currency === 'AED' ? 50 : 10)}
+                    max={currency === 'INR' ? 50000 : (currency === 'AED' ? 5000 : 1000)}
                     value={aov}
                     onChange={(e) => setAov(Number(e.target.value))}
                     className="tool-number-input"
@@ -309,14 +371,14 @@ export const RoasCalculator = () => {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
                 <div className="tool-input-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="shippingInput" className="tool-input-label" style={{ display: 'block', marginBottom: '6px' }}>
-                    Fulfillment / Order ({currency === 'USD' ? '$' : '₹'})
+                    Fulfillment / Order ({curSymbol.trim()})
                   </label>
                   <input
                     id="shippingInput"
                     type="number"
                     min="0"
-                    max={currency === 'USD' ? 50 : 500}
-                    step={currency === 'USD' ? '0.5' : '5'}
+                    max={currency === 'INR' ? 500 : (currency === 'AED' ? 150 : 50)}
+                    step={currency === 'INR' ? '5' : (currency === 'AED' ? '1' : '0.5')}
                     value={shippingPerOrder}
                     onChange={(e) => setShippingPerOrder(Number(e.target.value))}
                     className="tool-number-input"
@@ -324,7 +386,7 @@ export const RoasCalculator = () => {
                 </div>
                 <div className="tool-input-group" style={{ marginBottom: 0 }}>
                   <label htmlFor="rtoInput" className="tool-input-label" style={{ display: 'block', marginBottom: '6px' }}>
-                    {currency === 'USD' ? 'Return Rate (%)' : 'COD Return Rate (%)'}
+                    {currency === 'INR' ? 'COD Return Rate (%)' : currency === 'AED' ? 'RTO & Return Rate (%)' : 'Return Rate (%)'}
                   </label>
                   <input
                     id="rtoInput"
