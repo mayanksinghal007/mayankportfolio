@@ -5,7 +5,7 @@
     <link>https://mayankaggarwal-one.vercel.app/blog</link>
     <description>Tactical guides on Meta Ads, generative AI video workflows, short-form reel hooks, and modern SEO/AEO/GEO strategies by Mayank Aggarwal.</description>
     <language>en-IN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 05:28:22 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 05:32:47 GMT</lastBuildDate>
     <atom:link href="https://mayankaggarwal-one.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title><![CDATA[How to Start Meta Ads for a Small Business in India (Step by Step)]]></title>
@@ -470,6 +470,38 @@
       <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[Across Eastern European e-commerce marketplaces like Ozon, Wildberries, and Yandex Market, product cards featuring short 3D and dynamic lifestyle video demonstrations achieve up to 40% higher conversion rates than static photo galleries. Discover how sellers use generative AI video to produce cinematic product demonstration reels without booking expensive physical studios or camera crews.]]></description>
       <category>AI Video</category>
+    </item>
+    <item>
+      <title><![CDATA[Meta Advantage+ Shopping Campaigns (ASC): The 2026 Budget Scaling Protocol]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/meta-advantage-plus-shopping-budget-scaling</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/meta-advantage-plus-shopping-budget-scaling</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Meta Advantage+ Shopping Campaigns (ASC) use artificial intelligence to automate prospecting and retargeting within a single campaign structure. However, without disciplined operational safeguards—specifically setting an Existing Customer Budget Cap between 10% and 15%, maintaining a minimum of 15–20 active creative assets, and isolating cold creative testing into an ABO sandbox—ASC frequently cannibalizes warm audience buyers and misleads brands on true incremental growth.]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[UK GDPR & Meta Conversion API: Recovering Lost Signals Legally in 2026]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/uk-gdpr-meta-pixel-conversion-api</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/uk-gdpr-meta-pixel-conversion-api</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[In the United Kingdom, strict enforcement of UK GDPR and the Privacy and Electronic Communications Regulations (PECR) by the Information Commissioner's Office (ICO) prohibits firing client-side tracking pixels before affirmative user consent. However, relying solely on standard browser tracking leaves UK brands blind to up to 35% of customer purchases. This guide details how to build a compliant server-side Meta Conversion API pipeline that respects user privacy while restoring attribution signal fidelity.]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[Ramadan Paid Advertising Strategy: Creative Pacing & Budget Surges in the GCC]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/ramadan-meta-ads-strategy-uae</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/ramadan-meta-ads-strategy-uae</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[The Holy Month of Ramadan and the subsequent Eid al-Fitr celebrations represent the single largest consumer retail and gifting period across the United Arab Emirates, Saudi Arabia, and the wider GCC region. Consumer behavior in Dubai and Abu Dhabi shifts dramatically: daytime digital activity slows during fasting hours, while evening social media engagement and mobile purchases surge between 11:00 PM and 4:00 AM (Suhoor). Winning brands pace advertising spend across four distinct phases.]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[Telegram Ads vs Meta Ads: Comparative ROI for International Lead Generation]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/telegram-ads-vs-meta-ads-comparison</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/telegram-ads-vs-meta-ads-comparison</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[For tech founders, B2B services, and digital products expanding across Eastern Europe, the CIS, Central Asia, and the Middle East, deciding where to allocate paid media budgets often comes down to two dominant platforms: Telegram Ads and Meta Ads (Facebook & Instagram). While Meta offers superior algorithmic broad targeting and visual video formats, Telegram delivers unparalleled direct channel engagement and friction-free Mini-App checkout flows.]]></description>
+      <category>Performance Marketing</category>
     </item>
   </channel>
 </rss>
