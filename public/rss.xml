@@ -5,7 +5,7 @@
     <link>https://mayankaggarwal-one.vercel.app/blog</link>
     <description>Tactical guides on Meta Ads, generative AI video workflows, short-form reel hooks, and modern SEO/AEO/GEO strategies by Mayank Aggarwal.</description>
     <language>en-IN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 05:24:18 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 05:28:22 GMT</lastBuildDate>
     <atom:link href="https://mayankaggarwal-one.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title><![CDATA[How to Start Meta Ads for a Small Business in India (Step by Step)]]></title>
@@ -438,6 +438,38 @@
       <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[For Russian-speaking tech founders, e-commerce brands, and agency operators scaling into the US, UK, UAE, and European markets, running global paid media requires solving three interconnected challenges: establishing robust foreign entity and payment infrastructure, overcoming the creative localization trap, and implementing server-side tracking pipelines.]]></description>
       <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[Building High-Converting Video Ads with Runway Gen-3 and Kling AI: An Agency Framework]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/ai-video-ads-runway-gen3-kling-workflow</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/ai-video-ads-runway-gen3-kling-workflow</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Traditional video ad shoots in the US typically cost between $5,000 and $25,000 and take 3–4 weeks from pre-production to final edit. By combining Midjourney v6 base plates, Runway Gen-3 Alpha for camera motion, Kling AI for human anatomy and physical interactions, and ElevenLabs for neural voice narration, growth teams can produce 20+ commercial-grade video ad variations in under 48 hours.]]></description>
+      <category>AI Video</category>
+    </item>
+    <item>
+      <title><![CDATA[AI Video Commercial Production for London Tech & Fintech Brands]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/ai-video-production-london-fintech</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/ai-video-production-london-fintech</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[London is Europe's undisputed fintech capital, but marketing financial software, neobanking apps, and wealth platforms on paid social requires balancing cutting-edge visual velocity with strict regulatory compliance under the UK Financial Conduct Authority (FCA). Learn how London tech scale-ups use AI video production to communicate complex financial utility in under 30 seconds.]]></description>
+      <category>AI Video</category>
+    </item>
+    <item>
+      <title><![CDATA[Aesthetic & Cosmetic Clinic Lead Generation in Dubai: High-Ticket Meta Ads Funnels]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/dubai-clinic-lead-generation-meta-ads</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/dubai-clinic-lead-generation-meta-ads</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Aesthetic clinics, cosmetic dermatology centers, and luxury dental practices across Dubai (Jumeirah, Downtown, and Healthcare City) frequently waste ad spend on unverified inquiries from people who never book consultations. Scaling high-ticket cosmetic treatments requires strict Dubai Health Authority (DHA) ad compliance, automated bilingual WhatsApp booking confirmations, and patient-first educational video.]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[AI Video Production for Marketplace Sellers: Runway Gen-3 on Ozon & Wildberries]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/ai-video-ozon-wildberries-marketplaces</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/ai-video-ozon-wildberries-marketplaces</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Across Eastern European e-commerce marketplaces like Ozon, Wildberries, and Yandex Market, product cards featuring short 3D and dynamic lifestyle video demonstrations achieve up to 40% higher conversion rates than static photo galleries. Discover how sellers use generative AI video to produce cinematic product demonstration reels without booking expensive physical studios or camera crews.]]></description>
+      <category>AI Video</category>
     </item>
   </channel>
 </rss>
