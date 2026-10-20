@@ -5,7 +5,7 @@
     <link>https://mayankaggarwal-one.vercel.app/blog</link>
     <description>Tactical guides on Meta Ads, generative AI video workflows, short-form reel hooks, and modern SEO/AEO/GEO strategies by Mayank Aggarwal.</description>
     <language>en-IN</language>
-    <lastBuildDate>Tue, 20 Oct 2026 05:56:01 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 20 Oct 2026 06:02:47 GMT</lastBuildDate>
     <atom:link href="https://mayankaggarwal-one.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
     <item>
       <title><![CDATA[How to Start Meta Ads for a Small Business in India (Step by Step)]]></title>
@@ -694,6 +694,38 @@
       <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
       <description><![CDATA[As software-as-a-service (SaaS) and digital subscription companies scale internationally into the US, UK, European Union, and Middle East, involuntary churn—lost revenue resulting from passive payment failures, expired credit cards, cross-border bank declines, and currency friction—silently drains between 4% and 9% of total Monthly Recurring Revenue (MRR). While marketing teams spend hundreds of thousands of dollars on paid acquisition to acquire new subscribers, leaking revenue from existing customers destroys unit economics and depresses SaaS enterprise valuations. This technical playbook details the payment routing architecture, automated dunning sequences, and localized currency strategies required to recover failed global transactions.]]></description>
       <category>Technical SEO</category>
+    </item>
+    <item>
+      <title><![CDATA[Advanced Prompt Engineering for AI Video Commercials: Midjourney, Runway Gen-3 & Kling]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/ai-prompt-engineering-video-ads-framework</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/ai-prompt-engineering-video-ads-framework</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[As generative artificial intelligence transforms commercial advertising production, the primary competitive moat for growth agencies and creative directors is no longer access to tools, but the technical mastery of prompt architecture. Vague, conversational prompting ('make a cool commercial of a sports car') yields jittery, unusable video clips with uncanny valley physics. In contrast, structured programmatic prompt engineering—controlling camera focal lengths, volumetric atmospheric lighting, physical particle fluid dynamics, and seed consistency across Midjourney v6, Runway Gen-3 Alpha, and Kling 1.5—produces cinema-grade commercial assets indistinguishable from $100,000 live-action studio shoots.]]></description>
+      <category>AI Video Creation</category>
+    </item>
+    <item>
+      <title><![CDATA[Belfast & Northern Ireland Cyber Security & FinTech: Scaling B2B Defense Tech in GBP (£)]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/belfast-northern-ireland-tech-cybersecurity-ads</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/belfast-northern-ireland-tech-cybersecurity-ads</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Belfast and Northern Ireland have earned global recognition as Europe's leading destination for cybersecurity technology and financial software engineering. Anchored by the Centre for Secure Information Technologies (CSIT) at Queen's University Belfast and the thriving Titanic Quarter tech hub, the region is home to world-class vulnerability management, blockchain analytics, and automated compliance scale-ups. However, selling highly specialized threat intelligence and cybersecurity software to enterprise Chief Information Security Officers (CISOs) in London, New York, and Frankfurt requires high-credibility account-based marketing that bypasses generic social media hype.]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[Abu Dhabi Sovereign & Government B2B Marketing: ADGM, Masdar City & Hub71 Ecosystems]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/abu-dhabi-sovereign-wealth-b2b-government-marketing</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/abu-dhabi-sovereign-wealth-b2b-government-marketing</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[While Dubai is famous for real estate, luxury tourism, and consumer commerce, the capital of the United Arab Emirates—Abu Dhabi—represents the sovereign financial capital and deep-technology engine of the Middle East. Home to trillions of dollars in sovereign wealth (ADIA, Mubadala, ADQ), the world-renowned Abu Dhabi Global Market (ADGM) financial freezone, clean-tech pioneer Masdar City, and tech incubator Hub71, Abu Dhabi operates under an institutional, long-term commercial mindset. Marketing enterprise software, climate tech, and financial asset management in the capital requires sophisticated institutional B2B frameworks tailored to sovereign decision-makers in AED (د.إ).]]></description>
+      <category>Performance Marketing</category>
+    </item>
+    <item>
+      <title><![CDATA[YouTube Shorts vs Instagram Reels for Global Paid User Acquisition: Algorithmic Comparison]]></title>
+      <link>https://mayankaggarwal-one.vercel.app/blog/youtube-shorts-vs-instagram-reels-global-ua</link>
+      <guid isPermaLink="true">https://mayankaggarwal-one.vercel.app/blog/youtube-shorts-vs-instagram-reels-global-ua</guid>
+      <pubDate>Tue, 20 Oct 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[In the global battle for mobile attention, short-form vertical video has become the dominant battleground for paid performance marketing. Direct-to-consumer (DTC) brands, mobile gaming studios, and cross-border SaaS companies spend billions annually scaling vertical video ad units. However, allocating capital between the two undisputed titans—Meta's Instagram Reels and Google's YouTube Shorts—is frequently plagued by flawed cross-platform assumptions. While both serve 9:16 vertical video, their underlying algorithmic delivery mechanics, audience intent profiles, and conversion attribution architectures diverge radically.]]></description>
+      <category>Performance Marketing</category>
     </item>
   </channel>
 </rss>
