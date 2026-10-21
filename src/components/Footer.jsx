@@ -49,7 +49,7 @@ export const Footer = () => {
                 borderTop: '1px solid rgba(255,255,255,0.08)',
                 fontSize: '0.82rem',
                 lineHeight: 1.6,
-                color: 'var(--mutedtext)',
+                color: 'rgba(255, 253, 249, 0.75)',
               }}
             >
               <div style={{ color: 'var(--softwhite)', fontWeight: 700, marginBottom: '2px' }}>

@@ -7,11 +7,13 @@ import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { GlobalCtaRails } from './components/GlobalCtaRails';
-import { AiChatAssistant } from './components/AiChatAssistant';
-import { SearchModal } from './components/SearchModal';
-import { ScrollLeadModal } from './components/ScrollLeadModal';
 import { AnalyticsTracker } from './components/AnalyticsTracker';
 import { useScrollReveal } from './hooks/useScrollReveal';
+
+// Lazy-load non-critical interactive modals & chat assistant to keep initial JS bundle ultra-lean
+const LazyAiChatAssistant = lazy(() => import('./components/AiChatAssistant').then((m) => ({ default: m.AiChatAssistant })));
+const LazySearchModal = lazy(() => import('./components/SearchModal').then((m) => ({ default: m.SearchModal })));
+const LazyScrollLeadModal = lazy(() => import('./components/ScrollLeadModal').then((m) => ({ default: m.ScrollLeadModal })));
 
 // Statically load Home for instant client hydration on the homepage
 import { Home } from './pages/Home';
@@ -168,17 +170,29 @@ export const AppLayout = ({ pagesOverride }) => {
       {/* Render Footer only if not on Admin view */}
       {!isAdmin && <Footer />}
 
-      {/* Global AI Marketing Assistant (Powered by Vercel AI Gateway) */}
-      {!isAdmin && <AiChatAssistant />}
+      {/* Global AI Marketing Assistant (Powered by Vercel AI Gateway) - Deferred */}
+      {!isAdmin && (
+        <Suspense fallback={null}>
+          <LazyAiChatAssistant />
+        </Suspense>
+      )}
 
       {/* Global Persistent CTA Rails (Left Social & AI Rail, Right Contact Rail, Mobile Conversion Dock) */}
       {!isAdmin && <GlobalCtaRails />}
 
-      {/* Global Cmd/Ctrl+K Search Modal */}
-      <SearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+      {/* Global Cmd/Ctrl+K Search Modal - Only mounted when opened */}
+      {isSearchOpen && (
+        <Suspense fallback={null}>
+          <LazySearchModal isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
+        </Suspense>
+      )}
 
-      {/* 30% Scroll Contextual Lead Modal */}
-      {!isAdmin && <ScrollLeadModal />}
+      {/* 30% Scroll Contextual Lead Modal - Deferred */}
+      {!isAdmin && (
+        <Suspense fallback={null}>
+          <LazyScrollLeadModal />
+        </Suspense>
+      )}
 
       {/* Global Interactive Toast Notification */}
       <Toast />

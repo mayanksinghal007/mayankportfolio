@@ -172,6 +172,7 @@ export const Home = () => {
                 className="btn-whatsapp"
                 style={{ padding: '13px 20px' }}
                 title="Instant Chat on WhatsApp"
+                aria-label="Direct Chat on WhatsApp with Mayank Aggarwal"
               >
                 <MessageCircle size={17} />
               </a>
@@ -258,6 +259,7 @@ export const Home = () => {
                     }
                     className="hero-media-play"
                     title="Watch Showreel"
+                    aria-label="Watch Showreel video demonstration"
                   >
                     <Play size={24} style={{ marginLeft: '3px' }} />
                   </button>

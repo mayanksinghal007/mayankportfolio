@@ -17,6 +17,7 @@ import {
 
 export const CITY_DATA = {
   delhi: {
+    region: "india",
     name: "Delhi",
     fullName: "Delhi NCR & New Delhi",
     seoTitle: "Digital Marketing & Meta Ads Specialist in Delhi",
@@ -32,6 +33,7 @@ export const CITY_DATA = {
     serviceRadius: "Delhi State & National Capital Territory"
   },
   gurugram: {
+    region: "india",
     name: "Gurugram",
     fullName: "Gurugram (Gurgaon), Haryana",
     seoTitle: "Performance Marketing & Meta Ads in Gurugram",
@@ -47,6 +49,7 @@ export const CITY_DATA = {
     serviceRadius: "Gurugram, Manesar & Southern NCR"
   },
   noida: {
+    region: "india",
     name: "Noida",
     fullName: "Noida, Uttar Pradesh",
     seoTitle: "Meta Ads & SEO Specialist in Noida | Performance",
@@ -62,6 +65,7 @@ export const CITY_DATA = {
     serviceRadius: "Noida, Greater Noida & Eastern NCR"
   },
   mumbai: {
+    region: "india",
     name: "Mumbai",
     fullName: "Mumbai, Maharashtra",
     seoTitle: "Meta Ads & Growth Marketing Specialist in Mumbai",
@@ -77,6 +81,7 @@ export const CITY_DATA = {
     serviceRadius: "Mumbai Metropolitan Region (MMR)"
   },
   bangalore: {
+    region: "india",
     name: "Bangalore",
     fullName: "Bengaluru, Karnataka",
     seoTitle: "AI Marketing & Meta Ads Specialist in Bangalore",
@@ -90,6 +95,134 @@ export const CITY_DATA = {
     caseStudyDesc: "Synthesized hyper-relatable meme reels and kinetic AI video hooks in Kling and Runway, driving high viral organic sharing alongside paid scale.",
     avgCpm: "₹210 - ₹340",
     serviceRadius: "Bengaluru Urban & Karnataka Tech Corridor"
+  },
+  "new-york": {
+    region: "international",
+    name: "New York",
+    fullName: "New York City (NYC), United States",
+    seoTitle: "Meta Ads & Performance Marketing Specialist in New York, US",
+    metaDescription: "Performance Meta Ads management, Advantage+ scaling, and AI video commercials for DTC brands, fintech, and startups across New York City and Manhattan.",
+    canonicalUrl: "https://mayankaggarwal-one.vercel.app/locations/new-york",
+    h1: "Performance Marketing & Meta Ads Specialist in New York",
+    subhead: "Driving profitable customer acquisition for New York's fastest-growing DTC brands, luxury consumer labels, and SaaS startups with disciplined unit economics.",
+    localHubs: ["SoHo (DTC Hub)", "Silicon Alley (Manhattan)", "DUMBO (Brooklyn)", "Flatiron", "Midtown", "Financial District"],
+    marketFocus: "DTC Apparel, Clean Beauty, FinTech, B2B SaaS, and Luxury Consumer Products.",
+    caseStudyTitle: "NYC DTC Jewelry Brand Scales to $180,000/Month on Meta ASC",
+    caseStudyDesc: "Engineered a 3-tier creative testing sandbox and paired Advantage+ Shopping with 12 high-retention vertical UGC reels, dropping Customer Acquisition Cost by 34%.",
+    avgCpm: "$28 - $46 USD",
+    serviceRadius: "New York Tri-State Area & United States"
+  },
+  london: {
+    region: "international",
+    name: "London",
+    fullName: "London & Greater London, United Kingdom",
+    seoTitle: "Performance Marketing & Meta Ads Specialist in London, UK",
+    metaDescription: "Meta Ads, Google Ads growth marketing, and AI commercial video production for UK e-commerce brands and London tech scale-ups. High ROAS scaling.",
+    canonicalUrl: "https://mayankaggarwal-one.vercel.app/locations/london",
+    h1: "Performance Marketing & Growth Specialist in London",
+    subhead: "Partnering with ambitious UK e-commerce retailers, DTC challengers, and London scale-ups to scale paid acquisition, combat ad fatigue, and drive blended ROAS.",
+    localHubs: ["Shoreditch (Tech City)", "Mayfair", "Soho", "Canary Wharf", "King's Cross", "Fitzrovia"],
+    marketFocus: "Sustainable Fashion, DTC E-Commerce, FinTech, and High-Ticket B2B Services.",
+    caseStudyTitle: "London Sustainable Footwear Label Reaches 4.2x Blended ROAS",
+    caseStudyDesc: "Migrated account to server-side Meta Conversions API (CAPI) and deployed generative AI commercial trailers, unlocking profitable UK and EU international expansion.",
+    avgCpm: "£18 - £32 GBP",
+    serviceRadius: "London Metropolitan Area & United Kingdom"
+  },
+  dubai: {
+    region: "international",
+    name: "Dubai",
+    fullName: "Dubai & Abu Dhabi, United Arab Emirates (UAE)",
+    seoTitle: "Meta Ads & AI Marketing Specialist in Dubai, UAE",
+    metaDescription: "Performance marketing, high-ticket lead generation, and cinematic AI video ads for luxury real estate, D2C, and businesses in Dubai and UAE.",
+    canonicalUrl: "https://mayankaggarwal-one.vercel.app/locations/dubai",
+    h1: "Performance Marketing & Meta Ads Specialist in Dubai",
+    subhead: "Engineering high-ticket lead generation funnels and cinematic AI commercial video creatives for luxury real estate brokers, GCC e-commerce, and Dubai enterprises.",
+    localHubs: ["Downtown Dubai", "Dubai Marina", "Business Bay", "DIFC", "Palm Jumeirah", "Dubai Internet City"],
+    marketFocus: "Luxury Real Estate, High-Ticket Professional Services, GCC D2C E-Commerce, and Hospitality.",
+    caseStudyTitle: "Dubai Luxury Property Broker Generates 140+ HNWI Buyer Inquiries",
+    caseStudyDesc: "Built an interactive qualification funnel on Meta Ads with dynamic video hooks in Kling AI and ElevenLabs voiceovers, slashing Cost Per Qualified Lead by 46%.",
+    avgCpm: "80 - 150 AED",
+    serviceRadius: "Dubai, Abu Dhabi & GCC Region"
+  },
+  "los-angeles": {
+    region: "international",
+    name: "Los Angeles",
+    fullName: "Los Angeles, California, United States",
+    seoTitle: "AI Video Ads & Meta Ads Specialist in Los Angeles, CA",
+    metaDescription: "Cinematic generative AI commercials, high-retention TikTok & Reel ads, and Meta performance marketing for LA entertainment, beauty, and DTC brands.",
+    canonicalUrl: "https://mayankaggarwal-one.vercel.app/locations/los-angeles",
+    h1: "AI Ad Creative & Performance Marketing in Los Angeles",
+    subhead: "Merging Hollywood-grade visual storytelling via Runway Gen-3 and Kling AI with ruthless Meta Ads media buying to scale LA's leading lifestyle and DTC brands.",
+    localHubs: ["Silicon Beach (Santa Monica, Venice)", "West Hollywood", "Beverly Hills", "Culver City", "Downtown LA"],
+    marketFocus: "Beauty & Cosmetics, Creator Brands, Entertainment, Wellness, and Streetwear DTC.",
+    caseStudyTitle: "LA Clean Skincare Brand Cuts CAC by 42% via Generative AI Creatives",
+    caseStudyDesc: "Produced 20 rapid visual angle tests in Runway and Midjourney without high studio production costs, scaling top-of-funnel conversion rate by 2.4x.",
+    avgCpm: "$24 - $42 USD",
+    serviceRadius: "Los Angeles County, Orange County & Southern California"
+  },
+  "san-francisco": {
+    region: "international",
+    name: "San Francisco",
+    fullName: "San Francisco & Silicon Valley, California, United States",
+    seoTitle: "B2B SaaS Growth & Performance Marketing in San Francisco",
+    metaDescription: "Paid social funnels, B2B lead generation, and generative AI ad creative testing for venture-backed startups across San Francisco and Silicon Valley.",
+    canonicalUrl: "https://mayankaggarwal-one.vercel.app/locations/san-francisco",
+    h1: "B2B Performance Marketing & Demand Gen in San Francisco",
+    subhead: "Accelerating qualified pipeline and ARR growth for venture-backed AI platforms, developer tool companies, and high-growth Silicon Valley B2B startups.",
+    localHubs: ["SoMa", "South Park", "Mission District", "Palo Alto", "Mountain View", "Sunnyvale"],
+    marketFocus: "Enterprise Software, Developer Platforms, AI Tooling, and Web3 Infrastructure.",
+    caseStudyTitle: "Silicon Valley AI Startup Lowers Demo Acquisition Cost to $42",
+    caseStudyDesc: "Replaced native lead gen forms with interactive ROI calculator landing pages, feeding offline demo completions back to Meta via Conversions API.",
+    avgCpm: "$32 - $58 USD",
+    serviceRadius: "San Francisco Bay Area & Silicon Valley"
+  },
+  singapore: {
+    region: "international",
+    name: "Singapore",
+    fullName: "Singapore & Southeast Asia Regional Hub",
+    seoTitle: "Meta Ads & Cross-Border Growth Marketer in Singapore",
+    metaDescription: "Performance marketing, localized AI video production, and cross-border APAC acquisition for Singapore startups, retail brands, and tech platforms.",
+    canonicalUrl: "https://mayankaggarwal-one.vercel.app/locations/singapore",
+    h1: "Meta Ads & Performance Marketing Specialist in Singapore",
+    subhead: "Helping Singapore regional HQs and Southeast Asian consumer brands expand cross-border across Malaysia, Indonesia, Australia, and Western markets.",
+    localHubs: ["Marina Bay Financial Centre", "Raffles Place", "Tanjong Pagar", "One-North Tech Hub", "Orchard"],
+    marketFocus: "Cross-Border E-Commerce, Consumer Fintech, WealthTech, and Travel Tech.",
+    caseStudyTitle: "Singapore D2C Lifestyle Brand Expands into Australia with 3.8x ROAS",
+    caseStudyDesc: "Designed country-specific creative hooks with localized currency testing, enabling seamless international scale with zero internal media buyer bloat.",
+    avgCpm: "$16 - $28 SGD",
+    serviceRadius: "Singapore & Southeast Asia (ASEAN)"
+  },
+  sydney: {
+    region: "international",
+    name: "Sydney",
+    fullName: "Sydney, New South Wales, Australia",
+    seoTitle: "Performance Marketing & Meta Ads Specialist in Sydney, Australia",
+    metaDescription: "Data-driven Meta Ads management, Shopify CRO, and AI video ads for Australian DTC retailers and Sydney scale-ups. Direct growth partner.",
+    canonicalUrl: "https://mayankaggarwal-one.vercel.app/locations/sydney",
+    h1: "Performance Marketing & Meta Ads Specialist in Sydney",
+    subhead: "Engineering profitable acquisition systems for Sydney's premier Shopify DTC brands, outdoor lifestyle companies, and health & wellness businesses.",
+    localHubs: ["Sydney CBD", "Surry Hills (Creative Hub)", "Barangaroo", "North Sydney", "Alexandria"],
+    marketFocus: "Shopify DTC Brands, Health & Wellness, Outdoor Apparel, and FinTech.",
+    caseStudyTitle: "Sydney Wellness Label Scales to $110,000 AUD/Month on Meta Ads",
+    caseStudyDesc: "Implemented automated creative refresh sprints to eliminate creative fatigue during high-volume sales periods, achieving a 3.4x blended return on ad spend.",
+    avgCpm: "$22 - $38 AUD",
+    serviceRadius: "Greater Sydney & Australian Eastern Seaboard"
+  },
+  toronto: {
+    region: "international",
+    name: "Toronto",
+    fullName: "Toronto & Greater Toronto Area (GTA), Canada",
+    seoTitle: "Meta Ads & Digital Marketing Specialist in Toronto, Canada",
+    metaDescription: "Performance marketing, Advantage+ shopping campaigns, and AI creative strategy for Canadian e-commerce brands and Toronto tech companies.",
+    canonicalUrl: "https://mayankaggarwal-one.vercel.app/locations/toronto",
+    h1: "Digital Marketing & Performance Marketer in Toronto",
+    subhead: "Partnering with Canadian DTC brands and Toronto tech enterprises to unlock scalable cross-border US/Canada growth through high-converting ad funnels.",
+    localHubs: ["Financial District", "King West", "Liberty Village", "Yorkville", "Downtown Toronto"],
+    marketFocus: "Omnichannel Retail, DTC E-Commerce, Clean Cosmetics, and B2B SaaS.",
+    caseStudyTitle: "Toronto Clean Cosmetics Brand Expands Cross-Border with 3.9x ROAS",
+    caseStudyDesc: "Deployed dual-currency Advantage+ Shopping campaigns and localized AI voiceovers, expanding Canadian retail presence into nationwide US delivery.",
+    avgCpm: "$20 - $35 CAD",
+    serviceRadius: "Greater Toronto Area (GTA) & Ontario Tech Corridor"
   }
 };
 
@@ -167,6 +300,10 @@ export const CityLanding = () => {
     {
       q: `Do you conduct in-person strategy meetings in ${cityInfo.name}?`,
       a: `Yes. For Delhi NCR clients (Delhi, Gurugram, Noida), in-person quarterly marketing reviews and creative briefings are available. For Mumbai and Bengaluru clients, we coordinate via high-touch video sprints with scheduled on-site workshops as needed.`
+    },
+    {
+      q: `What is the pricing / retainer structure for ${cityInfo.name} clients?`,
+      a: "Pricing ke liye direct Contact karein (Contact us for custom pricing). Har business ka monthly ad spend, target CAC aur required creative volume alag hota hai. Hum aapke business unit economics ke according custom flat monthly retainer ya sprint quote design karte hain. Zero hidden setup fees, zero long-term lock-in."
     }
   ];
 
@@ -203,32 +340,65 @@ export const CityLanding = () => {
             ]}
           />
 
-          {/* Regional Hub Selector Pills */}
-          <div className="location-pills-bar">
-            <span
-              style={{
-                fontSize: '0.82rem',
-                fontWeight: 700,
-                textTransform: 'uppercase',
-                letterSpacing: '0.08em',
-                color: 'var(--mutedtext)',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                marginRight: '8px'
-              }}
-            >
-              <MapPin size={15} color="var(--brand)" /> Regional Hubs:
-            </span>
-            {Object.entries(CITY_DATA).map(([key, item]) => (
-              <Link
-                key={key}
-                to={`/locations/${key}`}
-                className={`location-pill ${key === currentCityKey ? 'active' : ''}`}
+          {/* Regional Hub Selector Pills (India & Global) */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', margin: '18px 0 24px' }}>
+            <div className="location-pills-bar" style={{ margin: 0 }}>
+              <span
+                style={{
+                  fontSize: '0.76rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--mutedtext)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  marginRight: '8px'
+                }}
               >
-                {item.name}
-              </Link>
-            ))}
+                <MapPin size={14} color="var(--brand)" /> India Hubs:
+              </span>
+              {Object.entries(CITY_DATA)
+                .filter(([_, item]) => item.region === 'india')
+                .map(([key, item]) => (
+                  <Link
+                    key={key}
+                    to={`/locations/${key}`}
+                    className={`location-pill ${key === currentCityKey ? 'active' : ''}`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+            </div>
+
+            <div className="location-pills-bar" style={{ margin: 0 }}>
+              <span
+                style={{
+                  fontSize: '0.76rem',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.08em',
+                  color: 'var(--gold)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  marginRight: '8px'
+                }}
+              >
+                <Sparkles size={14} color="var(--gold)" /> Global / International:
+              </span>
+              {Object.entries(CITY_DATA)
+                .filter(([_, item]) => item.region === 'international')
+                .map(([key, item]) => (
+                  <Link
+                    key={key}
+                    to={`/locations/${key}`}
+                    className={`location-pill ${key === currentCityKey ? 'active' : ''}`}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+            </div>
           </div>
 
           <div style={{ maxWidth: '880px' }}>
@@ -388,6 +558,65 @@ export const CityLanding = () => {
                   </span>
                 ))}
               </div>
+            </div>
+
+            {/* Transparent Pricing & Retainers Card */}
+            <div
+              style={{
+                backgroundColor: 'var(--purewhite)',
+                border: '2px solid var(--brand)',
+                borderRadius: 'var(--radius-lg)',
+                padding: '32px',
+                boxShadow: 'var(--shadow-md)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                position: 'relative'
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.08em',
+                    color: 'var(--brand)',
+                    marginBottom: '8px'
+                  }}
+                >
+                  Transparent Pricing & Retainers
+                </div>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '1.65rem',
+                    fontWeight: 800,
+                    color: 'var(--charcoal)',
+                    marginBottom: '6px'
+                  }}
+                >
+                  Pricing ke liye Contact karein
+                </div>
+                <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--brand)', marginBottom: '10px' }}>
+                  Custom Quotes • Zero Hidden Markups • Tailored to Ad Spend
+                </div>
+                <p style={{ color: 'var(--mutedtext)', fontSize: '0.88rem', lineHeight: '1.6', marginBottom: '16px' }}>
+                  Har business ka monthly ad budget, target acquisition goals aur creative requirements alag hote hain. Hum aapke growth plan ke hisaab se customized flat monthly retainer ya sprint quote banate hain.
+                </p>
+              </div>
+              <Link
+                to="/contact"
+                className="btn-primary"
+                style={{
+                  padding: '10px 18px',
+                  fontSize: '0.88rem',
+                  width: 'fit-content',
+                  justifyContent: 'center'
+                }}
+              >
+                Inquire for Pricing Quote <ArrowUpRight size={15} />
+              </Link>
             </div>
           </div>
 
