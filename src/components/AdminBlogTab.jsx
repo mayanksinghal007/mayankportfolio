@@ -17,10 +17,11 @@ import {
   HelpCircle,
 } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
-import { BLOG_CATEGORIES } from '../data/blogData';
+import { BLOG_CATEGORIES, DEFAULT_BLOG_POSTS } from '../data/blogData';
 
 export const AdminBlogTab = () => {
   const { blogPosts = [], addBlogPost, updateBlogPost, deleteBlogPost, showToast } = useSite();
+  const activePosts = blogPosts && blogPosts.length > 0 ? blogPosts : DEFAULT_BLOG_POSTS;
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
@@ -50,7 +51,7 @@ export const AdminBlogTab = () => {
   const [formData, setFormData] = useState(initialFormState);
 
   // Filter posts
-  const filteredPosts = blogPosts.filter((post) => {
+  const filteredPosts = activePosts.filter((post) => {
     const matchesSearch =
       searchQuery.trim() === '' ||
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -239,7 +240,7 @@ export const AdminBlogTab = () => {
               cursor: 'pointer',
             }}
           >
-            All ({blogPosts.length})
+            All ({activePosts.length})
           </button>
           {BLOG_CATEGORIES.map((cat) => (
             <button

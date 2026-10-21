@@ -220,10 +220,15 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
 
           {/* Industry Filter Dropdown */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ fontSize: '0.82rem', color: 'var(--mutedtext)', fontWeight: 600 }}>
+            <label
+              htmlFor="ad-industry-filter"
+              style={{ fontSize: '0.82rem', color: 'var(--mutedtext)', fontWeight: 600, cursor: 'pointer' }}
+            >
               Industry:
-            </span>
+            </label>
             <select
+              id="ad-industry-filter"
+              aria-label="Filter ads by industry"
               value={selectedIndustry}
               onChange={(e) => setSelectedIndustry(e.target.value)}
               style={{
@@ -528,7 +533,7 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                           {ad.brand || 'Client Campaign'}
                         </span>
                         {ad.industry && (
-                          <span style={{ color: 'var(--brand)', fontWeight: 500 }}>
+                          <span style={{ color: 'var(--brand-text)', fontWeight: 600 }}>
                             {ad.industry}
                           </span>
                         )}
@@ -622,7 +627,7 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                         style={{
                           fontSize: '0.82rem',
                           fontWeight: 700,
-                          color: 'var(--brand)',
+                          color: 'var(--brand-text)',
                           display: 'inline-flex',
                           alignItems: 'center',
                           gap: '4px',

@@ -26,12 +26,6 @@ export default defineConfig({
           if (id.includes('node_modules/canvas-confetti')) {
             return 'confetti';
           }
-          if (id.includes('src/components/Admin') || id.includes('src/pages/Admin')) {
-            return 'admin-bundle';
-          }
-          if (id.includes('src/data/blogData')) {
-            return 'blog-data';
-          }
           if (
             id.includes('node_modules/react') ||
             id.includes('node_modules/react-dom') ||

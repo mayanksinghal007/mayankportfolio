@@ -23,6 +23,7 @@ import { SeoHead } from '../components/SeoHead';
 import { ToolsMarquee } from '../components/ToolsMarquee';
 
 import { getPersonSchema, getOrganizationSchema, getLocalBusinessSchema, getWebSiteSchema } from '../utils/seoSchemas';
+import { FEATURED_BLOG_POSTS } from '../data/featuredBlogs';
 
 export const Home = () => {
   const { site, services, portfolio, blogPosts = [], mediaAssets = {} } = useSite();
@@ -196,7 +197,7 @@ export const Home = () => {
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.4rem',
                       fontWeight: 700,
-                      color: i === 0 ? 'var(--brand)' : i === 1 ? 'var(--charcoal)' : i === 2 ? 'var(--gold)' : 'var(--brand)',
+                      color: i === 0 ? 'var(--brand-text)' : i === 1 ? 'var(--charcoal)' : i === 2 ? 'var(--gold-text)' : 'var(--brand-text)',
                       lineHeight: 1.1,
                     }}
                   >
@@ -237,7 +238,7 @@ export const Home = () => {
                     className="hero-media-bg"
                     width="800"
                     height="533"
-                    fetchPriority="high"
+                    loading="lazy"
                     decoding="async"
                   />
                 </picture>
@@ -267,9 +268,9 @@ export const Home = () => {
                   <span className="editorial-eyebrow gold" style={{ fontSize: '0.7rem' }}>
                     Mayank Studio Production
                   </span>
-                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', color: 'var(--softwhite)', marginTop: '4px' }}>
+                  <p className="hero-showreel-title" style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 700, color: 'var(--softwhite)', marginTop: '4px' }}>
                     {mediaAssets.home_hero_visual?.title || 'THE GENERATIVE ERA'}
-                  </h3>
+                  </p>
                   <p style={{ fontSize: '0.82rem', color: 'rgba(255, 253, 249, 0.75)', marginTop: '4px' }}>
                     {mediaAssets.home_hero_visual?.subtitle || 'Click to preview video & audio capabilities'}
                   </p>
@@ -569,13 +570,13 @@ export const Home = () => {
                     style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.8rem',
-                      color: 'var(--brand)',
+                      color: 'var(--brand-text)',
                       lineHeight: 1,
                     }}
                   >
                     0{idx + 1}
                   </span>
-                  <CheckCircle size={20} color="#FF3D0A" />
+                  <CheckCircle size={20} color="var(--brand-text)" />
                 </div>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', color: 'var(--charcoal)', marginBottom: '8px' }}>
                   {item.title}
@@ -590,7 +591,7 @@ export const Home = () => {
       </section>
 
       {/* WORKING PROCESS PREVIEW */}
-      <section className="section-pad" style={{ backgroundColor: 'var(--charcoal)', color: 'var(--softwhite)' }}>
+      <section className="section-pad section-dark" style={{ backgroundColor: 'var(--charcoal)', color: 'var(--softwhite)' }}>
         <div className="container">
           <div className="section-head">
             <span className="editorial-eyebrow gold">The Methodology</span>
@@ -713,9 +714,9 @@ export const Home = () => {
                     <GraduationCap size={24} />
                   </div>
                   <div>
-                    <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--charcoal)' }}>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--charcoal)' }}>
                       {edu.degree}
-                    </h4>
+                    </h3>
                     <p style={{ fontSize: '0.88rem', color: 'var(--mutedtext)', fontWeight: 600 }}>
                       {edu.institution} ({edu.period})
                     </p>
@@ -750,7 +751,7 @@ export const Home = () => {
               gap: '24px',
             }}
           >
-            {blogPosts.slice(0, 3).map((post) => (
+            {((blogPosts && blogPosts.length > 0) ? blogPosts.slice(0, 3) : FEATURED_BLOG_POSTS).map((post) => (
               <article
                 key={post.id}
                 className="portfolio-card"
@@ -839,7 +840,7 @@ export const Home = () => {
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '4px',
-                      color: 'var(--brand)',
+                      color: 'var(--brand-text)',
                       fontWeight: 700,
                       fontSize: '0.85rem',
                       textDecoration: 'none',

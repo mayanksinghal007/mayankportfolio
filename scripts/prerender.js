@@ -19,6 +19,27 @@ if (!fs.existsSync(templatePath)) {
 
 const baseTemplate = fs.readFileSync(templatePath, 'utf8');
 
+// Inline critical stylesheet directly into HTML head to eliminate render-blocking CSS
+const assetsDir = path.resolve(distDir, 'assets');
+let inlinedCss = '';
+let cssLinkRegex = null;
+if (fs.existsSync(assetsDir)) {
+  const cssFile = fs.readdirSync(assetsDir).find((f) => f.startsWith('index-') && f.endsWith('.css'));
+  if (cssFile) {
+    const fullCssPath = path.resolve(assetsDir, cssFile);
+    inlinedCss = fs.readFileSync(fullCssPath, 'utf8');
+    cssLinkRegex = new RegExp(`<link[^>]*href=["'][^"']*${cssFile}["'][^>]*>`, 'i');
+  }
+}
+
+let preparedTemplate = baseTemplate;
+if (inlinedCss && cssLinkRegex) {
+  preparedTemplate = preparedTemplate.replace(
+    cssLinkRegex,
+    `<style id="critical-brand-css">${inlinedCss}</style>`
+  );
+}
+
 // List of core public routes
 const coreRoutes = [
   '/',
@@ -134,7 +155,7 @@ async function prerender() {
         extractedTitle = '<title>Mayank Aggarwal | Digital Marketing & AI Specialist</title>';
       }
 
-      let pageHtml = baseTemplate;
+      let pageHtml = preparedTemplate;
 
       // Replace root content with clean body HTML
       pageHtml = pageHtml.replace(

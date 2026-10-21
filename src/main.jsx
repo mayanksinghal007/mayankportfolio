@@ -1,18 +1,11 @@
 import { StrictMode } from 'react';
-import { createRoot, hydrateRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App.jsx';
 
 const rootElement = document.getElementById('root');
 
-if (rootElement && rootElement.hasChildNodes()) {
-  hydrateRoot(
-    rootElement,
-    <StrictMode>
-      <App />
-    </StrictMode>
-  );
-} else if (rootElement) {
+if (rootElement) {
   createRoot(rootElement).render(
     <StrictMode>
       <App />

@@ -7,7 +7,6 @@ import {
   DEFAULT_ADS,
   DEFAULT_MEDIA_ASSETS,
 } from '../data/initialData';
-import { DEFAULT_BLOG_POSTS } from '../data/blogData';
 
 const SiteContext = createContext();
 
@@ -47,13 +46,9 @@ export const SiteProvider = ({ children }) => {
   // Inquiries
   const [inquiries, setInquiries] = useState(() => getStored('mayank_inquiries', INITIAL_INQUIRIES));
 
-  // Blog Posts (ensure full 50 posts are present)
+  // Blog Posts (stored custom overrides or empty default for lazy loading)
   const [blogPosts, setBlogPosts] = useState(() => {
-    const stored = getStored('mayank_blog_posts', null);
-    if (!stored || !Array.isArray(stored) || stored.length < DEFAULT_BLOG_POSTS.length) {
-      return DEFAULT_BLOG_POSTS;
-    }
-    return stored;
+    return getStored('mayank_blog_posts', []);
   });
 
   // Admin Auth
@@ -424,7 +419,7 @@ export const SiteProvider = ({ children }) => {
     setPortfolio(DEFAULT_PORTFOLIO);
     setAds(DEFAULT_ADS);
     setInquiries(INITIAL_INQUIRIES);
-    setBlogPosts(DEFAULT_BLOG_POSTS);
+    setBlogPosts([]);
     showToast('Demo data restored to defaults');
   };
 

@@ -105,6 +105,37 @@ export const AppLayout = ({ pagesOverride }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const [isClientMounted, setIsClientMounted] = useState(false);
+  const [isDeferredMounted, setIsDeferredMounted] = useState(false);
+
+  useEffect(() => {
+    setIsClientMounted(true);
+    let timerId;
+    const trigger = () => setIsDeferredMounted(true);
+
+    window.addEventListener('scroll', trigger, { once: true, passive: true });
+    window.addEventListener('touchstart', trigger, { once: true, passive: true });
+
+    if ('requestIdleCallback' in window) {
+      const idleId = window.requestIdleCallback(() => {
+        timerId = setTimeout(trigger, 3500);
+      }, { timeout: 5000 });
+      return () => {
+        window.removeEventListener('scroll', trigger);
+        window.removeEventListener('touchstart', trigger);
+        if (window.cancelIdleCallback) window.cancelIdleCallback(idleId);
+        if (timerId) clearTimeout(timerId);
+      };
+    } else {
+      timerId = setTimeout(trigger, 3500);
+      return () => {
+        window.removeEventListener('scroll', trigger);
+        window.removeEventListener('touchstart', trigger);
+        if (timerId) clearTimeout(timerId);
+      };
+    }
+  }, []);
+
   const HomeComponent = pages.Home;
   const AboutComponent = pages.About;
   const ServicesComponent = pages.Services;
@@ -170,8 +201,8 @@ export const AppLayout = ({ pagesOverride }) => {
       {/* Render Footer only if not on Admin view */}
       {!isAdmin && <Footer />}
 
-      {/* Global AI Marketing Assistant (Powered by Vercel AI Gateway) - Deferred */}
-      {!isAdmin && (
+      {/* Global AI Marketing Assistant (Deferred post-hydration) */}
+      {!isAdmin && isDeferredMounted && (
         <Suspense fallback={null}>
           <LazyAiChatAssistant />
         </Suspense>
@@ -187,8 +218,8 @@ export const AppLayout = ({ pagesOverride }) => {
         </Suspense>
       )}
 
-      {/* 30% Scroll Contextual Lead Modal - Deferred */}
-      {!isAdmin && (
+      {/* 30% Scroll Contextual Lead Modal - Deferred post-hydration */}
+      {!isAdmin && isDeferredMounted && (
         <Suspense fallback={null}>
           <LazyScrollLeadModal />
         </Suspense>

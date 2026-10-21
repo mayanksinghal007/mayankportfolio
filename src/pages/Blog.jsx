@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSite } from '../context/SiteContext';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { BLOG_CATEGORIES } from '../data/blogData';
+import { BLOG_CATEGORIES, DEFAULT_BLOG_POSTS } from '../data/blogData';
 import { Search, Clock, ArrowRight, Tag, BookOpen, Sparkles } from 'lucide-react';
 
 import { getCollectionPageSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
@@ -18,9 +18,11 @@ export const Blog = () => {
     getBreadcrumbSchema([{ name: 'Blog', path: '/blog' }]),
   ];
 
+  const activePosts = blogPosts && blogPosts.length > 0 ? blogPosts : DEFAULT_BLOG_POSTS;
+
   // Filter posts by published status, category, and search query
   const filteredPosts = useMemo(() => {
-    return blogPosts.filter((post) => {
+    return activePosts.filter((post) => {
       if (post.published === false) return false;
       const matchesCategory =
         selectedCategory === 'All' || post.category === selectedCategory;
@@ -31,7 +33,7 @@ export const Blog = () => {
         (post.tags && post.tags.some((t) => t.toLowerCase().includes(searchQuery.toLowerCase())));
       return matchesCategory && matchesSearch;
     });
-  }, [blogPosts, selectedCategory, searchQuery]);
+  }, [activePosts, selectedCategory, searchQuery]);
 
   return (
     <>

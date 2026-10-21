@@ -122,11 +122,11 @@ export const Navbar = ({ onOpenSearch }) => {
                 onClick={onOpenSearch}
                 className="nav-search-btn"
                 title="Search Site (Ctrl+K / Cmd+K)"
-                aria-label="Search site content"
+                aria-label="Search"
               >
                 <Search size={16} />
                 <span className="nav-search-label">Search</span>
-                <kbd className="nav-search-kbd">⌘K</kbd>
+                <kbd className="nav-search-kbd" aria-hidden="true">⌘K</kbd>
               </button>
             )}
 
@@ -167,6 +167,7 @@ export const Navbar = ({ onOpenSearch }) => {
         className={`mobile-nav-sheet ${mobileMenuOpen ? 'open' : ''}`}
         aria-label="Mobile Navigation Drawer"
         aria-hidden={!mobileMenuOpen}
+        inert={!mobileMenuOpen}
       >
         {/* Drawer Header */}
         <div className="mobile-sheet-header">
@@ -201,6 +202,7 @@ export const Navbar = ({ onOpenSearch }) => {
                 onOpenSearch();
               }}
               className="mobile-sheet-search"
+              aria-label="Search site or articles"
             >
               <Search size={18} />
               <span>Search site or articles...</span>

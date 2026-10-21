@@ -61,7 +61,7 @@ export const Footer = () => {
                 <a
                   href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`}
                   rel="nofollow"
-                  style={{ color: 'var(--softwhite)', textDecoration: 'none' }}
+                  style={{ color: 'var(--softwhite)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
                 >
                   {site.phone}
                 </a>
@@ -71,7 +71,7 @@ export const Footer = () => {
                 <a
                   href={`mailto:${site.email}`}
                   rel="nofollow"
-                  style={{ color: 'var(--softwhite)', textDecoration: 'none' }}
+                  style={{ color: 'var(--softwhite)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
                 >
                   {site.email}
                 </a>
@@ -84,7 +84,7 @@ export const Footer = () => {
 
           {/* Col 2: Navigation & Tools */}
           <div>
-            <h4 className="footer-col-title">Navigation</h4>
+            <p className="footer-col-title">Navigation</p>
             <ul className="footer-nav-list">
               <li><Link to="/" className="footer-nav-link">Home</Link></li>
               <li><Link to="/about" className="footer-nav-link">About Mayank</Link></li>
@@ -99,7 +99,7 @@ export const Footer = () => {
 
           {/* Col 3: Interactive Tools */}
           <div>
-            <h4 className="footer-col-title">Interactive Tools</h4>
+            <p className="footer-col-title">Interactive Tools</p>
             <ul className="footer-nav-list">
               <li>
                 <Link to="/tools/meta-ads-roas-calculator" className="footer-nav-link">
@@ -129,7 +129,7 @@ export const Footer = () => {
 
           {/* Col 4: Services & Retainers */}
           <div>
-            <h4 className="footer-col-title">Core Services</h4>
+            <p className="footer-col-title">Core Services</p>
             <ul className="footer-nav-list">
               {services.map((s) => (
                 <li key={s.slug}>
@@ -148,7 +148,7 @@ export const Footer = () => {
 
           {/* Col 5: Social & Verification */}
           <div>
-            <h4 className="footer-col-title">Connect</h4>
+            <p className="footer-col-title">Connect</p>
             <ul className="footer-nav-list">
               <li>
                 <a
@@ -211,11 +211,11 @@ export const Footer = () => {
         <div className="footer-bottom">
           <p>© {currentYear} Mayank Aggarwal. All rights reserved. Based in Delhi, India.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
-            <Link to="/glossary" style={{ color: 'inherit' }}>Glossary</Link>
-            <Link to="/press" style={{ color: 'inherit' }}>Press & Citations</Link>
-            <Link to="/privacy-policy" style={{ color: 'inherit' }}>Privacy Policy</Link>
-            <Link to="/terms" style={{ color: 'inherit' }}>Terms of Service</Link>
-            <a href="/rss.xml" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit' }}>RSS Feed</a>
+            <Link to="/glossary" style={{ color: 'inherit', padding: '6px 4px', display: 'inline-block' }}>Glossary</Link>
+            <Link to="/press" style={{ color: 'inherit', padding: '6px 4px', display: 'inline-block' }}>Press & Citations</Link>
+            <Link to="/privacy-policy" style={{ color: 'inherit', padding: '6px 4px', display: 'inline-block' }}>Privacy Policy</Link>
+            <Link to="/terms" style={{ color: 'inherit', padding: '6px 4px', display: 'inline-block' }}>Terms of Service</Link>
+            <a href="/rss.xml" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', padding: '6px 4px', display: 'inline-block' }}>RSS Feed</a>
           </div>
         </div>
       </div>

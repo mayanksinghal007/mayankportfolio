@@ -7,6 +7,7 @@
 :root {
   /* Brand Core Colors */
   --brand: #FF3D0A;
+  --brand-text: #C53300;
   --brand-hover: #E63507;
   --brand-glow: rgba(255, 61, 10, 0.25);
   --brand-subtle: rgba(255, 61, 10, 0.08);
@@ -17,6 +18,7 @@
   --cream-subtle: rgba(253, 241, 231, 0.5);
 
   --gold: #FFB92E;
+  --gold-text: #8F6500;
   --gold-glow: rgba(255, 185, 46, 0.3);
 
   --charcoal: #191919;
@@ -185,17 +187,17 @@ h3, h4, h5, h6,
   padding-right: 0.08em;
 }
 
-/* Eyebrows: JetBrains Mono 500, small, uppercase, letter-spaced with short orange line */
+/* Eyebrows: JetBrains Mono 600, small, uppercase, letter-spaced with short orange line */
 .editorial-eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   font-family: var(--font-mono);
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.16em;
-  color: var(--brand);
+  color: var(--brand-text);
   line-height: 1;
 }
 
@@ -204,14 +206,25 @@ h3, h4, h5, h6,
   display: inline-block;
   width: 20px;
   height: 2px;
-  background-color: var(--brand);
+  background-color: var(--brand-text);
   flex-shrink: 0;
 }
 
 .editorial-eyebrow.gold {
-  color: var(--gold);
+  color: var(--gold-text);
 }
 .editorial-eyebrow.gold::before {
+  background-color: var(--gold-text);
+}
+
+.hero-visual-card .editorial-eyebrow.gold,
+.section-dark .editorial-eyebrow.gold,
+[data-theme="dark"] .editorial-eyebrow.gold {
+  color: var(--gold);
+}
+.hero-visual-card .editorial-eyebrow.gold::before,
+.section-dark .editorial-eyebrow.gold::before,
+[data-theme="dark"] .editorial-eyebrow.gold::before {
   background-color: var(--gold);
 }
 
@@ -245,29 +258,32 @@ button {
   transition: all var(--transition-fast);
 }
 
-.btn-primary {
+.btn-primary,
+.btn-brand {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   padding: 13px 28px;
-  background-color: var(--brand);
+  background-color: #D93100;
   color: var(--softwhite);
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.02em;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 16px rgba(255, 61, 10, 0.25);
+  box-shadow: 0 4px 16px rgba(217, 49, 0, 0.28);
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
 }
 
-.btn-primary:hover {
-  background-color: var(--brand-hover);
+.btn-primary:hover,
+.btn-brand:hover {
+  background-color: #BF2B00;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 61, 10, 0.38);
+  box-shadow: 0 8px 24px rgba(217, 49, 0, 0.38);
 }
 
-.btn-primary:active {
+.btn-primary:active,
+.btn-brand:active {
   transform: translateY(0);
 }
 
@@ -319,19 +335,19 @@ button {
   justify-content: center;
   gap: 8px;
   padding: 13px 26px;
-  background-color: #25D366;
+  background-color: #0E7440;
   color: #FFFFFF;
   font-weight: 700;
   font-size: 0.9rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.28);
+  box-shadow: 0 4px 18px rgba(14, 116, 64, 0.28);
   transition: all var(--transition-fast);
 }
 
 .btn-whatsapp:hover {
-  background-color: #1EBE5D;
+  background-color: #0B6034;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.38);
+  box-shadow: 0 8px 25px rgba(14, 116, 64, 0.38);
 }
 
 /* Layout Containers */
@@ -565,12 +581,16 @@ button {
   flex-direction: column;
   box-shadow: -12px 0 40px rgba(0, 0, 0, 0.2);
   transform: translateX(100%);
-  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.32s;
   overflow: hidden;
 }
 
 .mobile-nav-sheet.open {
   transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .mobile-sheet-header {
@@ -1066,12 +1086,12 @@ button {
   font-family: var(--font-display);
   font-size: 2.8rem;
   line-height: 1;
-  color: var(--cream);
+  color: #756F68;
   transition: color var(--transition-fast);
 }
 
 .service-card:hover .service-num {
-  color: var(--brand);
+  color: var(--brand-text);
 }
 
 .service-icon-box {
@@ -1082,7 +1102,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--brand);
+  color: var(--brand-text);
   transition: all var(--transition-fast);
 }
 
@@ -1136,7 +1156,7 @@ button {
   gap: 8px;
   font-weight: 700;
   font-size: 0.88rem;
-  color: var(--brand);
+  color: var(--brand-text);
   text-transform: uppercase;
   letter-spacing: 0.08em;
   padding-top: 18px;
@@ -1422,7 +1442,7 @@ button {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--brand);
+  color: var(--brand-text);
   margin-bottom: 8px;
 }
 
@@ -1468,7 +1488,7 @@ button {
 .exp-org {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--brand);
+  color: var(--brand-text);
 }
 
 .exp-period {
@@ -2260,9 +2280,8 @@ button {
   font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--brand);
-  background: var(--brand-subtle);
+  color: var(--brand-text);
+  background: rgba(197, 51, 0, 0.08);
   padding: 2px 8px;
   border-radius: var(--radius-full);
   margin-bottom: 6px;
@@ -3374,11 +3393,11 @@ button {
   }
 
   .mobile-dock-whatsapp {
-    background: #25D366;
+    background: #0E7440;
     color: #FFFFFF;
     font-weight: 700;
     flex: 1.1;
-    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 4px 14px rgba(14, 116, 64, 0.4);
   }
 
   .mobile-dock-socials {

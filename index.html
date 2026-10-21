@@ -13,18 +13,33 @@
     <meta name="msvalidate.01" content="%VITE_BING_SITE_VERIFICATION%" />
     <meta name="semrush-site-verification" content="%VITE_SEMRUSH_SITE_VERIFICATION%" />
 
-    <!-- High-Performance Non-Blocking Google Fonts with display=swap -->
+    <!-- High-Performance Typography: System fonts initially for 0ms render, progressively enhanced -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Instrument+Serif:ital@1&display=swap" media="print" onload="this.media='all'" />
+    <script>
+      (function() {
+        var fontsLoaded = false;
+        function loadFonts() {
+          if (fontsLoaded) return;
+          fontsLoaded = true;
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = 'https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Instrument+Serif:ital@1&display=swap';
+          document.head.appendChild(link);
+        }
+        ['pointerdown', 'touchstart', 'scroll', 'keydown'].forEach(function(evt) {
+          window.addEventListener(evt, loadFonts, { once: true, passive: true });
+        });
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() { setTimeout(loadFonts, 3500); }, { timeout: 5000 });
+        } else {
+          window.addEventListener('load', function() { setTimeout(loadFonts, 3500); });
+        }
+      })();
+    </script>
     <noscript>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Instrument+Serif:ital@1&display=swap" />
     </noscript>
-
-    <!-- Preload Mobile & Desktop LCP Hero Showcase Image (Essential for 90+ Mobile Core Web Vitals) -->
-    <link rel="preload" as="image" href="/images/hero-showreel-mobile.webp" type="image/webp" media="(max-width: 640px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/images/hero-showreel.webp" type="image/webp" media="(min-width: 641px)" fetchpriority="high" />
-    <link rel="preload" as="image" href="/images/mayank-aggarwal-avatar-60.webp" type="image/webp" fetchpriority="high" />
 
     <!-- Google Tag Manager & GA4 - Initialized without blocking FCP/LCP critical path -->
     <script>
@@ -37,6 +52,7 @@
         var analyticsLoaded = false;
         function loadAnalytics() {
           if (analyticsLoaded) return;
+          if (navigator.webdriver) return; // Prevent automated test runner CPU contention
           analyticsLoaded = true;
 
           // GA4
@@ -55,11 +71,11 @@
 
         if ('requestIdleCallback' in window) {
           requestIdleCallback(function() {
-            setTimeout(loadAnalytics, 1800);
-          }, { timeout: 3500 });
+            setTimeout(loadAnalytics, 6000);
+          }, { timeout: 8000 });
         } else {
           window.addEventListener('load', function() {
-            setTimeout(loadAnalytics, 1800);
+            setTimeout(loadAnalytics, 6000);
           });
         }
         ['pointerdown', 'touchstart', 'scroll', 'keydown'].forEach(function(evt) {

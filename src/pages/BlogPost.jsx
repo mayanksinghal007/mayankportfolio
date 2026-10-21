@@ -8,6 +8,7 @@ import { Clock, Calendar, ArrowLeft, ArrowRight, Share2, MessageCircle, CheckCir
 import { LinkedinIcon, InstagramIcon, XTwitterIcon } from '../components/SocialIcons';
 import { SITE_CONFIG } from '../config/site';
 import { getBlogPostingSchema, getBreadcrumbSchema, getFaqSchema } from '../utils/seoSchemas';
+import { DEFAULT_BLOG_POSTS } from '../data/blogData';
 
 export const BlogPost = () => {
   const { slug } = useParams();
@@ -16,16 +17,18 @@ export const BlogPost = () => {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
 
+  const activePosts = blogPosts && blogPosts.length > 0 ? blogPosts : DEFAULT_BLOG_POSTS;
+
   const post = useMemo(() => {
-    return blogPosts.find((p) => p.slug === slug);
-  }, [blogPosts, slug]);
+    return activePosts.find((p) => p.slug === slug);
+  }, [activePosts, slug]);
 
   const relatedPosts = useMemo(() => {
     if (!post) return [];
-    return blogPosts
+    return activePosts
       .filter((p) => p.slug !== slug && (p.category === post.category || p.tags?.some((t) => post.tags?.includes(t))))
       .slice(0, 3);
-  }, [blogPosts, post, slug]);
+  }, [activePosts, post, slug]);
 
 
   // Convert markdown content to sanitized HTML
