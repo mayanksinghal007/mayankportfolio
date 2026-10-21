@@ -305,7 +305,7 @@ export const getBlogPostingSchema = (post, siteUrl = getBaseSiteUrl()) => {
       '@type': 'WebPage',
       '@id': postUrl,
     },
-    inLanguage: 'en-IN',
+    inLanguage: 'en',
   };
 };
 
@@ -316,12 +316,12 @@ export const getCollectionPageSchema = (siteUrl = getBaseSiteUrl()) => ({
   '@type': 'CollectionPage',
   '@id': `${siteUrl}/blog#collection`,
   name: 'Digital Marketing & AI Insights Blog | Mayank Aggarwal',
-  description: 'Practical playbooks, guides, and workflows on Meta Ads, generative AI video, and short-form content in India.',
+  description: 'Practical playbooks, guides, and workflows on Meta Ads, generative AI video, and short-form content for global brands.',
   url: `${siteUrl}/blog`,
   publisher: {
     '@id': `${siteUrl}/#person`,
   },
-  inLanguage: 'en-IN',
+  inLanguage: 'en',
 });
 
 /**

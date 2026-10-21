@@ -203,7 +203,7 @@ export const ScrollLeadModal = () => {
     }
 
     if (!formData.location.trim()) {
-      newErrors.location = 'Please share your city / location (kahan se ho)';
+      newErrors.location = 'Please share your city and country';
     }
 
     if (!formData.email.trim()) {
@@ -624,7 +624,7 @@ export const ScrollLeadModal = () => {
                   )}
                 </div>
 
-                {/* 3. Location / City ("Kahan se ho") */}
+                {/* 3. Location / City */}
                 <div>
                   <label
                     style={{
@@ -637,7 +637,7 @@ export const ScrollLeadModal = () => {
                       marginBottom: '6px',
                     }}
                   >
-                    Your City / Location (Kahan se ho) *
+                    Your City & Country *
                   </label>
                   <div style={{ position: 'relative' }}>
                     <MapPin
@@ -653,7 +653,7 @@ export const ScrollLeadModal = () => {
                     <input
                       type="text"
                       name="location"
-                      placeholder="e.g. Delhi NCR, Mumbai, Bengaluru, Jaipur"
+                      placeholder="e.g. New York, London, Dubai, Toronto, Delhi"
                       value={formData.location}
                       onChange={handleChange}
                       style={{

@@ -151,7 +151,7 @@ Learn more about my complete audio production workflow on the [AI Voiceover Serv
     faqs: [
       {
         q: "Can ElevenLabs speak natural conversational Hinglish?",
-        a: "Yes. By writing phonetically in Latin script with standard Hindi conversational words (e.g., 'Agar aap bhi pareshan hain apne Meta ads ke ROAS se...'), Eleven Multilingual v2 produces remarkably smooth bilingual narration."
+        a: "Yes. By writing phonetically in Latin script with standard conversational phrasing, Eleven Multilingual v2 produces remarkably smooth natural narration with authentic regional cadence."
       }
     ],
     content: `

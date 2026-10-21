@@ -189,7 +189,7 @@ function generateRss() {
     <title>${SITE_CONFIG.name} — Marketing &amp; AI Playbooks</title>
     <link>${siteUrl}/blog</link>
     <description>Tactical guides on Meta Ads, generative AI video workflows, short-form reel hooks, and modern SEO/AEO/GEO strategies by Mayank Aggarwal.</description>
-    <language>en-IN</language>
+    <language>en</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${siteUrl}/rss.xml" rel="self" type="application/rss+xml" />
 ${DEFAULT_BLOG_POSTS.map(

@@ -622,7 +622,7 @@ export const Admin = () => {
                           <div style={{ color: '#10B981', fontWeight: 600 }}>{selectedInquiry.phone || 'Not Specified'}</div>
                         </div>
                         <div>
-                          <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)', fontWeight: 700 }}>CITY / LOCATION (KAHAN SE HO)</div>
+                          <div style={{ fontSize: '0.75rem', color: 'var(--mutedtext)', fontWeight: 700 }}>CITY / LOCATION</div>
                           <div>{selectedInquiry.location || 'Not Specified'}</div>
                         </div>
                         <div>

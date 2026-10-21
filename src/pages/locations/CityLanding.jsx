@@ -303,7 +303,7 @@ export const CityLanding = () => {
     },
     {
       q: `What is the pricing / retainer structure for ${cityInfo.name} clients?`,
-      a: "Pricing ke liye direct Contact karein (Contact us for custom pricing). Har business ka monthly ad spend, target CAC aur required creative volume alag hota hai. Hum aapke business unit economics ke according custom flat monthly retainer ya sprint quote design karte hain. Zero hidden setup fees, zero long-term lock-in."
+      a: "Please contact us directly for bespoke pricing. Every business has unique monthly ad budgets, target CAC goals, and required creative volume. We craft custom flat monthly retainers or sprint-based quotes aligned with your unit economics. Zero hidden setup fees, zero long-term lock-in."
     }
   ];
 
@@ -596,13 +596,13 @@ export const CityLanding = () => {
                     marginBottom: '6px'
                   }}
                 >
-                  Pricing ke liye Contact karein
+                  Contact for Bespoke Pricing
                 </div>
                 <div style={{ fontSize: '0.82rem', fontWeight: 600, color: 'var(--brand)', marginBottom: '10px' }}>
                   Custom Quotes • Zero Hidden Markups • Tailored to Ad Spend
                 </div>
                 <p style={{ color: 'var(--mutedtext)', fontSize: '0.88rem', lineHeight: '1.6', marginBottom: '16px' }}>
-                  Har business ka monthly ad budget, target acquisition goals aur creative requirements alag hote hain. Hum aapke growth plan ke hisaab se customized flat monthly retainer ya sprint quote banate hain.
+                  Every brand has distinct monthly ad budgets, acquisition targets, and creative production requirements. We engineer transparent, customized flat retainers and sprint quotes tailored to your exact growth stage.
                 </p>
               </div>
               <Link
