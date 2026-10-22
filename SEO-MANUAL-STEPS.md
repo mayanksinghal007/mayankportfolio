@@ -17,15 +17,15 @@ This document outlines the **exact sequential steps** that require your manual l
    - Click **Continue**.
 
 ### Step 1.2: Instant Ownership Verification
-Your site already has both verification methods active:
+Your site already has all verification methods active:
 - **Method A (HTML File - Active)**:
   - In the verification popup, select **HTML file**.
-  - Google will check for `google82f1f02845411ec0.html` (which is already live at `https://mayank-aggarwal.vercel.app/google82f1f02845411ec0.html`).
+  - Google will check for `googletVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU.html` (or `google82f1f02845411ec0.html`).
   - Click **Verify**.
 - **Method B (HTML Tag - Instant & Guaranteed)**:
   - In Google Search Console, select **HTML tag**.
   - The verification tag is embedded directly in every page's `<head>`:
-    - `<meta name="google-site-verification" content="pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc" />`
+    - `<meta name="google-site-verification" content="tVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU" />`
   - Click **Verify**.
   - Result: **Ownership verified successfully!**
 
@@ -33,7 +33,7 @@ Your site already has both verification methods active:
   - If verifying a Domain property via DNS provider (e.g., Cloudflare, GoDaddy, Namecheap):
     - Type: `TXT`
     - Name: `@`
-    - Value: `google-site-verification=pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc`
+    - Value: `google-site-verification=tVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU`
   - Click **Verify**.
 
 ### Step 1.3: Submit XML Sitemap

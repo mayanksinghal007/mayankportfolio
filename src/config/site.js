@@ -27,6 +27,7 @@ export const SITE_CONFIG = {
   indexNowKey: "8f1a23c5b4d7e901f2a34b56c7d8e90a",
   siteUrl: typeof window !== "undefined" && window.location ? window.location.origin : "https://mayankaggarwal-one.vercel.app",
   googleVerification: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_GOOGLE_SITE_VERIFICATION) || "tVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU",
+  googleVerificationWithPrefix: "google-site-verification=tVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU",
   googleVerificationBackup: "pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc",
   googleCnameVerification: "gv-mdo5pbh4jznav5.dv.googlehosted.com",
   bingVerification: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_BING_SITE_VERIFICATION) || "bing-webmaster-verification-placeholder-code",
