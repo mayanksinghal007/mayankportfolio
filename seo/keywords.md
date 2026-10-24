@@ -1,6 +1,6 @@
 # Comprehensive SEO, AEO & GEO Keyword Research Matrix
 
-**Site URL**: `https://mayank-aggarwal.vercel.app`  
+**Site URL**: `https://mayankaggarwal-one.vercel.app`  
 **Brand**: Mayank Aggarwal — Klikwise Digital Marketing & Generative AI Studio  
 **Primary Market**: India (Delhi NCR, Gurugram, Noida, Mumbai, Bengaluru) & Global High-Growth Brands  
 **Core Expertise**: Performance Meta Ads, Generative AI Video Production (Runway Gen-3, Kling AI), Social Media Retention Strategy, Neural Voice Synthesis (ElevenLabs), and Full-Funnel Creative Direction.

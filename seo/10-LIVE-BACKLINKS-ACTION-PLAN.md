@@ -37,17 +37,17 @@ Each backlink file above is **100% written, formatted, and ready to publish**. F
 ### Backlink 3: Hashnode (DA 88)
 1. Log in to [Hashnode](https://hashnode.com/).
 2. Create a new story and paste [seo/backlinks/03-hashnode-generative-ai-commercials.md](file:///c:/Users/pc/Desktop/MAYANK%20PORTFOLIO%20WEBSITE/seo/backlinks/03-hashnode-generative-ai-commercials.md).
-3. Set the canonical URL to `https://mayank-aggarwal.vercel.app/blog/ai-video-ads-playbook-kling-runway` and click **Publish**.
+3. Set the canonical URL to `https://mayankaggarwal-one.vercel.app/blog/ai-video-ads-playbook-kling-runway` and click **Publish**.
 
 ### Backlink 4: Medium (DA 95)
 1. Open [Medium New Story](https://medium.com/new-story).
 2. Paste [seo/backlinks/04-medium-creative-fatigue.md](file:///c:/Users/pc/Desktop/MAYANK%20PORTFOLIO%20WEBSITE/seo/backlinks/04-medium-creative-fatigue.md).
-3. Under Story Settings > Advanced > Customize Canonical Link, enter `https://mayank-aggarwal.vercel.app/blog/meta-advantage-plus-shopping-campaigns-guide`. Click **Publish**.
+3. Under Story Settings > Advanced > Customize Canonical Link, enter `https://mayankaggarwal-one.vercel.app/blog/meta-advantage-plus-shopping-campaigns-guide`. Click **Publish**.
 
 ### Backlink 5: Product Hunt (DA 91)
 1. Go to [Product Hunt Post](https://www.producthunt.com/posts/new).
 2. Copy the title, tagline, description, and maker comment from [seo/backlinks/05-product-hunt-launch-kit.md](file:///c:/Users/pc/Desktop/MAYANK%20PORTFOLIO%20WEBSITE/seo/backlinks/05-product-hunt-launch-kit.md).
-3. Enter URL: `https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator`.
+3. Enter URL: `https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator`.
 
 ### Backlink 6: LinkedIn Pulse (DA 98)
 1. On your LinkedIn homepage, click **Write article**.

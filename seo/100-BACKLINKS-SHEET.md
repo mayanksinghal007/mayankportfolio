@@ -1,8 +1,8 @@
 # 100 Website Backlinks Master Sheet (Google Sheets & Excel Ready)
 
 > **Google Sheets File**: [seo/MAYANK-WEBSITE-100-BACKLINKS.csv](file:///c:/Users/pc/Desktop/MAYANK%20PORTFOLIO%20WEBSITE/seo/MAYANK-WEBSITE-100-BACKLINKS.csv)  
-> **Public Web Link**: `https://mayank-aggarwal.vercel.app/MAYANK-WEBSITE-100-BACKLINKS.csv`  
-> **Target Domain**: `https://mayank-aggarwal.vercel.app`  
+> **Public Web Link**: `https://mayankaggarwal-one.vercel.app/MAYANK-WEBSITE-100-BACKLINKS.csv`  
+> **Target Domain**: `https://mayankaggarwal-one.vercel.app`  
 > **Total Legitimate Platforms**: 100  
 > **Average Domain Authority (DA)**: ~82 (Range: 62 to 100)  
 
@@ -21,7 +21,7 @@
 ### Method 2: Live Google Sheets Formula
 In cell **A1** of any Google Sheet, paste:
 ```excel
-=IMPORTDATA("https://mayank-aggarwal.vercel.app/MAYANK-WEBSITE-100-BACKLINKS.csv")
+=IMPORTDATA("https://mayankaggarwal-one.vercel.app/MAYANK-WEBSITE-100-BACKLINKS.csv")
 ```
 Google Sheets will import all 100 rows directly from your live website.
 
@@ -31,7 +31,7 @@ Google Sheets will import all 100 rows directly from your live website.
 
 | # | Platform / Directory Name | DA | Category | Submission URL | Target Page on Website | Anchor Text | Link Type | Status |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **1** | GitHub Repository & Profile | 96 | Developer & Open Source | [github.com](https://github.com/mayanksinghal007/mayankportfolio) | `https://mayank-aggarwal.vercel.app` | Mayank Aggarwal Portfolio | Do-Follow Markdown | **Live in Codebase** |
+| **1** | GitHub Repository & Profile | 96 | Developer & Open Source | [github.com](https://github.com/mayanksinghal007/mayankportfolio) | `https://mayankaggarwal-one.vercel.app` | Mayank Aggarwal Portfolio | Do-Follow Markdown | **Live in Codebase** |
 | **2** | Dev.to Technical Publication | 91 | Content Syndication | [dev.to/new](https://dev.to/new) | `/tools/meta-ads-roas-calculator` | Meta Ads ROAS & Profit Calculator | Do-Follow Canonical | **Ready to Publish** |
 | **3** | Hashnode Engineering Blog | 88 | Content Syndication | [hashnode.com](https://hashnode.com/) | `/services/ai-video-filmmaking` | Generative AI Video Retainers | Do-Follow Canonical | **Ready to Publish** |
 | **4** | Medium Strategy Story | 95 | Thought Leadership | [medium.com/new-story](https://medium.com/new-story) | `/blog/meta-advantage-plus...` | Mayank Aggarwal Strategy Hub | High Authority Story | **Ready to Publish** |
@@ -138,7 +138,7 @@ Google Sheets will import all 100 rows directly from your live website.
 
 - **Business Name**: `Mayank Aggarwal — Klikwise Digital Marketing`
 - **Founder Name**: `Mayank Aggarwal`
-- **Primary Website URL**: `https://mayank-aggarwal.vercel.app`
+- **Primary Website URL**: `https://mayankaggarwal-one.vercel.app`
 - **Official Email**: `contact.klikwise@gmail.com`
 - **Phone / WhatsApp**: `+91 9217756033`
 - **Physical Address**: `Connaught Place / South Delhi Hub, New Delhi, Delhi 110001, India`

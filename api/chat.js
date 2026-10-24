@@ -1,5 +1,5 @@
 // Serverless API route for Vercel AI Gateway & Mayank Portfolio AI Assistant
-// Accessible at: https://mayank-aggarwal.vercel.app/api/chat
+// Accessible at: https://mayankaggarwal-one.vercel.app/api/chat
 
 const SYSTEM_PROMPT = `You are Mayank AI, the official AI Marketing & Strategy Assistant for Mayank Aggarwal (Founder of Klikwise, Digital Marketing & AI Specialist).
 

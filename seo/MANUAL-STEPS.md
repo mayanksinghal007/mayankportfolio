@@ -13,7 +13,7 @@ This document outlines the **exact sequential steps** that require your manual l
 2. Sign in with your primary Google account (`contact.klikwise@gmail.com` or your admin email).
 3. In the top-left dropdown, click **Add Property**.
 4. Select **URL prefix** (recommended for Vercel deployments):
-   - Enter: `https://mayank-aggarwal.vercel.app` (or your custom domain if DNS is mapped).
+   - Enter: `https://mayankaggarwal-one.vercel.app` (or your custom domain if DNS is mapped).
    - Click **Continue**.
 
 ### Step 1.2: Instant Ownership Verification
@@ -45,17 +45,17 @@ Your site already has all verification methods active:
 ### Step 1.4: Request Priority Indexing for Top 7 Core Pages
 To trigger Googlebot crawler priority right away:
 1. Paste the URL into the top inspection search bar:
-   - `https://mayank-aggarwal.vercel.app/`
+   - `https://mayankaggarwal-one.vercel.app/`
 2. Click **Test Live URL** (takes ~15–30 seconds).
 3. Once the live test confirms green checkmarks, click **Request Indexing**.
 4. Repeat for the primary commercial and tool pages:
-   - `https://mayank-aggarwal.vercel.app/services`
-   - `https://mayank-aggarwal.vercel.app/services/performance-marketing`
-   - `https://mayank-aggarwal.vercel.app/services/ai-video-creation`
-   - `https://mayank-aggarwal.vercel.app/services/email-marketing`
-   - `https://mayank-aggarwal.vercel.app/portfolio`
-   - `https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator`
-   - `https://mayank-aggarwal.vercel.app/contact`
+   - `https://mayankaggarwal-one.vercel.app/services`
+   - `https://mayankaggarwal-one.vercel.app/services/performance-marketing`
+   - `https://mayankaggarwal-one.vercel.app/services/ai-video-creation`
+   - `https://mayankaggarwal-one.vercel.app/services/email-marketing`
+   - `https://mayankaggarwal-one.vercel.app/portfolio`
+   - `https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator`
+   - `https://mayankaggarwal-one.vercel.app/contact`
 
 ---
 
@@ -70,7 +70,7 @@ To trigger Googlebot crawler priority right away:
 ### Step 2.2: Confirm IndexNow Status
 - Bing utilizes the **IndexNow protocol** for instant discovery.
 - Your project root already has the key configured:
-  - File: `https://mayank-aggarwal.vercel.app/8f1a23c5b4d7e901f2a34b56c7d8e90a.txt`
+  - File: `https://mayankaggarwal-one.vercel.app/8f1a23c5b4d7e901f2a34b56c7d8e90a.txt`
   - Key: `8f1a23c5b4d7e901f2a34b56c7d8e90a`
 - Bing and Yandex will crawl every updated URL within minutes.
 
@@ -84,7 +84,7 @@ Your GA4 tag `G-99QPLF52NX` is already embedded and wired via `src/components/An
 1. Open [Google Analytics](https://analytics.google.com).
 2. Select your property (`Mayank Aggarwal Portfolio` / `G-99QPLF52NX`).
 3. Click **Reports** > **Realtime**.
-4. Open `https://mayank-aggarwal.vercel.app/` in an incognito browser window.
+4. Open `https://mayankaggarwal-one.vercel.app/` in an incognito browser window.
 5. Within 5 seconds, your session will show on the real-time globe.
 
 ### Step 3.2: Mark Custom Events as Key Conversions
@@ -128,8 +128,8 @@ Your GBP profile details **MUST MATCH** the Schema.org LocalBusiness data in cod
   - Faridabad, Ghaziabad
   - National Capital Region (NCR), India
 - **Phone Number**: `+91 9217756033`
-- **Website URL**: `https://mayank-aggarwal.vercel.app`
-- **Appointment / Contact Link**: `https://mayank-aggarwal.vercel.app/contact`
+- **Website URL**: `https://mayankaggarwal-one.vercel.app`
+- **Appointment / Contact Link**: `https://mayankaggarwal-one.vercel.app/contact`
 - **Operating Hours**:
   - Monday – Friday: 09:00 AM – 07:00 PM IST
   - Saturday: 10:00 AM – 04:00 PM IST
@@ -141,7 +141,7 @@ Your GBP profile details **MUST MATCH** the Schema.org LocalBusiness data in cod
    - Profile Logo (from `/assets/hero/mayank.png` or favicon)
    - Workspace photos / Showreel thumbnail
 3. Publish your first Google Post announcing:
-   - *"Scaling D2C brands and tech startups with Meta Ads & Generative AI video workflows. Explore our free ROAS calculator at mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator"*
+   - *"Scaling D2C brands and tech startups with Meta Ads & Generative AI video workflows. Explore our free ROAS calculator at mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator"*
 
 ---
 
@@ -153,7 +153,7 @@ To build initial domain authority (DR 0 -> DR 35+) and entity signals for AI sea
 - [ ] **LinkedIn Company Page**: Create `Klikwise Digital Marketing` linked to your personal profile.
 - [ ] **Crunchbase**: Add company profile `Klikwise` (founder: Mayank Aggarwal, headquarters: Delhi).
 - [ ] **Wellfound (AngelList)**: Create agency profile under Growth Marketing / Performance Ads.
-- [ ] **GitHub**: Ensure profile `mayanksinghal007` links to `https://mayank-aggarwal.vercel.app`.
+- [ ] **GitHub**: Ensure profile `mayanksinghal007` links to `https://mayankaggarwal-one.vercel.app`.
 - [ ] **Behance**: Create agency portfolio showcase linking to `/portfolio`.
 - [ ] **Dribbble**: Create designer/creative strategist profile.
 - [ ] **Medium**: Setup publication for publishing syndicated articles.
@@ -161,7 +161,7 @@ To build initial domain authority (DR 0 -> DR 35+) and entity signals for AI sea
 
 ### Week 2: B2B Agency & Review Platforms (US / UK / Global)
 - [ ] **Clutch.co**: Submit free agency profile under *Top Performance Marketing & Paid Advertising Agencies*.
-- [ ] **Crunchbase**: Add company profile `Klikwise` (founder: Mayank Aggarwal, website: `https://mayank-aggarwal.vercel.app`).
+- [ ] **Crunchbase**: Add company profile `Klikwise` (founder: Mayank Aggarwal, website: `https://mayankaggarwal-one.vercel.app`).
 - [ ] **GoodFirms**: Register under *Top PPC & Performance Marketing Agencies*.
 - [ ] **DesignRush**: Submit listing for *AI Video Production & Creative Agencies*.
 - [ ] **Sortlist**: Create service profile for *Meta Ads & Generative AI Commercials*.
@@ -179,7 +179,7 @@ Your live interactive tools are high-leverage assets for gaining thousands of in
 ### Ready-to-Copy Description (Use on Directory & Profile Forms):
 > **Tagline**: Performance Marketing (Meta Ads) & AI Video Creative Partner | US, UK & Worldwide  
 > **Short (50 words)**: Mayank Aggarwal is an international performance marketer and generative AI creative specialist. He partners with ambitious e-commerce brands, funded startups, and B2B companies across the US, UK, and worldwide to scale customer acquisition through high-ROAS Meta and Google ad campaigns, cinematic AI video commercials, and lifecycle email retention funnels.  
-> **Contact**: `contact.klikwise@gmail.com` | `riyansh.studio007@gmail.com` | `https://mayank-aggarwal.vercel.app`
+> **Contact**: `contact.klikwise@gmail.com` | `riyansh.studio007@gmail.com` | `https://mayankaggarwal-one.vercel.app`
 
 Track your live listing URLs in the table located in `/seo/backlinks.md` and `/seo/WORLDWIDE-CLIENT-ACQUISITION-PLAYBOOK.md`.
 

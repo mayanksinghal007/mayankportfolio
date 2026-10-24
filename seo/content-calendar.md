@@ -1,7 +1,7 @@
 # 90-Day Authority Content Calendar & Publishing Strategy
 
 **Author**: Mayank Aggarwal — Digital Marketing & AI Specialist  
-**Domain**: `https://mayank-aggarwal.vercel.app`  
+**Domain**: `https://mayankaggarwal-one.vercel.app`  
 **Cadence**: 2–3 in-depth strategic guides per week (13 Weeks = 32 Total Comprehensive Guides)  
 **Goal**: Dominate search intent for Meta Ads, Generative AI video commercials, and social media retention in India and global high-growth markets.
 

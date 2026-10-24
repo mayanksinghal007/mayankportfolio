@@ -85,7 +85,7 @@ International enterprise clients (US, UK, UAE) hire agencies and senior consulta
 2. **Crunchbase (DA 91)**:
    - Add company profile: **Klikwise Digital Marketing**
    - Add founder: **Mayank Aggarwal**
-   - Add website: `https://mayank-aggarwal.vercel.app`
+   - Add website: `https://mayankaggarwal-one.vercel.app`
 3. **GoodFirms (DA 87) & DesignRush (DA 84)**:
    - List under *Top Meta Advertising Agencies* and *Top AI Video Production Companies*.
 4. **Behance (DA 94) & Vimeo (DA 95)**:
@@ -121,8 +121,8 @@ To sign international clients paying **$2,500 – $7,500/month** within the next
 >
 > Most direct-to-consumer brands hit a ceiling at 2.2x ROAS due to creative fatigue. We built an interactive **ROAS & Profit Calculator** and an **AI Commercial Production Framework** that cut our creative test costs by 70% while pushing blended ROAS to 4.1x:
 >
-> 👉 Live Calculator: https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator
-> 👉 Showreel & Case Studies: https://mayank-aggarwal.vercel.app/portfolio
+> 👉 Live Calculator: https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator
+> 👉 Showreel & Case Studies: https://mayankaggarwal-one.vercel.app/portfolio
 >
 > I analyzed 3 of your current live ad creatives and put together 2 custom video hook concepts that would immediately lower your CPA.
 >

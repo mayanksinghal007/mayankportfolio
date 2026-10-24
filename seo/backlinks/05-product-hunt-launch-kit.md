@@ -1,6 +1,6 @@
 # Product Hunt Launch Kit: Meta Ads ROAS & Profit Calculator
 
-**Target URL**: [https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator](https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator)  
+**Target URL**: [https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator](https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator)  
 **Target Platform**: [Product Hunt (DA 91)](https://www.producthunt.com)  
 **Category**: Marketing, E-Commerce, Developer Tools, Analytics  
 **Pricing**: 100% Free / Open Source  
@@ -11,7 +11,7 @@
 
 - **Product Name**: `Meta Ads ROAS & Profit Calculator`
 - **Tagline**: `Calculate true net profit and break-even ROAS for Meta Ads` (58 chars)
-- **Primary Website Link**: `https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator`
+- **Primary Website Link**: `https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator`
 - **Makers**: Mayank Aggarwal (`@mayankaggarwal007` / `mayanksinghal007`)
 - **Topics**: `Marketing`, `E-Commerce`, `Advertising`, `Growth Hacking`, `Fintech`
 
@@ -46,7 +46,7 @@ Over the past year managing Meta Ads for direct-to-consumer (D2C) brands, the #1
 
 Founders celebrate a 3.0x ROAS in Ads Manager, only to realize at month's end that high COGS, shipping logistics, payment gateway charges, and customer returns ate every dollar of margin.
 
-I built the **[Meta Ads ROAS & Profit Calculator](https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator)** to give founders and media buyers an instant, transparent financial model before they allocate marketing spend.
+I built the **[Meta Ads ROAS & Profit Calculator](https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator)** to give founders and media buyers an instant, transparent financial model before they allocate marketing spend.
 
 Key Features:
 ✅ Dynamic Break-Even & Target ROAS calculation
@@ -56,8 +56,8 @@ Key Features:
 
 I'd love to hear your feedback on additional metrics or formulas you'd like added! What is your biggest challenge when budgeting paid ad campaigns?
 
-Explore the tool here: https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator
-Full agency portfolio & services: https://mayank-aggarwal.vercel.app
+Explore the tool here: https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator
+Full agency portfolio & services: https://mayankaggarwal-one.vercel.app
 ```
 
 ---

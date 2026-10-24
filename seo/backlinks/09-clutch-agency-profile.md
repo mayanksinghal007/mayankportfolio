@@ -6,7 +6,7 @@
 - [DesignRush](https://designrush.com) (DA 84 — Top Agency Listings)
 - [Sortlist](https://sortlist.com) (DA 81 — European & Asian Matchmaking)
 
-**Target Inbound Link**: `https://mayank-aggarwal.vercel.app` & `https://mayank-aggarwal.vercel.app/services/meta-ads`  
+**Target Inbound Link**: `https://mayankaggarwal-one.vercel.app` & `https://mayankaggarwal-one.vercel.app/services/meta-ads`  
 **Listing Type**: Verified Free Agency Listing  
 
 ---
@@ -16,7 +16,7 @@
 | Form Field | Exact Value to Enter |
 | :--- | :--- |
 | **Company Name** | `Klikwise — Digital Marketing & AI by Mayank Aggarwal` |
-| **Website URL** | `https://mayank-aggarwal.vercel.app` |
+| **Website URL** | `https://mayankaggarwal-one.vercel.app` |
 | **Company Email** | `contact.klikwise@gmail.com` |
 | **Phone Number** | `+91 9217756033` |
 | **Founding Year** | `2024` (or current year) |
@@ -40,7 +40,7 @@
 > **Core Capabilities**:
 > - Performance Meta Ads (Advantage+ Shopping Campaigns, dynamic creative testing, retargeting)
 > - Generative AI Video Commercials & Filmmaking
-> - Free Interactive Financial Calculators (e.g. [Meta Ads ROAS & Profit Calculator](https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator))
+> - Free Interactive Financial Calculators (e.g. [Meta Ads ROAS & Profit Calculator](https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator))
 > - Retention-Engineered Short-Form Video Reels & Hooks
 > - Server-Side Conversions API (CAPI) & Google Analytics 4 Setup
 >

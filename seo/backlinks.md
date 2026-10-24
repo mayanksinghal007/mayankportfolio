@@ -1,6 +1,6 @@
 # Backlink Acquisition Master System & 100 Directory Tracker
 
-**Target Domain**: `https://mayank-aggarwal.vercel.app`  
+**Target Domain**: `https://mayankaggarwal-one.vercel.app`  
 **Brand**: Mayank Aggarwal — Digital Marketing & AI Specialist (Klikwise)  
 **Location**: Delhi, National Capital Region (NCR), India  
 **Policy**: 100% White-Hat, E-E-A-T ground truth, no PBNs, no link farms, no paid spam networks.
@@ -12,7 +12,7 @@
 To rank locally in Google Map Pack and build authoritative entity graphs, the following data must match **character-for-character** across all submissions:
 
 - **Business Name**: `Mayank Aggarwal — Digital Marketing & AI Specialist` (Trading Brand: `Klikwise`)
-- **Primary Website URL**: `https://mayank-aggarwal.vercel.app`
+- **Primary Website URL**: `https://mayankaggarwal-one.vercel.app`
 - **Founder Name**: `Mayank Aggarwal`
 - **Official Email**: `riyansh.studio007@gmail.com`
 - **Client Inquiry Email**: `contact.klikwise@gmail.com`
@@ -172,7 +172,7 @@ To rank locally in Google Map Pack and build authoritative entity graphs, the fo
 >
 > Best regards,  
 > **Mayank Aggarwal**  
-> Digital Marketing & AI Specialist — [mayank-aggarwal.vercel.app](https://mayank-aggarwal.vercel.app)
+> Digital Marketing & AI Specialist — [mayankaggarwal-one.vercel.app](https://mayankaggarwal-one.vercel.app)
 
 ### Template 2: Broken Link Replacement Outreach
 **Subject**: Broken link on [Page Title] (+ quick fix)
@@ -200,7 +200,7 @@ To rank locally in Google Map Pack and build authoritative entity graphs, the fo
 > I’ve had your [Resource Page Name] bookmarked for months—it’s easily one of the cleanest directories for performance marketers on the web.
 >
 > Seeing that you feature calculators and prompt tools, I wanted to suggest a free interactive utility we built for the community:
-> - **Meta Ads ROAS & Profit Margin Calculator**: `https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator`
+> - **Meta Ads ROAS & Profit Margin Calculator**: `https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator`
 >
 > Unlike basic calculators, it factors in product COGS, payment gateway fees (2%), delivery RTO losses (critical for Indian e-commerce), and minimum break-even thresholds in real-time.
 >
@@ -218,7 +218,7 @@ To rank locally in Google Map Pack and build authoritative entity graphs, the fo
 > I noticed you mentioned our studio name [Mayank Aggarwal / Klikwise], but didn't hyperlink it to the source documentation.
 >
 > If you have a minute, could you link the mention to our original resource at:  
-> `https://mayank-aggarwal.vercel.app/blog/[slug]`
+> `https://mayankaggarwal-one.vercel.app/blog/[slug]`
 >
 > That way your readers can access the full interactive testing spreadsheet and prompt formulas mentioned in the piece.
 >
@@ -290,7 +290,7 @@ To rank locally in Google Map Pack and build authoritative entity graphs, the fo
 >
 > *"Mayank Aggarwal, Founder at Klikwise: [Tool Name] helped us recover 30% of lost conversion data post-iOS17 for our top D2C accounts. It is now part of our mandatory client setup stack."*
 >
-> You have full permission to use my headshot, name, and link to our site: `https://mayank-aggarwal.vercel.app`.
+> You have full permission to use my headshot, name, and link to our site: `https://mayankaggarwal-one.vercel.app`.
 >
 > Keep up the incredible work!  
 > **Mayank Aggarwal**
@@ -303,7 +303,7 @@ To rank locally in Google Map Pack and build authoritative entity graphs, the fo
 >
 > We recently refreshed our branding, service offerings, and official web address. Could you kindly update our profile with the current details below:
 > - **Business Name**: Mayank Aggarwal — Digital Marketing & AI Specialist
-> - **Website**: `https://mayank-aggarwal.vercel.app`
+> - **Website**: `https://mayankaggarwal-one.vercel.app`
 > - **Phone**: `+91 9217756033`
 > - **Email**: `contact.klikwise@gmail.com`
 > - **Description**: [Insert 50-word description from Section 2]
@@ -325,7 +325,7 @@ To rank locally in Google Map Pack and build authoritative entity graphs, the fo
 >
 > Best,  
 > **Mayank Aggarwal**  
-> `+91 9217756033` | [mayank-aggarwal.vercel.app](https://mayank-aggarwal.vercel.app)
+> `+91 9217756033` | [mayankaggarwal-one.vercel.app](https://mayankaggarwal-one.vercel.app)
 
 ---
 

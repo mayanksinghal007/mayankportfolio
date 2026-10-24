@@ -3,11 +3,11 @@ title: "How to Calculate Real Break-Even ROAS for Meta Ads in 2026 (Formulas, Re
 published: true
 description: "A mathematical breakdown of break-even ROAS for Facebook & Instagram Ads, factoring in COGS, shipping, payment gateway fees, and return rates with a free interactive calculator."
 tags: marketing, webdev, javascript, react
-canonical_url: https://mayank-aggarwal.vercel.app/blog/meta-ads-roas-calculator-guide-2025
+canonical_url: https://mayankaggarwal-one.vercel.app/blog/meta-ads-roas-calculator-guide-2025
 cover_image: https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80
 ---
 
-*Originally published by [Mayank Aggarwal](https://mayank-aggarwal.vercel.app), Digital Marketing & AI Specialist at [Klikwise](https://mayank-aggarwal.vercel.app/about).*
+*Originally published by [Mayank Aggarwal](https://mayankaggarwal-one.vercel.app), Digital Marketing & AI Specialist at [Klikwise](https://mayankaggarwal-one.vercel.app/about).*
 
 ---
 
@@ -56,7 +56,7 @@ $$\text{Target ROAS} = \frac{1}{0.50 - 0.20} = \frac{1}{0.30} = \mathbf{3.33x}$$
 
 Rather than recalculating this manually in spreadsheets for every client or SKU, I built an interactive, instant calculation tool available for free:
 
-👉 **[Try the Free Meta Ads ROAS & Profit Calculator](https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator)**
+👉 **[Try the Free Meta Ads ROAS & Profit Calculator](https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator)**
 
 The tool models:
 - Real-time Gross Revenue vs. Net Take-Home Profit
@@ -68,9 +68,9 @@ The tool models:
 
 ## 3. About the Author
 
-**[Mayank Aggarwal](https://mayank-aggarwal.vercel.app)** is a Performance Marketing & Generative AI Creative Specialist based in Delhi, India. He manages high-converting Meta and Google ad campaigns, creative testing pipelines, and AI video commercial workflows for ambitious direct-to-consumer (D2C) brands.
+**[Mayank Aggarwal](https://mayankaggarwal-one.vercel.app)** is a Performance Marketing & Generative AI Creative Specialist based in Delhi, India. He manages high-converting Meta and Google ad campaigns, creative testing pipelines, and AI video commercial workflows for ambitious direct-to-consumer (D2C) brands.
 
-- **Website**: [mayank-aggarwal.vercel.app](https://mayank-aggarwal.vercel.app)
-- **Core Retainers**: [Performance Meta Ads Management](https://mayank-aggarwal.vercel.app/services/meta-ads)
-- **Regional Hub**: [Delhi NCR Performance Marketing](https://mayank-aggarwal.vercel.app/locations/delhi)
+- **Website**: [mayankaggarwal-one.vercel.app](https://mayankaggarwal-one.vercel.app)
+- **Core Retainers**: [Performance Meta Ads Management](https://mayankaggarwal-one.vercel.app/services/meta-ads)
+- **Regional Hub**: [Delhi NCR Performance Marketing](https://mayankaggarwal-one.vercel.app/locations/delhi)
 - **LinkedIn**: [Connect on LinkedIn](https://lnkd.in/p/gfrXbbjH)

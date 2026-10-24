@@ -24,7 +24,7 @@
   > If your blended Marketing Efficiency Ratio (MER) isn’t modeled correctly, in-platform ROAS is vanity.
   >
   > We built a free, interactive break-even calculator that accounts for real Indian e-commerce unit economics:
-  > 👉 Link in comments: https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator
+  > 👉 Link in comments: https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator
   >
   > What is your minimum break-even ROAS benchmark this quarter? Let’s discuss below.
 - **Hashtags**: `#MetaAds #PerformanceMarketing #EcommerceIndia #ROAS #GrowthMarketing #D2CIndia`
@@ -49,7 +49,7 @@
   > Slide 2: The Visual Pattern Interrupt (movement across horizontal axis).
   > Slide 3: The Negative Curiosity Gap ("Stop doing X if you want Y").
   > Slide 4: Real retention graph comparisons.
-  > Slide 5: Free generator: https://mayank-aggarwal.vercel.app/tools/reel-hook-generator
+  > Slide 5: Free generator: https://mayankaggarwal-one.vercel.app/tools/reel-hook-generator
 
 ### Day 4: ElevenLabs Audio Fidelity Tuning (X + LinkedIn)
 - **Concept**: Why AI voices sound robotic and how to fix them with stability & clarity sliders.

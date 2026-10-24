@@ -65,7 +65,7 @@ If your Meta CPA exceeds **$17.50**, you miss your profit goal, regardless of wh
 
 I got tired of recalculating this in messy spreadsheets for every SKU and client, so I built a clean, free React utility that calculates everything in real time with sliders:
 
-👉 **[Meta Ads ROAS & Profit Calculator](https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator)**
+👉 **[Meta Ads ROAS & Profit Calculator](https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator)**
 
 - No email sign-up required.
 - No paywalls or popups.
@@ -75,4 +75,4 @@ Hope this helps some media buyers and founders prevent margin leaks this quarter
 
 ---
 
-*Author bio: Mayank Aggarwal is a performance marketer and generative AI creative producer at [Klikwise](https://mayank-aggarwal.vercel.app), based in Delhi, India. [Full Portfolio & Work](https://mayank-aggarwal.vercel.app/portfolio).*
+*Author bio: Mayank Aggarwal is a performance marketer and generative AI creative producer at [Klikwise](https://mayankaggarwal-one.vercel.app), based in Delhi, India. [Full Portfolio & Work](https://mayankaggarwal-one.vercel.app/portfolio).*

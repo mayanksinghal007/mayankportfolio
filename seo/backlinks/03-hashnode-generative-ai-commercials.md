@@ -3,11 +3,11 @@ title: "The Modern AI Commercial Pipeline: Directing Video Ads with Runway Gen-3
 subtitle: "How generative AI video models are replacing traditional $10,000 commercial shoots with rapid, high-retention creative testing."
 slug: modern-ai-commercial-pipeline-runway-kling-elevenlabs
 tags: artificial-intelligence, machine-learning, video-production, marketing
-canonical: https://mayank-aggarwal.vercel.app/blog/ai-video-ads-playbook-kling-runway
+canonical: https://mayankaggarwal-one.vercel.app/blog/ai-video-ads-playbook-kling-runway
 cover: https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80
 ---
 
-*Written by [Mayank Aggarwal](https://mayank-aggarwal.vercel.app), Generative AI Creative Director and Performance Marketer at [Klikwise](https://mayank-aggarwal.vercel.app).*
+*Written by [Mayank Aggarwal](https://mayankaggarwal-one.vercel.app), Generative AI Creative Director and Performance Marketer at [Klikwise](https://mayankaggarwal-one.vercel.app).*
 
 ---
 
@@ -38,14 +38,14 @@ Here is the exact production architecture I use to direct commercial-grade video
 - **Focus**: Voice cloning, emotional pacing, natural breathing pauses, and studio-grade audio mastering.
 
 ### 4. Interactive Compilation Tools
-To help creators and media buyers structure clean prompts without trial-and-error hallucinations, I published the **[AI Video Prompt Generator](https://mayank-aggarwal.vercel.app/tools/ai-video-prompt-generator)**, an interactive web utility that formats cinematic camera directives, lighting styles, and motion parameters into production-ready prompts.
+To help creators and media buyers structure clean prompts without trial-and-error hallucinations, I published the **[AI Video Prompt Generator](https://mayankaggarwal-one.vercel.app/tools/ai-video-prompt-generator)**, an interactive web utility that formats cinematic camera directives, lighting styles, and motion parameters into production-ready prompts.
 
 ---
 
 ## Measuring Performance in Meta Ads
 
 High aesthetic value means nothing if it doesn't convert. When deploying AI video assets in Advantage+ Shopping Campaigns (ASC):
-- **3-Second Hook Retention**: Target **> 35%** (use our free **[Viral Reel Hook Generator](https://mayank-aggarwal.vercel.app/tools/reel-hook-generator)** to test dynamic openers).
+- **3-Second Hook Retention**: Target **> 35%** (use our free **[Viral Reel Hook Generator](https://mayankaggarwal-one.vercel.app/tools/reel-hook-generator)** to test dynamic openers).
 - **Hold Rate (ThruPlay / Total 3s Views)**: Target **> 25%**.
 - **Outbound Click-Through Rate (CTR)**: Target **> 1.8%**.
 
@@ -54,7 +54,7 @@ High aesthetic value means nothing if it doesn't convert. When deploying AI vide
 ## Explore the Full Showcase
 
 To see live commercial video case studies and prompt breakdowns:
-- **Case Studies & Portfolio**: [Mayank Aggarwal Portfolio](https://mayank-aggarwal.vercel.app/portfolio)
-- **AI Commercial Services**: [Generative AI Video Production Retainers](https://mayank-aggarwal.vercel.app/services/ai-video-filmmaking)
-- **Delhi NCR Regional Practice**: [Local Marketing & Creative Direction](https://mayank-aggarwal.vercel.app/locations/delhi)
-- **Direct Consultation**: [Schedule an AI Creative Audit](https://mayank-aggarwal.vercel.app/contact)
+- **Case Studies & Portfolio**: [Mayank Aggarwal Portfolio](https://mayankaggarwal-one.vercel.app/portfolio)
+- **AI Commercial Services**: [Generative AI Video Production Retainers](https://mayankaggarwal-one.vercel.app/services/ai-video-filmmaking)
+- **Delhi NCR Regional Practice**: [Local Marketing & Creative Direction](https://mayankaggarwal-one.vercel.app/locations/delhi)
+- **Direct Consultation**: [Schedule an AI Creative Audit](https://mayankaggarwal-one.vercel.app/contact)

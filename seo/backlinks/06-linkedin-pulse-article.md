@@ -1,6 +1,6 @@
 # The 2026 Delhi NCR Performance Marketing Blueprint: Scaling D2C Brands with Meta ASC & Generative AI
 
-**Author**: [Mayank Aggarwal](https://mayank-aggarwal.vercel.app/about) | Founder, [Klikwise](https://mayank-aggarwal.vercel.app)  
+**Author**: [Mayank Aggarwal](https://mayankaggarwal-one.vercel.app/about) | Founder, [Klikwise](https://mayankaggarwal-one.vercel.app)  
 **Publishing Channel**: [LinkedIn Articles / Pulse](https://www.linkedin.com) (DA 98)  
 **Target Region**: Delhi, Gurugram, Noida, Pan-India  
 
@@ -14,7 +14,7 @@ To scale profitably in 2026, performance marketers and founders must master two 
 1. **Advantage+ Shopping Campaign (ASC) Architecture with Conversions API (CAPI)**
 2. **High-Velocity Generative AI Video Creative Production**
 
-Here is the operational framework we deploy at **[Klikwise](https://mayank-aggarwal.vercel.app)** to deliver consistent return on ad spend.
+Here is the operational framework we deploy at **[Klikwise](https://mayankaggarwal-one.vercel.app)** to deliver consistent return on ad spend.
 
 ---
 
@@ -40,7 +40,7 @@ $$\text{Break-Even ROAS} = \frac{1}{0.40} = \mathbf{2.50x}$$
 
 If your agency delivers a 2.2x ROAS, you are losing money on every shipment!
 
-To help founders model their exact unit economics in real time, I developed the **[Meta Ads ROAS & Profit Calculator](https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator)**—a free interactive tool that calculates net profit, target CPA, and scaling ceilings instantly.
+To help founders model their exact unit economics in real time, I developed the **[Meta Ads ROAS & Profit Calculator](https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator)**—a free interactive tool that calculates net profit, target CPA, and scaling ceilings instantly.
 
 ---
 
@@ -53,7 +53,7 @@ To prevent ad fatigue and keep customer acquisition costs stable, brands need be
 By utilizing a generative AI video pipeline:
 - We direct commercial-grade visuals using **Runway Gen-3 Alpha** and **Kling AI**.
 - We engineer multilingual neural voiceovers using **ElevenLabs**.
-- We test dynamic retention hooks using data-backed frameworks from our **[Viral Reel Hook Generator](https://mayank-aggarwal.vercel.app/tools/reel-hook-generator)**.
+- We test dynamic retention hooks using data-backed frameworks from our **[Viral Reel Hook Generator](https://mayankaggarwal-one.vercel.app/tools/reel-hook-generator)**.
 
 This hybrid production workflow allows brands to test 4x more creative angles weekly at a fraction of the cost.
 
@@ -63,8 +63,8 @@ This hybrid production workflow allows brands to test 4x more creative angles we
 
 If you are a founder, CMO, or marketing director looking to scale customer acquisition, audit underperforming Meta ad accounts, or produce high-aesthetic AI commercial assets:
 
-- **Official Portfolio**: [https://mayank-aggarwal.vercel.app/portfolio](https://mayank-aggarwal.vercel.app/portfolio)
-- **Services & Retainers**: [Meta Ads Management & Retainers](https://mayank-aggarwal.vercel.app/services/meta-ads)
-- **Delhi NCR Regional Hub**: [Delhi & Gurugram Performance Marketing](https://mayank-aggarwal.vercel.app/locations/delhi)
+- **Official Portfolio**: [https://mayankaggarwal-one.vercel.app/portfolio](https://mayankaggarwal-one.vercel.app/portfolio)
+- **Services & Retainers**: [Meta Ads Management & Retainers](https://mayankaggarwal-one.vercel.app/services/meta-ads)
+- **Delhi NCR Regional Hub**: [Delhi & Gurugram Performance Marketing](https://mayankaggarwal-one.vercel.app/locations/delhi)
 - **Direct WhatsApp Consultation**: [+91 9217756033](https://wa.me/919217756033)
 - **LinkedIn Profile**: [Connect with Mayank Aggarwal](https://lnkd.in/p/gfrXbbjH)

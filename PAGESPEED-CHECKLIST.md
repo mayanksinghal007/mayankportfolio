@@ -21,7 +21,7 @@ This checklist provides prioritized, step-by-step instructions for testing and v
 Test these critical conversion routes first. Run each test twice (Mobile and Desktop) with browser extensions disabled.
 
 ### 1. Homepage (`/`)
-- **URL**: `https://mayank-aggarwal.vercel.app/`
+- **URL**: `https://mayankaggarwal-one.vercel.app/`
 - **Primary Customer Intent**: Founder introduction, brand positioning, core proof points, showreel.
 - **Key Elements to Verify**:
   - [ ] Hero headline (`H1`) renders immediately without FOIT (Flash of Invisible Text) via `font-display: swap`.
@@ -31,9 +31,9 @@ Test these critical conversion routes first. Run each test twice (Mobile and Des
 
 ### 2. Services Hub & Detail Pages (`/services`, `/services/:slug`)
 - **URLs**:
-  - `https://mayank-aggarwal.vercel.app/services`
-  - `https://mayank-aggarwal.vercel.app/services/meta-ads-management`
-  - `https://mayank-aggarwal.vercel.app/services/ai-video-ads-production`
+  - `https://mayankaggarwal-one.vercel.app/services`
+  - `https://mayankaggarwal-one.vercel.app/services/meta-ads-management`
+  - `https://mayankaggarwal-one.vercel.app/services/ai-video-ads-production`
 - **Primary Customer Intent**: Service scope, deliverables, deliverables comparison, retainer inquiries.
 - **Key Elements to Verify**:
   - [ ] FAQ accordions toggle with < 50ms INP response time.
@@ -41,7 +41,7 @@ Test these critical conversion routes first. Run each test twice (Mobile and Des
   - [ ] CTA banner button tap targets meet the 48x48px accessible minimum.
 
 ### 3. Contact & Inquiry Brief Page (`/contact`)
-- **URL**: `https://mayank-aggarwal.vercel.app/contact`
+- **URL**: `https://mayankaggarwal-one.vercel.app/contact`
 - **Primary Customer Intent**: High-intent lead generation, budget selection, WhatsApp direct contact.
 - **Key Elements to Verify**:
   - [ ] Form input focus states are instant without main thread blocking.
@@ -50,9 +50,9 @@ Test these critical conversion routes first. Run each test twice (Mobile and Des
 
 ### 4. Interactive Tools (High-Traffic Organic Landing Pages)
 - **URLs**:
-  - `https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator`
-  - `https://mayank-aggarwal.vercel.app/tools/ai-video-prompt-generator`
-  - `https://mayank-aggarwal.vercel.app/tools/reel-hook-generator`
+  - `https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator`
+  - `https://mayankaggarwal-one.vercel.app/tools/ai-video-prompt-generator`
+  - `https://mayankaggarwal-one.vercel.app/tools/reel-hook-generator`
 - **Primary Customer Intent**: Free utility usage, bookmarking, algorithmic hook generation, backlink acquisition.
 - **Key Elements to Verify**:
   - [ ] Dynamic slider/input calculations update smoothly in 60fps with zero layout thrashing.
@@ -61,19 +61,19 @@ Test these critical conversion routes first. Run each test twice (Mobile and Des
 
 ### 5. Regional Hubs (Local SEO Landing Pages)
 - **URLs**:
-  - `https://mayank-aggarwal.vercel.app/locations/delhi`
-  - `https://mayank-aggarwal.vercel.app/locations/gurugram`
-  - `https://mayank-aggarwal.vercel.app/locations/mumbai`
-  - `https://mayank-aggarwal.vercel.app/locations/bangalore`
+  - `https://mayankaggarwal-one.vercel.app/locations/delhi`
+  - `https://mayankaggarwal-one.vercel.app/locations/gurugram`
+  - `https://mayankaggarwal-one.vercel.app/locations/mumbai`
+  - `https://mayankaggarwal-one.vercel.app/locations/bangalore`
 - **Key Elements to Verify**:
   - [ ] LocalBusiness JSON-LD schema with GeoCoordinates and NAP validated.
   - [ ] City selector pill bar scrolls horizontally on mobile with touch momentum.
 
 ### 6. Marketing Playbooks & Blog Post Detail (`/blog`, `/blog/:slug`)
 - **URLs**:
-  - `https://mayank-aggarwal.vercel.app/blog`
-  - `https://mayank-aggarwal.vercel.app/blog/how-to-start-meta-ads-small-business-india`
-  - `https://mayank-aggarwal.vercel.app/blog/roas-vs-mer-which-marketing-metric-matters-2026`
+  - `https://mayankaggarwal-one.vercel.app/blog`
+  - `https://mayankaggarwal-one.vercel.app/blog/how-to-start-meta-ads-small-business-india`
+  - `https://mayankaggarwal-one.vercel.app/blog/roas-vs-mer-which-marketing-metric-matters-2026`
 - **Key Elements to Verify**:
   - [ ] Static prerendered HTML loads article text instantly for search crawlers.
   - [ ] Reading progress bar transitions using GPU composited transforms (`scaleX`).

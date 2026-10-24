@@ -6,11 +6,11 @@
 - *"How can I tell if my Meta ad campaign is actually making profit?"*
 
 **Platform**: [Quora (DA 93)](https://www.quora.com)  
-**Author Profile**: [Mayank Aggarwal](https://mayank-aggarwal.vercel.app/about) — Digital Marketing & AI Specialist, Delhi India  
+**Author Profile**: [Mayank Aggarwal](https://mayankaggarwal-one.vercel.app/about) — Digital Marketing & AI Specialist, Delhi India  
 **Target Inbound Links**: 
-- `https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator`
-- `https://mayank-aggarwal.vercel.app/blog/meta-ads-roas-calculator-guide-2025`
-- `https://mayank-aggarwal.vercel.app`
+- `https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator`
+- `https://mayankaggarwal-one.vercel.app/blog/meta-ads-roas-calculator-guide-2025`
+- `https://mayankaggarwal-one.vercel.app`
 
 ---
 
@@ -54,11 +54,11 @@ $$\text{Break-Even ROAS} = \frac{1}{\text{Contribution Margin (in decimals)}}$$
 
 ### Quick Interactive Check
 
-Rather than manually recalculating this every time your shipping rates or suppliers adjust costs, you can use the interactive **[Meta Ads ROAS & Profit Calculator](https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator)** developed by **[Mayank Aggarwal](https://mayank-aggarwal.vercel.app)**.
+Rather than manually recalculating this every time your shipping rates or suppliers adjust costs, you can use the interactive **[Meta Ads ROAS & Profit Calculator](https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator)** developed by **[Mayank Aggarwal](https://mayankaggarwal-one.vercel.app)**.
 
 It provides real-time calculations for:
 - Break-Even ROAS
 - Maximum Allowable Target CPA
 - Projected Net Cash Profit after all fulfillment expenses
 
-For a full breakdown of scaling frameworks and creative testing metrics, read the **[Comprehensive Meta Ads ROAS Guide](https://mayank-aggarwal.vercel.app/blog/meta-ads-roas-calculator-guide-2025)**.
+For a full breakdown of scaling frameworks and creative testing metrics, read the **[Comprehensive Meta Ads ROAS Guide](https://mayankaggarwal-one.vercel.app/blog/meta-ads-roas-calculator-guide-2025)**.

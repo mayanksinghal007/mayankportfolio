@@ -1,6 +1,6 @@
 # Semrush Complete Setup & Integration Guide
 
-This guide walks you through connecting **Semrush** to your website (`https://mayank-aggarwal.vercel.app`) for automated SEO site audits, Core Web Vitals monitoring, position tracking, and backlink analysis.
+This guide walks you through connecting **Semrush** to your website (`https://mayankaggarwal-one.vercel.app`) for automated SEO site audits, Core Web Vitals monitoring, position tracking, and backlink analysis.
 
 ---
 
@@ -24,7 +24,7 @@ This guide walks you through connecting **Semrush** to your website (`https://ma
 ### Step 2.1: Create a Project in Semrush
 1. Log in to [Semrush](https://www.semrush.com/).
 2. In the left navigation menu, click **Projects** > **Create Project**.
-3. **Domain**: `mayank-aggarwal.vercel.app`
+3. **Domain**: `mayankaggarwal-one.vercel.app`
 4. **Project Name**: `Mayank Aggarwal Portfolio & Growth Hub`
 5. Click **Create Project**.
 
@@ -54,7 +54,7 @@ This guide walks you through connecting **Semrush** to your website (`https://ma
 * If Semrush offers downloading a verification file (e.g. `semrush-xxxx.html`):
 * Drop the downloaded file into your `public/` directory:
   `c:\Users\pc\Desktop\MAYANK PORTFOLIO WEBSITE\public\semrush-xxxx.html`
-* Run `cmd /c "npm run build"` and push to Git. It will be live at `https://mayank-aggarwal.vercel.app/semrush-xxxx.html`.
+* Run `cmd /c "npm run build"` and push to Git. It will be live at `https://mayankaggarwal-one.vercel.app/semrush-xxxx.html`.
 
 ---
 
@@ -63,7 +63,7 @@ This guide walks you through connecting **Semrush** to your website (`https://ma
 ### A. Site Audit Setup
 1. In your Semrush Project dashboard, click **Set Up** on **Site Audit**.
 2. **Domain & Limit of Pages**:
-   - Scope: `mayank-aggarwal.vercel.app`
+   - Scope: `mayankaggarwal-one.vercel.app`
    - Limit: **100 pages** (Your site currently has 79 prerendered static pages).
 3. **Crawler Settings**:
    - Crawler: **SemrushBot-Desktop** and **SemrushBot-Mobile**
@@ -97,10 +97,10 @@ This guide walks you through connecting **Semrush** to your website (`https://ma
 ### C. Connect Google Analytics 4 & Google Search Console
 1. Under your Semrush Project settings, click **Integrations**.
 2. Connect **Google Analytics**: Link property **`G-99QPLF52NX`**.
-3. Connect **Google Search Console**: Link URL-prefix property `https://mayank-aggarwal.vercel.app`.
+3. Connect **Google Search Console**: Link URL-prefix property `https://mayankaggarwal-one.vercel.app`.
    *This unlocks combined Organic Search Traffic, Click-Through Rates, and Real User Search Queries directly inside Semrush!*
 
 ### D. Backlink Audit Tool
 1. In the left menu, select **Backlink Audit**.
-2. Monitor new incoming links from your **2,222 Backlinks Database** (`https://mayank-aggarwal.vercel.app/MAYANK-WEBSITE-2222-BACKLINKS.csv`).
+2. Monitor new incoming links from your **2,222 Backlinks Database** (`https://mayankaggarwal-one.vercel.app/MAYANK-WEBSITE-2222-BACKLINKS.csv`).
 3. Semrush will track your Domain Authority (Authority Score) growth and verify clean, penalty-free backlink acquisition.

@@ -1,8 +1,8 @@
 # Why Your Meta Ads Hit a Scaling Wall (And How to Fix Creative Fatigue in 2026)
 
-**By [Mayank Aggarwal](https://mayank-aggarwal.vercel.app)**  
+**By [Mayank Aggarwal](https://mayankaggarwal-one.vercel.app)**  
 *Founder at Klikwise & Digital Marketing Specialist based in Delhi, India.*  
-*Canonical Reference: [Mayank Aggarwal Strategy Hub](https://mayank-aggarwal.vercel.app/blog/meta-advantage-plus-shopping-campaigns-guide)*
+*Canonical Reference: [Mayank Aggarwal Strategy Hub](https://mayankaggarwal-one.vercel.app/blog/meta-advantage-plus-shopping-campaigns-guide)*
 
 ---
 
@@ -19,7 +19,7 @@ Within 72 hours, performance collapses:
 
 You enter what the industry calls **The Scaling Death Spiral**.
 
-In this article, I break down the algorithmic reasons why modern Meta Ads (Advantage+ Shopping Campaigns) fatigue so quickly, and the exact creative testing protocol I run at **[Klikwise](https://mayank-aggarwal.vercel.app)** to maintain profitable scale.
+In this article, I break down the algorithmic reasons why modern Meta Ads (Advantage+ Shopping Campaigns) fatigue so quickly, and the exact creative testing protocol I run at **[Klikwise](https://mayankaggarwal-one.vercel.app)** to maintain profitable scale.
 
 ---
 
@@ -46,7 +46,7 @@ Scaling without knowing your real break-even margin is the fastest way to burn w
 Before increasing daily budget on any campaign:
 1. Deduct your exact COGS, packaging, payment gateway fees, and average return/RTO rate.
 2. Calculate your minimum acceptable **Target CPA**.
-3. Use an interactive modeling tool like the free **[Meta Ads ROAS & Profit Calculator](https://mayank-aggarwal.vercel.app/tools/meta-ads-roas-calculator)** to benchmark scenarios before adjusting ad sets.
+3. Use an interactive modeling tool like the free **[Meta Ads ROAS & Profit Calculator](https://mayankaggarwal-one.vercel.app/tools/meta-ads-roas-calculator)** to benchmark scenarios before adjusting ad sets.
 
 ---
 
@@ -55,7 +55,7 @@ Before increasing daily budget on any campaign:
 At Klikwise, we never allow an account to rely on fewer than **4 evergreen creative winners** concurrently.
 
 Every week, we execute a rapid production cycle:
-- **Monday**: Analyze top hook drop-offs (aiming for >35% 3-second retention with our **[Viral Reel Hook Generator](https://mayank-aggarwal.vercel.app/tools/reel-hook-generator)**).
+- **Monday**: Analyze top hook drop-offs (aiming for >35% 3-second retention with our **[Viral Reel Hook Generator](https://mayankaggarwal-one.vercel.app/tools/reel-hook-generator)**).
 - **Wednesday**: Produce 5 AI-assisted and user-generated video variants using high-fidelity generative AI tools like Runway Gen-3 and Kling.
 - **Friday**: Deploy into a dynamic creative test (DCT) sandbox at 10% of total account ad spend.
 - **Sunday**: Graduate breakout creatives into the master Advantage+ scaling campaign.
@@ -64,9 +64,9 @@ Every week, we execute a rapid production cycle:
 
 ## About Mayank Aggarwal
 
-**[Mayank Aggarwal](https://mayank-aggarwal.vercel.app)** is a Digital Marketing & AI Specialist operating from Delhi, India. He partners with high-growth direct-to-consumer (D2C) brands, e-commerce stores, and startups to drive scalable performance advertising and AI creative direction.
+**[Mayank Aggarwal](https://mayankaggarwal-one.vercel.app)** is a Digital Marketing & AI Specialist operating from Delhi, India. He partners with high-growth direct-to-consumer (D2C) brands, e-commerce stores, and startups to drive scalable performance advertising and AI creative direction.
 
-- **Portfolio & Case Studies**: [mayank-aggarwal.vercel.app/portfolio](https://mayank-aggarwal.vercel.app/portfolio)
-- **Services & Retainers**: [Performance Meta Ads Management](https://mayank-aggarwal.vercel.app/services/meta-ads)
-- **Delhi NCR Regional Practice**: [Local Marketing Agency Services](https://mayank-aggarwal.vercel.app/locations/delhi)
+- **Portfolio & Case Studies**: [mayankaggarwal-one.vercel.app/portfolio](https://mayankaggarwal-one.vercel.app/portfolio)
+- **Services & Retainers**: [Performance Meta Ads Management](https://mayankaggarwal-one.vercel.app/services/meta-ads)
+- **Delhi NCR Regional Practice**: [Local Marketing Agency Services](https://mayankaggarwal-one.vercel.app/locations/delhi)
 - **Contact**: `contact.klikwise@gmail.com` | [Chat on WhatsApp](https://wa.me/919217756033)
