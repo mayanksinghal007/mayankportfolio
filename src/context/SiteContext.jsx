@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef } from 'react';
 import {
   DEFAULT_SITE,
   DEFAULT_SERVICES,
@@ -73,8 +73,13 @@ export const SiteProvider = ({ children }) => {
     }
   };
 
-  // Sync to localStorage
+  // Sync to localStorage (Only on subsequent updates, never blocking initial hydration/mount)
+  const isSiteFirstMount = useRef(true);
   useEffect(() => {
+    if (isSiteFirstMount.current) {
+      isSiteFirstMount.current = false;
+      return;
+    }
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('mayank_site_info', JSON.stringify(site));
@@ -82,7 +87,12 @@ export const SiteProvider = ({ children }) => {
     }
   }, [site]);
 
+  const isMediaFirstMount = useRef(true);
   useEffect(() => {
+    if (isMediaFirstMount.current) {
+      isMediaFirstMount.current = false;
+      return;
+    }
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('mayank_media_assets', JSON.stringify(mediaAssets));
@@ -90,7 +100,12 @@ export const SiteProvider = ({ children }) => {
     }
   }, [mediaAssets]);
 
+  const isServicesFirstMount = useRef(true);
   useEffect(() => {
+    if (isServicesFirstMount.current) {
+      isServicesFirstMount.current = false;
+      return;
+    }
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('mayank_services', JSON.stringify(services));
@@ -98,7 +113,12 @@ export const SiteProvider = ({ children }) => {
     }
   }, [services]);
 
+  const isPortfolioFirstMount = useRef(true);
   useEffect(() => {
+    if (isPortfolioFirstMount.current) {
+      isPortfolioFirstMount.current = false;
+      return;
+    }
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('mayank_portfolio', JSON.stringify(portfolio));
@@ -106,7 +126,12 @@ export const SiteProvider = ({ children }) => {
     }
   }, [portfolio]);
 
+  const isAdsFirstMount = useRef(true);
   useEffect(() => {
+    if (isAdsFirstMount.current) {
+      isAdsFirstMount.current = false;
+      return;
+    }
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('mayank_ads', JSON.stringify(ads));
@@ -114,7 +139,12 @@ export const SiteProvider = ({ children }) => {
     }
   }, [ads]);
 
+  const isInquiriesFirstMount = useRef(true);
   useEffect(() => {
+    if (isInquiriesFirstMount.current) {
+      isInquiriesFirstMount.current = false;
+      return;
+    }
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('mayank_inquiries', JSON.stringify(inquiries));
@@ -122,7 +152,12 @@ export const SiteProvider = ({ children }) => {
     }
   }, [inquiries]);
 
+  const isBlogFirstMount = useRef(true);
   useEffect(() => {
+    if (isBlogFirstMount.current) {
+      isBlogFirstMount.current = false;
+      return;
+    }
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('mayank_blog_posts', JSON.stringify(blogPosts));
@@ -130,7 +165,12 @@ export const SiteProvider = ({ children }) => {
     }
   }, [blogPosts]);
 
+  const isAdminAuthFirstMount = useRef(true);
   useEffect(() => {
+    if (isAdminAuthFirstMount.current) {
+      isAdminAuthFirstMount.current = false;
+      return;
+    }
     if (typeof window !== 'undefined') {
       try {
         localStorage.setItem('mayank_admin_auth', isAdminLoggedIn ? 'true' : 'false');

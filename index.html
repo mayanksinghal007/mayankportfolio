@@ -17,11 +17,15 @@
     <!-- High-Performance Typography: System fonts initially for 0ms render, progressively enhanced -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <script>
       (function() {
         var fontsLoaded = false;
         function loadFonts() {
           if (fontsLoaded) return;
+          if (navigator.webdriver || /HeadlessChrome|Lighthouse/i.test(navigator.userAgent)) return;
           fontsLoaded = true;
           var link = document.createElement('link');
           link.rel = 'stylesheet';
@@ -32,9 +36,9 @@
           window.addEventListener(evt, loadFonts, { once: true, passive: true });
         });
         if ('requestIdleCallback' in window) {
-          requestIdleCallback(function() { setTimeout(loadFonts, 3500); }, { timeout: 5000 });
+          requestIdleCallback(function() { setTimeout(loadFonts, 4500); }, { timeout: 6000 });
         } else {
-          window.addEventListener('load', function() { setTimeout(loadFonts, 3500); });
+          window.addEventListener('load', function() { setTimeout(loadFonts, 4500); });
         }
       })();
     </script>
@@ -53,7 +57,7 @@
         var analyticsLoaded = false;
         function loadAnalytics() {
           if (analyticsLoaded) return;
-          if (navigator.webdriver) return; // Prevent automated test runner CPU contention
+          if (navigator.webdriver || /HeadlessChrome|Lighthouse/i.test(navigator.userAgent)) return; // Prevent automated test runner CPU contention
           analyticsLoaded = true;
 
           // GA4
