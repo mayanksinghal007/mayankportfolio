@@ -23,6 +23,9 @@ export default defineConfig({
           if (id.includes('node_modules/marked')) {
             return 'markdown-parser';
           }
+          if (id.includes('node_modules/bootstrap')) {
+            return 'bootstrap';
+          }
           if (id.includes('node_modules/canvas-confetti')) {
             return 'confetti';
           }
