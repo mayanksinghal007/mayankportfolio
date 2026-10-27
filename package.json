@@ -10,6 +10,8 @@
     "build:prerender": "node scripts/prerender.js",
     "build:seo": "node scripts/generate-seo-files.js",
     "build": "vite build && vite build --ssr src/prerender-entry.jsx --outDir dist-ssr && node scripts/prerender.js && node scripts/generate-seo-files.js",
+    "daily": "node scripts/run-daily-task.js",
+    "check:links": "node scripts/check-links.js",
     "indexnow": "node scripts/submit-indexnow.js",
     "google:index": "node scripts/submit-google-indexing.js",
     "index:backlinks": "node scripts/index-backlinks.js",

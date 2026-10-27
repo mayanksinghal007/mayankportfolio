@@ -57,7 +57,14 @@ htmlFiles.forEach((filePath) => {
   }
 
   // Skip verification files (e.g. Google & Semrush Site Verification)
-  if (/^(google|semrush|bing)[a-zA-Z0-9_-]*\.html$/i.test(relPath) || relPath.includes('verification')) {
+  if (
+    /^(google|semrush|bing)[a-zA-Z0-9_-]*\.html$/i.test(relPath) ||
+    relPath.includes('verification') ||
+    relPath === 'zo4mu2ttgmxe.html' ||
+    relPath.startsWith('tVnkqW') ||
+    !content.includes('<html') ||
+    content.includes('google-site-verification:')
+  ) {
     console.log(`✓ [VERIFICATION FILE] ${relPath}: Skipped from public content SEO checks`);
     return;
   }

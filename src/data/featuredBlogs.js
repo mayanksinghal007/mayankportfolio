@@ -16,24 +16,24 @@ export const FEATURED_BLOG_POSTS = [
   },
   {
     id: "post-2",
-    slug: "meta-ads-budget-allocation-testing-vs-scaling",
-    title: "How to Allocate Your Meta Ads Budget: 70/20/10 Testing vs Scaling Rule",
+    slug: "meta-ads-pixel-conversions-api-setup-checklist",
+    title: "Meta Ads Pixel and Conversions API Setup: A Beginner's Checklist",
     category: "Performance Marketing",
-    date: "2026-09-18",
+    date: "2026-09-20",
     readTime: "8 min read",
     coverImage: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=75",
-    summary: "Master media buying capital allocation with the 70/20/10 framework: preserve winning ad sets while systematically uncovering breakthrough hooks.",
-    excerpt: "Master media buying capital allocation with the 70/20/10 framework: preserve winning ad sets while systematically uncovering breakthrough hooks."
+    summary: "A complete step-by-step checklist to configure Meta Pixel and Conversions API (CAPI) for Shopify, WordPress, and custom websites with zero data loss.",
+    excerpt: "A complete step-by-step checklist to configure Meta Pixel and Conversions API (CAPI) for Shopify, WordPress, and custom websites with zero data loss."
   },
   {
     id: "post-3",
-    slug: "fix-meta-ads-roas-drop-scaling-fatigue",
-    title: "Why Your Meta Ads ROAS Drops When You Scale Budget (And How to Fix It)",
+    slug: "meta-advantage-plus-shopping-campaigns-guide",
+    title: "Meta Advantage+ Shopping Campaigns (ASC): Setup Guide for 2026",
     category: "Performance Marketing",
-    date: "2026-09-21",
-    readTime: "10 min read",
-    coverImage: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=75",
-    summary: "Diagnose audience saturation, auction overlap, and creative fatigue with actionable cost-cap and horizontal scaling methodologies.",
-    excerpt: "Diagnose audience saturation, audience overlap, and creative fatigue with actionable cost-cap and horizontal scaling methodologies."
+    date: "2026-10-02",
+    readTime: "9 min read",
+    coverImage: "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=75",
+    summary: "Advantage+ Shopping Campaigns (ASC) use AI automation to consolidate prospecting and retargeting into a single campaign. How to set caps and scale.",
+    excerpt: "Advantage+ Shopping Campaigns (ASC) use AI automation to consolidate prospecting and retargeting into a single campaign. How to set caps and scale."
   }
 ];
