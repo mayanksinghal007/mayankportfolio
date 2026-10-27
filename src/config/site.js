@@ -29,7 +29,8 @@ export const SITE_CONFIG = {
   googleVerification: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_GOOGLE_SITE_VERIFICATION) || "tVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU",
   googleVerificationWithPrefix: "google-site-verification=tVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU",
   googleVerificationBackup: "pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc",
-  googleCnameVerification: "gv-mdo5pbh4jznav5.dv.googlehosted.com",
+  googleCnameHost: "zo4mu2ttgmxe",
+  googleCnameVerification: "gv-hiv3gu4sg4ylae.dv.googlehosted.com",
   bingVerification: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_BING_SITE_VERIFICATION) || "bing-webmaster-verification-placeholder-code",
   gaMeasurementId: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_GA4_MEASUREMENT_ID) || "G-99QPLF52NX",
 };

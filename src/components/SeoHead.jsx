@@ -108,6 +108,12 @@ export const SeoHead = ({
       {SITE_CONFIG.googleVerificationBackup && (
         <meta name="google-site-verification" content={SITE_CONFIG.googleVerificationBackup} />
       )}
+      {SITE_CONFIG.googleCnameHost && (
+        <meta name="google-site-verification" content={SITE_CONFIG.googleCnameHost} />
+      )}
+      {SITE_CONFIG.googleCnameVerification && (
+        <meta name="google-site-verification" content={SITE_CONFIG.googleCnameVerification} />
+      )}
       <meta
         name="msvalidate.01"
         content={
