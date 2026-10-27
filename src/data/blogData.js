@@ -10,6 +10,7 @@
  */
 
 import { META_ADS_BLOGS } from './blogs/metaAdsBlogs.js';
+import { GOOGLE_AND_PAID_ADS_BLOGS } from './blogs/googleAndPaidAdsBlogs.js';
 import { AI_VIDEO_BLOGS } from './blogs/aiVideoBlogs.js';
 import { AI_AUDIO_BLOGS } from './blogs/aiAudioBlogs.js';
 import { CONTENT_STRATEGY_BLOGS } from './blogs/contentStrategyBlogs.js';
@@ -19,24 +20,24 @@ import { CAREER_PERSPECTIVES_BLOGS } from './blogs/careerPerspectivesBlogs.js';
 import { INTERNATIONAL_BLOGS } from './blogs/internationalBlogs.js';
 
 export const DEFAULT_BLOG_POSTS = [
-  ...META_ADS_BLOGS,          // Posts 1 - 10
-  ...AI_VIDEO_BLOGS,          // Posts 11 - 18
-  ...AI_AUDIO_BLOGS,          // Posts 19 - 24
-  ...CONTENT_STRATEGY_BLOGS,  // Posts 25 - 32
-  ...SEO_AEO_GEO_BLOGS,       // Posts 33 - 40
-  ...ECOMMERCE_CRO_BLOGS,     // Posts 41 - 45
-  ...CAREER_PERSPECTIVES_BLOGS, // Posts 46 - 50
-  ...INTERNATIONAL_BLOGS      // Posts 51 - 54 (US, UK, UAE, Russia International Series)
+  ...META_ADS_BLOGS,            // Posts 1 - 10 (Meta Ads & CAPI)
+  ...GOOGLE_AND_PAID_ADS_BLOGS, // Google PMax, Search Ads, YouTube Ads, Twitter (X) Ads, LinkedIn ABM, TikTok Spark Ads
+  ...SEO_AEO_GEO_BLOGS,         // SEO, AEO, GEO, AI Citations & LLM Crawlers
+  ...INTERNATIONAL_BLOGS,       // US, UK, UAE, Australia, Canada, Europe Global Playbooks
+  ...CONTENT_STRATEGY_BLOGS,    // Social Media Marketing, Viral Reel Hooks, Retention Management
+  ...ECOMMERCE_CRO_BLOGS,       // Performance E-Commerce & Checkout Optimization
+  ...CAREER_PERSPECTIVES_BLOGS, // Performance Marketing Capital Allocation & Strategy
+  ...AI_VIDEO_BLOGS,            // Video Ad Creative & Commercial Workflows
+  ...AI_AUDIO_BLOGS             // Global Multilingual Ad Dubbing
 ];
 
 export const BLOG_CATEGORIES = [
   "All",
   "Meta Ads",
-  "AI Video",
-  "AI Voiceover",
-  "Content Strategy",
-  "SEO & AEO",
-  "E-Commerce & CRO",
-  "Career & Strategy",
-  "International Strategy"
+  "Google Ads",
+  "Twitter & Multi-Platform Ads",
+  "Performance Marketing",
+  "Social Media Marketing",
+  "SEO & AEO/GEO",
+  "Global & International Ads"
 ];

@@ -1,10 +1,14 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useSite } from '../context/SiteContext';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { marked } from 'marked';
-import { Clock, Calendar, ArrowLeft, ArrowRight, Share2, MessageCircle, CheckCircle2, ChevronRight, User, Copy, Check, Mail, Send } from 'lucide-react';
+import { 
+  Clock, Calendar, ArrowLeft, ArrowRight, Share2, MessageCircle, 
+  CheckCircle2, ChevronRight, User, Copy, Check, Mail, Send, 
+  BookOpen, List, Sparkles, Phone, Globe, ExternalLink, Calculator
+} from 'lucide-react';
 import { LinkedinIcon, InstagramIcon, XTwitterIcon } from '../components/SocialIcons';
 import { SITE_CONFIG } from '../config/site';
 import { getBlogPostingSchema, getBreadcrumbSchema, getFaqSchema } from '../utils/seoSchemas';
@@ -16,12 +20,61 @@ export const BlogPost = () => {
   const [copied, setCopied] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [activeTocId, setActiveTocId] = useState('');
 
   const activePosts = blogPosts && blogPosts.length > 0 ? blogPosts : DEFAULT_BLOG_POSTS;
 
   const post = useMemo(() => {
     return activePosts.find((p) => p.slug === slug);
   }, [activePosts, slug]);
+
+  // Find index for previous / next navigation
+  const currentIndex = useMemo(() => {
+    if (!post) return -1;
+    return activePosts.findIndex((p) => p.slug === slug);
+  }, [activePosts, post, slug]);
+
+  const prevPost = currentIndex > 0 ? activePosts[currentIndex - 1] : null;
+  const nextPost = currentIndex >= 0 && currentIndex < activePosts.length - 1 ? activePosts[currentIndex + 1] : null;
+
+  // Extract Table of Contents from markdown headings
+  const tocItems = useMemo(() => {
+    if (!post || !post.content) return [];
+    const lines = post.content.split('\n');
+    const items = [];
+    lines.forEach((line) => {
+      const match = line.match(/^(#{2,3})\s+(.*)$/);
+      if (match) {
+        const level = match[1].length; // 2 or 3
+        const title = match[2].trim().replace(/\*\*/g, '').replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+        const id = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+        items.push({ level, title, id });
+      }
+    });
+    return items;
+  }, [post]);
+
+  // Target Region / Currency Detection for Badge
+  const regionalBadge = useMemo(() => {
+    if (!post) return null;
+    const t = (post.title + ' ' + (post.tags || []).join(' ') + ' ' + (post.summary || '')).toLowerCase();
+    if (t.includes('usd') || t.includes('united states') || t.includes('california') || t.includes('new york') || t.includes('san francisco')) {
+      return { flag: '🇺🇸', label: 'United States Strategy (USD $)' };
+    }
+    if (t.includes('gbp') || t.includes('united kingdom') || t.includes('london') || t.includes('uk')) {
+      return { flag: '🇬🇧', label: 'United Kingdom Strategy (GBP £)' };
+    }
+    if (t.includes('aed') || t.includes('dubai') || t.includes('abu dhabi') || t.includes('uae')) {
+      return { flag: '🇦🇪', label: 'UAE & Middle East Strategy (AED د.إ)' };
+    }
+    if (t.includes('australi') || t.includes('sydney') || t.includes('aud')) {
+      return { flag: '🇦🇺', label: 'Australia Strategy (AUD A$)' };
+    }
+    if (t.includes('cross-border') || t.includes('global') || t.includes('international')) {
+      return { flag: '🌍', label: 'Cross-Border Global Media Buying' };
+    }
+    return { flag: '🇮🇳', label: 'National & High-Intent Strategy' };
+  }, [post]);
 
   const relatedPosts = useMemo(() => {
     if (!post) return [];
@@ -30,11 +83,16 @@ export const BlogPost = () => {
       .slice(0, 3);
   }, [activePosts, post, slug]);
 
-
-  // Convert markdown content to sanitized HTML
+  // Convert markdown content to sanitized HTML with heading IDs for jump links
   const parsedContent = useMemo(() => {
     if (!post || !post.content) return '';
-    return marked.parse(post.content);
+    const renderer = new marked.Renderer();
+    renderer.heading = function ({ text, depth }) {
+      const plainText = text.replace(/<[^>]*>/g, '').replace(/\*\*/g, '');
+      const id = plainText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+      return `<h${depth} id="${id}">${text}</h${depth}>`;
+    };
+    return marked.parse(post.content, { renderer });
   }, [post]);
 
   const baseSiteUrl = (SITE_CONFIG.siteUrl || 'https://mayankaggarwal-one.vercel.app').replace(/\/+$/, '');
@@ -104,10 +162,10 @@ export const BlogPost = () => {
           textDecoration: 'none',
         }}
       >
-        <XTwitterIcon size={14} color="#ffffff" /> X / Twitter
+        <XTwitterIcon size={14} color="#ffffff" /> X (Twitter)
       </a>
       <a
-        href={`https://api.whatsapp.com/send?text=${encodeURIComponent(`${post?.title || ''} — Read here: ${canonicalUrl}`)}`}
+        href={`https://api.whatsapp.com/send?text=${encodeURIComponent((post?.title || '') + ' — ' + canonicalUrl)}`}
         target="_blank"
         rel="noopener noreferrer nofollow"
         aria-label="Share on WhatsApp"
@@ -124,12 +182,11 @@ export const BlogPost = () => {
           textDecoration: 'none',
         }}
       >
-        <MessageCircle size={14} /> WhatsApp
+        <MessageCircle size={14} color="#ffffff" /> WhatsApp
       </a>
       <button
         onClick={handleCopyLink}
-        type="button"
-        aria-label="Copy link to article"
+        aria-label="Copy article link"
         style={{
           display: 'inline-flex',
           alignItems: 'center',
@@ -145,7 +202,15 @@ export const BlogPost = () => {
           transition: 'all 0.2s ease',
         }}
       >
-        {copied ? <Check size={14} /> : <Copy size={14} />} {copied ? 'Copied!' : 'Copy Link'}
+        {copied ? (
+          <>
+            <Check size={14} /> Link Copied!
+          </>
+        ) : (
+          <>
+            <Copy size={14} /> Copy Link
+          </>
+        )}
       </button>
     </div>
   );
@@ -155,20 +220,20 @@ export const BlogPost = () => {
       <section style={{ minHeight: '80vh', padding: '140px 24px', textAlign: 'center', backgroundColor: 'var(--softwhite)' }}>
         <div style={{ maxWidth: '540px', margin: '0 auto' }}>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '2.5rem', color: 'var(--charcoal)', marginBottom: '16px' }}>
-            Article Not Found
+            Playbook Not Found
           </h1>
           <p style={{ color: 'var(--mutedtext)', marginBottom: '28px' }}>
-            The article you are looking for may have been updated or moved.
+            The playbook you are looking for may have been updated or moved.
           </p>
           <Link to="/blog" className="btn-primary">
-            <ArrowLeft size={16} /> Back to All Articles
+            <ArrowLeft size={16} /> Back to All Playbooks
           </Link>
         </div>
       </section>
     );
   }
 
-  // BlogPosting Schema.org JSON-LD
+  // Schema.org JSON-LD
   const combinedSchemas = [
     getBlogPostingSchema(post),
     getBreadcrumbSchema([
@@ -202,8 +267,9 @@ export const BlogPost = () => {
           />
 
           {/* Article Header */}
-          <header style={{ maxWidth: '860px', margin: '0 auto 40px auto' }}>
-            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '16px', flexWrap: 'wrap' }}>
+          <header style={{ maxWidth: '880px', margin: '0 auto 40px auto' }}>
+            {/* Badges & Meta Bar */}
+            <div style={{ display: 'flex', gap: '8px', alignItems: 'center', marginBottom: '18px', flexWrap: 'wrap' }}>
               <span
                 style={{
                   backgroundColor: 'var(--brand)',
@@ -218,6 +284,26 @@ export const BlogPost = () => {
               >
                 {post.category}
               </span>
+
+              {regionalBadge && (
+                <span
+                  style={{
+                    backgroundColor: 'var(--charcoal)',
+                    color: 'var(--cream)',
+                    fontSize: '0.74rem',
+                    fontWeight: 600,
+                    padding: '4px 12px',
+                    borderRadius: '999px',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                  }}
+                >
+                  <span>{regionalBadge.flag}</span>
+                  <span>{regionalBadge.label}</span>
+                </span>
+              )}
+
               <span style={{ fontSize: '0.82rem', color: 'var(--mutedtext)', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
                 <Calendar size={13} /> {post.date}
               </span>
@@ -228,59 +314,61 @@ export const BlogPost = () => {
               {post.updated && (
                 <>
                   <span style={{ color: 'var(--mutedtext)' }}>·</span>
-                  <span style={{ fontSize: '0.78rem', color: 'var(--gold)', fontWeight: 600 }}>
+                  <span style={{ fontSize: '0.78rem', color: 'var(--gold-text)', fontWeight: 700 }}>
                     Updated {post.updated}
                   </span>
                 </>
               )}
             </div>
 
-            <h1 className="hero-h1 display-hero" style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.15, marginBottom: '20px' }}>
-              {post.h1 || (post.title.length <= 70 ? post.title : (post.seoTitle && post.seoTitle.length <= 70 ? post.seoTitle : post.title.slice(0, 68)))}
+            {/* H1 Heading */}
+            <h1 className="hero-h1 display-hero" style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', lineHeight: 1.18, marginBottom: '24px' }}>
+              {post.h1 || (post.title.length <= 70 ? post.title : (post.seoTitle && post.seoTitle.length <= 70 ? post.seoTitle : post.title))}
             </h1>
 
-            {/* Answer-First Summary Box (AEO Optimization) */}
+            {/* Answer-First Executive Summary Box (AEO & GEO Optimization) */}
             <div
               style={{
                 backgroundColor: 'var(--peach)',
                 borderLeft: '4px solid var(--brand)',
-                padding: '20px 24px',
-                borderRadius: '0 12px 12px 0',
+                padding: '24px',
+                borderRadius: '0 16px 16px 0',
                 marginBottom: '28px',
+                boxShadow: '0 4px 20px rgba(255, 61, 10, 0.05)',
               }}
             >
               <div
                 style={{
                   fontSize: '0.75rem',
-                  fontWeight: 700,
+                  fontWeight: 800,
                   textTransform: 'uppercase',
-                  letterSpacing: '0.05em',
+                  letterSpacing: '0.06em',
                   color: 'var(--brand)',
-                  marginBottom: '8px',
+                  marginBottom: '10px',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px',
                 }}
               >
-                <CheckCircle2 size={14} /> Quick Answer / Key Takeaway
+                <CheckCircle2 size={16} /> Executive Summary & Key Takeaways (AEO Direct Answer)
               </div>
-              <p style={{ margin: 0, fontSize: '1rem', color: 'var(--charcoal)', lineHeight: 1.6, fontWeight: 500 }}>
+              <p style={{ margin: 0, fontSize: '1.02rem', color: 'var(--charcoal)', lineHeight: 1.65, fontWeight: 500 }}>
                 {post.summary}
               </p>
             </div>
 
-            {/* Top Social Share Actions */}
+            {/* Top Share Actions */}
             {renderShareButtons('Share this guide:')}
 
             {/* Featured Image */}
             <div
               style={{
-                borderRadius: '20px',
+                borderRadius: '24px',
                 overflow: 'hidden',
                 aspectRatio: '16 / 9',
-                backgroundColor: 'var(--card-bg)',
+                backgroundColor: 'var(--peach)',
                 border: '1px solid var(--border-color)',
-                boxShadow: '0 8px 30px rgba(0,0,0,0.04)',
+                boxShadow: '0 12px 36px rgba(0,0,0,0.06)',
               }}
             >
               <img
@@ -299,295 +387,456 @@ export const BlogPost = () => {
             </div>
           </header>
 
-          {/* Article Body */}
+          {/* Article Main Layout: Content + Sticky Sidebar */}
           <div
             style={{
-              maxWidth: '820px',
+              maxWidth: '1100px',
               margin: '0 auto',
-              lineHeight: 1.75,
-              fontSize: '1.05rem',
-              color: 'var(--charcoal)',
+              display: 'grid',
+              gridTemplateColumns: tocItems.length > 0 ? 'minmax(0, 1fr) 280px' : 'minmax(0, 1fr)',
+              gap: '48px',
+              alignItems: 'start',
             }}
           >
-            {/* Rendered Markdown Body */}
-            <div
-              className="blog-prose"
-              dangerouslySetInnerHTML={{ __html: parsedContent }}
-              style={{
-                marginBottom: '36px',
-              }}
-            />
-
-            {/* Article Tags */}
-            {post.tags && post.tags.length > 0 && (
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center', margin: '20px 0 28px 0' }}>
-                <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--mutedtext)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                  Tags:
-                </span>
-                {post.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    style={{
-                      fontSize: '0.78rem',
-                      padding: '4px 12px',
-                      backgroundColor: 'var(--card-bg)',
-                      border: '1px solid var(--border-color)',
-                      borderRadius: '999px',
-                      color: 'var(--charcoal)',
-                      fontWeight: 500,
-                    }}
-                  >
-                    #{tag}
-                  </span>
-                ))}
-              </div>
-            )}
-
-            {/* Bottom Social Share Actions */}
-            <div style={{ padding: '20px 0', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)', marginBottom: '40px' }}>
-              {renderShareButtons('Found this valuable? Share with your peers:')}
-            </div>
-
-            {/* VIP Newsletter Dispatch Card */}
+            {/* Primary Content Column */}
             <div
               style={{
-                backgroundColor: 'var(--card-bg)',
-                border: '1px solid var(--border-color)',
-                borderRadius: '20px',
-                padding: '36px',
-                marginBottom: '48px',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.03)',
-                position: 'relative',
-                overflow: 'hidden',
+                minWidth: 0,
+                lineHeight: 1.78,
+                fontSize: '1.05rem',
+                color: 'var(--charcoal)',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px', color: 'var(--brand)', fontWeight: 700, fontSize: '0.8rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
-                <Mail size={16} /> VIP Growth Dispatch
-              </div>
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', color: 'var(--charcoal)', marginBottom: '10px' }}>
-                GET PERFORMANCE MARKETING & AI PLAYBOOKS EVERY TUESDAY
-              </h3>
-              <p style={{ fontSize: '0.92rem', color: 'var(--mutedtext)', lineHeight: 1.6, marginBottom: '20px', maxWidth: '620px' }}>
-                Join 2,500+ D2C brand founders, agency media buyers, and creators in Delhi NCR and worldwide. Zero fluff, real Meta ad tests, ROAS breakdowns, and AI prompt workflows.
-              </p>
-
-              {isSubscribed ? (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '14px 18px', backgroundColor: 'var(--peach)', borderLeft: '4px solid var(--brand)', borderRadius: '8px', color: 'var(--charcoal)', fontWeight: 600, fontSize: '0.9rem' }}>
-                  <CheckCircle2 size={18} color="var(--brand)" />
-                  <span>You're in! Check your inbox next Tuesday for your first growth strategy brief.</span>
+              {/* Mobile Table of Contents (shown on smaller screens) */}
+              {tocItems.length > 0 && (
+                <div
+                  className="mobile-toc-box"
+                  style={{
+                    backgroundColor: 'var(--cream-card)',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '16px',
+                    padding: '20px',
+                    marginBottom: '32px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, fontSize: '0.85rem', color: 'var(--charcoal)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '12px' }}>
+                    <List size={16} color="var(--brand)" /> Quick Navigation Index
+                  </div>
+                  <ul style={{ margin: 0, paddingLeft: '20px', fontSize: '0.9rem', color: 'var(--mutedtext)', lineHeight: 1.6 }}>
+                    {tocItems.map((item, idx) => (
+                      <li key={idx} style={{ marginBottom: '6px' }}>
+                        <a href={`#${item.id}`} style={{ color: 'var(--charcoal)', textDecoration: 'none', fontWeight: item.level === 2 ? 600 : 400 }}>
+                          {item.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              ) : (
-                <form onSubmit={handleNewsletterSubmit} style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', maxWidth: '520px' }}>
-                  <input
-                    type="email"
-                    required
-                    placeholder="Enter your work email address"
-                    value={newsletterEmail}
-                    onChange={(e) => setNewsletterEmail(e.target.value)}
-                    style={{
-                      flex: '1 1 240px',
-                      padding: '12px 16px',
-                      borderRadius: '10px',
-                      border: '1px solid var(--border-color)',
-                      fontSize: '0.9rem',
-                      backgroundColor: 'var(--softwhite)',
-                      color: 'var(--charcoal)',
-                      outline: 'none',
-                    }}
-                  />
-                  <button
-                    type="submit"
-                    className="btn-primary"
-                    style={{ padding: '12px 22px', fontSize: '0.88rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-                  >
-                    Subscribe Free <Send size={14} />
-                  </button>
-                </form>
               )}
-            </div>
 
-            {/* Frequently Asked Questions (FAQ) Section */}
-            {post.faqs && post.faqs.length > 0 && (
-              <section
+              {/* Rendered Markdown Body */}
+              <div
+                className="blog-prose"
+                dangerouslySetInnerHTML={{ __html: parsedContent }}
                 style={{
-                  marginTop: '56px',
-                  paddingTop: '36px',
-                  borderTop: '2px solid var(--border-color)',
+                  marginBottom: '40px',
+                }}
+              />
+
+              {/* Tags */}
+              {post.tags && post.tags.length > 0 && (
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignItems: 'center', margin: '24px 0 32px 0' }}>
+                  <span style={{ fontSize: '0.8rem', fontWeight: 700, color: 'var(--mutedtext)', textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                    Strategic Tags:
+                  </span>
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      style={{
+                        fontSize: '0.78rem',
+                        padding: '4px 12px',
+                        backgroundColor: 'var(--card-bg)',
+                        border: '1px solid var(--border-color)',
+                        borderRadius: '999px',
+                        color: 'var(--charcoal)',
+                        fontWeight: 500,
+                      }}
+                    >
+                      #{tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Bottom Share Actions */}
+              <div style={{ padding: '20px 0', borderTop: '1px solid var(--border-color)', borderBottom: '1px solid var(--border-color)', marginBottom: '40px' }}>
+                {renderShareButtons('Found this playbook valuable? Share with your network:')}
+              </div>
+
+              {/* Frequently Asked Questions (FAQ) Section */}
+              {post.faqs && post.faqs.length > 0 && (
+                <section
+                  style={{
+                    marginTop: '40px',
+                    paddingTop: '32px',
+                    borderTop: '2px solid var(--border-color)',
+                    marginBottom: '48px',
+                  }}
+                >
+                  <div className="editorial-eyebrow brand" style={{ marginBottom: '8px' }}>
+                    Verified FAQ Section
+                  </div>
+                  <h3
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.8rem',
+                      color: 'var(--charcoal)',
+                      marginBottom: '20px',
+                    }}
+                  >
+                    COMMON QUESTIONS ANSWERED
+                  </h3>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                    {post.faqs.map((faq, i) => (
+                      <div
+                        key={i}
+                        style={{
+                          backgroundColor: 'var(--cream-card)',
+                          borderRadius: '16px',
+                          padding: '20px 24px',
+                          border: '1px solid var(--border-color)',
+                        }}
+                      >
+                        <h4
+                          style={{
+                            fontSize: '1.02rem',
+                            fontWeight: 700,
+                            color: 'var(--charcoal)',
+                            marginBottom: '8px',
+                          }}
+                        >
+                          {faq.q}
+                        </h4>
+                        <p
+                          style={{
+                            margin: 0,
+                            fontSize: '0.94rem',
+                            color: 'var(--mutedtext)',
+                            lineHeight: 1.65,
+                          }}
+                        >
+                          {faq.a}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* Author Credibility Card */}
+              <div
+                style={{
+                  backgroundColor: 'var(--purewhite)',
+                  border: '1px solid var(--border-color)',
+                  borderRadius: '20px',
+                  padding: '28px',
+                  display: 'flex',
+                  gap: '20px',
+                  alignItems: 'center',
+                  marginBottom: '48px',
+                  boxShadow: '0 8px 24px rgba(0,0,0,0.03)',
+                  flexWrap: 'wrap',
+                }}
+              >
+                <div
+                  style={{
+                    width: '68px',
+                    height: '68px',
+                    borderRadius: '50%',
+                    overflow: 'hidden',
+                    flexShrink: 0,
+                    border: '2px solid var(--brand)',
+                  }}
+                >
+                  <img
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+                    alt="Mayank Aggarwal"
+                    width="68"
+                    height="68"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  />
+                </div>
+                <div style={{ flex: 1, minWidth: '220px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
+                    <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 800, color: 'var(--charcoal)' }}>
+                      Mayank Aggarwal
+                    </h4>
+                    <span style={{ fontSize: '0.72rem', backgroundColor: 'var(--peach)', color: 'var(--brand)', padding: '2px 8px', borderRadius: '999px', fontWeight: 700 }}>
+                      Specialist & Media Buyer
+                    </span>
+                  </div>
+                  <p style={{ margin: 0, fontSize: '0.86rem', color: 'var(--mutedtext)', lineHeight: 1.5, marginBottom: '12px' }}>
+                    Digital Marketing & AI Specialist at Klikwise. Alumni of Shaheed Bhagat Singh College, University of Delhi. Managing Meta Ads, Google PMax, and generative creative production for international brands.
+                  </p>
+                  <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                    <a
+                      href="https://wa.me/919217756033"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
+                      style={{ padding: '8px 16px', fontSize: '0.8rem', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
+                    >
+                      <MessageCircle size={14} /> WhatsApp Mayank
+                    </a>
+                    <Link
+                      to="/contact"
+                      style={{
+                        padding: '8px 16px',
+                        fontSize: '0.8rem',
+                        fontWeight: 600,
+                        borderRadius: '999px',
+                        border: '1px solid var(--border-color)',
+                        color: 'var(--charcoal)',
+                        textDecoration: 'none',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        backgroundColor: 'var(--card-bg)',
+                      }}
+                    >
+                      Book 30-Min Audit <ArrowRight size={14} />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Prev / Next Article Navigation Cards */}
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+                  gap: '16px',
                   marginBottom: '48px',
                 }}
               >
-                <div className="editorial-eyebrow brand" style={{ marginBottom: '8px' }}>
-                  Frequently Asked Questions
-                </div>
-                <h3
-                  style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '1.8rem',
-                    color: 'var(--charcoal)',
-                    marginBottom: '24px',
-                  }}
-                >
-                  COMMON QUESTIONS ANSWERED
-                </h3>
+                {prevPost && (
+                  <Link
+                    to={`/blog/${prevPost.slug}`}
+                    style={{
+                      padding: '20px',
+                      borderRadius: '16px',
+                      backgroundColor: 'var(--cream-card)',
+                      border: '1px solid var(--border-color)',
+                      textDecoration: 'none',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '6px',
+                      transition: 'border-color 0.2s ease, transform 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--brand)';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--border-color)';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    <span style={{ fontSize: '0.74rem', color: 'var(--mutedtext)', fontWeight: 700, textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                      <ArrowLeft size={12} /> Previous Playbook
+                    </span>
+                    <span style={{ fontSize: '0.92rem', color: 'var(--charcoal)', fontWeight: 700, lineHeight: 1.35 }}>
+                      {prevPost.title}
+                    </span>
+                  </Link>
+                )}
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  {post.faqs.map((faq, i) => (
-                    <div
-                      key={i}
-                      style={{
-                        backgroundColor: 'var(--card-bg)',
-                        borderRadius: '14px',
-                        padding: '20px 24px',
-                        border: '1px solid var(--border-color)',
-                      }}
-                    >
-                      <h4
-                        style={{
-                          fontSize: '1.05rem',
-                          fontWeight: 700,
-                          color: 'var(--charcoal)',
-                          marginBottom: '8px',
-                        }}
-                      >
-                        {faq.q}
-                      </h4>
-                      <p
-                        style={{
-                          margin: 0,
-                          fontSize: '0.95rem',
-                          color: 'var(--mutedtext)',
-                          lineHeight: 1.65,
-                        }}
-                      >
-                        {faq.a}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
+                {nextPost && (
+                  <Link
+                    to={`/blog/${nextPost.slug}`}
+                    style={{
+                      padding: '20px',
+                      borderRadius: '16px',
+                      backgroundColor: 'var(--cream-card)',
+                      border: '1px solid var(--border-color)',
+                      textDecoration: 'none',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '6px',
+                      textAlign: 'right',
+                      transition: 'border-color 0.2s ease, transform 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--brand)';
+                      e.currentTarget.style.transform = 'translateY(-2px)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--border-color)';
+                      e.currentTarget.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    <span style={{ fontSize: '0.74rem', color: 'var(--mutedtext)', fontWeight: 700, textTransform: 'uppercase', display: 'inline-flex', alignItems: 'center', gap: '4px', justifyContent: 'flex-end' }}>
+                      Next Playbook <ArrowRight size={12} />
+                    </span>
+                    <span style={{ fontSize: '0.92rem', color: 'var(--charcoal)', fontWeight: 700, lineHeight: 1.35 }}>
+                      {nextPost.title}
+                    </span>
+                  </Link>
+                )}
+              </div>
+            </div>
 
-            {/* Author Credibility Box (E-E-A-T) */}
-            <div
-              style={{
-                backgroundColor: 'var(--card-bg)',
-                border: '1px solid var(--border-color)',
-                borderRadius: '16px',
-                padding: '28px',
-                display: 'flex',
-                gap: '20px',
-                alignItems: 'center',
-                marginBottom: '48px',
-                flexWrap: 'wrap',
-              }}
-            >
-              <div
+            {/* Desktop Sticky Sidebar (TOC & Strategic Tools) */}
+            {tocItems.length > 0 && (
+              <aside
+                className="desktop-toc-sidebar"
                 style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--brand)',
-                  color: '#FFFDF9',
+                  position: 'sticky',
+                  top: '100px',
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '1.6rem',
-                  fontWeight: 800,
-                  flexShrink: 0,
+                  flexDirection: 'column',
+                  gap: '24px',
                 }}
               >
-                MA
-              </div>
-              <div style={{ flexGrow: 1, minWidth: '240px' }}>
-                <div style={{ fontSize: '0.74rem', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--brand)', fontWeight: 700 }}>
-                  Written by
-                </div>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--charcoal)', marginTop: '2px' }}>
-                  {post.author || 'Mayank Aggarwal'}
-                </div>
-                <p style={{ margin: '6px 0 0 0', fontSize: '0.88rem', color: 'var(--mutedtext)', lineHeight: 1.5 }}>
-                  Digital Marketing & AI Specialist from Delhi, India. Helping brands scale through high-converting Meta Ads, generative AI video workflows, and modern content strategy.
-                </p>
-              </div>
-              <Link to="/about" className="btn-secondary" style={{ padding: '8px 18px', fontSize: '0.82rem' }}>
-                View Bio & Credentials
-              </Link>
-            </div>
-
-            {/* Contextual Contact CTA */}
-            <div
-              style={{
-                backgroundColor: 'var(--charcoal)',
-                color: 'var(--softwhite)',
-                borderRadius: '20px',
-                padding: '36px 32px',
-                textAlign: 'center',
-                marginBottom: '56px',
-              }}
-            >
-              <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.8rem', color: 'var(--softwhite)', marginBottom: '12px' }}>
-                NEED HELP EXECUTING THIS STRATEGY?
-              </h3>
-              <p style={{ maxWidth: '560px', margin: '0 auto 24px auto', fontSize: '0.95rem', color: 'rgba(255, 253, 249, 0.8)', lineHeight: 1.6 }}>
-                Whether you need a full Meta Ads audit, AI video commercial assets, or custom content strategy, let's discuss your next project.
-              </p>
-              <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <Link to="/contact" className="btn-primary">
-                  Start a Project <ArrowRight size={16} />
-                </Link>
-                <a
-                  href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(`Hi Mayank, I just read your article "${post.title}" and would like to discuss working together.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
-                  className="btn-whatsapp"
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+                {/* Table of Contents Card */}
+                <div
+                  style={{
+                    backgroundColor: 'var(--purewhite)',
+                    border: '1px solid var(--border-color)',
+                    borderRadius: '20px',
+                    padding: '24px',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
+                  }}
                 >
-                  <MessageCircle size={16} /> Chat on WhatsApp
-                </a>
-              </div>
-            </div>
-
-            {/* Related Articles */}
-            {relatedPosts.length > 0 && (
-              <section style={{ borderTop: '1px solid var(--border-color)', paddingTop: '40px' }}>
-                <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--charcoal)', marginBottom: '20px' }}>
-                  RELATED ARTICLES & GUIDES
-                </h4>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
-                  {relatedPosts.map((r) => (
-                    <Link
-                      key={r.id}
-                      to={`/blog/${r.slug}`}
-                      style={{
-                        padding: '18px',
-                        backgroundColor: 'var(--card-bg)',
-                        borderRadius: '14px',
-                        border: '1px solid var(--border-color)',
-                        textDecoration: 'none',
-                        color: 'inherit',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        justifyContent: 'space-between',
-                      }}
-                    >
-                      <div>
-                        <span style={{ fontSize: '0.72rem', color: 'var(--brand)', fontWeight: 700, textTransform: 'uppercase' }}>
-                          {r.category}
-                        </span>
-                        <div style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', color: 'var(--charcoal)', marginTop: '6px', lineHeight: 1.3 }}>
-                          {r.title}
-                        </div>
-                      </div>
-                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px', color: 'var(--brand)', fontSize: '0.8rem', fontWeight: 600, marginTop: '14px' }}>
-                        Read Guide <ChevronRight size={13} />
-                      </div>
-                    </Link>
-                  ))}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 800, fontSize: '0.78rem', color: 'var(--charcoal)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '14px' }}>
+                    <List size={15} color="var(--brand)" /> Table of Contents
+                  </div>
+                  <nav>
+                    <ul style={{ margin: 0, padding: 0, listStyle: 'none', fontSize: '0.84rem', lineHeight: 1.5 }}>
+                      {tocItems.map((item, idx) => (
+                        <li key={idx} style={{ marginBottom: '8px', paddingLeft: item.level === 3 ? '12px' : '0' }}>
+                          <a
+                            href={`#${item.id}`}
+                            style={{
+                              color: 'var(--mutedtext)',
+                              textDecoration: 'none',
+                              display: 'block',
+                              fontWeight: item.level === 2 ? 600 : 400,
+                              transition: 'color 0.15s ease',
+                            }}
+                            onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--brand)')}
+                            onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--mutedtext)')}
+                          >
+                            {item.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </nav>
                 </div>
-              </section>
+
+                {/* Free Tool Card */}
+                <div
+                  style={{
+                    backgroundColor: 'var(--peach)',
+                    border: '1px solid rgba(255, 61, 10, 0.2)',
+                    borderRadius: '20px',
+                    padding: '24px',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', fontWeight: 800, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '8px' }}>
+                    <Calculator size={14} /> Free Growth Tool
+                  </div>
+                  <h4 style={{ margin: 0, fontSize: '1rem', fontWeight: 800, color: 'var(--charcoal)', marginBottom: '8px' }}>
+                    Meta & Google Ads ROAS Calculator
+                  </h4>
+                  <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--mutedtext)', lineHeight: 1.5, marginBottom: '16px' }}>
+                    Calculate exact breakeven ROAS, customer CAC, and cash margins across USD, GBP, AED, and INR.
+                  </p>
+                  <Link
+                    to="/tools/meta-ads-roas-calculator"
+                    className="btn-primary"
+                    style={{ width: '100%', padding: '10px 16px', fontSize: '0.8rem', textAlign: 'center', justifyContent: 'center' }}
+                  >
+                    Open Calculator
+                  </Link>
+                </div>
+              </aside>
             )}
           </div>
+
+          {/* Related Articles Section */}
+          {relatedPosts.length > 0 && (
+            <section style={{ marginTop: '80px', paddingTop: '48px', borderTop: '2px solid var(--border-color)' }}>
+              <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+                <div className="editorial-eyebrow brand" style={{ marginBottom: '8px' }}>
+                  Recommended Reading
+                </div>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', color: 'var(--charcoal)', marginBottom: '32px' }}>
+                  RELATED MARKETING & AD PLAYBOOKS
+                </h3>
+
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+                    gap: '24px',
+                  }}
+                >
+                  {relatedPosts.map((rel) => (
+                    <article
+                      key={rel.id}
+                      style={{
+                        backgroundColor: 'var(--purewhite)',
+                        borderRadius: '16px',
+                        overflow: 'hidden',
+                        border: '1px solid var(--border-color)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.transform = 'translateY(-3px)';
+                        e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.06)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = 'none';
+                      }}
+                    >
+                      <Link to={`/blog/${rel.slug}`} style={{ display: 'block', aspectRatio: '16 / 9', overflow: 'hidden' }}>
+                        <img
+                          src={rel.coverImage}
+                          alt={rel.title}
+                          loading="lazy"
+                          width="600"
+                          height="338"
+                          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        />
+                      </Link>
+                      <div style={{ padding: '20px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                        <div style={{ fontSize: '0.74rem', color: 'var(--brand)', fontWeight: 700, textTransform: 'uppercase', marginBottom: '6px' }}>
+                          {rel.category}
+                        </div>
+                        <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.05rem', color: 'var(--charcoal)', lineHeight: 1.35, marginBottom: '8px', flexGrow: 1 }}>
+                          <Link to={`/blog/${rel.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                            {rel.title}
+                          </Link>
+                        </h4>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.78rem', color: 'var(--mutedtext)', marginTop: '12px', paddingTop: '10px', borderTop: '1px solid var(--border-color)' }}>
+                          <span>{rel.readTime}</span>
+                          <Link to={`/blog/${rel.slug}`} style={{ color: 'var(--brand)', fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                            Read <ArrowRight size={12} />
+                          </Link>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            </section>
+          )}
         </div>
       </article>
     </>
