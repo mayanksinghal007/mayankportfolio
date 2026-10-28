@@ -34,8 +34,8 @@ export const BlogPost = () => {
     return activePosts.findIndex((p) => p.slug === slug);
   }, [activePosts, post, slug]);
 
-  const prevPost = currentIndex > 0 ? activePosts[currentIndex - 1] : null;
-  const nextPost = currentIndex >= 0 && currentIndex < activePosts.length - 1 ? activePosts[currentIndex + 1] : null;
+  const prevPost = currentIndex > 0 ? activePosts[currentIndex - 1] : (activePosts.length > 1 ? activePosts[activePosts.length - 1] : null);
+  const nextPost = currentIndex >= 0 && currentIndex < activePosts.length - 1 ? activePosts[currentIndex + 1] : (activePosts.length > 1 ? activePosts[0] : null);
 
   // Extract Table of Contents from markdown headings
   const tocItems = useMemo(() => {
@@ -77,11 +77,37 @@ export const BlogPost = () => {
   }, [post]);
 
   const relatedPosts = useMemo(() => {
-    if (!post) return [];
-    return activePosts
-      .filter((p) => p.slug !== slug && (p.category === post.category || p.tags?.some((t) => post.tags?.includes(t))))
-      .slice(0, 3);
-  }, [activePosts, post, slug]);
+    if (!post || !activePosts.length) return [];
+    const others = activePosts.filter((p) => p.slug !== slug);
+    if (!others.length) return [];
+
+    const sameCategory = others.filter((p) => p.category === post.category);
+    const otherCategory = others.filter((p) => p.category !== post.category);
+
+    const pickRotated = (arr, count, offset) => {
+      if (arr.length <= count) return arr;
+      const res = [];
+      const cleanOffset = Math.abs(offset) % arr.length;
+      for (let i = 0; i < count; i++) {
+        res.push(arr[(cleanOffset + i) % arr.length]);
+      }
+      return res;
+    };
+
+    const categoryPool = sameCategory.length > 0 ? sameCategory : others;
+    const categoryPicks = pickRotated(categoryPool, 4, (currentIndex >= 0 ? currentIndex : 0) * 2);
+
+    const crossPool = otherCategory.length > 0 ? otherCategory : others;
+    const crossPicks = pickRotated(crossPool, 2, (currentIndex >= 0 ? currentIndex : 0) * 3 + 1);
+
+    const combined = [...categoryPicks];
+    for (const p of crossPicks) {
+      if (!combined.some((c) => c.slug === p.slug) && combined.length < 6) {
+        combined.push(p);
+      }
+    }
+    return combined;
+  }, [activePosts, post, slug, currentIndex]);
 
   // Convert markdown content to sanitized HTML with heading IDs for jump links
   const parsedContent = useMemo(() => {

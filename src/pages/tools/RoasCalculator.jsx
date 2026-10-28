@@ -164,7 +164,7 @@ export const RoasCalculator = () => {
   return (
     <div className="editorial-tool-page">
       <SeoHead
-        title="Meta Ads ROAS & Profit Calculator | Global E-Commerce & DTC"
+        title="Meta Ads ROAS & Profit Calculator | Free E-Commerce Tool"
         description="Free Meta Ads ROAS & real net profit calculator for US, UK, and global e-commerce brands. Compute break-even ROAS, POAS, COGS, returns, and contribution margin."
         canonicalPath="/tools/meta-ads-roas-calculator"
         ogType="website"

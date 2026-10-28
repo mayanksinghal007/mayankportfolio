@@ -98,7 +98,7 @@ export const Blog = () => {
   return (
     <>
       <SeoHead
-        title="Marketing & Ad Playbooks: Meta, Google, X & SEO | Mayank Aggarwal"
+        title="Marketing & Ad Playbooks: Meta, Google, SEO | Mayank Aggarwal"
         description="Comprehensive playbooks on Meta Ads, Google PMax, Twitter/X ads, B2B lead gen, viral reels, and modern SEO/AEO/GEO strategies across US, UK, UAE & Global markets."
         canonicalPath="/blog"
         jsonLd={blogSchemas}
