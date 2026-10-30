@@ -4465,3 +4465,367 @@ button {
     stroke-dashoffset: 0;
   }
 }
+
+
+/* ==========================================================================
+   VISUAL STYLE REFERENCE: TECH-SYSTEMS SAAS AGENCY AESTHETIC
+   Capsule Floating Navbar, Corner Brackets, Fanned Hero Deck, Ghost Headlines
+   ========================================================================== */
+
+/* 1. FLOATING PILL CAPSULE NAVBAR */
+.floating-pill-header {
+  position: fixed;
+  top: 18px;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 20px;
+  transition: top 0.4s var(--ease-expo-out);
+}
+
+.floating-pill-capsule {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(14, 14, 14, 0.88);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 9999px;
+  padding: 7px 10px 7px 22px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.04);
+  max-width: 1080px;
+  width: 100%;
+  transition: all 0.4s var(--ease-expo-out);
+}
+
+.floating-pill-header.scrolled .floating-pill-capsule {
+  background: rgba(10, 10, 10, 0.95);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5), 0 0 24px rgba(255, 69, 0, 0.2);
+  border-color: rgba(255, 69, 0, 0.3);
+  transform: scale(0.98);
+}
+
+.pill-brand {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: #FFFDF9;
+  text-decoration: none;
+}
+
+.pill-brand-dot {
+  color: var(--accent-orange);
+  margin: 0 2px;
+}
+
+.pill-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+}
+
+.pill-nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: rgba(255, 253, 249, 0.75);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  transition: all 0.25s var(--ease-expo-out);
+}
+
+.pill-nav-link:hover {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.pill-nav-link.active {
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.14);
+  font-weight: 600;
+}
+
+.pill-cta-btn {
+  background: var(--accent-gradient);
+  color: #FFFFFF !important;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0 4px 16px rgba(255, 69, 0, 0.35);
+  transition: transform 0.3s var(--ease-expo-out), box-shadow 0.3s var(--ease-expo-out);
+}
+
+.pill-cta-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 22px rgba(255, 69, 0, 0.55);
+}
+
+/* 2. SYSTEM LABELS & CORNER-BRACKET AESTHETIC */
+.system-meta-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-orange);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.system-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  display: inline-block;
+  box-shadow: 0 0 8px #10B981;
+}
+
+.has-corner-brackets {
+  position: relative;
+}
+
+.has-corner-brackets::before,
+.has-corner-brackets::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-color: rgba(255, 69, 0, 0.45);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.has-corner-brackets::before {
+  top: 10px;
+  left: 10px;
+  border-top: 1.5px solid;
+  border-left: 1.5px solid;
+}
+
+.has-corner-brackets::after {
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1.5px solid;
+  border-right: 1.5px solid;
+}
+
+/* Crosshair + corner marks */
+.crosshair-corner {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1;
+  color: rgba(255, 69, 0, 0.4);
+  pointer-events: none;
+  user-select: none;
+}
+.crosshair-tl { top: 8px; left: 10px; }
+.crosshair-tr { top: 8px; right: 10px; }
+.crosshair-bl { bottom: 8px; left: 10px; }
+.crosshair-br { bottom: 8px; right: 10px; }
+
+/* 3. TIMELINE RULER & TICK-MARK DIVIDER */
+.ruler-divider {
+  position: relative;
+  width: 100%;
+  height: 26px;
+  margin: 48px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ruler-track {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(25, 25, 25, 0.25) 20%, rgba(25, 25, 25, 0.25) 80%, transparent 100%);
+  position: relative;
+}
+
+.ruler-ticks {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(25, 25, 25, 0.35) 0,
+    rgba(25, 25, 25, 0.35) 1px,
+    transparent 1px,
+    transparent 16px
+  );
+  height: 8px;
+  top: -4px;
+}
+
+.ruler-playhead {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--accent-orange);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  top: -12px;
+  animation: rulerScan 9s ease-in-out infinite alternate;
+}
+
+@keyframes rulerScan {
+  0% { left: 8%; }
+  100% { left: 92%; }
+}
+
+/* 4. FANNED STACKED CARDS COMPOSITION */
+.fanned-deck-container {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.fanned-card {
+  position: absolute;
+  width: 88%;
+  max-width: 400px;
+  border-radius: 20px;
+  padding: 24px;
+  background: #161412;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+  color: #FFFDF9;
+  transform-origin: center bottom;
+  transition: transform 0.5s var(--ease-expo-out), box-shadow 0.5s var(--ease-expo-out), border-color 0.4s ease;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.fanned-card-1 {
+  transform: rotate(-7deg) translateY(12px) translateX(-28px);
+  z-index: 1;
+  border-color: rgba(255, 69, 0, 0.35);
+}
+
+.fanned-card-2 {
+  transform: rotate(-2deg) translateY(0px) translateX(-10px);
+  z-index: 2;
+  border-color: rgba(255, 184, 0, 0.35);
+}
+
+.fanned-card-3 {
+  transform: rotate(4deg) translateY(-10px) translateX(12px);
+  z-index: 3;
+  border-color: rgba(255, 69, 0, 0.45);
+}
+
+.fanned-card-4 {
+  transform: rotate(8deg) translateY(6px) translateX(30px);
+  z-index: 4;
+  border-color: rgba(255, 122, 69, 0.35);
+}
+
+.fanned-card:hover {
+  transform: rotate(0deg) translateY(-32px) scale(1.05) !important;
+  z-index: 20 !important;
+  box-shadow: 0 35px 80px rgba(255, 69, 0, 0.3), 0 0 30px rgba(255, 69, 0, 0.2);
+  border-color: var(--accent-orange) !important;
+}
+
+/* 5. WORKFLOW PIPELINE BAR */
+.workflow-pipeline-bar {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 22px;
+  background: rgba(14, 14, 14, 0.9);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: #ECECEC;
+  margin-top: 24px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+}
+
+.workflow-pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 10px #10B981;
+  animation: pulseLive 2s infinite;
+}
+
+@keyframes pulseLive {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* 6. GIANT GHOST HEADLINE TEXT */
+.giant-ghost-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.giant-ghost-text {
+  position: absolute;
+  top: -10%;
+  left: -2%;
+  font-family: var(--font-display);
+  font-size: clamp(5.5rem, 15vw, 14rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(25, 25, 25, 0.05);
+  line-height: 0.85;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  white-space: nowrap;
+  animation: ghostDrift 24s ease-in-out infinite alternate;
+}
+
+.section-dark .giant-ghost-text {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.04);
+}
+
+@keyframes ghostDrift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-35px); }
+}
+
+/* 7. PEOPLE / PHOTOGRAPHY DUOTONE HOVER */
+.photo-duotone-shift {
+  filter: grayscale(100%) contrast(110%);
+  transition: filter 0.45s var(--ease-expo-out), transform 0.45s var(--ease-expo-out);
+}
+
+.photo-duotone-shift:hover {
+  filter: grayscale(0%) contrast(100%);
+  transform: scale(1.03);
+}
+
+@keyframes soundwavePulse {
+  0% { transform: scaleY(0.25); opacity: 0.4; }
+  100% { transform: scaleY(1); opacity: 1; }
+}

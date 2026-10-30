@@ -17,6 +17,8 @@ import { useSite } from '../context/SiteContext';
 import { CtaBanner } from '../components/CtaBanner';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { GiantGhostHeading } from '../components/GiantGhostHeading';
+import { RulerDivider } from '../components/RulerDivider';
 
 const serviceIcons = {
   'performance-marketing': TrendingUp,
@@ -82,10 +84,15 @@ export const Services = () => {
       />
 
       {/* SERVICES HEADER */}
-      <section className="page-hero-pad">
-        <div className="container">
+      <section className="page-hero-pad giant-ghost-container">
+        <GiantGhostHeading text="CAPABILITIES" offset="-4%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Breadcrumbs items={[{ name: 'Services', path: '/services' }]} />
           <div style={{ maxWidth: '820px' }}>
+            <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+              <span className="system-status-dot" />
+              <span>SYSTEM 03 // FULL-STACK CAPABILITIES</span>
+            </div>
             <span className="editorial-eyebrow">Full-Stack Offerings</span>
             <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>
               SERVICES ENGINEERED FOR{' '}
@@ -98,6 +105,9 @@ export const Services = () => {
         </div>
       </section>
 
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 03 // SPECIALIZED SERVICES ARCHITECTURE" />
+
       {/* ALL 7 SERVICES GRID */}
       <section className="section-pad" style={{ paddingTop: '20px' }}>
         <div className="container">
@@ -106,7 +116,11 @@ export const Services = () => {
               const IconComponent = serviceIcons[s.slug] || Sparkles;
 
               return (
-                <div key={s.slug} className="service-card card-awwwards-lift" id={s.slug} data-cursor="VIEW">
+                <div key={s.slug} className="service-card card-awwwards-lift has-corner-brackets" id={s.slug} data-cursor="VIEW">
+                  <span className="crosshair-corner crosshair-tl">+</span>
+                  <span className="crosshair-corner crosshair-tr">+</span>
+                  <span className="crosshair-corner crosshair-bl">+</span>
+                  <span className="crosshair-corner crosshair-br">+</span>
                   <div>
                     <div className="service-card-top">
                       <span className="service-num">{s.num}</span>

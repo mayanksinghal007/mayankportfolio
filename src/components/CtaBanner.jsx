@@ -16,8 +16,16 @@ export const CtaBanner = ({
   return (
     <section className="section-pad" style={{ paddingTop: '50px' }}>
       <div className="container">
-        <div className="cta-banner">
+        <div className="cta-banner has-corner-brackets">
+          <span className="crosshair-corner crosshair-tl" style={{ color: 'rgba(255, 69, 0, 0.4)' }}>+</span>
+          <span className="crosshair-corner crosshair-tr" style={{ color: 'rgba(255, 69, 0, 0.4)' }}>+</span>
+          <span className="crosshair-corner crosshair-bl" style={{ color: 'rgba(255, 69, 0, 0.4)' }}>+</span>
+          <span className="crosshair-corner crosshair-br" style={{ color: 'rgba(255, 69, 0, 0.4)' }}>+</span>
           <div className="cta-banner-content">
+            <div className="system-meta-label" style={{ marginBottom: '14px', justifyContent: 'center', borderColor: 'rgba(255, 255, 255, 0.15)', color: 'rgba(255, 253, 249, 0.8)' }}>
+              <span className="system-status-dot" />
+              <span>SYSTEM 07 // INTAKE & DISCOVERY</span>
+            </div>
             <span className="editorial-eyebrow gold" style={{ marginBottom: '16px' }}>
               {eyebrow}
             </span>

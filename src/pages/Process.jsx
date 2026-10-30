@@ -14,6 +14,8 @@ import { CtaBanner } from '../components/CtaBanner';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { getBreadcrumbSchema } from '../utils/seoSchemas';
+import { GiantGhostHeading } from '../components/GiantGhostHeading';
+import { RulerDivider } from '../components/RulerDivider';
 
 export const Process = () => {
   return (
@@ -33,10 +35,15 @@ export const Process = () => {
       />
 
       {/* PROCESS HEADER */}
-      <section className="page-hero-pad">
-        <div className="container">
+      <section className="page-hero-pad giant-ghost-container">
+        <GiantGhostHeading text="METHODOLOGY" offset="-4%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Breadcrumbs items={[{ name: 'Process & Workflow', path: '/process' }]} />
           <div style={{ maxWidth: '820px' }}>
+            <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+              <span className="system-status-dot" />
+              <span>SYSTEM 04 // 4-STAGE EXECUTION ENGINE</span>
+            </div>
             <span className="editorial-eyebrow">Proven Framework</span>
             <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>
               HOW WE COLLABORATE:{' '}
@@ -49,6 +56,9 @@ export const Process = () => {
         </div>
       </section>
 
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 04 // 4-PHASE TIMELINE" />
+
       {/* 4-STAGE TIMELINE DETAILED SECTION */}
       <section className="section-pad" style={{ paddingTop: '10px' }}>
         <div className="container">
@@ -56,8 +66,12 @@ export const Process = () => {
             {PROCESS_STEPS.map((step, idx) => (
               <div
                 key={step.step}
-                className="process-step-card"
+                className="process-step-card has-corner-brackets"
               >
+                <span className="crosshair-corner crosshair-tl">+</span>
+                <span className="crosshair-corner crosshair-tr">+</span>
+                <span className="crosshair-corner crosshair-bl">+</span>
+                <span className="crosshair-corner crosshair-br">+</span>
                 {/* Big Step Number */}
                 <div>
                   <div

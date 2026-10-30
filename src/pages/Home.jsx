@@ -27,6 +27,9 @@ import { ToolsMarquee } from '../components/ToolsMarquee';
 import { getPersonSchema, getOrganizationSchema, getLocalBusinessSchema, getWebSiteSchema } from '../utils/seoSchemas';
 import { FEATURED_BLOG_POSTS } from '../data/featuredBlogs';
 import { MagneticButton } from '../components/Navbar';
+import { FannedCardsDeck } from '../components/FannedCardsDeck';
+import { RulerDivider } from '../components/RulerDivider';
+import { GiantGhostHeading } from '../components/GiantGhostHeading';
 
 // Interactive Terminal Scramble Glitch Effect for "ai-powered"
 const ScrambleText = ({ text = 'ai-powered', duration = 650 }) => {
@@ -303,6 +306,11 @@ export const Home = () => {
         <div className="container hero-grid">
           {/* Hero Left Content */}
           <div>
+            <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+              <span className="system-status-dot" />
+              <span>● STUDIO_LIVE [V1.0] · PERFORMANCE & AI CREATIVE</span>
+            </div>
+
             <div className="hero-tag">
               <span className="pulse-dot" />
               <span>{site.title} · Global Remote / US & Worldwide</span>
@@ -370,6 +378,7 @@ export const Home = () => {
                     height="60"
                     fetchPriority="high"
                     decoding="async"
+                    className="photo-duotone-shift"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -459,74 +468,18 @@ export const Home = () => {
             </a>
           </div>
 
-          {/* Hero Right Visual Showreel Card with 3D Parallax Tilt & Conic Rotating Border */}
-          <div>
-            <ParallaxTiltCard className="showreel-card-awwwards showreel-card" data-cursor="PLAY">
-              <div className="showreel-inner">
-                <div className="hero-card-badge">
-                  <Sparkles size={13} />
-                  <span>Featured Showreel 2026</span>
-                </div>
-
-                <div className="hero-media-window">
-                  <picture>
-                    <source media="(max-width: 640px)" srcSet="/images/hero-showreel-mobile.webp" type="image/webp" />
-                    <source srcSet="/images/hero-showreel.webp" type="image/webp" />
-                    <img
-                      src={mediaAssets.home_hero_visual?.url || "/images/hero-showreel.jpg"}
-                      alt={mediaAssets.home_hero_visual?.alt || "Mayank Aggarwal AI Showreel"}
-                      className="hero-media-bg"
-                      width="800"
-                      height="533"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </picture>
-                  <div className="hero-media-overlay" />
-
-                  <div className="hero-media-content">
-                    <button
-                      onClick={() =>
-                        handleOpenMedia({
-                          title: mediaAssets.home_hero_visual?.title || 'Mayank Aggarwal — Creative & AI Showreel',
-                          overview:
-                            mediaAssets.home_hero_visual?.subtitle || 'A high-octane montage of generative AI video, 3D typography, cinematic motion grading, and Meta ad campaign performance highlights.',
-                          image:
-                            mediaAssets.home_hero_visual?.url || '/images/hero-showreel.jpg',
-                          videoUrl: mediaAssets.home_hero_visual?.videoUrl || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                          hasVideoDemo: true,
-                          tags: ['Runway Gen-3', 'ElevenLabs', 'Meta Ads', 'Editorial Cut'],
-                        })
-                      }
-                      className="hero-media-play"
-                      title="Watch Showreel"
-                      aria-label="Watch Showreel video demonstration"
-                    >
-                      <Play size={24} style={{ marginLeft: '3px' }} />
-                    </button>
-
-                    <span className="editorial-eyebrow gold" style={{ fontSize: '0.7rem' }}>
-                      Mayank Studio Production
-                    </span>
-                    <p className="hero-showreel-title" style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 700, color: 'var(--softwhite)', marginTop: '4px' }}>
-                      {mediaAssets.home_hero_visual?.title || 'THE GENERATIVE ERA'}
-                    </p>
-                    <p style={{ fontSize: '0.82rem', color: 'rgba(255, 253, 249, 0.75)', marginTop: '4px' }}>
-                      {mediaAssets.home_hero_visual?.subtitle || 'Click to preview video & audio capabilities'}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Floating Brand Pill */}
-                <div className="hero-metrics-pill">
-                  <div className="pill-val">Klikwise</div>
-                  <div className="pill-lbl">Digital & AI Studio</div>
-                </div>
-              </div>
-            </ParallaxTiltCard>
+          {/* Hero Right Visual: Fanned Stacked Cards Composition & Live Pipeline Status */}
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <FannedCardsDeck
+              onOpenShowreel={handleOpenMedia}
+              showreelAsset={mediaAssets.home_hero_visual}
+            />
           </div>
         </div>
       </section>
+
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 01 // CAPABILITIES & WORKFLOW" />
 
       {/* MARQUEE TICKER STRIP */}
       <div className="ticker-strip">
@@ -544,9 +497,14 @@ export const Home = () => {
       <ToolsMarquee />
 
       {/* CORE PILLARS / CAPABILITIES */}
-      <section className="section-pad" id="pillars">
-        <div className="container">
+      <section className="section-pad giant-ghost-container" id="pillars">
+        <GiantGhostHeading text="ACCELERATE" offset="-3%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-head reveal-on-scroll">
+            <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+              <span className="system-status-dot" />
+              <span>SYSTEM 01 // SELECTED CAPABILITIES</span>
+            </div>
             <span className="editorial-eyebrow">Selected Capabilities</span>
             <h2 className="display-title section-title">THREE WAYS I ACCELERATE BRANDS.</h2>
             <p className="section-desc">
@@ -562,7 +520,11 @@ export const Home = () => {
             }}
           >
             {/* Pillar 1 */}
-            <div className="service-card card-awwwards-lift" style={{ backgroundColor: 'var(--purewhite)' }}>
+            <div className="service-card card-awwwards-lift has-corner-brackets" style={{ backgroundColor: 'var(--purewhite)' }}>
+              <span className="crosshair-corner crosshair-tl">+</span>
+              <span className="crosshair-corner crosshair-tr">+</span>
+              <span className="crosshair-corner crosshair-bl">+</span>
+              <span className="crosshair-corner crosshair-br">+</span>
               <div>
                 <div className="service-card-top">
                   <span className="service-num">01</span>
@@ -586,7 +548,11 @@ export const Home = () => {
             </div>
 
             {/* Pillar 2 */}
-            <div className="service-card card-awwwards-lift" style={{ backgroundColor: 'var(--purewhite)' }}>
+            <div className="service-card card-awwwards-lift has-corner-brackets" style={{ backgroundColor: 'var(--purewhite)' }}>
+              <span className="crosshair-corner crosshair-tl">+</span>
+              <span className="crosshair-corner crosshair-tr">+</span>
+              <span className="crosshair-corner crosshair-bl">+</span>
+              <span className="crosshair-corner crosshair-br">+</span>
               <div>
                 <div className="service-card-top">
                   <span className="service-num">02</span>
@@ -610,7 +576,11 @@ export const Home = () => {
             </div>
 
             {/* Pillar 3 */}
-            <div className="service-card card-awwwards-lift card-featured-glow" style={{ backgroundColor: 'var(--card-dark)', color: 'var(--softwhite)', borderColor: 'rgba(255, 184, 0, 0.25)' }}>
+            <div className="service-card card-awwwards-lift card-featured-glow has-corner-brackets" style={{ backgroundColor: 'var(--card-dark)', color: 'var(--softwhite)', borderColor: 'rgba(255, 184, 0, 0.25)' }}>
+              <span className="crosshair-corner crosshair-tl" style={{ color: 'rgba(255, 184, 0, 0.4)' }}>+</span>
+              <span className="crosshair-corner crosshair-tr" style={{ color: 'rgba(255, 184, 0, 0.4)' }}>+</span>
+              <span className="crosshair-corner crosshair-bl" style={{ color: 'rgba(255, 184, 0, 0.4)' }}>+</span>
+              <span className="crosshair-corner crosshair-br" style={{ color: 'rgba(255, 184, 0, 0.4)' }}>+</span>
               <div style={{ position: 'relative', zIndex: 1 }}>
                 <div className="service-card-top">
                   <span className="service-num" style={{ color: 'var(--accent-amber)' }}>03</span>
@@ -642,11 +612,19 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 02 // PERFORMANCE SHOWCASE" />
+
       {/* SELECTED PORTFOLIO SHOWCASE */}
-      <section className="section-pad" style={{ backgroundColor: 'var(--cream-subtle)' }}>
-        <div className="container">
+      <section className="section-pad giant-ghost-container" style={{ backgroundColor: 'var(--cream-subtle)' }}>
+        <GiantGhostHeading text="SHOWCASE" offset="-3%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="reveal-on-scroll" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '44px' }}>
             <div>
+              <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+                <span className="system-status-dot" />
+                <span>SYSTEM 02 // PERFORMANCE SHOWCASE</span>
+              </div>
               <span className="editorial-eyebrow">Case Studies & Showcase</span>
               <h2 className="display-title section-title">REAL WORK. HONEST PROCESS.</h2>
               <p style={{ color: 'var(--mutedtext)', fontSize: '0.92rem', marginTop: '6px' }}>
@@ -660,7 +638,11 @@ export const Home = () => {
 
           <div className="portfolio-grid">
             {featuredProjects.map((project) => (
-              <div key={project.id} className="project-card card-awwwards-lift" data-cursor="VIEW">
+              <div key={project.id} className="project-card card-awwwards-lift has-corner-brackets" data-cursor="VIEW">
+                <span className="crosshair-corner crosshair-tl">+</span>
+                <span className="crosshair-corner crosshair-tr">+</span>
+                <span className="crosshair-corner crosshair-bl">+</span>
+                <span className="crosshair-corner crosshair-br">+</span>
                 <div
                   className="project-media-wrap"
                   style={{ cursor: 'pointer' }}
@@ -669,7 +651,7 @@ export const Home = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="project-thumb"
+                    className="project-thumb photo-duotone-shift"
                     width="600"
                     height="400"
                     loading="lazy"
@@ -777,10 +759,18 @@ export const Home = () => {
       {/* ADS & CREATIVE SHOWCASE SECTION */}
       <AdsSection showViewAllLink={true} limit={6} />
 
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 03 // VALUE ARCHITECTURE" />
+
       {/* WHY CHOOSE ME SECTION */}
-      <section className="section-pad">
-        <div className="container">
+      <section className="section-pad giant-ghost-container">
+        <GiantGhostHeading text="ADVANTAGE" offset="-3%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-head center">
+            <div className="system-meta-label" style={{ marginBottom: '14px', justifyContent: 'center' }}>
+              <span className="system-status-dot" />
+              <span>SYSTEM 03 // OPERATOR METRICS</span>
+            </div>
             <span className="editorial-eyebrow">Why Partner With Me</span>
             <h2 className="display-title section-title">THE ADVANTAGE OF A MODERN SPECIALIST.</h2>
             <p className="section-desc">
@@ -798,7 +788,7 @@ export const Home = () => {
             {WHY_CHOOSE_ME.map((item, idx) => (
               <div
                 key={idx}
-                className="card-awwwards-lift"
+                className="card-awwwards-lift has-corner-brackets"
                 style={{
                   backgroundColor: 'var(--purewhite)',
                   border: '1px solid var(--border-color)',
@@ -806,6 +796,10 @@ export const Home = () => {
                   padding: '32px 28px',
                 }}
               >
+                <span className="crosshair-corner crosshair-tl">+</span>
+                <span className="crosshair-corner crosshair-tr">+</span>
+                <span className="crosshair-corner crosshair-bl">+</span>
+                <span className="crosshair-corner crosshair-br">+</span>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                   <span
                     style={{
@@ -834,10 +828,18 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 04 // 4-STAGE PIPELINE" />
+
       {/* WORKING PROCESS PREVIEW */}
-      <section className="section-pad section-dark" style={{ backgroundColor: 'var(--charcoal)', color: 'var(--softwhite)' }}>
-        <div className="container">
+      <section className="section-pad section-dark giant-ghost-container" style={{ backgroundColor: 'var(--charcoal)', color: 'var(--softwhite)' }}>
+        <GiantGhostHeading text="METHODOLOGY" offset="-3%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-head">
+            <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+              <span className="system-status-dot" />
+              <span>SYSTEM 04 // 4-STAGE METHODOLOGY</span>
+            </div>
             <span className="editorial-eyebrow gold">The Methodology</span>
             <h2 className="display-title section-title" style={{ color: 'var(--softwhite)' }}>
               FROM AUDIT TO ITERATIVE SCALING.
@@ -851,13 +853,17 @@ export const Home = () => {
             {PROCESS_STEPS.map((s) => (
               <div
                 key={s.step}
-                className="process-card card-awwwards-lift"
+                className="process-card card-awwwards-lift has-corner-brackets"
                 style={{
                   backgroundColor: 'var(--card-dark)',
                   borderColor: 'rgba(255, 255, 255, 0.08)',
                   color: 'var(--softwhite)',
                 }}
               >
+                <span className="crosshair-corner crosshair-tl" style={{ color: 'rgba(255, 184, 0, 0.35)' }}>+</span>
+                <span className="crosshair-corner crosshair-tr" style={{ color: 'rgba(255, 184, 0, 0.35)' }}>+</span>
+                <span className="crosshair-corner crosshair-bl" style={{ color: 'rgba(255, 184, 0, 0.35)' }}>+</span>
+                <span className="crosshair-corner crosshair-br" style={{ color: 'rgba(255, 184, 0, 0.35)' }}>+</span>
                 <div>
                   <div className="process-step-num">{s.step}</div>
                   <h3 className="process-card-title" style={{ color: 'var(--softwhite)' }}>
@@ -890,6 +896,9 @@ export const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 05 // VERIFIED HISTORY" />
 
       {/* EXPERIENCE SNAPSHOT */}
       <section className="section-pad">
@@ -1118,10 +1127,15 @@ export const Home = () => {
       </section>
 
       {/* LATEST FROM THE BLOG SECTION */}
-      <section className="section-padding" style={{ backgroundColor: 'var(--peach)' }}>
-        <div className="container">
+      <section className="section-padding giant-ghost-container" style={{ backgroundColor: 'var(--peach)' }}>
+        <GiantGhostHeading text="PLAYBOOKS" offset="-4%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="section-head reveal-on-scroll" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
             <div>
+              <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+                <span className="system-status-dot" />
+                <span>SYSTEM 06 // KNOWLEDGE ENGINE</span>
+              </div>
               <span className="editorial-eyebrow">Tactical Playbooks & Guides</span>
               <h2 className="display-title section-title">LATEST FROM THE BLOG.</h2>
             </div>
@@ -1140,7 +1154,7 @@ export const Home = () => {
             {((blogPosts && blogPosts.length > 0) ? blogPosts.slice(0, 3) : FEATURED_BLOG_POSTS).map((post) => (
               <article
                 key={post.id}
-                className="portfolio-card"
+                className="portfolio-card has-corner-brackets"
                 style={{
                   backgroundColor: 'var(--softwhite)',
                   borderRadius: '18px',
@@ -1150,6 +1164,10 @@ export const Home = () => {
                   flexDirection: 'column',
                 }}
               >
+                <span className="crosshair-corner crosshair-tl">+</span>
+                <span className="crosshair-corner crosshair-tr">+</span>
+                <span className="crosshair-corner crosshair-bl">+</span>
+                <span className="crosshair-corner crosshair-br">+</span>
                 <Link
                   to={`/blog/${post.slug}`}
                   style={{
@@ -1165,6 +1183,7 @@ export const Home = () => {
                     loading="lazy"
                     width="1200"
                     height="675"
+                    className="photo-duotone-shift"
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => {
                       e.currentTarget.onerror = null;

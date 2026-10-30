@@ -7,6 +7,8 @@ import { CtaBanner } from '../components/CtaBanner';
 import { PORTFOLIO_NOTE } from '../config/site';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { GiantGhostHeading } from '../components/GiantGhostHeading';
+import { RulerDivider } from '../components/RulerDivider';
 
 const CATEGORIES = [
   'All',
@@ -61,10 +63,15 @@ export const Portfolio = () => {
       />
 
       {/* PORTFOLIO HEADER */}
-      <section className="page-hero-pad">
-        <div className="container">
+      <section className="page-hero-pad giant-ghost-container">
+        <GiantGhostHeading text="SHOWCASE" offset="-4%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Breadcrumbs items={[{ name: 'Portfolio', path: '/portfolio' }]} />
           <div style={{ maxWidth: '820px' }}>
+            <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+              <span className="system-status-dot" />
+              <span>SYSTEM 02 // CASE STUDIES & CREATIVE WORK</span>
+            </div>
             <span className="editorial-eyebrow">Case Studies & Creative Showcase</span>
             <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>
               REAL WORK.{' '}
@@ -108,6 +115,9 @@ export const Portfolio = () => {
         </div>
       </section>
 
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 02 // PERFORMANCE ARTIFACTS" />
+
       {/* PORTFOLIO GRID */}
       <section className="section-pad" style={{ paddingTop: '10px' }}>
         <div className="container">
@@ -137,7 +147,11 @@ export const Portfolio = () => {
           ) : (
             <div className="portfolio-grid">
               {filteredProjects.map((project) => (
-                <div key={project.id} className="project-card card-awwwards-lift" data-cursor="VIEW">
+                <div key={project.id} className="project-card card-awwwards-lift has-corner-brackets" data-cursor="VIEW">
+                  <span className="crosshair-corner crosshair-tl">+</span>
+                  <span className="crosshair-corner crosshair-tr">+</span>
+                  <span className="crosshair-corner crosshair-bl">+</span>
+                  <span className="crosshair-corner crosshair-br">+</span>
                   <div
                     className="project-media-wrap"
                     style={{ cursor: 'pointer' }}
@@ -146,7 +160,7 @@ export const Portfolio = () => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="project-thumb"
+                      className="project-thumb photo-duotone-shift"
                       width="600"
                       height="400"
                       loading="lazy"

@@ -22,6 +22,8 @@ import {
 } from '../data/initialData';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { GiantGhostHeading } from '../components/GiantGhostHeading';
+import { RulerDivider } from '../components/RulerDivider';
 
 import { getPersonSchema, getOrganizationSchema, getLocalBusinessSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
 
@@ -56,11 +58,16 @@ export const About = () => {
       </SeoHead>
 
       {/* ABOUT HEADER SECTION */}
-      <section className="page-hero-pad">
-        <div className="container">
+      <section className="page-hero-pad giant-ghost-container">
+        <GiantGhostHeading text="ARCHITECT" offset="-4%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Breadcrumbs items={[{ name: 'About Mayank', path: '/about' }]} />
           <div className="hero-grid-split">
             <div>
+              <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+                <span className="system-status-dot" />
+                <span>SYSTEM 02 // ARCHITECT & OPERATOR PROFILE</span>
+              </div>
               <span className="editorial-eyebrow">About Mayank Aggarwal</span>
               <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>
                 CREATIVE VISION.{' '}
@@ -115,6 +122,7 @@ export const About = () => {
             {/* Profile Editorial Card */}
             <div>
               <div
+                className="has-corner-brackets"
                 style={{
                   position: 'relative',
                   backgroundColor: 'var(--charcoal)',
@@ -123,6 +131,10 @@ export const About = () => {
                   boxShadow: 'var(--shadow-lg)',
                 }}
               >
+                <span className="crosshair-corner crosshair-tl" style={{ color: 'rgba(255, 69, 0, 0.4)' }}>+</span>
+                <span className="crosshair-corner crosshair-tr" style={{ color: 'rgba(255, 69, 0, 0.4)' }}>+</span>
+                <span className="crosshair-corner crosshair-bl" style={{ color: 'rgba(255, 69, 0, 0.4)' }}>+</span>
+                <span className="crosshair-corner crosshair-br" style={{ color: 'rgba(255, 69, 0, 0.4)' }}>+</span>
                 <div
                   style={{
                     position: 'relative',
@@ -141,6 +153,7 @@ export const About = () => {
                       height="1106"
                       fetchPriority="high"
                       decoding="async"
+                      className="photo-duotone-shift"
                       style={{
                         width: '100%',
                         height: '100%',
@@ -200,6 +213,9 @@ export const About = () => {
           </div>
         </div>
       </section>
+
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 02 // CAREER TIMELINE & RIGOR" />
 
       {/* AUTHORITATIVE ENTITY DETAILS (NAP & GEO CONSISTENCY) */}
       <section className="section-pad" style={{ paddingTop: '0px', paddingBottom: '40px' }}>

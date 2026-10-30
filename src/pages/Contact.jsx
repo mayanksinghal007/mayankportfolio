@@ -15,6 +15,8 @@ import { LinkedinIcon, InstagramIcon } from '../components/SocialIcons';
 import { useSite } from '../context/SiteContext';
 import { SeoHead } from '../components/SeoHead';
 import { Breadcrumbs } from '../components/Breadcrumbs';
+import { GiantGhostHeading } from '../components/GiantGhostHeading';
+import { RulerDivider } from '../components/RulerDivider';
 
 import { getOrganizationSchema, getLocalBusinessSchema, getBreadcrumbSchema } from '../utils/seoSchemas';
 
@@ -268,10 +270,15 @@ export const Contact = () => {
       />
 
       {/* CONTACT HEADER */}
-      <section className="page-hero-pad">
-        <div className="container">
+      <section className="page-hero-pad giant-ghost-container">
+        <GiantGhostHeading text="DISCOVERY" offset="-4%" />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <Breadcrumbs items={[{ name: 'Contact', path: '/contact' }]} />
           <div style={{ maxWidth: '820px' }}>
+            <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+              <span className="system-status-dot" />
+              <span>SYSTEM 06 // CLIENT INTAKE & DISCOVERY</span>
+            </div>
             <span className="editorial-eyebrow">Get In Touch</span>
             <h1 className="hero-h1 display-hero" style={{ marginTop: '16px' }}>
               LET'S BUILD SOMETHING{' '}
@@ -283,6 +290,9 @@ export const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* RULER TRACK DIVIDER */}
+      <RulerDivider label="SYSTEM 06 // DIRECT ENCRYPTION & DISPATCH" />
 
       {/* CONTACT MAIN GRID */}
       <section className="section-pad" style={{ paddingTop: '10px' }}>
@@ -390,7 +400,11 @@ export const Contact = () => {
 
             {/* Right Column: Interactive Brief Form */}
             <div>
-              <div className="contact-form-card">
+              <div className="contact-form-card has-corner-brackets">
+                <span className="crosshair-corner crosshair-tl">+</span>
+                <span className="crosshair-corner crosshair-tr">+</span>
+                <span className="crosshair-corner crosshair-bl">+</span>
+                <span className="crosshair-corner crosshair-br">+</span>
                 {isSubmitted ? (
                   <div style={{ textAlign: 'center', padding: '36px 12px' }}>
                     <div

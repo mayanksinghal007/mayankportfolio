@@ -20,3 +20,4 @@ All frontend features, interactive components, and animations in this project fo
 
 3. **Design & Prototyping Workflow**:
    - Supports Figma Smart Animate, Rive state machines, After Effects + Bodymovin (Lottie JSON), and Principle / ProtoPie interaction specs.
+

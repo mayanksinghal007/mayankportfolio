@@ -15,6 +15,7 @@ import {
 import { useSite } from '../context/SiteContext';
 import { AdLightboxModal } from './AdLightboxModal';
 import { AD_INDUSTRIES } from '../data/initialData';
+import { GiantGhostHeading } from './GiantGhostHeading';
 
 export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = null, isStandalonePage = false }) => {
   const { ads } = useSite();
@@ -68,8 +69,9 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
   };
 
   return (
-    <section id="ads" className="section-pad" style={{ backgroundColor: isStandalonePage ? 'transparent' : 'var(--softwhite)' }}>
-      <div className="container">
+    <section id="ads" className="section-pad giant-ghost-container" style={{ backgroundColor: isStandalonePage ? 'transparent' : 'var(--softwhite)' }}>
+      <GiantGhostHeading text="CREATIVES" offset="-3%" />
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
         <div
           style={{
@@ -82,6 +84,10 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
           }}
         >
           <div style={{ maxWidth: '680px' }}>
+            <div className="system-meta-label" style={{ marginBottom: '14px' }}>
+              <span className="system-status-dot" />
+              <span>SYSTEM 05 // HIGH-CTR AD ENGINE</span>
+            </div>
             <span className="editorial-eyebrow">
               <Megaphone size={14} style={{ marginRight: '6px', color: 'var(--brand)' }} />
               Performance & Creative Showcase
@@ -303,7 +309,7 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                 <div
                   key={ad.id}
                   onClick={() => handleOpenAd(ad)}
-                  className="card-awwwards-lift"
+                  className="card-awwwards-lift has-corner-brackets"
                   data-cursor={isVideo ? 'PLAY' : 'VIEW'}
                   style={{
                     backgroundColor: 'var(--purewhite)',
@@ -316,6 +322,10 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                     position: 'relative',
                   }}
                 >
+                  <span className="crosshair-corner crosshair-tl">+</span>
+                  <span className="crosshair-corner crosshair-tr">+</span>
+                  <span className="crosshair-corner crosshair-bl">+</span>
+                  <span className="crosshair-corner crosshair-br">+</span>
                   {/* Media Wrapper */}
                   <div
                     style={{
@@ -332,14 +342,12 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                       height="400"
                       loading="lazy"
                       decoding="async"
+                      className="photo-duotone-shift"
                       style={{
                         width: '100%',
                         height: '100%',
                         objectFit: 'cover',
-                        transition: 'transform 0.4s ease',
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
-                      onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                       onError={(e) => {
                         e.currentTarget.onerror = null;
                         e.currentTarget.src = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=75';

@@ -173,24 +173,24 @@ export const Navbar = ({ onOpenSearch }) => {
 
   return (
     <>
-      {/* Sticky Main Header with Scroll-Aware Glassmorphism */}
-      <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
-        <div className="container nav-inner">
-          {/* Brand Logo with micro-interaction hover */}
-          <Link to="/" className="nav-brand" aria-label="Mayank Aggarwal Home">
+      {/* Floating Pill Capsule Header (Floating above the page like an elevated capsule) */}
+      <header className={`floating-pill-header ${isScrolled ? 'scrolled' : ''}`}>
+        <div className="floating-pill-capsule">
+          {/* Brand Logo with micro-interaction */}
+          <Link to="/" className="pill-brand" aria-label="Mayank Aggarwal Home">
             <span>MAYANK</span>
-            <span className="nav-brand-dot">.</span>
+            <span className="pill-brand-dot">.</span>
             <span>AGGARWAL</span>
           </Link>
 
-          {/* Desktop Navigation Links with animated underline draw */}
-          <nav aria-label="Primary Navigation">
-            <ul className="nav-links">
+          {/* Evenly Spaced Desktop Navigation Links */}
+          <nav aria-label="Primary Navigation" className="desktop-only-nav">
+            <ul className="pill-nav-links">
               {navItems.map((item) => (
                 <li key={item.path}>
                   <NavLink
                     to={item.path}
-                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                    className={({ isActive }) => `pill-nav-link ${isActive ? 'active' : ''}`}
                   >
                     {item.label}
                   </NavLink>
@@ -199,29 +199,30 @@ export const Navbar = ({ onOpenSearch }) => {
             </ul>
           </nav>
 
-          {/* Header Right Actions */}
-          <div className="nav-actions">
+          {/* Header Right Capsule Actions */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
             {/* Quick Search Button */}
             {onOpenSearch && (
               <button
                 type="button"
                 onClick={onOpenSearch}
                 className="nav-search-btn"
+                style={{ background: 'rgba(255, 255, 255, 0.08)', color: '#FFFDF9', borderColor: 'transparent' }}
                 title="Search Site (Ctrl+K / Cmd+K)"
                 aria-label="Search"
               >
-                <Search size={16} />
-                <span className="nav-search-label">Search</span>
-                <kbd className="nav-search-kbd" aria-hidden="true">⌘K</kbd>
+                <Search size={14} />
+                <span className="nav-search-label" style={{ color: '#FFFDF9' }}>Search</span>
+                <kbd className="nav-search-kbd" style={{ background: 'rgba(255, 255, 255, 0.15)', color: '#FFFDF9' }}>⌘K</kbd>
               </button>
             )}
 
-            {/* Desktop Contact CTA with Magnetic Hover Physics */}
-            <MagneticButton to="/contact" className="btn-primary desktop-cta-btn">
-              Start a Project <ArrowUpRight size={15} />
+            {/* Desktop Contact CTA Pill with Magnetic Hover */}
+            <MagneticButton to="/contact" className="pill-cta-btn desktop-cta-btn">
+              Start a Project <ArrowUpRight size={14} />
             </MagneticButton>
 
-            {/* Mobile / Tablet Menu Toggle Button */}
+            {/* Mobile / Tablet Menu Toggle */}
             <button
               type="button"
               className={`mobile-nav-toggle-btn ${mobileMenuOpen ? 'is-active' : ''}`}
@@ -229,30 +230,16 @@ export const Navbar = ({ onOpenSearch }) => {
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
               aria-controls="mobile-nav-takeover"
+              style={{ color: '#FFFDF9' }}
             >
               {mobileMenuOpen ? (
-                <X size={24} strokeWidth={2.4} />
+                <X size={22} strokeWidth={2.4} />
               ) : (
-                <Menu size={24} strokeWidth={2.4} />
+                <Menu size={22} strokeWidth={2.4} />
               )}
             </button>
           </div>
         </div>
-
-        {/* Scroll Progress Indicator Line directly beneath Header */}
-        <div
-          style={{
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            height: '2px',
-            width: `${scrollProgress}%`,
-            background: 'var(--accent-gradient)',
-            transition: 'width 0.1s linear',
-            pointerEvents: 'none',
-          }}
-          aria-hidden="true"
-        />
       </header>
 
       {/* Fullscreen Mobile Takeover Menu with Staggered Link Animation */}
