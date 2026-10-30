@@ -274,6 +274,7 @@ export const BlogPost = () => {
       <SeoHead
         title={post.seoTitle || post.title}
         description={post.metaDescription || post.summary}
+        keywords={post.tags}
         canonicalPath={`/blog/${post.slug}`}
         ogType="article"
         ogImage={post.coverImage}

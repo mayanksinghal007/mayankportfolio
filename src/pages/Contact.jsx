@@ -254,8 +254,15 @@ export const Contact = () => {
   return (
     <>
       <SeoHead
-        title="Contact Mayank Aggarwal | Start a Project in Delhi"
-        description="Get in touch with Mayank Aggarwal for Meta Ads management, AI video ads, or short-form content strategy. Direct WhatsApp and response within 12 hours."
+        title="Contact Mayank Aggarwal | Performance Marketing & AI Partner"
+        description="Get in touch with Mayank Aggarwal for Meta Ads management, generative AI video commercials, and creative strategy. Response within 12 hours."
+        keywords={[
+          'Contact Mayank Aggarwal',
+          'Hire Meta Ads Specialist',
+          'Book Marketing Discovery Call',
+          'Klikwise Agency Contact',
+          'Digital Marketing Inquiry'
+        ]}
         canonicalPath="/contact"
         jsonLd={contactSchemas}
       />

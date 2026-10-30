@@ -210,6 +210,14 @@ export const PressHub = () => {
       <SeoHead
         title="Press & Digital Footprint Hub | Mayank Aggarwal"
         description="Official press kit, media credentials, verified backlink network, and 20 authoritative digital profiles for Mayank Aggarwal. Brand assets and citations."
+        keywords={[
+          'Mayank Aggarwal Press',
+          'Mayank Aggarwal Digital Footprint',
+          'Klikwise Press Kit',
+          'Digital Marketing Citations',
+          'Mayank Aggarwal Backlinks',
+          'Media Inquiries Mayank Aggarwal'
+        ]}
         canonicalPath="/press"
         ogType="website"
         jsonLd={personSchema}

@@ -63,6 +63,15 @@ export const ServiceDetail = () => {
       <SeoHead
         title={`${service.name} Services | Mayank Aggarwal`}
         description={service.intro || service.overview}
+        keywords={[
+          service.name,
+          `${service.name} Specialist`,
+          'Meta Ads Partner',
+          'Performance Marketing',
+          'Generative AI Video Production',
+          'Mayank Aggarwal',
+          'Klikwise'
+        ]}
         canonicalPath={`/services/${service.slug}`}
         jsonLd={serviceSchemas}
       />
@@ -628,6 +637,52 @@ export const ServiceDetail = () => {
                 </p>
               </Link>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* RELATED TOOLS & RESEARCH PLAYBOOKS */}
+      <section className="section-pad" style={{ backgroundColor: 'var(--purewhite)', paddingTop: '40px', paddingBottom: '40px' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+            <div style={{ backgroundColor: 'var(--cream-subtle)', padding: '24px', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
+              <span className="editorial-eyebrow" style={{ fontSize: '0.75rem', marginBottom: '8px' }}>E-Commerce Simulator</span>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', marginBottom: '8px' }}>
+                ROAS & Profit Calculator
+              </h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--mutedtext)', marginBottom: '14px', lineHeight: 1.5 }}>
+                Simulate true break-even ad spend, gross profit margins, and courier RTO factors before launching.
+              </p>
+              <Link to="/tools/meta-ads-roas-calculator" style={{ color: 'var(--brand)', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                Open Calculator <ArrowUpRight size={14} />
+              </Link>
+            </div>
+
+            <div style={{ backgroundColor: 'var(--cream-subtle)', padding: '24px', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
+              <span className="editorial-eyebrow" style={{ fontSize: '0.75rem', marginBottom: '8px' }}>Creative Prompting</span>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', marginBottom: '8px' }}>
+                AI Video Prompt Generator
+              </h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--mutedtext)', marginBottom: '14px', lineHeight: 1.5 }}>
+                Craft cinematic prompts for Runway Gen-3 and Kling AI with cinematic lens, lighting, and movement presets.
+              </p>
+              <Link to="/tools/ai-video-prompt-generator" style={{ color: 'var(--brand)', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                Generate Prompts <ArrowUpRight size={14} />
+              </Link>
+            </div>
+
+            <div style={{ backgroundColor: 'var(--cream-subtle)', padding: '24px', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
+              <span className="editorial-eyebrow" style={{ fontSize: '0.75rem', marginBottom: '8px' }}>Knowledge Base</span>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', marginBottom: '8px' }}>
+                Tactical Growth Playbooks
+              </h4>
+              <p style={{ fontSize: '0.85rem', color: 'var(--mutedtext)', marginBottom: '14px', lineHeight: 1.5 }}>
+                Explore 50 comprehensive guides covering Meta Ads, Google PMax, creative fatigue, and AEO/GEO indexing.
+              </p>
+              <Link to="/blog" style={{ color: 'var(--brand)', fontWeight: 700, fontSize: '0.85rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                Browse All Guides <ArrowUpRight size={14} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>

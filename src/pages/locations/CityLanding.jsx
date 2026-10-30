@@ -325,6 +325,15 @@ export const CityLanding = () => {
       <SeoHead
         title={cityInfo.seoTitle}
         description={cityInfo.metaDescription}
+        keywords={[
+          `${cityInfo.name} Digital Marketing`,
+          `${cityInfo.name} Meta Ads Specialist`,
+          `${cityInfo.name} Performance Marketing Agency`,
+          `${cityInfo.name} AI Video Commercials`,
+          `${cityInfo.name} Facebook Ads Consultant`,
+          'Mayank Aggarwal',
+          'Klikwise'
+        ]}
         canonicalPath={`/locations/${city}`}
         ogType="website"
         jsonLd={[localBusinessSchema, faqSchema]}

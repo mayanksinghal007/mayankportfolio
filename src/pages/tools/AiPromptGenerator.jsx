@@ -91,6 +91,15 @@ export const AiPromptGenerator = () => {
       <SeoHead
         title="AI Video Ad Prompt Generator for Runway & Kling"
         description="Generate cinematic commercial AI video prompts for Runway Gen-3, Kling AI, and Midjourney. Fine-tune camera lenses, lighting, and motion parameters."
+        keywords={[
+          'AI Video Prompt Generator',
+          'Runway Gen-3 Prompts',
+          'Kling AI Prompts',
+          'Midjourney Video Prompts',
+          'AI Commercial Prompts',
+          'Text to Video Prompts',
+          'AI Filmmaking Prompts'
+        ]}
         canonicalPath="/tools/ai-video-prompt-generator"
         ogType="website"
         jsonLd={[

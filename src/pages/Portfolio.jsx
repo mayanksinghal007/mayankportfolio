@@ -48,6 +48,14 @@ export const Portfolio = () => {
       <SeoHead
         title="Portfolio & Case Studies | Mayank Aggarwal"
         description="Explore concept campaigns, AI video showreels, Meta ad funnels, and creative strategy projects by Mayank Aggarwal."
+        keywords={[
+          'Digital Marketing Portfolio',
+          'Meta Ads Case Studies',
+          'AI Video Commercials Portfolio',
+          'Runway Gen-3 Showreel',
+          'Instagram Reel Hooks Case Study',
+          'Mayank Aggarwal Work'
+        ]}
         canonicalPath="/portfolio"
         jsonLd={portfolioSchemas}
       />

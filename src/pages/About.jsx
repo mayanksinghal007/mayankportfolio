@@ -38,8 +38,16 @@ export const About = () => {
   return (
     <>
       <SeoHead
-        title="About Mayank Aggarwal | Performance Marketing & AI Video Creative Partner"
-        description="Learn about Mayank Aggarwal — Performance Marketing and Generative AI Creative Partner collaborating with ambitious brands in the US, UK, and worldwide."
+        title="About Mayank Aggarwal | Performance Marketing & AI Creative"
+        description="Learn about Mayank Aggarwal — Performance Marketing and Generative AI Creative Specialist collaborating with ambitious brands in the US, UK, and worldwide."
+        keywords={[
+          'About Mayank Aggarwal',
+          'Digital Marketing Specialist Delhi',
+          'Performance Marketer Profile',
+          'Generative AI Video Creator',
+          'Klikwise Founder',
+          'Meta Ads Expert India'
+        ]}
         canonicalPath="/about"
         ogImage="/images/mayank-aggarwal-og.jpg"
         jsonLd={aboutSchemas}
@@ -493,6 +501,38 @@ export const About = () => {
               <p style={{ color: 'var(--mutedtext)', fontSize: '0.92rem', lineHeight: 1.65 }}>
                 The AI media landscape changes every month. I continuously test new model releases so your brand stays months ahead of slower legacy competitors.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* EXPLORE ECOSYSTEM & INTERLINKING */}
+      <section className="section-pad" style={{ backgroundColor: 'var(--cream-subtle)', paddingTop: '40px', paddingBottom: '40px' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+            <div style={{ backgroundColor: 'var(--purewhite)', padding: '24px', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', marginBottom: '12px' }}>Interactive Tools</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.9rem' }}>
+                <li><Link to="/tools/meta-ads-roas-calculator" style={{ color: 'var(--brand)', textDecoration: 'none', fontWeight: 600 }}>ROAS & Profit Calculator →</Link></li>
+                <li><Link to="/tools/ai-video-prompt-generator" style={{ color: 'var(--brand)', textDecoration: 'none', fontWeight: 600 }}>AI Video Prompt Generator →</Link></li>
+                <li><Link to="/tools/reel-hook-generator" style={{ color: 'var(--brand)', textDecoration: 'none', fontWeight: 600 }}>Viral Reel Hook Generator →</Link></li>
+              </ul>
+            </div>
+            <div style={{ backgroundColor: 'var(--purewhite)', padding: '24px', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', marginBottom: '12px' }}>Growth Services</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.9rem' }}>
+                <li><Link to="/services/performance-marketing" style={{ color: 'var(--charcoal)', textDecoration: 'none' }}>Meta Ads Management →</Link></li>
+                <li><Link to="/services/ai-video-creation" style={{ color: 'var(--charcoal)', textDecoration: 'none' }}>Generative AI Commercials →</Link></li>
+                <li><Link to="/services/content-reel-strategy" style={{ color: 'var(--charcoal)', textDecoration: 'none' }}>Short-Form Reel Strategy →</Link></li>
+              </ul>
+            </div>
+            <div style={{ backgroundColor: 'var(--purewhite)', padding: '24px', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
+              <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.2rem', marginBottom: '12px' }}>Regional Hubs</h4>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '0.9rem' }}>
+                <li><Link to="/locations/delhi" style={{ color: 'var(--charcoal)', textDecoration: 'none' }}>Delhi NCR Growth →</Link></li>
+                <li><Link to="/locations/london" style={{ color: 'var(--charcoal)', textDecoration: 'none' }}>London & UK Scale →</Link></li>
+                <li><Link to="/locations/dubai" style={{ color: 'var(--charcoal)', textDecoration: 'none' }}>Dubai & GCC Expansion →</Link></li>
+              </ul>
             </div>
           </div>
         </div>

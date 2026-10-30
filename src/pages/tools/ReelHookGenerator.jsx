@@ -111,6 +111,15 @@ export const ReelHookGenerator = () => {
       <SeoHead
         title="Viral Short-Form Reel Hook Generator for 2026"
         description="Free viral video hook generator for Instagram Reels, TikTok, and YouTube Shorts. Generate high-retention 3-second hooks with audio and visual cues."
+        keywords={[
+          'Reel Hook Generator',
+          'Viral Video Hooks',
+          'Instagram Reels Script Generator',
+          'TikTok Hook Ideas',
+          'Short Form Video Hooks',
+          '3 Second Video Hooks',
+          'YouTube Shorts Hooks'
+        ]}
         canonicalPath="/tools/reel-hook-generator"
         ogType="website"
         jsonLd={[

@@ -6,25 +6,30 @@ export default defineConfig({
   build: {
     modulePreload: {
       resolveDependencies(filename, deps) {
-        // Only preload critical chunks for the homepage!
-        // Never preload admin-bundle, markdown-parser, or confetti on the homepage.
+        // Only preload critical chunks for the initial view!
+        // Never preload admin-bundle, markdown-parser, confetti, or heavy blog corpus on the homepage.
         return deps.filter((dep) => {
           const lower = dep.toLowerCase();
-          return !lower.includes('admin') && !lower.includes('markdown') && !lower.includes('confetti');
+          return (
+            !lower.includes('admin') &&
+            !lower.includes('markdown') &&
+            !lower.includes('confetti') &&
+            !lower.includes('blog-corpus')
+          );
         });
       },
     },
     rollupOptions: {
       output: {
         manualChunks(id) {
+          if (id.includes('src/data/blogData') || id.includes('src/data/blogs/')) {
+            return 'blog-corpus';
+          }
           if (id.includes('node_modules/lucide-react')) {
             return 'lucide-icons';
           }
           if (id.includes('node_modules/marked')) {
             return 'markdown-parser';
-          }
-          if (id.includes('node_modules/bootstrap')) {
-            return 'bootstrap';
           }
           if (id.includes('node_modules/canvas-confetti')) {
             return 'confetti';
@@ -40,6 +45,6 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 1000,
   },
 });

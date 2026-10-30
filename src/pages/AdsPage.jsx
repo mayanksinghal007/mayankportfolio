@@ -12,6 +12,14 @@ export const AdsPage = () => {
       <SeoHead
         title="Meta Ads & Creative Gallery | Mayank Aggarwal"
         description="Curated gallery of high-converting Meta Ads, Instagram carousels, and AI video commercials designed by Mayank Aggarwal."
+        keywords={[
+          'Meta Ad Creatives',
+          'Instagram Carousel Ads',
+          'AI Video Commercials',
+          'Facebook Ad Gallery',
+          'Direct Response Video Ads',
+          'Mayank Aggarwal Ads'
+        ]}
         canonicalPath="/ads"
         jsonLd={[getBreadcrumbSchema([{ name: 'Ads Showcase', path: '/ads' }])]}
       />

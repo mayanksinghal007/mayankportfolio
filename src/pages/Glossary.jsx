@@ -207,6 +207,15 @@ export const Glossary = () => {
       <SeoHead
         title="Digital Marketing, AI Video & SEO Glossary 2026"
         description="Authoritative glossary of 30+ performance marketing, generative AI video, AEO, GEO, and e-commerce terms by Mayank Aggarwal. Clear definitions and guides."
+        keywords={[
+          'Marketing Glossary',
+          'AEO Definition',
+          'ROAS Meaning',
+          'Meta Ads Terms',
+          'AI Video Definitions',
+          'Performance Marketing Terminology',
+          'Mayank Aggarwal'
+        ]}
         canonicalPath="/glossary"
         ogType="website"
         jsonLd={definedTermSetSchema}

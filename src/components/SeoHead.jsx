@@ -10,6 +10,7 @@ import { SITE_CONFIG } from '../config/site';
 export const SeoHead = ({
   title,
   description,
+  keywords,
   canonicalPath = '',
   canonical = '',
   ogType = 'website',
@@ -62,20 +63,51 @@ export const SeoHead = ({
       : `${cleanBaseUrl}${ogImage.startsWith('/') ? '' : '/'}${ogImage}`
     : defaultImage;
 
-  // Title formatting: strictly keep within 58 chars max for zero SEO audit truncation
-  let displayTitle = title || `${SITE_CONFIG.name} | ${SITE_CONFIG.title}`;
+  // Professional Title Formatting: Strict 60 char threshold so with &amp; it stays <= 65 chars
+  let displayTitle = (title || `${SITE_CONFIG.name} | ${SITE_CONFIG.title}`).trim();
   if (!displayTitle.includes('Mayank Aggarwal') && displayTitle.length + 18 <= 58) {
     displayTitle = `${displayTitle} | Mayank Aggarwal`;
   }
-  if (displayTitle.length > 58) {
-    displayTitle = displayTitle.slice(0, 58).trim();
+  if (displayTitle.length > 60) {
+    // Graceful word boundary cut instead of mid-character truncation
+    displayTitle = displayTitle.slice(0, 58).replace(/\s+\S*$/, '').trim();
   }
 
-  let metaDesc =
+  // Professional Meta Description: Clean, complete sentences within 155 chars
+  let metaDesc = (
     description ||
-    'Portfolio of Mayank Aggarwal — Digital Marketing & AI Specialist in Delhi, India. Performance Meta Ads, generative AI video creation, and creative direction.';
-  if (metaDesc.length > 153) {
-    metaDesc = metaDesc.slice(0, 150).replace(/\s+\S*$/, '') + '.';
+    'Mayank Aggarwal is a Digital Marketing & AI Specialist providing high-converting Meta Ads, generative AI video commercials, and full-funnel creative growth.'
+  ).trim();
+  if (metaDesc.length > 155) {
+    metaDesc = metaDesc.slice(0, 150).replace(/\s+(and|or|with|in|the|by|for|to|\S*)$/i, '').trim();
+    if (!metaDesc.endsWith('.')) {
+      metaDesc += '.';
+    }
+  }
+
+  // Keywords formatting (Core SEO & Search Console Intent)
+  const defaultKeywords = [
+    'Mayank Aggarwal',
+    'Performance Marketing',
+    'Meta Ads Expert',
+    'Generative AI Video',
+    'AI Video Commercials',
+    'Facebook Ads Specialist',
+    'Instagram Ads Consultant',
+    'Runway Gen-3 Alpha',
+    'Kling AI Video',
+    'Klikwise',
+    'ROAS Calculator',
+    'Digital Marketing Specialist Delhi',
+  ];
+
+  let displayKeywords = '';
+  if (Array.isArray(keywords) && keywords.length > 0) {
+    displayKeywords = [...new Set([...keywords, ...defaultKeywords.slice(0, 4)])].join(', ');
+  } else if (typeof keywords === 'string' && keywords.trim()) {
+    displayKeywords = keywords.trim();
+  } else {
+    displayKeywords = defaultKeywords.join(', ');
   }
 
   const robotsDirective = noindex
@@ -87,11 +119,20 @@ export const SeoHead = ({
       {/* Primary HTML Meta Tags */}
       <title>{displayTitle}</title>
       <meta name="description" content={metaDesc} />
+      <meta name="keywords" content={displayKeywords} />
       <meta name="robots" content={robotsDirective} />
       <meta name="googlebot" content={robotsDirective} />
+      <meta name="bingbot" content={robotsDirective} />
       <link rel="canonical" href={canonicalUrl} />
       <meta name="theme-color" content="#FFFDF9" />
       <meta name="author" content={author || SITE_CONFIG.name} />
+
+      {/* AI Overview, Search Console & GEO Signals */}
+      <meta name="ai-content-declarations" content="original-human-authored" />
+      <meta name="revisit-after" content="2 days" />
+      <meta name="distribution" content="global" />
+      <meta name="rating" content="general" />
+      <meta name="language" content="English" />
 
       {/* Search Engine Verification Meta Tags */}
       <meta

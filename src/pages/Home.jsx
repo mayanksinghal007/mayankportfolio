@@ -12,6 +12,8 @@ import {
   Briefcase,
   GraduationCap,
   MessageCircle,
+  Calculator,
+  MapPin,
 } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
 import { MediaModal } from '../components/MediaModal';
@@ -61,8 +63,9 @@ export const Home = () => {
   return (
     <>
       <SeoHead
-        title="Mayank Aggarwal | Performance Marketing & AI Video Creative Partner"
-        description="Performance Meta Ads, cinematic generative AI commercial videos, and high-retention creative strategy for ambitious brands in the US, UK, and worldwide by Mayank Aggarwal."
+        title="Mayank Aggarwal | Performance Marketing & AI Video Creative"
+        description="Mayank Aggarwal is a Performance Marketing & Generative AI Creative Partner scaling ambitious brands globally with high-converting Meta Ads and video commercials."
+        keywords={tickerKeywords}
         canonicalPath="/"
         jsonLd={homeSchemas}
       />
@@ -731,6 +734,148 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* FREE INTERACTIVE GROWTH TOOLS & REGIONAL HUBS */}
+      <section className="section-pad" style={{ backgroundColor: 'var(--purewhite)' }}>
+        <div className="container">
+          <div className="section-head reveal-on-scroll">
+            <span className="editorial-eyebrow">Proprietary Growth Utilities</span>
+            <h2 className="display-title section-title">FREE MARKETING TOOLS & REGIONAL HUBS.</h2>
+            <p className="section-desc" style={{ maxWidth: '680px' }}>
+              Test your unit economics, generate cinematic prompt strings, and analyze localized paid ad benchmarks across key global hubs.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '40px' }}>
+            <Link
+              to="/tools/meta-ads-roas-calculator"
+              style={{
+                backgroundColor: 'var(--cream-subtle)',
+                border: '1px solid var(--border-color)',
+                borderRadius: '16px',
+                padding: '28px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                textDecoration: 'none',
+                color: 'inherit',
+                transition: 'all 0.2s ease',
+              }}
+              className="service-card"
+            >
+              <div>
+                <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: 'var(--brand)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
+                  <Calculator size={22} />
+                </div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '6px' }}>
+                  Financial Simulator
+                </div>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--charcoal)', marginBottom: '10px' }}>
+                  Meta Ads ROAS & Profit Calculator
+                </h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--mutedtext)', lineHeight: 1.6 }}>
+                  Compute true net margins, break-even ROAS, POAS, and COD Return-to-Origin (RTO) impact across USD, GBP, AED, and INR.
+                </p>
+              </div>
+              <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700, fontSize: '0.86rem', color: 'var(--brand-text)' }}>
+                Launch Calculator <ArrowUpRight size={15} />
+              </div>
+            </Link>
+
+            <Link
+              to="/tools/ai-video-prompt-generator"
+              style={{
+                backgroundColor: 'var(--cream-subtle)',
+                border: '1px solid var(--border-color)',
+                borderRadius: '16px',
+                padding: '28px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                textDecoration: 'none',
+                color: 'inherit',
+                transition: 'all 0.2s ease',
+              }}
+              className="service-card"
+            >
+              <div>
+                <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: 'var(--charcoal)', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
+                  <Video size={22} />
+                </div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '6px' }}>
+                  Generative Video
+                </div>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--charcoal)', marginBottom: '10px' }}>
+                  AI Video Ad Prompt Generator
+                </h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--mutedtext)', lineHeight: 1.6 }}>
+                  Generate high-fidelity camera prompts with custom focal lengths, volumetric lighting, and motion physics for Runway Gen-3 & Kling AI.
+                </p>
+              </div>
+              <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700, fontSize: '0.86rem', color: 'var(--brand-text)' }}>
+                Generate Prompts <ArrowUpRight size={15} />
+              </div>
+            </Link>
+
+            <Link
+              to="/tools/reel-hook-generator"
+              style={{
+                backgroundColor: 'var(--cream-subtle)',
+                border: '1px solid var(--border-color)',
+                borderRadius: '16px',
+                padding: '28px',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                textDecoration: 'none',
+                color: 'inherit',
+                transition: 'all 0.2s ease',
+              }}
+              className="service-card"
+            >
+              <div>
+                <div style={{ width: '44px', height: '44px', borderRadius: '10px', backgroundColor: 'var(--gold)', color: 'var(--charcoal)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '18px' }}>
+                  <Sparkles size={22} />
+                </div>
+                <div style={{ fontSize: '0.75rem', fontWeight: 700, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '6px' }}>
+                  Short-Form Retention
+                </div>
+                <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', color: 'var(--charcoal)', marginBottom: '10px' }}>
+                  Viral Reel & Hook Generator
+                </h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--mutedtext)', lineHeight: 1.6 }}>
+                  Generate thumb-stopping 3-second opening scripts, visual pattern interrupts, and audio cues for Instagram Reels and TikTok.
+                </p>
+              </div>
+              <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '6px', fontWeight: 700, fontSize: '0.86rem', color: 'var(--brand-text)' }}>
+                Generate Hooks <ArrowUpRight size={15} />
+              </div>
+            </Link>
+          </div>
+
+          {/* Regional Hubs Quick Bar */}
+          <div style={{ padding: '24px', backgroundColor: 'var(--cream)', borderRadius: '16px', border: '1px solid var(--border-color)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '14px', marginBottom: '16px' }}>
+              <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--charcoal)', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <MapPin size={16} color="var(--brand)" /> Regional Growth & Performance Hubs:
+              </span>
+              <Link to="/glossary" style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--brand)' }}>
+                View Marketing Glossary →
+              </Link>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              <Link to="/locations/delhi" className="btn-secondary" style={{ padding: '6px 14px', fontSize: '0.82rem' }}>Delhi NCR</Link>
+              <Link to="/locations/gurugram" className="btn-secondary" style={{ padding: '6px 14px', fontSize: '0.82rem' }}>Gurugram</Link>
+              <Link to="/locations/noida" className="btn-secondary" style={{ padding: '6px 14px', fontSize: '0.82rem' }}>Noida</Link>
+              <Link to="/locations/mumbai" className="btn-secondary" style={{ padding: '6px 14px', fontSize: '0.82rem' }}>Mumbai</Link>
+              <Link to="/locations/bangalore" className="btn-secondary" style={{ padding: '6px 14px', fontSize: '0.82rem' }}>Bengaluru</Link>
+              <Link to="/locations/new-york" className="btn-secondary" style={{ padding: '6px 14px', fontSize: '0.82rem' }}>New York</Link>
+              <Link to="/locations/london" className="btn-secondary" style={{ padding: '6px 14px', fontSize: '0.82rem' }}>London</Link>
+              <Link to="/locations/dubai" className="btn-secondary" style={{ padding: '6px 14px', fontSize: '0.82rem' }}>Dubai</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* LATEST FROM THE BLOG SECTION */}
       <section className="section-padding" style={{ backgroundColor: 'var(--peach)' }}>
         <div className="container">
@@ -740,7 +885,7 @@ export const Home = () => {
               <h2 className="display-title section-title">LATEST FROM THE BLOG.</h2>
             </div>
             <Link to="/blog" className="btn-secondary" style={{ padding: '10px 22px' }}>
-              Explore All 8 Articles <ArrowRight size={15} />
+              Explore All 50 Playbooks <ArrowRight size={15} />
             </Link>
           </div>
 

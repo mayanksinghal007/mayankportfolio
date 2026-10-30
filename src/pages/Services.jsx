@@ -67,7 +67,16 @@ export const Services = () => {
     <>
       <SeoHead
         title="Performance Marketing & AI Creative Services | Mayank Aggarwal"
-        description="Explore performance marketing, Meta & Google Ads, AI video commercial production, direct-response UGC strategy, and lifecycle email marketing for ambitious global brands."
+        description="Explore full-stack performance marketing, Meta Ads scaling, generative AI video commercials, and lifecycle email marketing for high-growth global brands."
+        keywords={[
+          'Performance Marketing Services',
+          'Meta Ads Agency',
+          'Generative AI Video Production',
+          'Direct Response UGC Ads',
+          'Instagram Ads Management',
+          'Email Retention Marketing',
+          'Ecommerce Growth Services'
+        ]}
         canonicalPath="/services"
         jsonLd={servicesSchemas}
       />

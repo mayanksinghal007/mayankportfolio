@@ -28,6 +28,12 @@ export const Legal = () => {
             ? 'Privacy Policy for Mayank Aggarwal portfolio. Explains collection, usage, and protection of contact inquiries under Indian DPDP Act guidelines.'
             : 'Terms of Service governing freelance engagements, payment milestones, intellectual property, and client deliverables with Mayank Aggarwal.'
         }
+        keywords={[
+          activeTab === 'privacy' ? 'Privacy Policy' : 'Terms of Service',
+          'Mayank Aggarwal Legal',
+          'Klikwise Client Agreement',
+          'Freelance Retainer Terms'
+        ]}
         canonicalPath={legalPath}
         jsonLd={[getBreadcrumbSchema([{ name: legalName, path: legalPath }])]}
       />

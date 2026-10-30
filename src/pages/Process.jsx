@@ -21,6 +21,13 @@ export const Process = () => {
       <SeoHead
         title="Working Process & Methodology | Mayank Aggarwal"
         description="Explore the 4-stage client workflow: discovery diagnostic, strategy sprint, execution launch, and weekly iteration."
+        keywords={[
+          'Digital Marketing Process',
+          'Meta Ads Methodology',
+          'Campaign Onboarding Framework',
+          'Creative Sprint Workflow',
+          'Mayank Aggarwal Process'
+        ]}
         canonicalPath="/process"
         jsonLd={[getBreadcrumbSchema([{ name: 'Process & Workflow', path: '/process' }])]}
       />

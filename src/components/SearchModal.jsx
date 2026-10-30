@@ -2,14 +2,41 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, X, ArrowRight, FileText, Briefcase, Sparkles, BookOpen } from 'lucide-react';
 import { useSite } from '../context/SiteContext';
-import { DEFAULT_BLOG_POSTS } from '../data/blogData';
 
 export const SearchModal = ({ isOpen, onClose }) => {
   const { services = [], portfolio = [], blogPosts = [] } = useSite();
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [blogItems, setBlogItems] = useState([]);
   const inputRef = useRef(null);
   const navigate = useNavigate();
+
+  // Load blog search items dynamically when SearchModal is opened
+  useEffect(() => {
+    if (isOpen && blogItems.length === 0) {
+      if (blogPosts && blogPosts.length > 0) {
+        setBlogItems(
+          blogPosts.map((b) => ({
+            title: b.title,
+            path: `/blog/${b.slug}`,
+            category: 'Article',
+            desc: b.summary || b.category,
+          }))
+        );
+      } else {
+        import('../data/blogData').then((m) => {
+          setBlogItems(
+            m.DEFAULT_BLOG_POSTS.map((b) => ({
+              title: b.title,
+              path: `/blog/${b.slug}`,
+              category: 'Article',
+              desc: b.summary || b.category,
+            }))
+          );
+        });
+      }
+    }
+  }, [isOpen, blogPosts, blogItems.length]);
 
   // Focus input on modal open
   useEffect(() => {
@@ -50,15 +77,6 @@ export const SearchModal = ({ isOpen, onClose }) => {
     path: '/portfolio',
     category: 'Case Study',
     desc: p.overview || `${p.category} project`,
-  }));
-
-  // Dynamic Blog Articles Index
-  const postsSource = blogPosts.length > 0 ? blogPosts : DEFAULT_BLOG_POSTS;
-  const blogItems = postsSource.map((b) => ({
-    title: b.title,
-    path: `/blog/${b.slug}`,
-    category: 'Article',
-    desc: b.summary || b.category,
   }));
 
   const allItems = [...pages, ...serviceItems, ...blogItems, ...portfolioItems];

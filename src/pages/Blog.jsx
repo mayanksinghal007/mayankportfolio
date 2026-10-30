@@ -100,6 +100,16 @@ export const Blog = () => {
       <SeoHead
         title="Marketing & Ad Playbooks: Meta, Google, SEO | Mayank Aggarwal"
         description="Comprehensive playbooks on Meta Ads, Google PMax, Twitter/X ads, B2B lead gen, viral reels, and modern SEO/AEO/GEO strategies across US, UK, UAE & Global markets."
+        keywords={[
+          'Digital Marketing Blog',
+          'Meta Ads Playbooks',
+          'Google Ads Guides',
+          'Performance Marketing Strategy',
+          'B2B Lead Generation',
+          'Viral Reel Scripts',
+          'AEO GEO Guide',
+          'Mayank Aggarwal Blog'
+        ]}
         canonicalPath="/blog"
         jsonLd={blogSchemas}
       />
