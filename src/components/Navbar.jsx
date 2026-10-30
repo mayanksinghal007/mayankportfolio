@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import {
   ArrowUpRight,
@@ -19,20 +19,103 @@ import {
 import { LinkedinIcon, InstagramIcon, GithubIcon } from './SocialIcons';
 import { useSite } from '../context/SiteContext';
 
+/**
+ * Magnetic Button component with physics-weighted cursor tracking
+ */
+export const MagneticButton = ({ children, className = '', to, href, onClick, ...props }) => {
+  const btnRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!btnRef.current) return;
+    const rect = btnRef.current.getBoundingClientRect();
+    const x = (e.clientX - rect.left - rect.width / 2) * 0.25;
+    const y = (e.clientY - rect.top - rect.height / 2) * 0.25;
+    btnRef.current.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!btnRef.current) return;
+    btnRef.current.style.transform = 'translate3d(0, 0, 0)';
+    btnRef.current.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+  };
+
+  const handleMouseEnter = () => {
+    if (!btnRef.current) return;
+    btnRef.current.style.transition = 'transform 0.1s ease-out';
+  };
+
+  if (to) {
+    return (
+      <Link
+        ref={btnRef}
+        to={to}
+        className={className}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        {...props}
+      >
+        {children}
+      </Link>
+    );
+  }
+
+  if (href) {
+    return (
+      <a
+        ref={btnRef}
+        href={href}
+        className={className}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        {...props}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <button
+      ref={btnRef}
+      type="button"
+      onClick={onClick}
+      className={className}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
 export const Navbar = ({ onOpenSearch }) => {
   const { site } = useSite();
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Scroll listener for blur & compact header style
+  // Scroll listener for blur & compact header style past 80px
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     let ticking = false;
 
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setIsScrolled(window.scrollY > 20);
+          const scrollY = window.scrollY;
+          setIsScrolled(scrollY > 80);
+
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight > 0) {
+            const progress = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+            setScrollProgress(progress);
+          }
           ticking = false;
         });
         ticking = true;
@@ -40,11 +123,13 @@ export const Navbar = ({ onOpenSearch }) => {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   // Lock body scroll when mobile drawer is open
   useEffect(() => {
+    if (typeof document === 'undefined') return;
     if (mobileMenuOpen) {
       document.body.style.overflow = 'hidden';
       document.body.classList.add('mobile-nav-open');
@@ -65,6 +150,7 @@ export const Navbar = ({ onOpenSearch }) => {
 
   // Close on Escape key press
   useEffect(() => {
+    if (typeof window === 'undefined') return;
     const handleKeyDown = (e) => {
       if (e.key === 'Escape' && mobileMenuOpen) {
         setMobileMenuOpen(false);
@@ -87,17 +173,17 @@ export const Navbar = ({ onOpenSearch }) => {
 
   return (
     <>
-      {/* Sticky Main Header */}
+      {/* Sticky Main Header with Scroll-Aware Glassmorphism */}
       <header className={`site-header ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-inner">
-          {/* Brand Logo */}
+          {/* Brand Logo with micro-interaction hover */}
           <Link to="/" className="nav-brand" aria-label="Mayank Aggarwal Home">
             <span>MAYANK</span>
             <span className="nav-brand-dot">.</span>
             <span>AGGARWAL</span>
           </Link>
 
-          {/* Desktop Navigation Links (>= 1024px) */}
+          {/* Desktop Navigation Links with animated underline draw */}
           <nav aria-label="Primary Navigation">
             <ul className="nav-links">
               {navItems.map((item) => (
@@ -130,19 +216,19 @@ export const Navbar = ({ onOpenSearch }) => {
               </button>
             )}
 
-            {/* Desktop Contact CTA */}
-            <Link to="/contact" className="btn-primary desktop-cta-btn">
+            {/* Desktop Contact CTA with Magnetic Hover Physics */}
+            <MagneticButton to="/contact" className="btn-primary desktop-cta-btn">
               Start a Project <ArrowUpRight size={15} />
-            </Link>
+            </MagneticButton>
 
-            {/* Mobile / Tablet Menu Toggle Button ("Triple-Bar Hamburger") */}
+            {/* Mobile / Tablet Menu Toggle Button */}
             <button
               type="button"
               className={`mobile-nav-toggle-btn ${mobileMenuOpen ? 'is-active' : ''}`}
               onClick={() => setMobileMenuOpen((prev) => !prev)}
               aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
               aria-expanded={mobileMenuOpen}
-              aria-controls="mobile-nav-drawer"
+              aria-controls="mobile-nav-takeover"
             >
               {mobileMenuOpen ? (
                 <X size={24} strokeWidth={2.4} />
@@ -152,153 +238,121 @@ export const Navbar = ({ onOpenSearch }) => {
             </button>
           </div>
         </div>
+
+        {/* Scroll Progress Indicator Line directly beneath Header */}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            height: '2px',
+            width: `${scrollProgress}%`,
+            background: 'var(--accent-gradient)',
+            transition: 'width 0.1s linear',
+            pointerEvents: 'none',
+          }}
+          aria-hidden="true"
+        />
       </header>
 
-      {/* Mobile Drawer Backdrop Overlay (Outside Header) */}
+      {/* Fullscreen Mobile Takeover Menu with Staggered Link Animation */}
       <div
-        className={`mobile-nav-backdrop ${mobileMenuOpen ? 'open' : ''}`}
-        onClick={() => setMobileMenuOpen(false)}
-        aria-hidden={!mobileMenuOpen}
-      />
-
-      {/* Mobile Navigation Sheet Drawer (Outside Header to avoid stacking context issues) */}
-      <aside
-        id="mobile-nav-drawer"
-        className={`mobile-nav-sheet ${mobileMenuOpen ? 'open' : ''}`}
-        aria-label="Mobile Navigation Drawer"
+        id="mobile-nav-takeover"
+        className={`mobile-nav-takeover ${mobileMenuOpen ? 'open' : ''}`}
+        aria-label="Mobile Navigation Takeover"
         aria-hidden={!mobileMenuOpen}
         inert={!mobileMenuOpen}
       >
-        {/* Drawer Header */}
-        <div className="mobile-sheet-header">
+        {/* Takeover Top Bar */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link
             to="/"
             className="nav-brand"
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Mayank Aggarwal Home"
+            style={{ color: '#FFFDF9' }}
           >
             <span>MAYANK</span>
-            <span className="nav-brand-dot">.</span>
+            <span className="nav-brand-dot" style={{ color: 'var(--accent-orange)' }}>.</span>
             <span>AGGARWAL</span>
           </Link>
+
           <button
             type="button"
             className="mobile-sheet-close-btn"
             onClick={() => setMobileMenuOpen(false)}
             aria-label="Close navigation menu"
+            style={{ color: '#FFFDF9', background: 'rgba(255, 255, 255, 0.1)' }}
           >
-            <X size={20} strokeWidth={2.2} />
+            <X size={22} strokeWidth={2.2} />
           </button>
         </div>
 
-        {/* Drawer Scrollable Body */}
-        <div className="mobile-sheet-body">
-          {/* Quick Search Bar Trigger */}
-          {onOpenSearch && (
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenSearch();
-              }}
-              className="mobile-sheet-search"
-              aria-label="Search site or articles"
-            >
-              <Search size={18} />
-              <span>Search site or articles...</span>
-              <kbd className="nav-search-kbd">⌘K</kbd>
-            </button>
-          )}
+        {/* Staggered Navigation Items */}
+        <nav aria-label="Mobile Navigation Links" style={{ margin: 'auto 0' }}>
+          <ul className="mobile-takeover-nav">
+            {navItems.map((item, index) => (
+              <li key={item.path}>
+                <NavLink
+                  to={item.path}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={({ isActive }) => `mobile-takeover-link ${isActive ? 'active' : ''}`}
+                  style={{ animationDelay: `${0.06 + index * 0.06}s` }}
+                >
+                  <span>{item.label}</span>
+                  <span style={{ fontSize: '0.9rem', opacity: 0.5, fontFamily: 'var(--font-mono)' }}>
+                    0{index + 1}
+                  </span>
+                </NavLink>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-          {/* Navigation Items List */}
-          <nav aria-label="Mobile Navigation Links">
-            <ul className="mobile-sheet-nav">
-              {navItems.map((item) => {
-                const Icon = item.icon;
-                return (
-                  <li key={item.path} className="mobile-sheet-item">
-                    <NavLink
-                      to={item.path}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={({ isActive }) => (isActive ? 'active' : '')}
-                    >
-                      <div className="mobile-item-icon">
-                        <Icon size={18} />
-                      </div>
-                      <div className="mobile-item-text">
-                        <span className="mobile-item-title">{item.label}</span>
-                        <span className="mobile-item-desc">{item.desc}</span>
-                      </div>
-                      <ChevronRight size={16} className="mobile-item-arrow" />
-                    </NavLink>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-        </div>
-
-        {/* Drawer Footer Actions */}
-        <div className="mobile-sheet-footer">
+        {/* Takeover Footer with Quick Chat & Social Links */}
+        <div style={{ paddingTop: '24px', borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
           <a
             href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`}
             target="_blank"
             rel="noopener noreferrer nofollow"
-            className="btn-whatsapp"
-            style={{ width: '100%', justifyContent: 'center' }}
+            className="btn-whatsapp btn-whatsapp-nudge"
+            style={{ width: '100%', justifyContent: 'center', marginBottom: '16px' }}
           >
             <MessageCircle size={18} /> Chat on WhatsApp
+            <span className="wa-online-ring" />
           </a>
 
-          <Link
-            to="/contact"
-            onClick={() => setMobileMenuOpen(false)}
-            className="btn-primary"
-            style={{ width: '100%', justifyContent: 'center' }}
-          >
-            Start a Project <ArrowUpRight size={16} />
-          </Link>
-
-          {/* Quick Social Links */}
-          <div className="mobile-sheet-socials">
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
             <a
               href={site.linkedin}
               target="_blank"
               rel="noopener noreferrer nofollow"
+              style={{ color: 'rgba(255, 253, 249, 0.7)' }}
               aria-label="LinkedIn"
-              className="mobile-social-icon"
             >
-              <LinkedinIcon size={18} />
+              <LinkedinIcon size={20} />
             </a>
             <a
               href={site.instagram}
               target="_blank"
               rel="noopener noreferrer nofollow"
+              style={{ color: 'rgba(255, 253, 249, 0.7)' }}
               aria-label="Instagram"
-              className="mobile-social-icon"
             >
-              <InstagramIcon size={18} />
+              <InstagramIcon size={20} />
             </a>
             <a
-              href={site.github || 'https://github.com/mayanksinghal007'}
+              href={site.github}
               target="_blank"
               rel="noopener noreferrer nofollow"
+              style={{ color: 'rgba(255, 253, 249, 0.7)' }}
               aria-label="GitHub"
-              className="mobile-social-icon"
             >
-              <GithubIcon size={18} />
-            </a>
-            <a
-              href={`mailto:${site.email}`}
-              rel="nofollow"
-              aria-label="Email Mayank"
-              className="mobile-social-icon"
-            >
-              <Mail size={18} />
+              <GithubIcon size={20} />
             </a>
           </div>
         </div>
-      </aside>
+      </div>
     </>
   );
 };

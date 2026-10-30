@@ -303,6 +303,8 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                 <div
                   key={ad.id}
                   onClick={() => handleOpenAd(ad)}
+                  className="card-awwwards-lift"
+                  data-cursor={isVideo ? 'PLAY' : 'VIEW'}
                   style={{
                     backgroundColor: 'var(--purewhite)',
                     borderRadius: 'var(--radius-xl)',
@@ -311,19 +313,7 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                     display: 'flex',
                     flexDirection: 'column',
                     cursor: 'pointer',
-                    transition: 'transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease',
-                    boxShadow: 'var(--shadow-sm)',
                     position: 'relative',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-6px)';
-                    e.currentTarget.style.boxShadow = 'var(--shadow-md)';
-                    e.currentTarget.style.borderColor = 'rgba(255, 61, 10, 0.3)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
-                    e.currentTarget.style.borderColor = 'var(--border-color)';
                   }}
                 >
                   {/* Media Wrapper */}

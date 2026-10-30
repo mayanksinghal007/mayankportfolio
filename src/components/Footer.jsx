@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Mail, Phone, MessageCircle, ArrowUpRight, Shield } from 'lucide-react';
 import { LinkedinIcon, InstagramIcon, GithubIcon } from './SocialIcons';
 import { useSite } from '../context/SiteContext';
+import { MagneticButton } from './Navbar';
 
 export const Footer = () => {
   const { site, services } = useSite();
@@ -12,6 +13,77 @@ export const Footer = () => {
   return (
     <footer className="site-footer">
       <div className="container">
+        {/* Massive Magnetic Awwwards-Tier Callout */}
+        <div
+          style={{
+            padding: '40px 0 54px 0',
+            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+            marginBottom: '44px',
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: '24px',
+          }}
+        >
+          <div>
+            <span
+              style={{
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.75rem',
+                fontWeight: 700,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                color: 'var(--accent-orange)',
+                display: 'block',
+                marginBottom: '8px',
+              }}
+            >
+              Have a Project in Mind?
+            </span>
+            <h2
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(2rem, 5vw, 3.6rem)',
+                fontWeight: 900,
+                color: '#FFFDF9',
+                lineHeight: 1.05,
+                letterSpacing: '-0.02em',
+              }}
+            >
+              START SOMETHING <span style={{ color: 'var(--accent-orange)' }}>EXTRAORDINARY</span>.
+            </h2>
+          </div>
+
+          <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <MagneticButton
+              to="/contact"
+              className="btn-brand"
+              style={{
+                padding: '16px 32px',
+                fontSize: '1rem',
+                borderRadius: '999px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+              }}
+              data-cursor="LET'S TALK"
+            >
+              Start a Project <ArrowUpRight size={18} />
+            </MagneticButton>
+            <a
+              href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="btn-whatsapp btn-whatsapp-nudge"
+              style={{ padding: '16px 28px', fontSize: '1rem' }}
+            >
+              <MessageCircle size={18} /> WhatsApp Direct
+              <span className="wa-online-ring" />
+            </a>
+          </div>
+        </div>
+
         <div className="footer-top">
           {/* Col 1: Brand & Direct Contact */}
           <div>

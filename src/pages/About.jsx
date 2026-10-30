@@ -274,7 +274,7 @@ export const About = () => {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {EXPERIENCE_ITEMS.map((exp) => (
-              <div key={exp.id} className="experience-card">
+              <div key={exp.id} className="experience-card card-awwwards-lift">
                 <div className="exp-header">
                   <div>
                     <h3 className="exp-role">{exp.role}</h3>
@@ -317,6 +317,7 @@ export const About = () => {
             {EDUCATION_ITEMS.map((edu) => (
               <div
                 key={edu.id}
+                className="card-awwwards-lift"
                 style={{
                   backgroundColor: 'var(--purewhite)',
                   border: '1.5px solid var(--border-color)',

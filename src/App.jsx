@@ -9,6 +9,10 @@ import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { GlobalCtaRails } from './components/GlobalCtaRails';
 import { AnalyticsTracker } from './components/AnalyticsTracker';
 import { useScrollReveal } from './hooks/useScrollReveal';
+import { SmoothScroll } from './components/SmoothScroll';
+import { CustomCursor } from './components/CustomCursor';
+import { Preloader } from './components/Preloader';
+import { PageTransition } from './components/PageTransition';
 
 // Lazy-load non-critical interactive modals & chat assistant to keep initial JS bundle ultra-lean
 const LazyAiChatAssistant = lazy(() => import('./components/AiChatAssistant').then((m) => ({ default: m.AiChatAssistant })));
@@ -168,10 +172,16 @@ export const AppLayout = ({ pagesOverride }) => {
   const NotFoundComponent = pages.NotFound;
 
   return (
-    <>
+    <SmoothScroll>
       <ScrollToTop />
       <TrailingSlashHandler />
       <AnalyticsTracker />
+
+      {/* Awwwards-Tier Interactive Custom Cursor */}
+      {!isAdmin && <CustomCursor />}
+
+      {/* Cinematic Branded Preloader */}
+      {!isAdmin && <Preloader />}
 
       {/* Top Reading Progress Bar */}
       {!isAdmin && <ScrollProgressBar />}
@@ -182,32 +192,34 @@ export const AppLayout = ({ pagesOverride }) => {
       {/* Render Navbar only if not on Admin standalone view */}
       {!isAdmin && <Navbar onOpenSearch={() => setIsSearchOpen(true)} />}
 
-      <main>
-        <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
-          <Routes>
-            <Route path="/" element={<HomeComponent />} />
-            <Route path="/about" element={<AboutComponent />} />
-            <Route path="/services" element={<ServicesComponent />} />
-            <Route path="/services/:slug" element={<ServiceDetailComponent />} />
-            <Route path="/portfolio" element={<PortfolioComponent />} />
-            <Route path="/ads" element={<AdsPageComponent />} />
-            <Route path="/process" element={<ProcessComponent />} />
-            <Route path="/contact" element={<ContactComponent />} />
-            <Route path="/blog" element={<BlogComponent />} />
-            <Route path="/blog/:slug" element={<BlogPostComponent />} />
-            <Route path="/tools/meta-ads-roas-calculator" element={<RoasCalculatorComponent />} />
-            <Route path="/tools/ai-video-prompt-generator" element={<AiPromptGeneratorComponent />} />
-            <Route path="/tools/reel-hook-generator" element={<ReelHookGeneratorComponent />} />
-            <Route path="/locations/:city" element={<CityLandingComponent />} />
-            <Route path="/glossary" element={<GlossaryComponent />} />
-            <Route path="/press" element={<PressHubComponent />} />
-            <Route path="/admin" element={<AdminComponent />} />
-            <Route path="/privacy-policy" element={<LegalComponent />} />
-            <Route path="/terms" element={<LegalComponent />} />
-            <Route path="*" element={<NotFoundComponent />} />
-          </Routes>
-        </Suspense>
-      </main>
+      <PageTransition>
+        <main>
+          <Suspense fallback={<div style={{ minHeight: '60vh' }} />}>
+            <Routes>
+              <Route path="/" element={<HomeComponent />} />
+              <Route path="/about" element={<AboutComponent />} />
+              <Route path="/services" element={<ServicesComponent />} />
+              <Route path="/services/:slug" element={<ServiceDetailComponent />} />
+              <Route path="/portfolio" element={<PortfolioComponent />} />
+              <Route path="/ads" element={<AdsPageComponent />} />
+              <Route path="/process" element={<ProcessComponent />} />
+              <Route path="/contact" element={<ContactComponent />} />
+              <Route path="/blog" element={<BlogComponent />} />
+              <Route path="/blog/:slug" element={<BlogPostComponent />} />
+              <Route path="/tools/meta-ads-roas-calculator" element={<RoasCalculatorComponent />} />
+              <Route path="/tools/ai-video-prompt-generator" element={<AiPromptGeneratorComponent />} />
+              <Route path="/tools/reel-hook-generator" element={<ReelHookGeneratorComponent />} />
+              <Route path="/locations/:city" element={<CityLandingComponent />} />
+              <Route path="/glossary" element={<GlossaryComponent />} />
+              <Route path="/press" element={<PressHubComponent />} />
+              <Route path="/admin" element={<AdminComponent />} />
+              <Route path="/privacy-policy" element={<LegalComponent />} />
+              <Route path="/terms" element={<LegalComponent />} />
+              <Route path="*" element={<NotFoundComponent />} />
+            </Routes>
+          </Suspense>
+        </main>
+      </PageTransition>
 
       {/* Render Footer only if not on Admin view */}
       {!isAdmin && <Footer />}
@@ -238,7 +250,7 @@ export const AppLayout = ({ pagesOverride }) => {
 
       {/* Global Interactive Toast Notification */}
       <Toast />
-    </>
+    </SmoothScroll>
   );
 };
 

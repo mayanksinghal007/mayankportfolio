@@ -106,7 +106,7 @@ export const Services = () => {
               const IconComponent = serviceIcons[s.slug] || Sparkles;
 
               return (
-                <div key={s.slug} className="service-card" id={s.slug}>
+                <div key={s.slug} className="service-card card-awwwards-lift" id={s.slug} data-cursor="VIEW">
                   <div>
                     <div className="service-card-top">
                       <span className="service-num">{s.num}</span>

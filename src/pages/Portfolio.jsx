@@ -137,7 +137,7 @@ export const Portfolio = () => {
           ) : (
             <div className="portfolio-grid">
               {filteredProjects.map((project) => (
-                <div key={project.id} className="project-card">
+                <div key={project.id} className="project-card card-awwwards-lift" data-cursor="VIEW">
                   <div
                     className="project-media-wrap"
                     style={{ cursor: 'pointer' }}

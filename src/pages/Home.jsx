@@ -26,6 +26,183 @@ import { ToolsMarquee } from '../components/ToolsMarquee';
 
 import { getPersonSchema, getOrganizationSchema, getLocalBusinessSchema, getWebSiteSchema } from '../utils/seoSchemas';
 import { FEATURED_BLOG_POSTS } from '../data/featuredBlogs';
+import { MagneticButton } from '../components/Navbar';
+
+// Interactive Terminal Scramble Glitch Effect for "ai-powered"
+const ScrambleText = ({ text = 'ai-powered', duration = 650 }) => {
+  const [display, setDisplay] = useState(text);
+  const chars = '01#%&*+?@~abcdefghijklmnopqrstuvwxyz';
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const startTime = performance.now();
+    let frameId;
+
+    const tick = (now) => {
+      const elapsed = now - startTime;
+      const progress = Math.min(1, elapsed / duration);
+      const revealedLength = Math.floor(progress * text.length);
+
+      let scrambled = '';
+      for (let i = 0; i < text.length; i++) {
+        if (i < revealedLength) {
+          scrambled += text[i];
+        } else {
+          scrambled += chars[Math.floor(Math.random() * chars.length)];
+        }
+      }
+      setDisplay(scrambled);
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(tick);
+      } else {
+        setDisplay(text);
+      }
+    };
+
+    frameId = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frameId);
+  }, [text, duration]);
+
+  return <span className="scramble-text">{display}</span>;
+};
+
+// 3D Parallax Tilt Card for Showreel
+const ParallaxTiltCard = ({ children, className = '', ...props }) => {
+  const cardRef = React.useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -7;
+    const rotateY = ((x - centerX) / centerX) * 7;
+
+    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    cardRef.current.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+  };
+
+  const handleMouseEnter = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transition = 'transform 0.1s ease-out';
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className={className}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      {...props}
+    >
+      {children}
+    </div>
+  );
+};
+
+// Scroll-Triggered Stat Counter with Elastic Easing & Animated Underline Draw
+const StatCounter = ({ value, label, index }) => {
+  const [count, setCount] = useState(0);
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const itemRef = React.useRef(null);
+
+  const match = value.match(/([<>]?)(\d+)(\+?)(.*)/);
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+
+          if (match) {
+            const target = parseInt(match[2], 10);
+            const duration = 1400;
+            const startTime = performance.now();
+
+            const step = (now) => {
+              const elapsed = now - startTime;
+              const progress = Math.min(1, elapsed / duration);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              setCount(Math.round(eased * target));
+
+              if (progress < 1) {
+                requestAnimationFrame(step);
+              } else {
+                setCount(target);
+              }
+            };
+            requestAnimationFrame(step);
+          }
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    if (itemRef.current) observer.observe(itemRef.current);
+    return () => observer.disconnect();
+  }, [hasAnimated, match]);
+
+  let display = value;
+  if (match && hasAnimated) {
+    display = `${match[1]}${count}${match[3]}${match[4]}`;
+  }
+
+  return (
+    <div
+      ref={itemRef}
+      className={`stat-item ${hasAnimated ? 'active' : ''}`}
+      style={{
+        opacity: hasAnimated ? 1 : 0.4,
+        transform: hasAnimated ? 'translateY(0)' : 'translateY(12px)',
+        transition: `opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08}s, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) ${index * 0.08}s`,
+      }}
+    >
+      <div
+        style={{
+          fontFamily: 'var(--font-display)',
+          fontSize: '1.45rem',
+          fontWeight: 800,
+          color:
+            index === 0
+              ? 'var(--accent-orange)'
+              : index === 1
+              ? 'var(--charcoal)'
+              : index === 2
+              ? 'var(--accent-amber)'
+              : 'var(--accent-orange)',
+          lineHeight: 1.1,
+        }}
+      >
+        {display}
+      </div>
+      <div
+        style={{
+          fontSize: '0.72rem',
+          fontWeight: 700,
+          textTransform: 'uppercase',
+          letterSpacing: '0.06em',
+          color: 'var(--mutedtext)',
+          marginTop: '6px',
+        }}
+      >
+        {label}
+      </div>
+      <div className="stat-underline" />
+    </div>
+  );
+};
 
 export const Home = () => {
   const { site, services, portfolio, blogPosts = [], mediaAssets = {} } = useSite();
@@ -72,6 +249,54 @@ export const Home = () => {
 
       {/* HERO SECTION */}
       <section className="hero-section">
+        {/* Animated Background Growth Curve SVG (ROAS/CTR growth paths) */}
+        <svg
+          className="hero-growth-chart-bg"
+          viewBox="0 0 1440 600"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            className="hero-chart-line"
+            d="M-50 480 C 200 450, 350 520, 500 380 C 650 240, 800 320, 950 180 C 1100 40, 1250 120, 1500 20"
+            stroke="url(#hero-chart-gradient)"
+            strokeWidth="3.5"
+          />
+          <defs>
+            <linearGradient id="hero-chart-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#FF4500" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#FF7A45" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="#FFB800" stopOpacity="1" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        {/* Floating Industry Micro-Badges drifting in negative space */}
+        <div className="floating-badge-container" aria-hidden="true">
+          <div className="floating-micro-badge" style={{ top: '12%', left: '3%', animationDelay: '0s' }}>
+            <TrendingUp size={13} color="var(--accent-orange)" />
+            <span>Meta Ads</span>
+          </div>
+          <div className="floating-micro-badge" style={{ top: '55%', left: '1%', animationDelay: '-6s' }}>
+            <Video size={13} color="var(--accent-orange)" />
+            <span>Runway Gen-3</span>
+          </div>
+          <div className="floating-micro-badge" style={{ top: '16%', right: '48%', animationDelay: '-12s' }}>
+            <Sparkles size={13} color="var(--accent-amber)" />
+            <span>ROAS ↑ 3.8x</span>
+          </div>
+          <div className="floating-micro-badge" style={{ top: '82%', right: '52%', animationDelay: '-18s' }}>
+            <Sparkles size={13} color="var(--accent-orange)" />
+            <span>ElevenLabs Voice</span>
+          </div>
+          <div className="floating-micro-badge" style={{ top: '8%', right: '36%', animationDelay: '-8s' }}>
+            <Video size={13} color="var(--accent-amber)" />
+            <span>Kling AI</span>
+          </div>
+        </div>
+
         <div className="hero-glow-1" />
         <div className="hero-glow-2" />
 
@@ -83,10 +308,25 @@ export const Home = () => {
               <span>{site.title} · Global Remote / US & Worldwide</span>
             </div>
 
-            <h1 className="hero-h1 display-hero">
-              CREATIVE THINKING.{' '}
-              <span className="brand-span">SMART MARKETING.</span>{' '}
-              <span className="serif-span">AI-powered</span> EXECUTION.
+            <h1 className="hero-h1 display-hero" aria-label="Creative thinking. Smart marketing. AI-powered execution.">
+              <span className="hero-line-mask">
+                <span className="hero-line-inner" style={{ animationDelay: '0.1s' }}>
+                  CREATIVE THINKING.
+                </span>
+              </span>
+              <span className="hero-line-mask">
+                <span className="hero-line-inner" style={{ animationDelay: '0.22s' }}>
+                  <span className="gradient-sweep-text brand-span">SMART MARKETING.</span>
+                </span>
+              </span>
+              <span className="hero-line-mask">
+                <span className="hero-line-inner" style={{ animationDelay: '0.34s' }}>
+                  <span className="serif-span">
+                    <ScrambleText text="ai-powered" duration={650} />
+                  </span>{' '}
+                  EXECUTION.
+                </span>
+              </span>
             </h1>
 
             <p className="hero-lead">
@@ -163,22 +403,23 @@ export const Home = () => {
             </div>
 
             <div className="hero-cta-group">
-              <Link to="/contact" className="btn-brand">
+              <MagneticButton to="/contact" className="btn-brand">
                 Book a Discovery Call <ArrowUpRight size={17} />
-              </Link>
-              <Link to="/portfolio" className="btn-dark">
+              </MagneticButton>
+              <MagneticButton to="/portfolio" className="btn-dark">
                 Explore Selected Work <ArrowRight size={17} />
-              </Link>
+              </MagneticButton>
               <a
                 href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`}
                 target="_blank"
                 rel="noopener noreferrer nofollow"
-                className="btn-whatsapp"
+                className="btn-whatsapp btn-whatsapp-nudge"
                 style={{ padding: '13px 20px' }}
                 title="Instant Chat on WhatsApp"
                 aria-label="Direct Chat on WhatsApp with Mayank Aggarwal"
               >
                 <MessageCircle size={17} />
+                <span className="wa-online-ring" />
               </a>
             </div>
 
@@ -194,98 +435,95 @@ export const Home = () => {
               }}
             >
               {HERO_STATS.map((stat, i) => (
-                <div key={i}>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-display)',
-                      fontSize: '1.4rem',
-                      fontWeight: 700,
-                      color: i === 0 ? 'var(--brand-text)' : i === 1 ? 'var(--charcoal)' : i === 2 ? 'var(--gold-text)' : 'var(--brand-text)',
-                      lineHeight: 1.1,
-                    }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '0.72rem',
-                      fontWeight: 700,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.04em',
-                      color: 'var(--mutedtext)',
-                      marginTop: '4px',
-                    }}
-                  >
-                    {stat.label}
-                  </div>
-                </div>
+                <StatCounter key={i} value={stat.value} label={stat.label} index={i} />
               ))}
             </div>
+
+            {/* Scroll Down Indicator */}
+            <a
+              href="#pillars"
+              className="hero-scroll-indicator"
+              aria-label="Scroll to services"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById('pillars');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              <div className="mouse-icon">
+                <div className="mouse-wheel" />
+              </div>
+              <span style={{ fontSize: '0.68rem', fontFamily: 'var(--font-mono)', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--mutedtext)' }}>
+                Scroll to Explore
+              </span>
+            </a>
           </div>
 
-          {/* Hero Right Visual Showreel Card */}
+          {/* Hero Right Visual Showreel Card with 3D Parallax Tilt & Conic Rotating Border */}
           <div>
-            <div className="hero-visual-card">
-              <div className="hero-card-badge">
-                <Sparkles size={13} />
-                <span>Featured Showreel 2026</span>
-              </div>
+            <ParallaxTiltCard className="showreel-card-awwwards showreel-card" data-cursor="PLAY">
+              <div className="showreel-inner">
+                <div className="hero-card-badge">
+                  <Sparkles size={13} />
+                  <span>Featured Showreel 2026</span>
+                </div>
 
-              <div className="hero-media-window">
-                <picture>
-                  <source media="(max-width: 640px)" srcSet="/images/hero-showreel-mobile.webp" type="image/webp" />
-                  <source srcSet="/images/hero-showreel.webp" type="image/webp" />
-                  <img
-                    src={mediaAssets.home_hero_visual?.url || "/images/hero-showreel.jpg"}
-                    alt={mediaAssets.home_hero_visual?.alt || "Mayank Aggarwal AI Showreel"}
-                    className="hero-media-bg"
-                    width="800"
-                    height="533"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                </picture>
-                <div className="hero-media-overlay" />
+                <div className="hero-media-window">
+                  <picture>
+                    <source media="(max-width: 640px)" srcSet="/images/hero-showreel-mobile.webp" type="image/webp" />
+                    <source srcSet="/images/hero-showreel.webp" type="image/webp" />
+                    <img
+                      src={mediaAssets.home_hero_visual?.url || "/images/hero-showreel.jpg"}
+                      alt={mediaAssets.home_hero_visual?.alt || "Mayank Aggarwal AI Showreel"}
+                      className="hero-media-bg"
+                      width="800"
+                      height="533"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
+                  <div className="hero-media-overlay" />
 
-                <div className="hero-media-content">
-                  <button
-                    onClick={() =>
-                      handleOpenMedia({
-                        title: mediaAssets.home_hero_visual?.title || 'Mayank Aggarwal — Creative & AI Showreel',
-                        overview:
-                          mediaAssets.home_hero_visual?.subtitle || 'A high-octane montage of generative AI video, 3D typography, cinematic motion grading, and Meta ad campaign performance highlights.',
-                        image:
-                          mediaAssets.home_hero_visual?.url || '/images/hero-showreel.jpg',
-                        videoUrl: mediaAssets.home_hero_visual?.videoUrl || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
-                        hasVideoDemo: true,
-                        tags: ['Runway Gen-3', 'ElevenLabs', 'Meta Ads', 'Editorial Cut'],
-                      })
-                    }
-                    className="hero-media-play"
-                    title="Watch Showreel"
-                    aria-label="Watch Showreel video demonstration"
-                  >
-                    <Play size={24} style={{ marginLeft: '3px' }} />
-                  </button>
+                  <div className="hero-media-content">
+                    <button
+                      onClick={() =>
+                        handleOpenMedia({
+                          title: mediaAssets.home_hero_visual?.title || 'Mayank Aggarwal — Creative & AI Showreel',
+                          overview:
+                            mediaAssets.home_hero_visual?.subtitle || 'A high-octane montage of generative AI video, 3D typography, cinematic motion grading, and Meta ad campaign performance highlights.',
+                          image:
+                            mediaAssets.home_hero_visual?.url || '/images/hero-showreel.jpg',
+                          videoUrl: mediaAssets.home_hero_visual?.videoUrl || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                          hasVideoDemo: true,
+                          tags: ['Runway Gen-3', 'ElevenLabs', 'Meta Ads', 'Editorial Cut'],
+                        })
+                      }
+                      className="hero-media-play"
+                      title="Watch Showreel"
+                      aria-label="Watch Showreel video demonstration"
+                    >
+                      <Play size={24} style={{ marginLeft: '3px' }} />
+                    </button>
 
-                  <span className="editorial-eyebrow gold" style={{ fontSize: '0.7rem' }}>
-                    Mayank Studio Production
-                  </span>
-                  <p className="hero-showreel-title" style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 700, color: 'var(--softwhite)', marginTop: '4px' }}>
-                    {mediaAssets.home_hero_visual?.title || 'THE GENERATIVE ERA'}
-                  </p>
-                  <p style={{ fontSize: '0.82rem', color: 'rgba(255, 253, 249, 0.75)', marginTop: '4px' }}>
-                    {mediaAssets.home_hero_visual?.subtitle || 'Click to preview video & audio capabilities'}
-                  </p>
+                    <span className="editorial-eyebrow gold" style={{ fontSize: '0.7rem' }}>
+                      Mayank Studio Production
+                    </span>
+                    <p className="hero-showreel-title" style={{ fontFamily: 'var(--font-display)', fontSize: '1.6rem', fontWeight: 700, color: 'var(--softwhite)', marginTop: '4px' }}>
+                      {mediaAssets.home_hero_visual?.title || 'THE GENERATIVE ERA'}
+                    </p>
+                    <p style={{ fontSize: '0.82rem', color: 'rgba(255, 253, 249, 0.75)', marginTop: '4px' }}>
+                      {mediaAssets.home_hero_visual?.subtitle || 'Click to preview video & audio capabilities'}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Floating Brand Pill */}
+                <div className="hero-metrics-pill">
+                  <div className="pill-val">Klikwise</div>
+                  <div className="pill-lbl">Digital & AI Studio</div>
                 </div>
               </div>
-
-              {/* Floating Brand Pill */}
-              <div className="hero-metrics-pill">
-                <div className="pill-val">Klikwise</div>
-                <div className="pill-lbl">Digital & AI Studio</div>
-              </div>
-            </div>
+            </ParallaxTiltCard>
           </div>
         </div>
       </section>
@@ -306,7 +544,7 @@ export const Home = () => {
       <ToolsMarquee />
 
       {/* CORE PILLARS / CAPABILITIES */}
-      <section className="section-pad">
+      <section className="section-pad" id="pillars">
         <div className="container">
           <div className="section-head reveal-on-scroll">
             <span className="editorial-eyebrow">Selected Capabilities</span>
@@ -324,7 +562,7 @@ export const Home = () => {
             }}
           >
             {/* Pillar 1 */}
-            <div className="service-card" style={{ backgroundColor: 'var(--purewhite)' }}>
+            <div className="service-card card-awwwards-lift" style={{ backgroundColor: 'var(--purewhite)' }}>
               <div>
                 <div className="service-card-top">
                   <span className="service-num">01</span>
@@ -342,13 +580,13 @@ export const Home = () => {
                   <li className="service-include-item"><span className="service-include-bullet" />Weekly Creative Testing & Scaling</li>
                 </ul>
               </div>
-              <Link to="/services/performance-marketing" className="service-action-link">
+              <Link to="/services/performance-marketing" className="service-action-link" data-cursor="VIEW">
                 View Full Details <ArrowUpRight size={15} />
               </Link>
             </div>
 
             {/* Pillar 2 */}
-            <div className="service-card" style={{ backgroundColor: 'var(--purewhite)' }}>
+            <div className="service-card card-awwwards-lift" style={{ backgroundColor: 'var(--purewhite)' }}>
               <div>
                 <div className="service-card-top">
                   <span className="service-num">02</span>
@@ -366,17 +604,17 @@ export const Home = () => {
                   <li className="service-include-item"><span className="service-include-bullet" />Community & Engagement Management</li>
                 </ul>
               </div>
-              <Link to="/services/social-media-management" className="service-action-link">
+              <Link to="/services/social-media-management" className="service-action-link" data-cursor="VIEW">
                 View Full Details <ArrowUpRight size={15} />
               </Link>
             </div>
 
             {/* Pillar 3 */}
-            <div className="service-card" style={{ backgroundColor: 'var(--charcoal)', color: 'var(--softwhite)', borderColor: 'var(--charcoal)' }}>
-              <div>
+            <div className="service-card card-awwwards-lift card-featured-glow" style={{ backgroundColor: 'var(--card-dark)', color: 'var(--softwhite)', borderColor: 'rgba(255, 184, 0, 0.25)' }}>
+              <div style={{ position: 'relative', zIndex: 1 }}>
                 <div className="service-card-top">
-                  <span className="service-num" style={{ color: 'var(--gold)' }}>03</span>
-                  <div className="service-icon-box" style={{ backgroundColor: 'rgba(255, 185, 46, 0.15)', color: 'var(--gold)' }}>
+                  <span className="service-num" style={{ color: 'var(--accent-amber)' }}>03</span>
+                  <div className="service-icon-box" style={{ backgroundColor: 'rgba(255, 184, 0, 0.15)', color: 'var(--accent-amber)' }}>
                     <Video size={24} />
                   </div>
                 </div>
@@ -385,12 +623,12 @@ export const Home = () => {
                   Cinematic brand trailers, UGC ad variations, neural voiceovers, and scroll-stopping visuals created using Runway, Kling AI, and ElevenLabs.
                 </p>
                 <ul className="service-includes-list">
-                  <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--gold)' }} />Runway Gen-3 & Kling AI Video</li>
-                  <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--gold)' }} />ElevenLabs Emotive Voiceovers</li>
-                  <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--gold)' }} />Fast Production Cycles</li>
+                  <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--accent-amber)' }} />Runway Gen-3 & Kling AI Video</li>
+                  <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--accent-amber)' }} />ElevenLabs Emotive Voiceovers</li>
+                  <li className="service-include-item" style={{ color: 'rgba(255, 253, 249, 0.85)' }}><span className="service-include-bullet" style={{ backgroundColor: 'var(--accent-amber)' }} />Fast Production Cycles</li>
                 </ul>
               </div>
-              <Link to="/services/ai-video-creation" className="service-action-link" style={{ color: 'var(--gold)' }}>
+              <Link to="/services/ai-video-creation" className="service-action-link" style={{ color: 'var(--accent-amber)', position: 'relative', zIndex: 1 }} data-cursor="VIEW">
                 View Full Details <ArrowUpRight size={15} />
               </Link>
             </div>
@@ -422,7 +660,7 @@ export const Home = () => {
 
           <div className="portfolio-grid">
             {featuredProjects.map((project) => (
-              <div key={project.id} className="project-card">
+              <div key={project.id} className="project-card card-awwwards-lift" data-cursor="VIEW">
                 <div
                   className="project-media-wrap"
                   style={{ cursor: 'pointer' }}
@@ -560,12 +798,12 @@ export const Home = () => {
             {WHY_CHOOSE_ME.map((item, idx) => (
               <div
                 key={idx}
+                className="card-awwwards-lift"
                 style={{
                   backgroundColor: 'var(--purewhite)',
                   border: '1px solid var(--border-color)',
                   borderRadius: 'var(--radius-lg)',
                   padding: '32px 28px',
-                  transition: 'all var(--transition-fast)',
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
@@ -573,13 +811,16 @@ export const Home = () => {
                     style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.8rem',
-                      color: 'var(--brand-text)',
+                      color: 'var(--accent-orange)',
                       lineHeight: 1,
                     }}
                   >
                     0{idx + 1}
                   </span>
-                  <CheckCircle size={20} color="var(--brand-text)" />
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10" strokeOpacity="0.25" />
+                    <path d="M8 12l2.5 2.5 5.5-5.5" className="checkmark-draw" />
+                  </svg>
                 </div>
                 <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.35rem', color: 'var(--charcoal)', marginBottom: '8px' }}>
                   {item.title}
@@ -610,10 +851,10 @@ export const Home = () => {
             {PROCESS_STEPS.map((s) => (
               <div
                 key={s.step}
-                className="process-card"
+                className="process-card card-awwwards-lift"
                 style={{
-                  backgroundColor: 'var(--charcoal-card)',
-                  borderColor: 'var(--charcoal-border)',
+                  backgroundColor: 'var(--card-dark)',
+                  borderColor: 'rgba(255, 255, 255, 0.08)',
                   color: 'var(--softwhite)',
                 }}
               >
