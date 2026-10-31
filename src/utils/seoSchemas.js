@@ -105,16 +105,20 @@ export const getLocalBusinessSchema = (siteUrl = getBaseSiteUrl()) => ({
     { '@type': 'Country', name: 'United Arab Emirates' },
     { '@type': 'Country', name: 'India' },
   ],
-  serviceType: [
-    'Performance Marketing Strategy',
-    'Meta Ads Management',
-    'Google Ads Management',
-    'Generative AI Video Production',
-    'Direct-Response UGC Ad Creatives',
-    'Lifecycle Email Marketing & Retention',
-    'AI Voiceover Production',
-    'Social Media Strategy & Management',
-  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Marketing & AI Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Performance Marketing Strategy' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Meta Ads Management' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Google Ads Management' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Generative AI Video Production' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Direct-Response UGC Ad Creatives' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Lifecycle Email Marketing & Retention' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Voiceover Production' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Social Media Strategy & Management' } },
+    ],
+  },
   openingHoursSpecification: [
     {
       '@type': 'OpeningHoursSpecification',
@@ -144,7 +148,12 @@ export const getOrganizationSchema = (siteUrl = getBaseSiteUrl()) => ({
   legalName: 'Klikwise Digital Marketing',
   alternateName: `${SITE_CONFIG.name} — Performance Marketing & AI Creative`,
   url: siteUrl,
-  logo: `${siteUrl}/assets/hero.png`,
+  logo: {
+    '@type': 'ImageObject',
+    url: `${siteUrl}/assets/hero.png`,
+    width: 512,
+    height: 512,
+  },
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: SITE_CONFIG.phone,
@@ -284,7 +293,7 @@ export const getBlogPostingSchema = (post, siteUrl = getBaseSiteUrl()) => {
     '@type': 'BlogPosting',
     '@id': `${postUrl}#article`,
     headline: post.title,
-    description: post.description,
+    description: post.metaDescription || post.summary || post.description || post.title,
     image: imageUrl,
     datePublished: post.date,
     dateModified: post.updated || post.date,
@@ -307,6 +316,8 @@ export const getBlogPostingSchema = (post, siteUrl = getBaseSiteUrl()) => {
       logo: {
         '@type': 'ImageObject',
         url: `${siteUrl}/assets/hero.png`,
+        width: 512,
+        height: 512,
       },
     },
     mainEntityOfPage: {

@@ -19,37 +19,9 @@ export const Breadcrumbs = ({ items = [] }) => {
     ...items,
   ];
 
-  // Schema.org BreadcrumbList JSON-LD
-  const breadcrumbJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbsList.map((item, index) => {
-      let itemUrl = cleanBase;
-      if (item.path) {
-        if (item.path.startsWith('http')) {
-          itemUrl = item.path;
-        } else {
-          const cleanP = item.path.startsWith('/') ? item.path : `/${item.path}`;
-          itemUrl = `${cleanBase}${cleanP === '/' ? '' : cleanP}`;
-        }
-      }
-      return {
-        '@type': 'ListItem',
-        position: index + 1,
-        name: item.name,
-        item: itemUrl,
-      };
-    }),
-  };
-
   return (
-    <>
-      <script type="application/ld+json">
-        {JSON.stringify(breadcrumbJsonLd)}
-      </script>
-
-      <nav
-        aria-label="Breadcrumbs"
+    <nav
+      aria-label="Breadcrumbs"
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -128,6 +100,5 @@ export const Breadcrumbs = ({ items = [] }) => {
           })}
         </ol>
       </nav>
-    </>
-  );
-};
+    );
+  };

@@ -183,12 +183,12 @@ const StatCounter = ({ value, label, index }) => {
           fontWeight: 800,
           color:
             index === 0
-              ? 'var(--accent-orange)'
+              ? 'var(--brand-text)'
               : index === 1
               ? 'var(--charcoal)'
               : index === 2
-              ? 'var(--accent-amber)'
-              : 'var(--accent-orange)',
+              ? 'var(--gold-text)'
+              : 'var(--brand-text)',
           lineHeight: 1.1,
         }}
       >

@@ -132,7 +132,6 @@ export const Footer = () => {
                 Phone / WhatsApp:{' '}
                 <a
                   href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`}
-                  rel="nofollow"
                   style={{ color: 'var(--softwhite)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
                 >
                   {site.phone}
@@ -142,7 +141,6 @@ export const Footer = () => {
                 Email:{' '}
                 <a
                   href={`mailto:${site.email}`}
-                  rel="nofollow"
                   style={{ color: 'var(--softwhite)', textDecoration: 'underline', textUnderlineOffset: '3px' }}
                 >
                   {site.email}
@@ -258,7 +256,6 @@ export const Footer = () => {
               <li>
                 <a
                   href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`}
-                  rel="nofollow"
                   className="footer-nav-link"
                   style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
@@ -268,7 +265,6 @@ export const Footer = () => {
               <li>
                 <a
                   href={`mailto:${site.email}`}
-                  rel="nofollow"
                   className="footer-nav-link"
                   style={{ display: 'flex', alignItems: 'center', gap: '8px', wordBreak: 'break-all' }}
                 >

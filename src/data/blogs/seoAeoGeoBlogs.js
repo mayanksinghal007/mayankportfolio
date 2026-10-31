@@ -179,9 +179,9 @@ A compliant llms.txt file contains:
 > Strategic growth marketing, Meta Ads performance engineering, AI video generation, and technical SEO architecture.
 
 ## Core Capabilities
-- [Meta Ads Services](https://mayankaggarwal-one.vercel.app/services/meta-ads): ROAS optimization, conversion API integration, and creative scaling.
-- [AI Video Production](https://mayankaggarwal-one.vercel.app/services/ai-video): Runway Gen-3 and Kling AI ad creative workflows.
-- [SEO & AEO Architecture](https://mayankaggarwal-one.vercel.app/services/seo-aeo): Technical optimization for search engines and generative AI answers.
+- [Performance Marketing Services](https://mayankaggarwal-one.vercel.app/services/performance-marketing): ROAS optimization, conversion API integration, and creative scaling.
+- [AI Video Production](https://mayankaggarwal-one.vercel.app/services/ai-video-creation): Runway Gen-3 and Kling AI ad creative workflows.
+- [SEO & Growth Architecture](https://mayankaggarwal-one.vercel.app/services/performance-marketing): Technical optimization for search engines and generative AI answers.
 \`\`\`
 
 ---
@@ -331,7 +331,7 @@ Rather than dropping isolated script tags, link entities together using \`@id\` 
     },
     {
       "@type": "Article",
-      "@id": "https://mayankaggarwal-one.vercel.app/blog/post-37#article",
+      "@id": "https://mayankaggarwal-one.vercel.app/blog/semantic-schema-markup-json-ld-rich-results#article",
       "headline": "Semantic Schema Markup Guide",
       "author": { "@id": "https://mayankaggarwal-one.vercel.app/#person" }
     }

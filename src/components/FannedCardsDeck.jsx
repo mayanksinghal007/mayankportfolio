@@ -60,7 +60,7 @@ export const FannedCardsDeck = ({ onOpenShowreel, showreelAsset }) => {
         overview:
           showreelAsset?.subtitle ||
           'A high-octane montage of generative AI video, 3D typography, cinematic motion grading, and Meta ad campaign performance highlights.',
-        image: showreelAsset?.url || '/images/hero-showreel.jpg',
+        image: showreelAsset?.url || '/images/hero-showreel.webp',
         videoUrl: showreelAsset?.videoUrl || 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
         hasVideoDemo: true,
         tags: ['Runway Gen-3', 'ElevenLabs', 'Meta Ads', 'Editorial Cut'],
@@ -109,7 +109,7 @@ export const FannedCardsDeck = ({ onOpenShowreel, showreelAsset }) => {
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.68rem',
                     letterSpacing: '0.08em',
-                    color: 'rgba(255, 253, 249, 0.6)',
+                    color: 'rgba(255, 253, 249, 0.88)',
                     textTransform: 'uppercase',
                   }}
                 >
@@ -152,7 +152,7 @@ export const FannedCardsDeck = ({ onOpenShowreel, showreelAsset }) => {
                   <IconComponent size={18} />
                 </div>
                 <div>
-                  <h3
+                  <h2
                     style={{
                       fontFamily: 'var(--font-display)',
                       fontSize: '1.25rem',
@@ -162,7 +162,7 @@ export const FannedCardsDeck = ({ onOpenShowreel, showreelAsset }) => {
                     }}
                   >
                     {card.title}
-                  </h3>
+                  </h2>
                 </div>
               </div>
 
@@ -194,7 +194,7 @@ export const FannedCardsDeck = ({ onOpenShowreel, showreelAsset }) => {
                   style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '0.7rem',
-                    color: 'rgba(255, 253, 249, 0.55)',
+                    color: 'rgba(255, 253, 249, 0.88)',
                     textTransform: 'uppercase',
                     letterSpacing: '0.04em',
                   }}
@@ -208,7 +208,7 @@ export const FannedCardsDeck = ({ onOpenShowreel, showreelAsset }) => {
                 style={{
                   fontSize: '0.82rem',
                   lineHeight: 1.45,
-                  color: 'rgba(255, 253, 249, 0.72)',
+                  color: 'rgba(255, 253, 249, 0.92)',
                   marginBottom: '14px',
                 }}
               >
@@ -252,7 +252,7 @@ export const FannedCardsDeck = ({ onOpenShowreel, showreelAsset }) => {
                     LAUNCH SHOWREEL
                   </span>
                 </div>
-                <ArrowUpRight size={14} color="rgba(255, 253, 249, 0.5)" />
+                <ArrowUpRight size={14} color="rgba(255, 253, 249, 0.9)" />
               </div>
             </div>
           );

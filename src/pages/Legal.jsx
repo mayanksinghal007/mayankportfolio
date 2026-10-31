@@ -167,8 +167,8 @@ export const Legal = () => {
                   For any questions regarding this Privacy Policy or to exercise your DPDP rights, contact Mayank Aggarwal directly at:
                 </p>
                 <p style={{ marginTop: '8px' }}>
-                  <strong>Email:</strong> <a href={`mailto:${site.email}`} rel="nofollow" style={{ color: 'var(--brand)', fontWeight: 600 }}>{site.email}</a><br />
-                  <strong>WhatsApp / Phone:</strong> <a href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`} rel="nofollow" style={{ color: 'var(--charcoal)', fontWeight: 600 }}>{site.phone}</a><br />
+                  <strong>Email:</strong> <a href={`mailto:${site.email}`} style={{ color: 'var(--brand)', fontWeight: 600 }}>{site.email}</a><br />
+                  <strong>WhatsApp / Phone:</strong> <a href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`} style={{ color: 'var(--charcoal)', fontWeight: 600 }}>{site.phone}</a><br />
                   <strong>Address:</strong> Rohini, New Delhi, India 110085
                 </p>
               </div>

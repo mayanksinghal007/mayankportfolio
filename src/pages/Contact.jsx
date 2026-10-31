@@ -315,7 +315,7 @@ export const Contact = () => {
                       key={i}
                       href={c.href}
                       target={c.href.startsWith('http') ? '_blank' : undefined}
-                      rel={c.href.startsWith('http') ? 'noopener noreferrer nofollow' : 'nofollow'}
+                      rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       className="contact-card-channel"
                     >
                       <div className="channel-icon-wrap" style={{ backgroundColor: `${c.color}15`, color: c.color }}>
@@ -381,13 +381,13 @@ export const Contact = () => {
                 <div style={{ color: 'var(--mutedtext)' }}>Delhi, National Capital Region (NCR), India · PIN: 110001</div>
                 <div style={{ marginTop: '8px' }}>
                   <strong>Phone:</strong>{' '}
-                  <a href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`} rel="nofollow" style={{ color: 'var(--charcoal)', fontWeight: 600 }}>
+                  <a href={`tel:${(site.phoneTel || site.phone || '').replace(/\s+/g, '')}`} style={{ color: 'var(--charcoal)', fontWeight: 600 }}>
                     {site.phone}
                   </a>
                 </div>
                 <div>
                   <strong>Email:</strong>{' '}
-                  <a href={`mailto:${site.email}`} rel="nofollow" style={{ color: 'var(--brand)', fontWeight: 600 }}>
+                  <a href={`mailto:${site.email}`} style={{ color: 'var(--brand)', fontWeight: 600 }}>
                     {site.email}
                   </a>
                 </div>

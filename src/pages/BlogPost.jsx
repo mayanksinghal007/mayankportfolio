@@ -153,7 +153,7 @@ export const BlogPost = () => {
       <a
         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl)}`}
         target="_blank"
-        rel="noopener noreferrer nofollow"
+        rel="noopener noreferrer"
         aria-label="Share on LinkedIn"
         style={{
           display: 'inline-flex',
@@ -173,7 +173,7 @@ export const BlogPost = () => {
       <a
         href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(post?.title || '')}`}
         target="_blank"
-        rel="noopener noreferrer nofollow"
+        rel="noopener noreferrer"
         aria-label="Share on X (Twitter)"
         style={{
           display: 'inline-flex',
@@ -193,7 +193,7 @@ export const BlogPost = () => {
       <a
         href={`https://api.whatsapp.com/send?text=${encodeURIComponent((post?.title || '') + ' — ' + canonicalUrl)}`}
         target="_blank"
-        rel="noopener noreferrer nofollow"
+        rel="noopener noreferrer"
         aria-label="Share on WhatsApp"
         style={{
           display: 'inline-flex',
@@ -407,8 +407,7 @@ export const BlogPost = () => {
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 onError={(e) => {
                   e.currentTarget.onerror = null;
-                  e.currentTarget.src =
-                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80';
+                  e.currentTarget.src = '/images/hero-showreel.webp';
                 }}
               />
             </div>

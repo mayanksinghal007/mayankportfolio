@@ -19,7 +19,17 @@ import { ECOMMERCE_CRO_BLOGS } from './blogs/ecommerceCroBlogs.js';
 import { CAREER_PERSPECTIVES_BLOGS } from './blogs/careerPerspectivesBlogs.js';
 import { INTERNATIONAL_BLOGS } from './blogs/internationalBlogs.js';
 
-export const DEFAULT_BLOG_POSTS = [
+const localizeImage = (url) => {
+  if (!url) return '/images/hero-showreel.webp';
+  if (url.startsWith('/images/')) return url;
+  const match = url.match(/(photo-[a-zA-Z0-9_-]+)/);
+  if (match) {
+    return `/images/blog/${match[1]}.webp`;
+  }
+  return url;
+};
+
+const RAW_BLOG_POSTS = [
   ...META_ADS_BLOGS,            // Posts 1 - 10 (Meta Ads & CAPI)
   ...GOOGLE_AND_PAID_ADS_BLOGS, // Google PMax, Search Ads, YouTube Ads, Twitter (X) Ads, LinkedIn ABM, TikTok Spark Ads
   ...SEO_AEO_GEO_BLOGS,         // SEO, AEO, GEO, AI Citations & LLM Crawlers
@@ -30,6 +40,12 @@ export const DEFAULT_BLOG_POSTS = [
   ...AI_VIDEO_BLOGS,            // Video Ad Creative & Commercial Workflows
   ...AI_AUDIO_BLOGS             // Global Multilingual Ad Dubbing
 ];
+
+export const DEFAULT_BLOG_POSTS = RAW_BLOG_POSTS.map((post) => ({
+  ...post,
+  coverImage: localizeImage(post.coverImage),
+  image: localizeImage(post.image || post.coverImage),
+}));
 
 export const BLOG_CATEGORIES = [
   "All",
