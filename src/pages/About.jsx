@@ -94,7 +94,6 @@ export const About = () => {
                 <a
                   href={site.cvUrl || '/Mayank_Aggarwal_Resume.pdf'}
                   download="Mayank_Aggarwal_Resume.pdf"
-                  rel="nofollow"
                   className="btn-secondary"
                   title="Download Mayank Aggarwal CV (PDF)"
                 >

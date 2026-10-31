@@ -1,58 +1,94 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from 'fs';
+import path from 'path';
 
-function getHtmlFiles(dir) {
+function getFiles(dir) {
   let results = [];
-  for (const f of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.join(dir, f.name);
-    if (f.isDirectory()) results = results.concat(getHtmlFiles(full));
-    else if (f.name.endsWith('.html')) results.push(full);
+  if (!fs.existsSync(dir)) return results;
+  const list = fs.readdirSync(dir);
+  for (const file of list) {
+    const fullPath = path.join(dir, file);
+    const stat = fs.statSync(fullPath);
+    if (stat && stat.isDirectory()) {
+      results = results.concat(getFiles(fullPath));
+    } else if (file.endsWith('.html')) {
+      results.push(fullPath);
+    }
   }
   return results;
 }
 
-const files = getHtmlFiles('dist');
-const existingRoutes = new Set(files.map(f => {
-  let rel = path.relative('dist', f).replace(/\\/g, '/');
-  if (rel === 'index.html') return '/';
-  if (rel.endsWith('/index.html')) return '/' + rel.slice(0, -11);
-  if (rel.endsWith('.html')) return '/' + rel.slice(0, -5);
-  return '/' + rel;
-}));
+const distFiles = getFiles('dist');
+console.log('Total HTML files scanned:', distFiles.length);
 
-console.log('Indexed routes count in dist:', existingRoutes.size);
+const allHrefs = new Map();
+const linkRegex = /<a\s+[^>]*href=["']([^"']+)["'][^>]*>/gi;
 
-const broken = [];
-for (const file of files) {
+for (const file of distFiles) {
   const content = fs.readFileSync(file, 'utf8');
-  const hrefs = [...content.matchAll(/href=["']([^"'#?]+)["']/g)].map(m => m[1]);
-  for (const h of hrefs) {
-    if (
-      h.startsWith('/') &&
-      !h.startsWith('//') &&
-      !h.startsWith('/assets') &&
-      !h.startsWith('/images') &&
-      !h.startsWith('/Mayank_') &&
-      !h.startsWith('/site.webmanifest') &&
-      !h.startsWith('/rss.xml') &&
-      !h.startsWith('/sitemap.xml') &&
-      !h.startsWith('/robots.txt') &&
-      !h.startsWith('/humans.txt') &&
-      !h.startsWith('/llms') &&
-      !h.startsWith('/indexnow') &&
-      !h.startsWith('/8f1a23c5')
-    ) {
-      const cleanH = h.replace(/\/+$/, '') || '/';
-      if (!existingRoutes.has(cleanH)) {
-        broken.push({ from: path.relative('dist', file), to: h });
+  let match;
+  while ((match = linkRegex.exec(content)) !== null) {
+    const href = match[1];
+    if (!allHrefs.has(href)) {
+      allHrefs.set(href, []);
+    }
+    allHrefs.get(href).push(file);
+  }
+}
+
+console.log('Total unique hrefs found:', allHrefs.size);
+
+const httpLinks = [];
+const brokenInternal = [];
+const externalLinks = [];
+
+for (const [href, files] of allHrefs.entries()) {
+  if (href.startsWith('http://')) {
+    httpLinks.push({ href, count: files.length, sampleFile: files[0] });
+    continue;
+  }
+  
+  if (href.startsWith('https://')) {
+    try {
+      const urlObj = new URL(href);
+      if (urlObj.hostname === 'mayankaggarwal-one.vercel.app') {
+        const cleanPath = urlObj.pathname;
+        const testHtml = path.join('dist', cleanPath + '.html');
+        const testIndex = path.join('dist', cleanPath, 'index.html');
+        const testDirect = path.join('dist', cleanPath);
+        let exists = fs.existsSync(testIndex) || fs.existsSync(testHtml) || (fs.existsSync(testDirect) && !fs.statSync(testDirect).isDirectory());
+        if (!exists && cleanPath !== '/') {
+          brokenInternal.push({ href, cleanPath, count: files.length, sampleFile: files[0] });
+        }
+      } else {
+        externalLinks.push({ href, count: files.length, sampleFile: files[0] });
       }
+    } catch (e) {
+      // ignore
+    }
+    continue;
+  }
+  
+  if (href.startsWith('/') && !href.startsWith('//')) {
+    const cleanPath = href.split('?')[0].split('#')[0];
+    if (cleanPath === '' || cleanPath === '/') {
+      continue;
+    }
+    const testHtml = path.join('dist', cleanPath + '.html');
+    const testIndex = path.join('dist', cleanPath, 'index.html');
+    const testDirect = path.join('dist', cleanPath);
+    let exists = fs.existsSync(testIndex) || fs.existsSync(testHtml) || (fs.existsSync(testDirect) && !fs.statSync(testDirect).isDirectory());
+    if (!exists) {
+      brokenInternal.push({ href, cleanPath, count: files.length, sampleFile: files[0] });
     }
   }
 }
 
-console.log('Broken internal link count:', broken.length);
-if (broken.length > 0) {
-  console.log('Broken links sample:', broken.slice(0, 10));
-} else {
-  console.log('✓ All internal links resolve to valid, rendered pages!');
-}
+console.log('\n--- HTTP (non-secure) Links ---');
+console.log(JSON.stringify(httpLinks, null, 2));
+
+console.log('\n--- Broken Internal Links ---');
+console.log(JSON.stringify(brokenInternal, null, 2));
+
+console.log('\n--- External Links Count ---', externalLinks.length);
+console.log('\n--- All External Links Sample ---');
+console.log(externalLinks.map(e => e.href));

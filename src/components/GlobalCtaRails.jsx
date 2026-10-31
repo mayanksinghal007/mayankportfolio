@@ -14,7 +14,7 @@ export const GlobalCtaRails = () => {
   const whatsappMsg = site?.whatsappMsg || "Hi Mayank, I'm interested in discussing a marketing or AI creative project.";
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMsg)}`;
 
-  const linkedinUrl = site?.linkedin || 'https://lnkd.in/p/gfrXbbjH';
+  const linkedinUrl = site?.linkedin || 'https://www.linkedin.com/feed/update/urn:li:activity:7511093077722251264/';
   const instagramUrl = site?.instagram || 'https://www.instagram.com/mayankaggarwal_7';
   const githubUrl = site?.github || 'https://github.com/mayanksinghal007';
 

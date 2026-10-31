@@ -291,7 +291,7 @@ The 4-step Account-Based Marketing (ABM) LinkedIn framework:
 | **VP & Director Level** | $8.50 – $18.00 | $95 – $190 | 14% – 22% | $15,000 – $50,000 |
 | **Manager & Team Lead** | $5.50 – $12.00 | $65 – $130 | 8% – 15% | $5,000 – $20,000 |
 
-Connect with [Mayank Aggarwal on LinkedIn](https://lnkd.in/p/gfrXbbjH) or book a high-level marketing audit via our [Contact Page](/contact).
+Connect with [Mayank Aggarwal on LinkedIn](https://www.linkedin.com/feed/update/urn:li:activity:7511093077722251264/) or book a high-level marketing audit via our [Contact Page](/contact).
 `
   },
   {

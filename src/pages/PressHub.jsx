@@ -19,7 +19,7 @@ export const BACKLINK_PROFILES = [
   {
     name: "LinkedIn",
     category: "Professional Network",
-    url: "https://lnkd.in/p/gfrXbbjH",
+    url: "https://www.linkedin.com/feed/update/urn:li:activity:7511093077722251264/",
     da: "DA 98",
     anchorText: "Mayank Aggarwal - Digital Marketing Specialist",
     description: "Official professional network profile detailing performance marketing leadership, corporate retainers, and commerce background.",
@@ -37,28 +37,10 @@ export const BACKLINK_PROFILES = [
   {
     name: "Instagram",
     category: "Visual Social Media",
-    url: "https://www.instagram.com/mayank_aggarwal007/",
+    url: "https://www.instagram.com/mayankaggarwal_7",
     da: "DA 93",
-    anchorText: "@mayank_aggarwal007",
+    anchorText: "@mayankaggarwal_7",
     description: "Verified Instagram creator account showcasing AI video ad tests, behind-the-scenes editing, and marketing breakdowns.",
-    sameAs: true
-  },
-  {
-    name: "YouTube",
-    category: "Video Publishing",
-    url: "https://www.youtube.com/@MayankAggarwal-Growth",
-    da: "DA 100",
-    anchorText: "Mayank Aggarwal - Growth & AI Marketing",
-    description: "Video breakdowns of Meta Ads account scaling, Runway Gen-3 workflows, and live marketing audits.",
-    sameAs: true
-  },
-  {
-    name: "Medium",
-    category: "Thought Leadership",
-    url: "https://medium.com/@mayanksinghal0814",
-    da: "DA 95",
-    anchorText: "Mayank Aggarwal on Medium",
-    description: "In-depth publication essays on generative engine optimization (GEO), direct response copywriting, and unit economics.",
     sameAs: true
   },
   {
@@ -71,57 +53,12 @@ export const BACKLINK_PROFILES = [
     sameAs: true
   },
   {
-    name: "Dev.to",
-    category: "Technical Community",
-    url: "https://dev.to/mayanksinghal007",
-    da: "DA 91",
-    anchorText: "Mayank Aggarwal - Dev.to",
-    description: "Technical articles on React static prerendering, Core Web Vitals optimization, and Vite build systems.",
-    sameAs: true
-  },
-  {
     name: "Hashnode",
     category: "Developer Blogging",
     url: "https://hashnode.com/@mayanksinghal",
     da: "DA 89",
     anchorText: "Mayank Aggarwal's Tech Blog",
     description: "Engineering guides exploring Server-Side Tracking, webhook pipelines, and modern web architectures.",
-    sameAs: true
-  },
-  {
-    name: "Behance",
-    category: "Creative Portfolio",
-    url: "https://behance.net/mayankaggarwal007",
-    da: "DA 94",
-    anchorText: "Mayank Aggarwal Creative Case Studies",
-    description: "Visual design portfolios, commercial storyboards, and AI generative cinematography showcases.",
-    sameAs: true
-  },
-  {
-    name: "Dribbble",
-    category: "UI & Visual Design",
-    url: "https://dribbble.com/mayankaggarwal",
-    da: "DA 92",
-    anchorText: "Mayank Aggarwal on Dribbble",
-    description: "Design shots of high-converting landing page layouts and e-commerce mobile checkout wireframes.",
-    sameAs: true
-  },
-  {
-    name: "ProductHunt",
-    category: "Tech & Product Directory",
-    url: "https://www.producthunt.com/@mayank_aggarwal",
-    da: "DA 90",
-    anchorText: "Mayank Aggarwal - Maker Profile",
-    description: "Verified maker profile reviewing generative AI tools, marketing calculators, and productivity extensions.",
-    sameAs: true
-  },
-  {
-    name: "Crunchbase",
-    category: "Business Intelligence",
-    url: "https://www.crunchbase.com/person/mayank-aggarwal",
-    da: "DA 91",
-    anchorText: "Mayank Aggarwal - Crunchbase Profile",
-    description: "Corporate entity verification, advisory engagements, and digital growth agency credentials.",
     sameAs: true
   },
   {
@@ -134,48 +71,12 @@ export const BACKLINK_PROFILES = [
     sameAs: true
   },
   {
-    name: "Twitter / X",
-    category: "Social Broadcasting",
-    url: "https://twitter.com/mayank_growth",
-    da: "DA 94",
-    anchorText: "@mayank_growth on X",
-    description: "Real-time commentary on Meta algorithm shifts, AI video model benchmarks, and auction trends.",
-    sameAs: true
-  },
-  {
-    name: "Figma Community",
-    category: "Design Resources",
-    url: "https://www.figma.com/@mayankaggarwal",
-    da: "DA 93",
-    anchorText: "Mayank Aggarwal - Figma Creator",
-    description: "Published UI/UX components, direct-response ad storyboard wireframes, and design system kits.",
-    sameAs: true
-  },
-  {
-    name: "Kaggle",
-    category: "Data Science Hub",
-    url: "https://www.kaggle.com/mayankaggarwal007",
-    da: "DA 89",
-    anchorText: "Mayank Aggarwal - Kaggle Profile",
-    description: "Datasets and analysis exploring ad auction CPM trends, customer lifetime value models, and cohort decay.",
-    sameAs: true
-  },
-  {
     name: "Pinterest",
     category: "Visual Search Engine",
     url: "https://www.pinterest.com/mayankaggarwal007/",
     da: "DA 94",
     anchorText: "Mayank Aggarwal - Ad Creative Boards",
     description: "Curated swipe files of high-converting Meta Ads, TikTok viral hooks, and AI product commercial frames.",
-    sameAs: true
-  },
-  {
-    name: "About.me",
-    category: "Personal Brand Identity",
-    url: "https://about.me/mayank-aggarwal",
-    da: "DA 92",
-    anchorText: "Mayank Aggarwal - About.me",
-    description: "Verified single-page personal identity hub summarizing education, marketing awards, and contact links.",
     sameAs: true
   },
   {
