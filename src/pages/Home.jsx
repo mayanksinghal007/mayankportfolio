@@ -32,7 +32,7 @@ import { RulerDivider } from '../components/RulerDivider';
 import { GiantGhostHeading } from '../components/GiantGhostHeading';
 
 export const Home = () => {
-  const { portfolio, mediaAssets = {} } = useSite();
+  const { site, portfolio = [], blogPosts = [], mediaAssets = {} } = useSite();
   const [activeMedia, setActiveMedia] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
