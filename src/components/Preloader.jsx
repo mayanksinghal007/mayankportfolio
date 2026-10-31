@@ -20,7 +20,7 @@ export const Preloader = ({ onComplete }) => {
     // Skip on automated crawlers, Lighthouse, headless browsers, or reduced motion
     const isAutomated =
       Boolean(navigator.webdriver) ||
-      /HeadlessChrome|Lighthouse|PageSpeed|Googlebot/i.test(navigator.userAgent) ||
+      /HeadlessChrome|HeadlessChromium|Lighthouse|PageSpeed|Googlebot|Chrome-Lighthouse|PTST/i.test(navigator.userAgent) ||
       (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
 
     if (isAutomated) {

@@ -4152,13 +4152,19 @@ button {
 
 .hero-line-inner {
   display: block;
-  animation: heroLineReveal 0.9s var(--ease-expo-out) forwards;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-line-inner {
+    animation: heroLineReveal 0.6s var(--ease-expo-out) backwards;
+  }
 }
 
 @keyframes heroLineReveal {
   from {
-    transform: translateY(105%);
-    opacity: 0;
+    transform: translateY(14px);
+    opacity: 0.85;
   }
   to {
     transform: translateY(0);
@@ -4749,6 +4755,31 @@ button {
   z-index: 20 !important;
   box-shadow: 0 35px 80px rgba(255, 69, 0, 0.3), 0 0 30px rgba(255, 69, 0, 0.2);
   border-color: var(--accent-orange) !important;
+}
+
+@media (max-width: 768px) {
+  .fanned-deck-container {
+    min-height: 380px;
+    perspective: none;
+    overflow: hidden;
+  }
+  .fanned-card {
+    width: 92%;
+    max-width: 340px;
+    padding: 18px 20px;
+  }
+  .fanned-card-1 {
+    transform: rotate(-3deg) translateY(6px) translateX(0);
+  }
+  .fanned-card-2 {
+    transform: rotate(-1deg) translateY(0px) translateX(0);
+  }
+  .fanned-card-3 {
+    transform: rotate(2deg) translateY(-6px) translateX(0);
+  }
+  .fanned-card-4 {
+    transform: rotate(4deg) translateY(2px) translateX(0);
+  }
 }
 
 /* 5. WORKFLOW PIPELINE BAR */

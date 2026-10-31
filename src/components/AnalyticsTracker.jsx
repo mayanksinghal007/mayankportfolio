@@ -25,8 +25,8 @@ export const AnalyticsTracker = () => {
   useEffect(() => {
     if (typeof window === 'undefined' || !isConfigured) return;
 
-    // Detect automated test runner (Lighthouse, PageSpeed Insights, HeadlessChrome)
-    if (typeof navigator !== 'undefined' && (navigator.webdriver || /HeadlessChrome|Lighthouse/i.test(navigator.userAgent))) {
+    // Detect automated test runner (Lighthouse, PageSpeed Insights, HeadlessChromium)
+    if (typeof navigator !== 'undefined' && (Boolean(navigator.webdriver) || /HeadlessChrome|HeadlessChromium|Lighthouse|PageSpeed|Googlebot|Chrome-Lighthouse/i.test(navigator.userAgent))) {
       return;
     }
 

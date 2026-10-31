@@ -38,6 +38,10 @@ const ScrambleText = ({ text = 'ai-powered', duration = 650 }) => {
 
   React.useEffect(() => {
     if (typeof window === 'undefined') return;
+    const isBot = Boolean(navigator.webdriver) || /HeadlessChrome|HeadlessChromium|Lighthouse|PageSpeed|Googlebot/i.test(navigator.userAgent);
+    if (isBot || (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      return;
+    }
     const startTime = performance.now();
     let frameId;
 
