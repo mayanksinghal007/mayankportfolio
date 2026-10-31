@@ -74,7 +74,6 @@ export const AiPromptGenerator = () => {
   ];
 
   const faqSchema = {
-    '@context': 'https://schema.org',
     '@type': 'FAQPage',
     mainEntity: faqs.map((f) => ({
       '@type': 'Question',

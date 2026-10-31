@@ -197,7 +197,7 @@ For full tracking architecture audit, explore my [Performance Marketing services
     date: "2026-10-02",
     updated: "2026-10-12",
     readTime: "9 min read",
-    coverImage: "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=75",
+    coverImage: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800&q=75",
     author: "Mayank Aggarwal",
     authorRole: "Digital Marketing & AI Specialist",
     published: true,

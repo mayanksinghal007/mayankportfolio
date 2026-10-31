@@ -68,7 +68,7 @@ export const getPersonSchema = (siteUrl = getBaseSiteUrl()) => ({
  * 2. LocalBusiness / ProfessionalService Schema (NAP consistency, Local SEO & GEO)
  */
 export const getLocalBusinessSchema = (siteUrl = getBaseSiteUrl()) => ({
-  '@type': ['LocalBusiness', 'ProfessionalService'],
+  '@type': 'ProfessionalService',
   '@id': `${siteUrl}/#localbusiness`,
   name: `${SITE_CONFIG.name} — ${SITE_CONFIG.brandName}`,
   alternateName: [COMPANIES.KLIKWISE, 'Mayank Aggarwal', 'Klikwise Digital Marketing', 'Mayank Aggarwal Performance Marketing & AI Creative'],
@@ -293,13 +293,21 @@ export const getBlogPostingSchema = (post, siteUrl = getBaseSiteUrl()) => {
       '@id': `${siteUrl}/#person`,
       name: post.author || SITE_CONFIG.name,
       jobTitle: SITE_CONFIG.title,
-      alumniOf: COMPANIES.COLLEGE,
+      alumniOf: {
+        '@type': 'EducationalOrganization',
+        name: COMPANIES.COLLEGE,
+      },
       url: `${siteUrl}/about`,
     },
     publisher: {
-      '@type': 'Person',
-      '@id': `${siteUrl}/#person`,
-      name: SITE_CONFIG.name,
+      '@type': 'Organization',
+      '@id': `${siteUrl}/#organization`,
+      name: COMPANIES.KLIKWISE,
+      url: siteUrl,
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/assets/hero.png`,
+      },
     },
     mainEntityOfPage: {
       '@type': 'WebPage',
@@ -319,7 +327,9 @@ export const getCollectionPageSchema = (siteUrl = getBaseSiteUrl()) => ({
   description: 'Practical playbooks, guides, and workflows on Meta Ads, generative AI video, and short-form content for global brands.',
   url: `${siteUrl}/blog`,
   publisher: {
-    '@id': `${siteUrl}/#person`,
+    '@type': 'Organization',
+    '@id': `${siteUrl}/#organization`,
+    name: COMPANIES.KLIKWISE,
   },
   inLanguage: 'en',
 });
@@ -328,9 +338,20 @@ export const getCollectionPageSchema = (siteUrl = getBaseSiteUrl()) => ({
  * Helper to build standard @graph wrapper containing all valid schema objects
  */
 export const buildSchemaGraph = (schemas = []) => {
-  const valid = schemas.filter(Boolean);
+  const valid = schemas.filter(Boolean).map(item => {
+    if (item && typeof item === 'object') {
+      const { '@context': _, ...cleanItem } = item;
+      return cleanItem;
+    }
+    return item;
+  });
   if (valid.length === 0) return null;
-  if (valid.length === 1 && valid[0]['@context']) return valid[0];
+  if (valid.length === 1 && !valid[0]['@graph']) {
+    return {
+      '@context': 'https://schema.org',
+      ...valid[0],
+    };
+  }
   return {
     '@context': 'https://schema.org',
     '@graph': valid,

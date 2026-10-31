@@ -241,14 +241,21 @@ export const CityLanding = () => {
   }
 
   const localBusinessSchema = {
-    "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${cityInfo.canonicalUrl}/#service`,
     "name": `Mayank Aggarwal - Digital Marketing & Performance Specialist (${cityInfo.name})`,
     "url": cityInfo.canonicalUrl,
     "description": cityInfo.metaDescription,
-    "telephone": "+91-9818816672",
-    "email": "mayanksinghal0814@gmail.com",
+    "telephone": "+91 9217756033",
+    "email": "riyansh.studio007@gmail.com",
+    "priceRange": "$$",
+    "image": "https://mayankaggarwal-one.vercel.app/images/mayank-aggarwal.jpg",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": cityInfo.name,
+      "addressRegion": cityInfo.region === "india" ? "Delhi" : cityInfo.name,
+      "addressCountry": cityInfo.region === "india" ? "IN" : (cityInfo.name === "Dubai" || cityInfo.name === "Abu Dhabi" ? "AE" : cityInfo.name === "London" ? "GB" : "US")
+    },
     "areaServed": {
       "@type": "AdministrativeArea",
       "name": cityInfo.serviceRadius
@@ -257,7 +264,10 @@ export const CityLanding = () => {
       "@type": "Person",
       "name": "Mayank Aggarwal",
       "jobTitle": "Digital Marketing & AI Specialist",
-      "alumniOf": "Shaheed Bhagat Singh College, University of Delhi"
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "Shaheed Bhagat Singh College, University of Delhi"
+      }
     },
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
@@ -308,7 +318,6 @@ export const CityLanding = () => {
   ];
 
   const faqSchema = {
-    "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": cityFaqs.map(f => ({
       "@type": "Question",

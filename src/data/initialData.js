@@ -690,7 +690,7 @@ export const DEFAULT_ADS = [
     description: "High-converting 3-slide Instagram carousel highlighting cold-pressed botanical ingredients and vitamin C serum benefits. Configured for Meta Advantage+ catalog campaigns.",
     media: [
       "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=75",
-      "https://images.unsplash.com/photo-1608248597359-005a76985390?auto=format&fit=crop&w=800&q=75",
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=75",
       "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=800&q=75",
     ],
     thumbnail: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=75",

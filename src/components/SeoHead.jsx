@@ -195,7 +195,16 @@ export const SeoHead = ({
         <script type="application/ld+json">
           {JSON.stringify(
             Array.isArray(jsonLd)
-              ? { '@context': 'https://schema.org', '@graph': jsonLd.filter(Boolean) }
+              ? {
+                  '@context': 'https://schema.org',
+                  '@graph': jsonLd.filter(Boolean).map((item) => {
+                    if (item && typeof item === 'object') {
+                      const { '@context': _, ...cleanItem } = item;
+                      return cleanItem;
+                    }
+                    return item;
+                  }),
+                }
               : jsonLd['@context']
               ? jsonLd
               : { '@context': 'https://schema.org', ...jsonLd }

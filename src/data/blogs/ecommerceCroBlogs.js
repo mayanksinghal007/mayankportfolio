@@ -15,7 +15,7 @@ export const ECOMMERCE_CRO_BLOGS = [
     date: "2026-07-20",
     updated: "2026-10-12",
     readTime: "8 min read",
-    coverImage: "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=75",
+    coverImage: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800&q=75",
     author: "Mayank Aggarwal",
     authorRole: "Digital Marketing & AI Specialist",
     published: true,

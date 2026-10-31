@@ -32,7 +32,7 @@ export const FEATURED_BLOG_POSTS = [
     category: "Performance Marketing",
     date: "2026-10-02",
     readTime: "9 min read",
-    coverImage: "https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=800&q=75",
+    coverImage: "https://images.unsplash.com/photo-1556742044-3c52d6e88c62?auto=format&fit=crop&w=800&q=75",
     summary: "Advantage+ Shopping Campaigns (ASC) use AI automation to consolidate prospecting and retargeting into a single campaign. How to set caps and scale.",
     excerpt: "Advantage+ Shopping Campaigns (ASC) use AI automation to consolidate prospecting and retargeting into a single campaign. How to set caps and scale."
   }

@@ -13,3 +13,4 @@ export const GiantGhostHeading = ({ text, offset = '0%' }) => {
     </div>
   );
 };
+
