@@ -37,7 +37,7 @@ export const AdminBlogTab = () => {
     category: BLOG_CATEGORIES[0] || 'Meta Ads',
     summary: '',
     readTime: '6 min read',
-    coverImage: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
+    coverImage: '/images/blog/photo-1618005182384-a83a8bd57fbe.webp',
     tags: 'Meta Ads, Scaling, Marketing',
     content: '',
     published: true,
@@ -286,7 +286,7 @@ export const AdminBlogTab = () => {
                 style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 onError={(e) => {
                   e.currentTarget.onerror = null;
-                  e.currentTarget.src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80';
+                  e.currentTarget.src = '/images/blog/photo-1460925895917-afdab827c52f.webp';
                 }}
               />
               <span

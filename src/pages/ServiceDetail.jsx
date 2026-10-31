@@ -342,9 +342,9 @@ export const ServiceDetail = () => {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
                   <div>
-                    <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem' }}>
+                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.4rem', margin: 0 }}>
                       Generative Commercial Production
-                    </h4>
+                    </h3>
                     <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem' }}>
                       Prompt engineering, seed consistency, cinematic lighting, and 4K upscaling.
                     </p>

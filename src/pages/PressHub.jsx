@@ -98,7 +98,7 @@ export const PressHub = () => {
     "name": "Mayank Aggarwal",
     "jobTitle": "Digital Marketing & AI Specialist",
     "url": "https://mayankaggarwal-one.vercel.app",
-    "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=75",
+    "image": "/images/blog/photo-1534528741775-53994a69daeb.webp",
     "alumniOf": {
       "@type": "CollegeOrUniversity",
       "name": "Shaheed Bhagat Singh College, University of Delhi"

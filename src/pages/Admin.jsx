@@ -78,7 +78,7 @@ export const Admin = () => {
     overview: '',
     results: '',
     tags: 'Meta Ads, Campaign Strategy, Creative Angles',
-    image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=80',
+    image: '/images/blog/photo-1523381210434-271e8be1f52b.webp',
     hasVideoDemo: false,
     hasAudioDemo: false,
     verified: false,
@@ -265,7 +265,7 @@ export const Admin = () => {
       overview: '',
       results: '',
       tags: 'Meta Ads, Scaling',
-      image: 'https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=1200&q=80',
+      image: '/images/blog/photo-1523381210434-271e8be1f52b.webp',
       hasVideoDemo: false,
       hasAudioDemo: false,
     });

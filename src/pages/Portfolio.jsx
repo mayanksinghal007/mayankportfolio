@@ -121,6 +121,7 @@ export const Portfolio = () => {
       {/* PORTFOLIO GRID */}
       <section className="section-pad" style={{ paddingTop: '10px' }}>
         <div className="container">
+          <h2 className="visually-hidden">Client Campaigns &amp; Case Studies</h2>
           {filteredProjects.length === 0 ? (
             <div
               style={{
@@ -167,7 +168,7 @@ export const Portfolio = () => {
                       decoding="async"
                       onError={(e) => {
                         e.currentTarget.onerror = null;
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80';
+                        e.currentTarget.src = '/images/blog/photo-1460925895917-afdab827c52f.webp';
                       }}
                     />
                     <span className="project-category-badge">{project.category}</span>

@@ -187,11 +187,11 @@ export const About = () => {
                     <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: 'var(--brand)', color: '#FFFDF9', padding: '5px 12px', borderRadius: 'var(--radius-full)', fontSize: '0.74rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '10px' }}>
                       <Sparkles size={12} /> Delhi, India
                     </div>
-                    <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', lineHeight: 1.1, color: '#FFFFFF', fontWeight: 800, letterSpacing: '0.01em', textShadow: '0 2px 10px rgba(0,0,0,0.85)', margin: 0 }}>
+                    <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', lineHeight: 1.1, color: '#FFFFFF', fontWeight: 800, letterSpacing: '0.01em', textShadow: '0 2px 10px rgba(0,0,0,0.85)', margin: 0 }}>
                       MAYANK AGGARWAL
-                    </h3>
+                    </h2>
                     <p style={{ fontSize: '0.9rem', color: '#FFFDF9', marginTop: '6px', fontWeight: 500, textShadow: '0 1px 4px rgba(0,0,0,0.85)', letterSpacing: '0.01em' }}>
-                      Digital Marketing & AI Specialist
+                      Digital Marketer & AI Specialist
                     </p>
                   </div>
                 </div>

@@ -428,7 +428,7 @@ export const Blog = () => {
                       onError={(e) => {
                         e.currentTarget.onerror = null;
                         e.currentTarget.src =
-                          'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=75';
+                          '/images/blog/photo-1460925895917-afdab827c52f.webp';
                       }}
                     />
                     <div

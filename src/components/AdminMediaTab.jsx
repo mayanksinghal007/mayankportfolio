@@ -29,32 +29,32 @@ const PRESET_LIBRARY = [
   {
     name: 'Minimalist Editorial Portrait',
     type: 'image',
-    url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1200&q=80',
+    url: '/images/blog/photo-1534528741775-53994a69daeb.webp',
   },
   {
     name: 'Modern Streetwear Editorial',
     type: 'image',
-    url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=1200&q=80',
+    url: '/images/blog/photo-1509631179647-0177331693ae.webp',
   },
   {
     name: 'Sound Studio Waveform & Mic',
     type: 'image',
-    url: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80',
+    url: '/images/blog/photo-1598488035139-bdbb2231ce04.webp',
   },
   {
     name: 'Luxury Product Aesthetic',
     type: 'image',
-    url: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80',
+    url: '/images/blog/photo-1522335789203-aabd1fc54bc9.webp',
   },
   {
     name: 'D2C Skincare Botanical Shot',
     type: 'image',
-    url: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=1200&q=80',
+    url: '/images/blog/photo-1556228720-195a672e8a03.webp',
   },
   {
     name: 'AI Automation Video Reel (YouTube)',
     type: 'video',
-    url: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80',
+    url: '/images/blog/photo-1516321318423-f06f85e504b3.webp',
     videoUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
   },
 ];
@@ -327,7 +327,7 @@ export const AdminMediaTab = () => {
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => {
                       e.currentTarget.onerror = null;
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=400&q=80';
+                      e.currentTarget.src = '/images/blog/photo-1516321318423-f06f85e504b3.webp';
                     }}
                   />
                   {asset.type === 'video' && (
@@ -468,7 +468,7 @@ export const AdminMediaTab = () => {
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => {
                       e.currentTarget.onerror = null;
-                      e.currentTarget.src = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80';
+                      e.currentTarget.src = '/images/blog/photo-1516321318423-f06f85e504b3.webp';
                     }}
                   />
                 )}

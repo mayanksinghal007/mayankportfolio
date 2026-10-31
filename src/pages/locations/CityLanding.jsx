@@ -453,6 +453,7 @@ export const CityLanding = () => {
       {/* Local Market Context Cards */}
       <section className="section-pad" style={{ paddingTop: '10px' }}>
         <div className="container">
+          <h2 className="visually-hidden">{cityInfo.name} Market Analysis &amp; Growth Strategy</h2>
           <div
             style={{
               display: 'grid',

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, Phone, Sparkles, Check, Copy, ExternalLink, Bot } from 'lucide-react';
+import { MessageCircle, Phone, Bot } from 'lucide-react';
 import { LinkedinIcon, InstagramIcon, GithubIcon } from './SocialIcons';
 import { useSite } from '../context/SiteContext';
 
@@ -7,6 +7,23 @@ export const GlobalCtaRails = () => {
   const { site, showToast } = useSite();
   const [copiedPhone, setCopiedPhone] = useState(false);
   const [activeTooltip, setActiveTooltip] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Check if hero intro already played in this session
+    let skipDelay = false;
+    try {
+      skipDelay = Boolean(sessionStorage.getItem('hero_intro_played'));
+    } catch (e) {}
+
+    const timer = setTimeout(() => {
+      setIsVisible(true);
+    }, skipDelay ? 150 : 2800);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const phoneRaw = (site?.phoneTel || site?.phone || '+91 9217756033').replace(/\s+/g, '');
   const phoneDisplay = site?.phone || '+91 9217756033';
@@ -24,11 +41,7 @@ export const GlobalCtaRails = () => {
     }
   };
 
-  const handleCallClick = (e) => {
-    // Detect if device supports touch dialing or is desktop
-    const isTouch = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
-    
-    // Copy phone number to clipboard for convenience
+  const handleCallClick = () => {
     if (navigator?.clipboard?.writeText) {
       navigator.clipboard.writeText(phoneDisplay).then(() => {
         setCopiedPhone(true);
@@ -39,14 +52,9 @@ export const GlobalCtaRails = () => {
       }).catch(() => {});
     }
 
-    // On non-touch desktop, prevent unwanted application opening if desired, or let tel: trigger
-    if (!isTouch) {
-      // Keep tooltip visible showing "Copied!"
-      setActiveTooltip('call');
-      setTimeout(() => setActiveTooltip(null), 3000);
-    }
+    setActiveTooltip('call');
+    setTimeout(() => setActiveTooltip(null), 3000);
 
-    // Track consent-compliant CTA click if analytics available
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', 'click_cta_call', {
         event_category: 'conversion',
@@ -69,13 +77,14 @@ export const GlobalCtaRails = () => {
       {/* ======================================================================
           DESKTOP LEFT-SIDE VERTICAL QUICK-LINK RAIL
           Contains: LinkedIn, Instagram, GitHub, Ask Mayank AI
+          Fades in at ~3.0s, frosted-dark pill, 40px round monochrome icons
           ====================================================================== */}
       <nav
-        className="global-rail-left"
-        aria-label="Professional and AI quick links"
+        className={`global-rail-left ${isVisible ? 'rail-visible' : ''}`}
+        aria-label="Professional and social links"
       >
         <div className="global-rail-track">
-          {/* 1. LinkedIn Profile */}
+          {/* 1. LinkedIn */}
           <div
             className="global-rail-item"
             onMouseEnter={() => setActiveTooltip('linkedin')}
@@ -90,7 +99,7 @@ export const GlobalCtaRails = () => {
               onFocus={() => setActiveTooltip('linkedin')}
               onBlur={() => setActiveTooltip(null)}
             >
-              <LinkedinIcon size={19} />
+              <LinkedinIcon size={18} />
             </a>
             <div
               className={`global-rail-tooltip tooltip-left ${activeTooltip === 'linkedin' ? 'visible' : ''}`}
@@ -101,7 +110,7 @@ export const GlobalCtaRails = () => {
             </div>
           </div>
 
-          {/* 2. Instagram Profile */}
+          {/* 2. Instagram */}
           <div
             className="global-rail-item"
             onMouseEnter={() => setActiveTooltip('instagram')}
@@ -116,7 +125,7 @@ export const GlobalCtaRails = () => {
               onFocus={() => setActiveTooltip('instagram')}
               onBlur={() => setActiveTooltip(null)}
             >
-              <InstagramIcon size={19} />
+              <InstagramIcon size={18} />
             </a>
             <div
               className={`global-rail-tooltip tooltip-left ${activeTooltip === 'instagram' ? 'visible' : ''}`}
@@ -127,7 +136,7 @@ export const GlobalCtaRails = () => {
             </div>
           </div>
 
-          {/* 3. GitHub Profile */}
+          {/* 3. GitHub */}
           <div
             className="global-rail-item"
             onMouseEnter={() => setActiveTooltip('github')}
@@ -142,21 +151,20 @@ export const GlobalCtaRails = () => {
               onFocus={() => setActiveTooltip('github')}
               onBlur={() => setActiveTooltip(null)}
             >
-              <GithubIcon size={19} />
+              <GithubIcon size={18} />
             </a>
             <div
               className={`global-rail-tooltip tooltip-left ${activeTooltip === 'github' ? 'visible' : ''}`}
               role="tooltip"
             >
               <span className="tooltip-title">GitHub</span>
-              <span className="tooltip-detail">Code & Open Source</span>
+              <span className="tooltip-detail">Code & Workflows</span>
             </div>
           </div>
 
-          {/* Divider */}
           <div className="global-rail-divider" />
 
-          {/* 4. Ask Mayank AI Assistant Entry Point */}
+          {/* 4. Ask Mayank AI */}
           <div
             className="global-rail-item"
             onMouseEnter={() => setActiveTooltip('ai')}
@@ -166,35 +174,36 @@ export const GlobalCtaRails = () => {
               type="button"
               onClick={handleOpenAi}
               className="global-rail-btn btn-ai-pulse"
-              aria-label="Ask Mayank AI Marketing Assistant"
+              aria-label="Ask Mayank AI Agent"
               data-ai-trigger="true"
               onFocus={() => setActiveTooltip('ai')}
               onBlur={() => setActiveTooltip(null)}
             >
-              <Bot size={20} color="#FF7A00" />
+              <Bot size={19} color="#FF7A00" />
               <span className="ai-active-indicator" />
             </button>
             <div
               className={`global-rail-tooltip tooltip-left ${activeTooltip === 'ai' ? 'visible' : ''}`}
               role="tooltip"
             >
-              <span className="tooltip-title" style={{ color: 'var(--brand)' }}>Ask Mayank AI</span>
-              <span className="tooltip-detail">Live Marketing & Ad Assistant</span>
+              <span className="tooltip-title" style={{ color: '#FF7A00' }}>Ask Mayank AI</span>
+              <span className="tooltip-detail">AI Portfolio Assistant</span>
             </div>
           </div>
         </div>
       </nav>
 
       {/* ======================================================================
-          DESKTOP RIGHT-SIDE CONTACT RAIL
-          Contains: WhatsApp CTA, Call CTA (with copy-to-clipboard fallback)
+          DESKTOP RIGHT-SIDE VERTICAL CONVERSION RAIL
+          Contains: Direct WhatsApp, Direct Call
+          Fades in at ~3.0s, frosted-dark pill, 40px round monochrome icons
           ====================================================================== */}
       <aside
-        className="global-rail-right"
-        aria-label="Direct contact reachout"
+        className={`global-rail-right ${isVisible ? 'rail-visible' : ''}`}
+        aria-label="Direct contact channels"
       >
         <div className="global-rail-track">
-          {/* 1. WhatsApp CTA */}
+          {/* 1. Direct WhatsApp Button */}
           <div
             className="global-rail-item"
             onMouseEnter={() => setActiveTooltip('whatsapp')}
@@ -205,24 +214,26 @@ export const GlobalCtaRails = () => {
               target="_blank"
               rel="noopener noreferrer nofollow"
               onClick={handleWhatsAppClick}
-              className="global-rail-btn btn-whatsapp-rail"
-              aria-label="Chat with Mayank on WhatsApp (+91 9217756033)"
+              className="global-rail-btn btn-wa-pulse"
+              aria-label="Chat directly on WhatsApp"
               onFocus={() => setActiveTooltip('whatsapp')}
               onBlur={() => setActiveTooltip(null)}
             >
-              <MessageCircle size={21} color="#FFFFFF" />
-              <span className="whatsapp-online-ring" />
+              <MessageCircle size={19} color="#25D366" />
+              <span className="wa-active-indicator" />
             </a>
             <div
               className={`global-rail-tooltip tooltip-right ${activeTooltip === 'whatsapp' ? 'visible' : ''}`}
               role="tooltip"
             >
-              <span className="tooltip-title" style={{ color: '#25D366' }}>WhatsApp Direct</span>
-              <span className="tooltip-detail">Replies in &lt;1 hour · Available 24/7</span>
+              <span className="tooltip-title" style={{ color: '#25D366' }}>WhatsApp Chat</span>
+              <span className="tooltip-detail">Instant 1-on-1 Reply</span>
             </div>
           </div>
 
-          {/* 2. Call CTA */}
+          <div className="global-rail-divider" />
+
+          {/* 2. Direct Call / Copy Number */}
           <div
             className="global-rail-item"
             onMouseEnter={() => setActiveTooltip('call')}
@@ -231,22 +242,22 @@ export const GlobalCtaRails = () => {
             <a
               href={`tel:${phoneRaw}`}
               onClick={handleCallClick}
-              className="global-rail-btn btn-call-rail"
-              aria-label={`Call Mayank Aggarwal at ${phoneDisplay} (Click to copy)`}
+              className="global-rail-btn btn-call-pulse"
+              aria-label={`Call Mayank Aggarwal directly at ${phoneDisplay}`}
               onFocus={() => setActiveTooltip('call')}
               onBlur={() => setActiveTooltip(null)}
             >
-              {copiedPhone ? <Check size={20} color="#10B981" /> : <Phone size={19} color="#FFB92E" />}
+              <Phone size={18} color="#FFB92E" />
             </a>
             <div
               className={`global-rail-tooltip tooltip-right ${activeTooltip === 'call' ? 'visible' : ''}`}
               role="tooltip"
             >
               <span className="tooltip-title" style={{ color: copiedPhone ? '#10B981' : '#FFB92E' }}>
-                {copiedPhone ? 'Number Copied!' : 'Direct Call'}
+                {copiedPhone ? 'Copied to Clipboard!' : 'Direct Call'}
               </span>
               <span className="tooltip-detail">
-                {copiedPhone ? phoneDisplay : `${phoneDisplay} (Click to copy)`}
+                {copiedPhone ? phoneDisplay : `${phoneDisplay} (Tap to copy)`}
               </span>
             </div>
           </div>
@@ -254,82 +265,22 @@ export const GlobalCtaRails = () => {
       </aside>
 
       {/* ======================================================================
-          MOBILE & TABLET BOTTOM CONVERSION DOCK (< 768px)
-          Compact, non-intrusive, safe-area-compliant conversion bar
+          MOBILE COLLAPSIBLE WHATSAPP FLOATING BUTTON (< 820px)
+          Single, sleek 50px WhatsApp floating FAB in bottom-right corner.
+          Leaves the entire screen clear, zero clutter, instant tap to chat.
           ====================================================================== */}
-      <div
-        className="global-mobile-dock"
-        role="region"
-        aria-label="Quick contact and links bar"
-      >
-        <div className="mobile-dock-inner">
-          {/* Ask Mayank AI Action */}
-          <button
-            type="button"
-            onClick={handleOpenAi}
-            className="mobile-dock-btn mobile-dock-ai"
-            aria-label="Open Ask Mayank AI Assistant"
-            data-ai-trigger="true"
-          >
-            <Bot size={18} color="#FF7A00" />
-            <span>Mayank AI</span>
-          </button>
-
-          {/* Direct Call Button (With number copy on tap) */}
-          <a
-            href={`tel:${phoneRaw}`}
-            onClick={handleCallClick}
-            className="mobile-dock-btn mobile-dock-call"
-            aria-label={`Call ${phoneDisplay}`}
-          >
-            {copiedPhone ? <Check size={18} color="#10B981" /> : <Phone size={18} color="#FFB92E" />}
-            <span>{copiedPhone ? 'Copied' : 'Call'}</span>
-          </a>
-
-          {/* Primary WhatsApp Direct Button */}
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer nofollow"
-            onClick={handleWhatsAppClick}
-            className="mobile-dock-btn mobile-dock-whatsapp"
-            aria-label="Chat on WhatsApp"
-          >
-            <MessageCircle size={19} color="#FFFFFF" />
-            <span>WhatsApp</span>
-          </a>
-
-          {/* Social Quick-Drawer Toggle */}
-          <div className="mobile-dock-socials">
-            <a
-              href={linkedinUrl}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="mobile-social-icon"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedinIcon size={16} />
-            </a>
-            <a
-              href={instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="mobile-social-icon"
-              aria-label="Instagram Profile"
-            >
-              <InstagramIcon size={16} />
-            </a>
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer nofollow"
-              className="mobile-social-icon"
-              aria-label="GitHub Profile"
-            >
-              <GithubIcon size={16} />
-            </a>
-          </div>
-        </div>
+      <div className={`global-mobile-wa-fab ${isVisible ? 'fab-visible' : ''}`}>
+        <a
+          href={whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          onClick={handleWhatsAppClick}
+          className="mobile-wa-btn"
+          aria-label="Direct Chat on WhatsApp with Mayank Aggarwal"
+        >
+          <MessageCircle size={24} color="#FFFFFF" />
+          <span className="mobile-wa-ping" />
+        </a>
       </div>
     </>
   );

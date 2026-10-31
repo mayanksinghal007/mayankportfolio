@@ -303,7 +303,7 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
               const displayThumb =
                 ad.thumbnail ||
                 (isPhoto && ad.media?.[0]) ||
-                'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1000&q=80';
+                '/images/blog/photo-1557804506-669a67965ba0.webp';
 
               return (
                 <div
@@ -350,7 +350,7 @@ export const AdsSection = ({ title, subtitle, showViewAllLink = false, limit = n
                       }}
                       onError={(e) => {
                         e.currentTarget.onerror = null;
-                        e.currentTarget.src = 'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=75';
+                        e.currentTarget.src = '/images/blog/photo-1557804506-669a67965ba0.webp';
                       }}
                     />
 

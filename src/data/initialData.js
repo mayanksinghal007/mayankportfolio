@@ -804,7 +804,7 @@ export const DEFAULT_MEDIA_ASSETS = {
     name: "AI Voiceover Studio Demo Visual",
     location: "Services — AI Voiceover & Audio Design",
     type: "image",
-    url: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=800&q=75",
+    url: "/images/blog/photo-1598488035139-bdbb2231ce04.webp",
     alt: "ElevenLabs Studio Audio Design",
   },
   services_performance_ads: {
@@ -812,7 +812,7 @@ export const DEFAULT_MEDIA_ASSETS = {
     name: "Performance Marketing Key Visual",
     location: "Services — Performance Marketing Meta Ads",
     type: "image",
-    url: "https://images.unsplash.com/photo-1523381210434-271e8be1f52b?auto=format&fit=crop&w=800&q=75",
+    url: "/images/blog/photo-1523381210434-271e8be1f52b.webp",
     alt: "Meta Ads Account Scaling",
   },
   portfolio_featured_showreel: {
@@ -830,7 +830,7 @@ export const DEFAULT_MEDIA_ASSETS = {
     name: "Meta Ads Top Visual Showcase",
     location: "Ads Showcase Page — Primary Highlight",
     type: "image",
-    url: "https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=800&q=75",
+    url: "/images/blog/photo-1556228720-195a672e8a03.webp",
     alt: "Meta Ad Creative Highlight",
   },
   ad_banner_2: {

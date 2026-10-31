@@ -586,7 +586,7 @@ export const BlogPost = () => {
                   }}
                 >
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80"
+                    src="/images/blog/photo-1507003211169-0a1dd7228f2d.webp"
                     alt="Mayank Aggarwal"
                     width="68"
                     height="68"
@@ -595,15 +595,15 @@ export const BlogPost = () => {
                 </div>
                 <div style={{ flex: 1, minWidth: '220px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
-                    <h4 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 800, color: 'var(--charcoal)' }}>
+                    <div style={{ margin: 0, fontSize: '1.1rem', fontWeight: 800, color: 'var(--charcoal)' }}>
                       Mayank Aggarwal
-                    </h4>
+                    </div>
                     <span style={{ fontSize: '0.72rem', backgroundColor: 'var(--peach)', color: 'var(--brand)', padding: '2px 8px', borderRadius: '999px', fontWeight: 700 }}>
                       Specialist & Media Buyer
                     </span>
                   </div>
                   <p style={{ margin: 0, fontSize: '0.86rem', color: 'var(--mutedtext)', lineHeight: 1.5, marginBottom: '12px' }}>
-                    Digital Marketing & AI Specialist at Klikwise. Alumni of Shaheed Bhagat Singh College, University of Delhi. Managing Meta Ads, Google PMax, and generative creative production for international brands.
+                    Digital Marketer & AI Specialist at Klikwise. Alumni of Shaheed Bhagat Singh College, University of Delhi. Managing Meta Ads, Google PMax, and generative creative production for Indian D2C brands and global clients.
                   </p>
                   <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                     <a
@@ -774,9 +774,9 @@ export const BlogPost = () => {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.74rem', fontWeight: 800, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.04em', marginBottom: '8px' }}>
                     <Calculator size={14} /> Free Growth Tool
                   </div>
-                  <h4 style={{ margin: 0, fontSize: '1rem', fontWeight: 800, color: 'var(--charcoal)', marginBottom: '8px' }}>
+                  <div style={{ margin: 0, fontSize: '1rem', fontWeight: 800, color: 'var(--charcoal)', marginBottom: '8px' }}>
                     Meta & Google Ads ROAS Calculator
-                  </h4>
+                  </div>
                   <p style={{ margin: 0, fontSize: '0.82rem', color: 'var(--mutedtext)', lineHeight: 1.5, marginBottom: '16px' }}>
                     Calculate exact breakeven ROAS, customer CAC, and cash margins across USD, GBP, AED, and INR.
                   </p>

@@ -352,9 +352,9 @@ export const Contact = () => {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
                   <Clock size={20} color="#FF3D0A" />
-                  <h4 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--charcoal)' }}>
+                  <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.25rem', color: 'var(--charcoal)', margin: 0 }}>
                     Fast Turnaround Guarantee
-                  </h4>
+                  </h3>
                 </div>
                 <p style={{ fontSize: '0.88rem', color: 'var(--mutedtext)', lineHeight: 1.6 }}>
                   Every project inquiry receives a personalized review within <strong>12 business hours</strong>, including preliminary scope suggestions and next steps.

@@ -808,7 +808,7 @@ export const AdminAdsTab = () => {
                   const thumb =
                     ad.thumbnail ||
                     (isPhoto && ad.media?.[0]) ||
-                    'https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=400&q=80';
+                    '/images/blog/photo-1557804506-669a67965ba0.webp';
 
                   return (
                     <tr
