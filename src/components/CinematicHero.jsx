@@ -205,20 +205,22 @@ export const CinematicHero = () => {
         </div>
 
         {/* 0.3s Huge Editorial Headline: Real accessible H1 with 3 masked lines */}
-        <h1 className="hero-cinematic-h1" aria-label="Hook. Convert. Retain.">
-          {/* Line 1: HOOK. */}
+        <h1 className="hero-cinematic-h1" aria-label="Creative Thinking. Smart Marketing. AI-Powered Execution.">
+          {/* Line 1: CREATIVE THINKING. */}
           <span className="headline-line-mask" aria-hidden="true">
-            <span className="headline-line headline-line-hook">HOOK.</span>
+            <span className="headline-line headline-line-hook">CREATIVE THINKING.</span>
           </span>
 
-          {/* Line 2: CONVERT. */}
+          {/* Line 2: SMART MARKETING. */}
           <span className="headline-line-mask" aria-hidden="true">
-            <span className="headline-line headline-line-convert">CONVERT.</span>
+            <span className="headline-line headline-line-convert">SMART MARKETING.</span>
           </span>
 
-          {/* Line 3: RETAIN. (Italic serif in brand orange) */}
+          {/* Line 3: AI-POWERED EXECUTION. */}
           <span className="headline-line-mask" aria-hidden="true">
-            <span className="headline-line headline-line-retain">RETAIN.</span>
+            <span className="headline-line headline-line-retain">
+              <span className="headline-accent-serif">AI-POWERED</span> EXECUTION.
+            </span>
           </span>
         </h1>
 
