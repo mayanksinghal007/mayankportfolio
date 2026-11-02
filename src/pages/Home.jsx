@@ -52,16 +52,17 @@ export const Home = () => {
 
   const tickerKeywords = [
     'Meta Ads Strategy',
+    'Ecommerce CRO Audit for D2C Brands',
+    'Meta CAPI & Pixel Setup',
     'AI Video Production',
     'ElevenLabs Voiceovers',
     'High-Retention Reels',
     'Creative Testing',
     'Midjourney Visuals',
-    'Content Calendars',
     'Runway Gen-3 Alpha',
     'Kling AI Workflows',
     'Direct Response Hooks',
-    'UGC Creative Strategy',
+    'Email Retention Funnels',
   ];
 
   return (

@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { LinkedinIcon, InstagramIcon, XTwitterIcon } from '../components/SocialIcons';
 import { SITE_CONFIG } from '../config/site';
-import { getBlogPostingSchema, getBreadcrumbSchema, getFaqSchema } from '../utils/seoSchemas';
+import { getBlogPostingSchema, getBreadcrumbSchema, getFaqSchema, getPersonSchema, getOrganizationSchema } from '../utils/seoSchemas';
 import { DEFAULT_BLOG_POSTS } from '../data/blogData';
 
 export const BlogPost = () => {
@@ -171,7 +171,7 @@ export const BlogPost = () => {
         <LinkedinIcon size={14} color="#ffffff" /> LinkedIn
       </a>
       <a
-        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(post?.title || '')}`}
+        href={`https://x.com/intent/tweet?url=${encodeURIComponent(canonicalUrl)}&text=${encodeURIComponent(post?.title || '')}`}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Share on X (Twitter)"
@@ -261,6 +261,8 @@ export const BlogPost = () => {
 
   // Schema.org JSON-LD
   const combinedSchemas = [
+    getPersonSchema(),
+    getOrganizationSchema(),
     getBlogPostingSchema(post),
     getBreadcrumbSchema([
       { name: 'Blog', path: '/blog' },
