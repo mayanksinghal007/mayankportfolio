@@ -37,11 +37,24 @@
       ]
     },
     {
-      "source": "/(sitemap\\.xml|robots\\.txt|llms\\.txt|humans\\.txt|rss\\.xml)",
+      "source": "/(sitemap\\.xml|robots\\.txt|llms\\.txt|llms-full\\.txt|humans\\.txt|rss\\.xml|security\\.txt|browserconfig\\.xml|BingSiteAuth\\.xml|opensearch\\.xml|indexnow\\.txt)",
       "headers": [
         {
           "key": "Cache-Control",
           "value": "public, max-age=3600, stale-while-revalidate=86400"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     },

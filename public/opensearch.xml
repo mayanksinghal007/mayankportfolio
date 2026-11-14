@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Mayank Aggarwal</ShortName>
+  <Description>Search Digital Marketing &amp; AI Creatives Playbooks by Mayank Aggarwal</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Url type="text/html" template="https://mayankaggarwal-one.vercel.app/blog?q={searchTerms}"/>
+  <Image width="48" height="46" type="image/svg+xml">https://mayankaggarwal-one.vercel.app/favicon.svg</Image>
+</OpenSearchDescription>

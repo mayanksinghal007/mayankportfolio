@@ -1,0 +1,11 @@
+# Security Policy for Mayank Aggarwal Portfolio
+# https://mayankaggarwal-one.vercel.app/security.txt
+
+Contact: mailto:riyansh.studio007@gmail.com
+Contact: tel:+91-9217756033
+Expires: 2027-12-31T23:59:59.000Z
+Preferred-Languages: en, hi
+Canonical: https://mayankaggarwal-one.vercel.app/.well-known/security.txt
+Policy: https://mayankaggarwal-one.vercel.app/privacy-policy
+Hiring: https://mayankaggarwal-one.vercel.app/contact
+Acknowledgments: https://mayankaggarwal-one.vercel.app/about
