@@ -84,10 +84,14 @@ export const AnalyticsTracker = () => {
       const isCta =
         target.classList.contains('btn-primary') ||
         target.classList.contains('btn-secondary') ||
+        target.classList.contains('hero-btn-primary') ||
+        target.classList.contains('hero-btn-secondary') ||
+        target.classList.contains('pill-cta-btn') ||
         target.classList.contains('cta-btn') ||
         target.hasAttribute('data-cta') ||
         href.includes('/contact') ||
-        href.includes('/tools/');
+        href.includes('/tools/') ||
+        href.includes('/portfolio');
 
       if (isCta) {
         window.gtag('event', 'cta_click', {

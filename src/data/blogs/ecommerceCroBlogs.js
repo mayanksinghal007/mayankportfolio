@@ -7,9 +7,9 @@ export const ECOMMERCE_CRO_BLOGS = [
   {
     id: "post-41",
     slug: "shopify-conversion-rate-optimization-checklist-india",
-    title: "Shopify Conversion Rate Optimization Checklist for Indian D2C Brands",
-    seoTitle: "Shopify CRO Checklist for Indian D2C Brands",
-    metaDescription: "The ultimate 25-point Shopify conversion rate optimization checklist tailored for Indian consumers. Boost mobile conversions from 1.2% to 3.5%+.",
+    title: "Ecommerce CRO Audit for D2C Brand India: 25-Point Checklist",
+    seoTitle: "Ecommerce CRO Audit for D2C Brand India | 25-Point Checklist",
+    metaDescription: "Step-by-step ecommerce CRO audit for D2C brand India. 25-point checklist covering mobile checkout, GoKwik UPI, COD verification & WhatsApp retention.",
     category: "E-Commerce & CRO",
     tags: ["Shopify CRO", "Conversion Rate Optimization", "Indian D2C", "E-Commerce", "Checkout Optimization"],
     date: "2026-07-20",
