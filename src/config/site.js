@@ -35,6 +35,7 @@ export const SITE_CONFIG = {
   googleCnameVerification: "gv-hiv3gu4sg4ylae.dv.googlehosted.com",
   bingVerification: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_BING_SITE_VERIFICATION) || "bing-webmaster-verification-placeholder-code",
   gaMeasurementId: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_GA4_MEASUREMENT_ID) || "G-99QPLF52NX",
+  gtmId: "GTM-5V6GSD",
 };
 
 // Verified Company Spellings (Single Source of Truth)
