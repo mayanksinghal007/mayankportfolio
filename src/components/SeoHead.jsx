@@ -143,6 +143,9 @@ export const SeoHead = ({
           'google-site-verification-placeholder-code'
         }
       />
+      {SITE_CONFIG.googleVerificationPrevious && (
+        <meta name="google-site-verification" content={SITE_CONFIG.googleVerificationPrevious} />
+      )}
       {SITE_CONFIG.googleVerificationWithPrefix && (
         <meta name="google-site-verification" content={SITE_CONFIG.googleVerificationWithPrefix} />
       )}

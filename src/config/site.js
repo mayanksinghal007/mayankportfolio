@@ -26,7 +26,9 @@ export const SITE_CONFIG = {
   cvUrl: "/Mayank_Aggarwal_Resume.pdf", // [REPLACE] upload your resume to /public
   indexNowKey: "8f1a23c5b4d7e901f2a34b56c7d8e90a",
   siteUrl: typeof window !== "undefined" && window.location ? window.location.origin : "https://mayankaggarwal-one.vercel.app",
-  googleVerification: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_GOOGLE_SITE_VERIFICATION) || "tVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU",
+  googleVerification: (typeof import.meta !== "undefined" && import.meta.env && import.meta.env.VITE_GOOGLE_SITE_VERIFICATION) || "10MtCl154U961mQNyVLU_cxYmyPz7sqMwxu5tpHmxvc",
+  googleVerificationToken: "10MtCl154U961mQNyVLU_cxYmyPz7sqMwxu5tpHmxvc",
+  googleVerificationPrevious: "tVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU",
   googleVerificationWithPrefix: "google-site-verification=tVnkqW21I5IWprdsSvkoJLLde6zAnFD-VHlKmrIvIoU",
   googleVerificationBackup: "pWqnvJRxhVJjtOdo3LRUv135V9Zlrvo8yI0XO8G8vHc",
   googleCnameHost: "zo4mu2ttgmxe",
