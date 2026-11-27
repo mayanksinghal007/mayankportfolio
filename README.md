@@ -35,7 +35,7 @@ Built with React 19, Vite, and full static HTML prerendering (185 indexed pages)
 - **Name**: Mayank Aggarwal
 - **Role**: Digital Marketing & AI Specialist
 - **Practice / Studio**: Klikwise
-- **Location**: Delhi, National Capital Region (NCR), India (PIN: 110001)
+- **Location**: Delhi, National Capital Region (NCR), India (PIN: 110034]
 - **Website**: [https://mayankaggarwal-one.vercel.app](https://mayankaggarwal-one.vercel.app)
 - **Inquiries**: `contact.klikwise@gmail.com` | `riyansh.studio007@gmail.com`
 - **WhatsApp**: [+91 9217756033](https://wa.me/919217756033)
